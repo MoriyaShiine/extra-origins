@@ -1,0 +1,8 @@
+{
+  "item.respawnablepets.etheric_gem": "Gema etérica",
+  "tooltip.respawnablepets.etheric_gem": "Permite você ativar ou desativar o reaparecimento de pets com socos",
+  "message.respawnablepets.enable_respawn": "%s agora irá reaparecer ao morrer",
+  "message.respawnablepets.disable_respawn": "%s não irá mais reaparecer ao morrer",
+  "message.respawnablepets.not_owner": "Você não é o dono de %s",
+  "message.respawnablepets.blacklisted": "%s é uma entidade na lista negra"
+}
