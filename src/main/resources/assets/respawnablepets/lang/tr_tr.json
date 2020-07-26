@@ -1,8 +1,0 @@
-{
-  "item.respawnablepets.etheric_gem": "Eterik Mücevher",
-  "tooltip.respawnablepets.etheric_gem": "Bununla evcil hayvanını yumrukladığında yeniden doğup/doğmamasını ayarlar",
-  "message.respawnablepets.enable_respawn": "%s öldükten sonra yeniden doğacak",
-  "message.respawnablepets.disable_respawn": "%s öldükten sonra yeniden doğmayacak",
-  "message.respawnablepets.not_owner": "%s sana ait değil",
-  "message.respawnablepets.blacklisted": "%s kara listede"
-}

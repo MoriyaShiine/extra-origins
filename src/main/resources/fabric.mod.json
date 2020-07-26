@@ -1,35 +1,35 @@
 {
   "schemaVersion": 1,
-  "id": "respawnablepets",
+  "id": "extraorigins",
   "version": "${version}",
-  "name": "Respawnable Pets",
-  "description": "A simple Minecraft mod that allows your pets to respawn after death when you next sleep using a new item, the Etheric Gem",
+  "name": "Extra Origins",
+  "description": "Adds more origins to the Origins mod",
   "authors": [
-	"MoriyaShiine",
-	"cybercat5555"
+	"MoriyaShiine"
   ],
   "contact": {
-	"homepage": "https://www.curseforge.com/minecraft/mc-mods/respawnable-pets",
-	"sources": "https://github.com/MoriyaShiine/respawnable-pets"
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/extra-origins",
+	"sources": "https://github.com/MoriyaShiine/extra-origins"
   },
   "license": "GPL-3.0",
-  "icon": "assets/respawnablepets/icon.png",
+  "icon": "assets/extraorigins/icon.png",
   "environment": "*",
   "entrypoints": {
 	"main": [
-	  "moriyashiine.respawnablepets.common.RespawnablePets"
+	  "moriyashiine.extraorigins.common.ExtraOrigins"
 	],
 	"client": [
-	  "moriyashiine.respawnablepets.client.RespawnablePetsClient"
+	  "moriyashiine.extraorigins.client.ExtraOriginsClient"
 	]
   },
   "mixins": [
-	"respawnablepets.mixins.json"
+	"extraorigins.mixins.json"
   ],
   "depends": {
 	"fabricloader": ">=0.7.4",
 	"fabric": "*",
-	"minecraft": "1.16.x"
+	"minecraft": "1.16.x",
+	"origins": ">=1.16-0.2.5"
   },
   "suggests": {
 	"flamingo": "*"
