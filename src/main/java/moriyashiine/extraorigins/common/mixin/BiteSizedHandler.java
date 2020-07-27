@@ -35,7 +35,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	@Inject(method = "getDimensions", at = @At("HEAD"), cancellable = true)
 	private void getDimensions(EntityPose pose, CallbackInfoReturnable<EntityDimensions> callbackInfo) {
 		if (EOPowers.BITE_SIZED.isActive(this)) {
-			callbackInfo.setReturnValue(POSE_DIMENSIONS.getOrDefault(pose, PlayerEntity.STANDING_DIMENSIONS).scaled(pose == EntityPose.SWIMMING ? 0.5f : 0.25f));
+			callbackInfo.setReturnValue(POSE_DIMENSIONS.getOrDefault(pose, PlayerEntity.STANDING_DIMENSIONS).scaled(0.25f, pose == EntityPose.SWIMMING ? 0.5f : 0.25f));
 		}
 	}
 	
