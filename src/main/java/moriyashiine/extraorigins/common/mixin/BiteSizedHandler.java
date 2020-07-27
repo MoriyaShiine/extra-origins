@@ -43,7 +43,21 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	@Inject(method = "getActiveEyeHeight", at = @At("HEAD"), cancellable = true)
 	private void getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions, CallbackInfoReturnable<Float> callbackInfo) {
 		if (age > 0 && EOPowers.BITE_SIZED.isActive(this)) {
-			callbackInfo.setReturnValue(super.getActiveEyeHeight(pose, dimensions) * 0.5f);
+			float size;
+			switch(pose) {
+				case SWIMMING:
+				case FALL_FLYING:
+				case SPIN_ATTACK:
+					size = 0.4f;
+					break;
+				case CROUCHING:
+					size = 1.27f;
+					break;
+				default:
+					size = 1.62f;
+					break;
+			}
+			callbackInfo.setReturnValue(size * 0.25f);
 		}
 	}
 	
@@ -73,7 +87,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 			Object obj = this;
 			//noinspection ConstantConditions
 			if (EOPowers.BITE_SIZED.isActive((Entity) obj)) {
-				callbackInfo.setReturnValue(0.5f);
+				callbackInfo.setReturnValue(0.6f);
 			}
 		}
 	}
