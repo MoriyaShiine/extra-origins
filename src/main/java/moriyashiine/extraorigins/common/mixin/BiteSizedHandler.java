@@ -85,7 +85,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 		@Inject(method = "shouldContinue", at = @At("HEAD"), cancellable = true)
 		private void shouldContinue(CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (target != null && EOPowers.BITE_SIZED.isActive(target)) {
-				double range = getFollowRange() / 2;
+				double range = getFollowRange() / 4;
 				if (mob.squaredDistanceTo(target) > range * range) {
 					stop();
 					callbackInfo.setReturnValue(false);
