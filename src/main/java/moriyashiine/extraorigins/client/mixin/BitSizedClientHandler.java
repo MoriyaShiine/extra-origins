@@ -29,10 +29,13 @@ public class BitSizedClientHandler {
 	@Inject(method = "setupTransforms", at = @At("TAIL"))
 	private void setupTransforms(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, float g, float h, CallbackInfo callbackInfo)
 	{
-		float leaningPitch = abstractClientPlayerEntity.getLeaningPitch(h);
-		if (leaningPitch > 0 && abstractClientPlayerEntity.isInSwimmingPose())
+		if (EOPowers.BITE_SIZED.isActive(abstractClientPlayerEntity))
 		{
-			matrixStack.translate(0, 1, -0.3);
+			float leaningPitch = abstractClientPlayerEntity.getLeaningPitch(h);
+			if (leaningPitch > 0 && abstractClientPlayerEntity.isInSwimmingPose())
+			{
+				matrixStack.translate(0, 1, -0.3);
+			}
 		}
 	}
 	
