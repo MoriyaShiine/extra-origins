@@ -1,6 +1,9 @@
 {
   "powers": [
-	"extraorigins:bite_sized"
+	"extraorigins:bite_sized",
+    "extraorigins:small_appetite",
+    "extraorigins:cushioned",
+    "extraorigins:weak"
   ],
   "icon": "minecraft:anvil",
   "order": 1,

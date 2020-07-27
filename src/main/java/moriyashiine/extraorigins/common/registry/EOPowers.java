@@ -20,11 +20,12 @@ public class EOPowers {
 
 	public static final PowerType<Power> BITE_SIZED = create("bite_sized", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity)
 			.addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier(UUID.fromString("c1e81d44-5775-404f-81d1-d5d3012b0ff0"), "Health mod", -10 , EntityAttributeModifier.Operation.ADDITION))
-			.addModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(UUID.fromString("18981cb5-3858-4f9f-83db-f2705a9b094d"), "Attack damage mod", 0.5 , EntityAttributeModifier.Operation.MULTIPLY_TOTAL))
-			.addModifier(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(UUID.fromString("21b29e99-2813-4ae2-8a0a-f0ec301dfcf5"), "Attack knockback mod", 0.5 , EntityAttributeModifier.Operation.MULTIPLY_TOTAL))
 			.addModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier(UUID.fromString("286e76f1-38ec-45e4-8242-93e1c34127d0"), "Movement speed mod", -0.04 , EntityAttributeModifier.Operation.ADDITION))
 			.addModifier(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier(UUID.fromString("a3669c90-3f4f-458d-a377-e967a43e6292"), "Attack range mod", -2 , EntityAttributeModifier.Operation.ADDITION))
 			.addModifier(ReachEntityAttributes.REACH, new EntityAttributeModifier(UUID.fromString("db4d52ff-cab0-4547-85fa-33dfa6232dd9"), "Reach mod", -2 , EntityAttributeModifier.Operation.ADDITION)))));
+	public static final PowerType<Power> SMALL_APPETITE = create("small_appetite", PowerTypeAccessor.createPowerType(Power::new));
+	public static final PowerType<Power> CUSHIONED = create("cushioned", PowerTypeAccessor.createPowerType(Power::new));
+	public static final PowerType<Power> WEAK = create("weak", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage / 2f))));
 	
 	public static final PowerType<Power> LUNAR_DEALER = create("lunar_dealer", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (playerEntity.world.getMoonSize() + 0.5f)))));
 	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (playerEntity.world.getMoonSize() + 0.5f)))));
