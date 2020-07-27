@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "moriyashiine.extraorigins.client.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
+  "client": [
 	"BitSizedClientHandler",
 	"BitSizedClientHandler$Shadow"
   ],
