@@ -18,23 +18,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(PlayerEntityRenderer.class)
-public class BitSizedClientHandler
-{
+public class BitSizedClientHandler {
 	@Inject(method = "scale", at = @At("TAIL"))
 	private void scale(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, CallbackInfo callbackInfo) {
-		if (EOPowers.BITE_SIZED.isActive(abstractClientPlayerEntity))
-		{
+		if (EOPowers.BITE_SIZED.isActive(abstractClientPlayerEntity)) {
 			matrixStack.scale(0.5f, 0.5f, 0.5f);
 		}
 	}
 	
 	@Mixin(EntityRenderDispatcher.class)
-	private static class Shadow
-	{
+	private static class Shadow {
 		@ModifyVariable(method = {"renderShadow"}, at = @At("HEAD"), index = 6)
 		private static float renderShadow(float radius, MatrixStack matrices, VertexConsumerProvider vertexConsumers, Entity entity, float opacity, float tickDelta, WorldView world) {
-			if (EOPowers.BITE_SIZED.isActive(entity))
-			{
+			if (EOPowers.BITE_SIZED.isActive(entity)) {
 				return radius * 0.25f;
 			}
 			return radius;

@@ -11,17 +11,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HungerManager.class)
-public abstract class PhotosynthesisHandler
-{
+public abstract class PhotosynthesisHandler {
 	@Shadow
 	public abstract void add(int food, float f);
 	
 	@Inject(method = "update", at = @At("HEAD"))
-	private void update(PlayerEntity player, CallbackInfo callbackInfo)
-	{
+	private void update(PlayerEntity player, CallbackInfo callbackInfo) {
 		World world = player.world;
-		if (EOPowers.PHOTOSYNTHESIS.isActive(player) && world.isDay() && world.random.nextFloat() < 1/80f && world.isSkyVisible(player.getBlockPos().up()))
-		{
+		if (EOPowers.PHOTOSYNTHESIS.isActive(player) && world.isDay() && world.random.nextFloat() < 1 / 80f && world.isSkyVisible(player.getBlockPos().up())) {
 			add(1, 1);
 		}
 	}

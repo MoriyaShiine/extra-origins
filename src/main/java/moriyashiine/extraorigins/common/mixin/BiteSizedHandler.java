@@ -28,62 +28,50 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	}
 	
 	@Inject(method = "tick", at = @At("TAIL"), cancellable = true)
-	private void tick(CallbackInfo callbackInfo)
-	{
+	private void tick(CallbackInfo callbackInfo) {
 		calculateDimensions();
 	}
 	
 	@Inject(method = "getDimensions", at = @At("HEAD"), cancellable = true)
-	private void getDimensions(EntityPose pose, CallbackInfoReturnable<EntityDimensions> callbackInfo)
-	{
-		if (EOPowers.BITE_SIZED.isActive(this))
-		{
+	private void getDimensions(EntityPose pose, CallbackInfoReturnable<EntityDimensions> callbackInfo) {
+		if (EOPowers.BITE_SIZED.isActive(this)) {
 			callbackInfo.setReturnValue(POSE_DIMENSIONS.getOrDefault(pose, PlayerEntity.STANDING_DIMENSIONS).scaled(0.25f));
 		}
 	}
 	
 	@Inject(method = "getActiveEyeHeight", at = @At("HEAD"), cancellable = true)
-	private void getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions, CallbackInfoReturnable<Float> callbackInfo)
-	{
-		if (age > 0 && EOPowers.BITE_SIZED.isActive(this))
-		{
+	private void getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions, CallbackInfoReturnable<Float> callbackInfo) {
+		if (age > 0 && EOPowers.BITE_SIZED.isActive(this)) {
 			callbackInfo.setReturnValue(super.getActiveEyeHeight(pose, dimensions) * 0.5f);
 		}
 	}
 	
 	@Mixin(LivingEntity.class)
-	private static class Baby
-	{
+	private static class Baby {
 		@Inject(method = "isBaby", at = @At("HEAD"), cancellable = true)
-		private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo)
-		{
+		private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo) {
 			Object obj = this;
 			//noinspection ConstantConditions
-			if (obj instanceof PlayerEntity && EOPowers.BITE_SIZED.isActive((Entity) obj))
-			{
+			if (obj instanceof PlayerEntity && EOPowers.BITE_SIZED.isActive((Entity) obj)) {
 				callbackInfo.setReturnValue(true);
 			}
 		}
 	}
 	
 	@Mixin(Entity.class)
-	private static class JumpVelocity
-	{
+	private static class JumpVelocity {
 		@Inject(method = "getJumpVelocityMultiplier", at = @At("HEAD"), cancellable = true)
-		private void getJumpVelocityMultiplier(CallbackInfoReturnable<Float> callbackInfo)
-		{
+		private void getJumpVelocityMultiplier(CallbackInfoReturnable<Float> callbackInfo) {
 			Object obj = this;
 			//noinspection ConstantConditions
-			if (EOPowers.BITE_SIZED.isActive((Entity) obj))
-			{
+			if (EOPowers.BITE_SIZED.isActive((Entity) obj)) {
 				callbackInfo.setReturnValue(0.5f);
 			}
 		}
 	}
 	
 	@Mixin(TrackTargetGoal.class)
-	private static abstract class Tracker extends Goal
-	{
+	private static abstract class Tracker extends Goal {
 		@Shadow
 		@Final
 		protected MobEntity mob;
@@ -95,13 +83,10 @@ public abstract class BiteSizedHandler extends LivingEntity {
 		protected abstract double getFollowRange();
 		
 		@Inject(method = "shouldContinue", at = @At("HEAD"), cancellable = true)
-		private void shouldContinue(CallbackInfoReturnable<Boolean> callbackInfo)
-		{
-			if (target != null && EOPowers.BITE_SIZED.isActive(target))
-			{
+		private void shouldContinue(CallbackInfoReturnable<Boolean> callbackInfo) {
+			if (target != null && EOPowers.BITE_SIZED.isActive(target)) {
 				double range = getFollowRange() / 2;
-				if (mob.squaredDistanceTo(target) > range * range)
-				{
+				if (mob.squaredDistanceTo(target) > range * range) {
 					stop();
 					callbackInfo.setReturnValue(false);
 				}

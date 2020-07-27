@@ -11,17 +11,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class SmallAppetiteHandler extends LivingEntity
-{
+public abstract class SmallAppetiteHandler extends LivingEntity {
 	protected SmallAppetiteHandler(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
 	}
 	
 	@Inject(method = "addExhaustion", at = @At("HEAD"), cancellable = true)
-	private void addExhaustion(float exhaustion, CallbackInfo callbackInfo)
-	{
-		if (EOPowers.SMALL_APPETITE.isActive(this) && random.nextBoolean())
-		{
+	private void addExhaustion(float exhaustion, CallbackInfo callbackInfo) {
+		if (EOPowers.SMALL_APPETITE.isActive(this) && random.nextBoolean()) {
 			callbackInfo.cancel();
 		}
 	}
