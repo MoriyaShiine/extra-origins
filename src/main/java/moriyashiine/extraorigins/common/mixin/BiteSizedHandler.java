@@ -4,6 +4,7 @@ import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -43,6 +44,13 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	private void getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions, CallbackInfoReturnable<Float> callbackInfo) {
 		if (age > 0 && EOPowers.BITE_SIZED.isActive(this)) {
 			callbackInfo.setReturnValue(super.getActiveEyeHeight(pose, dimensions) * 0.5f);
+		}
+	}
+	
+	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
+	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
+		if (EOPowers.LIGHTWEIGHT.isActive(this) && (damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH)) {
+			callbackInfo.setReturnValue(true);
 		}
 	}
 	
