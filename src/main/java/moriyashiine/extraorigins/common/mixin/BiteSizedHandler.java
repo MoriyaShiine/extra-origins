@@ -52,7 +52,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 		private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo) {
 			Object obj = this;
 			//noinspection ConstantConditions
-			if (obj instanceof PlayerEntity && EOPowers.BITE_SIZED.isActive((Entity) obj)) {
+			if (EOPowers.BITE_SIZED.isActive((Entity) obj)) {
 				callbackInfo.setReturnValue(true);
 			}
 		}
