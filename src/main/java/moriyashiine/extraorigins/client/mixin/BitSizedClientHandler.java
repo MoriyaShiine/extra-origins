@@ -26,6 +26,16 @@ public class BitSizedClientHandler {
 		}
 	}
 	
+	@Inject(method = "setupTransforms", at = @At("TAIL"))
+	private void setupTransforms(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, float g, float h, CallbackInfo callbackInfo)
+	{
+		float leaningPitch = abstractClientPlayerEntity.getLeaningPitch(h);
+		if (leaningPitch > 0 && abstractClientPlayerEntity.isInSwimmingPose())
+		{
+			matrixStack.translate(0, 1, -0.3);
+		}
+	}
+	
 	@Mixin(EntityRenderDispatcher.class)
 	private static class Shadow {
 		@ModifyVariable(method = {"renderShadow"}, at = @At("HEAD"), index = 6)
