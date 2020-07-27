@@ -66,6 +66,21 @@ public abstract class BiteSizedHandler extends LivingEntity {
 		}
 	}
 	
+	@Mixin(Entity.class)
+	private static class JumpVelocity
+	{
+		@Inject(method = "getJumpVelocityMultiplier", at = @At("HEAD"), cancellable = true)
+		private void getJumpVelocityMultiplier(CallbackInfoReturnable<Float> callbackInfo)
+		{
+			Object obj = this;
+			//noinspection ConstantConditions
+			if (EOPowers.BITE_SIZED.isActive((Entity) obj))
+			{
+				callbackInfo.setReturnValue(0.5f);
+			}
+		}
+	}
+	
 	@Mixin(TrackTargetGoal.class)
 	private static abstract class Tracker extends Goal
 	{
