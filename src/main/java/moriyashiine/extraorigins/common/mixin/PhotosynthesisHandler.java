@@ -20,7 +20,7 @@ public abstract class PhotosynthesisHandler
 	private void update(PlayerEntity player, CallbackInfo callbackInfo)
 	{
 		World world = player.world;
-		if (EOPowers.PHOTOSYNTHESIS.isActive(player) && world.isDay() && world.random.nextFloat() < 1/80f && world.isSkyVisible(player.getBlockPos()))
+		if (EOPowers.PHOTOSYNTHESIS.isActive(player) && world.isDay() && world.random.nextFloat() < 1/80f && world.isSkyVisible(player.getBlockPos().up()))
 		{
 			add(1, 1);
 		}
