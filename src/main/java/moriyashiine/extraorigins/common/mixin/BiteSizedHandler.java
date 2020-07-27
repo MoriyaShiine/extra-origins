@@ -34,10 +34,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	@Inject(method = "tick", at = @At("TAIL"), cancellable = true)
 	private void tick(CallbackInfo callbackInfo)
 	{
-		if (EOPowers.BITE_SIZED.isActive(this))
-		{
-			calculateDimensions();
-		}
+		calculateDimensions();
 	}
 	
 	@Inject(method = "getDimensions", at = @At("HEAD"), cancellable = true)
