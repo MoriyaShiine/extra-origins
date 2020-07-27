@@ -12,14 +12,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class CushionedHandler extends LivingEntity {
-	protected CushionedHandler(EntityType<? extends LivingEntity> entityType, World world) {
+public abstract class LightweightHandler extends LivingEntity {
+	protected LightweightHandler(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
 	}
 	
 	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
 	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.CUSHIONED.isActive(this) && (damageSource == DamageSource.FALL || damageSource == DamageSource.FLY_INTO_WALL)) {
+		if (EOPowers.LIGHTWEIGHT.isActive(this) && (damageSource == DamageSource.FALL || damageSource == DamageSource.FLY_INTO_WALL)) {
 			callbackInfo.setReturnValue(true);
 		}
 	}
