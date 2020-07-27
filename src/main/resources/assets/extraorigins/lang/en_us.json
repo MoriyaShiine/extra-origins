@@ -1,2 +1,22 @@
 {
+  "origin.extraorigins.inchling.name": "Inchling",
+  "origin.extraorigins.inchling.description": "A subspecies of humans that are incredibly small. They utilize their size to hide from enemies and navigate small spaces. They are physically weak though.",
+  "origin.extraorigins.lunarian.name": "Lunarian",
+  "origin.extraorigins.lunarian.description": "While their ancestors were human, the Lunarians branched off and evolved separately from them with unique adaptations to thrive during full moons.",
+  "origin.extraorigins.floran.name": "Floran",
+  "origin.extraorigins.floran.description": "A species of plant people that obtain their nutrients from the sun and gain strength from water.",
+  "power.extraorigins.bite_sized.name": "Bite Sized",
+  "power.extraorigins.bite_sized.description": "You are half the size of a regular person, and this size makes it harder for monsters to detect you. You have half of the regular max health, deal half damage, and have less range. However you are immune to velocity damage and don't have to eat as often.",
+  "power.extraorigins.lunar_dealer.name": "Lunar Dealer",
+  "power.extraorigins.lunar_dealer.description": "You deal up to 50% more or less damage the closer the moon is to full.",
+  "power.extraorigins.lunar_taker.name": "Lunar Taker",
+  "power.extraorigins.lunar_taker.description": "You take up to 50% more or less damage the closer the moon is to full.",
+  "power.extraorigins.night_vision.name": "Night Vision",
+  "power.extraorigins.night_vision.description": "You can see perfectly in the dark regardless of the circumstances.",
+  "power.extraorigins.photosynthesis.name": "Photosynthesis",
+  "power.extraorigins.photosynthesis.description": "You are unable to eat food, but are satiated by being exposed to sunlight.",
+  "power.extraorigins.absorbing.name": "Absorbing",
+  "power.extraorigins.absorbing.description": "You regenerate health and deal more damage when wet.",
+  "power.extraorigins.flammable.name": "Flammable",
+  "power.extraorigins.flammable.description": "You take twice as much damage from fire."
 }
