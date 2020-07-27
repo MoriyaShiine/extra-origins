@@ -6,6 +6,7 @@
   "mixins": [
 	"PowerTypeAccessor",
 	"BiteSizedHandler",
+	"BiteSizedHandler$Baby",
 	"BiteSizedHandler$Tracker",
 	"SmallAppetiteHandler",
 	"CushionedHandler",

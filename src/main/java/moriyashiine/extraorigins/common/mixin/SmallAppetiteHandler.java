@@ -20,7 +20,7 @@ public abstract class SmallAppetiteHandler extends LivingEntity
 	@Inject(method = "addExhaustion", at = @At("HEAD"), cancellable = true)
 	private void addExhaustion(float exhaustion, CallbackInfo callbackInfo)
 	{
-		if (EOPowers.BITE_SIZED.isActive(this) && random.nextBoolean())
+		if (EOPowers.SMALL_APPETITE.isActive(this) && random.nextBoolean())
 		{
 			callbackInfo.cancel();
 		}

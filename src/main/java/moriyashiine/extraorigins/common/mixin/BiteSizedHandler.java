@@ -1,10 +1,7 @@
 package moriyashiine.extraorigins.common.mixin;
 
 import moriyashiine.extraorigins.common.registry.EOPowers;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
 import net.minecraft.entity.mob.MobEntity;
@@ -41,7 +38,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	{
 		if (EOPowers.BITE_SIZED.isActive(this))
 		{
-			callbackInfo.setReturnValue(POSE_DIMENSIONS.getOrDefault(pose, PlayerEntity.STANDING_DIMENSIONS).scaled(0.5f));
+			callbackInfo.setReturnValue(POSE_DIMENSIONS.getOrDefault(pose, PlayerEntity.STANDING_DIMENSIONS).scaled(0.25f));
 		}
 	}
 	
@@ -51,6 +48,21 @@ public abstract class BiteSizedHandler extends LivingEntity {
 		if (age > 0 && EOPowers.BITE_SIZED.isActive(this))
 		{
 			callbackInfo.setReturnValue(super.getActiveEyeHeight(pose, dimensions) * 0.5f);
+		}
+	}
+	
+	@Mixin(LivingEntity.class)
+	private static class Baby
+	{
+		@Inject(method = "isBaby", at = @At("HEAD"), cancellable = true)
+		private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo)
+		{
+			Object obj = this;
+			//noinspection ConstantConditions
+			if (obj instanceof PlayerEntity && EOPowers.BITE_SIZED.isActive((Entity) obj))
+			{
+				callbackInfo.setReturnValue(true);
+			}
 		}
 	}
 	
