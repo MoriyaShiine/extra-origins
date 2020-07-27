@@ -3,8 +3,6 @@ package moriyashiine.extraorigins.common.mixin;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,9 +20,9 @@ public abstract class AbsorbingHandler extends LivingEntity
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo callbackInfo)
 	{
-		if (EOPowers.ABSORBING.isActive(this))
+		if (EOPowers.ABSORBING.isActive(this) && random.nextFloat() < 1/20f)
 		{
-			addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 10, 0));
+			heal(1);
 		}
 	}
 }
