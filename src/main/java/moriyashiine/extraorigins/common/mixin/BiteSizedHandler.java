@@ -57,7 +57,7 @@ public abstract class BiteSizedHandler extends LivingEntity {
 					size = 1.62f;
 					break;
 			}
-			callbackInfo.setReturnValue(size * 0.25f);
+			callbackInfo.setReturnValue((size * 0.25f) - 1/128f);
 		}
 	}
 	
