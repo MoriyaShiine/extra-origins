@@ -4,7 +4,8 @@
   "package": "moriyashiine.extraorigins.client.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-	"BitSizedClientHandler"
+	"BitSizedClientHandler",
+	"BitSizedClientHandler$Shadow"
   ],
   "injectors": {
 	"defaultRequire": 1
