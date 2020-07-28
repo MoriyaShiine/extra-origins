@@ -12,7 +12,7 @@
   "power.extraorigins.lightweight.name": "Lightweight",
   "power.extraorigins.lightweight.description": "You are immune to velocity based damage.",
   "power.extraorigins.weak.name": "Weak",
-  "power.extraorigins.weak.description": "You deal half the damage a regular person does.",
+  "power.extraorigins.weak.description": "You deal 33% less the damage a regular person does.",
   "power.extraorigins.lunar_dealer.name": "Lunar Dealer",
   "power.extraorigins.lunar_dealer.description": "You deal up to 50% more or less damage the closer the moon is to full.",
   "power.extraorigins.lunar_taker.name": "Lunar Taker",
