@@ -12,6 +12,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.dimension.DimensionType;
 
 import java.util.*;
 
@@ -24,7 +25,7 @@ public class EOPowers {
 	public static final PowerType<Power> WEAK = create("weak", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2/3f))));
 	
 	public static final PowerType<Power> LUNAR_DEALER = create("lunar_dealer", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (playerEntity.world.getMoonSize() + 0.5f)))));
-	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (playerEntity.world.getMoonSize() + 0.5f)))));
+	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (DimensionType.field_24752[playerEntity.world.getDimension().method_28531(playerEntity.world.getTimeOfDay() + 96000)] + 0.5f)))));
 	public static final PowerType<Power> NIGHT_VISION = create("night_vision", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new NightVisionPower(powerType, playerEntity).addCondition(usingPlayer -> true))));
 	
 	public static final PowerType<Power> PHOTOSYNTHESIS = create("photosynthesis", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new PreventItemUsePower(powerType, playerEntity, getFoods()))));
