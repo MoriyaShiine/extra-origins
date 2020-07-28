@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Mixin(PlayerEntity.class)
 public abstract class BiteSizedHandler extends LivingEntity {
-	@SuppressWarnings("unused")
+	@SuppressWarnings({"unused", "MismatchedQueryAndUpdateOfCollection"})
 	@Shadow
 	@Final
 	private static Map<EntityPose, EntityDimensions> POSE_DIMENSIONS;
@@ -31,7 +31,9 @@ public abstract class BiteSizedHandler extends LivingEntity {
 	
 	@Inject(method = "tick", at = @At("TAIL"), cancellable = true)
 	private void tick(CallbackInfo callbackInfo) {
-		calculateDimensions();
+		if (world.isClient) {
+			calculateDimensions();
+		}
 	}
 	
 	@Inject(method = "getDimensions", at = @At("HEAD"), cancellable = true)
