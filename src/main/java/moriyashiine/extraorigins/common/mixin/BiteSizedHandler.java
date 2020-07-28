@@ -20,6 +20,7 @@ import java.util.Map;
 
 @Mixin(PlayerEntity.class)
 public abstract class BiteSizedHandler extends LivingEntity {
+	@SuppressWarnings("unused")
 	@Shadow
 	@Final
 	private static Map<EntityPose, EntityDimensions> POSE_DIMENSIONS;
