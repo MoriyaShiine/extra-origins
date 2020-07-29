@@ -4,14 +4,12 @@
   "package": "moriyashiine.extraorigins.common.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+	"AbsorbingHandler",
 	"BiteSizedHandler",
-	"BiteSizedHandler$Server",
 	"BiteSizedHandler$JumpVelocity",
-	"BiteSizedHandler$Baby",
 	"BiteSizedHandler$MonsterAITracker",
 	"LightweightHandler",
-	"PhotosynthesisHandler",
-	"AbsorbingHandler"
+	"PhotosynthesisHandler"
   ],
   "injectors": {
 	"defaultRequire": 1
