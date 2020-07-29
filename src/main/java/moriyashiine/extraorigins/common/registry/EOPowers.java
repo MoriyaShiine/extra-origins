@@ -8,14 +8,14 @@ import moriyashiine.extraorigins.common.mixin.PowerTypeAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.recipe.Ingredient;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class EOPowers {
 	private static final Map<PowerType<?>, Identifier> POWER_TYPES = new LinkedHashMap<>();
@@ -43,7 +43,7 @@ public class EOPowers {
 	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (DimensionType.field_24752[playerEntity.world.getDimension().method_28531(playerEntity.world.getTimeOfDay() + 96000)] + 0.5f)))));
 	public static final PowerType<Power> NIGHT_VISION = create("night_vision", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new NightVisionPower(powerType, playerEntity).addCondition(usingPlayer -> true))));
 	
-	public static final PowerType<Power> PHOTOSYNTHESIS = create("photosynthesis", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new PreventItemUsePower(powerType, playerEntity, getFoods()))));
+	public static final PowerType<Power> PHOTOSYNTHESIS = create("photosynthesis", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new PreventItemUsePower(powerType, playerEntity, ItemStack::isFood))));
 	public static final PowerType<Power> ABSORBING = create("absorbing", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> player.isWet(), damage -> damage * 1.5f).addCondition(Entity::isWet))));
 	public static final PowerType<Power> FLAMMABLE = create("flammable", PowerTypeAccessor.createPowerType(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> source.isFire(), damage -> damage * 2))));
 	
@@ -54,15 +54,5 @@ public class EOPowers {
 	
 	public static void init() {
 		POWER_TYPES.keySet().forEach(powerType -> Registry.register(ModRegistries.POWER_TYPE, POWER_TYPES.get(powerType), powerType));
-	}
-	
-	private static Ingredient getFoods() {
-		List<Item> foods = new ArrayList<>();
-		for (Item item : Registry.ITEM) {
-			if (item.isFood()) {
-				foods.add(item);
-			}
-		}
-		return Ingredient.ofItems(foods.toArray(new ItemConvertible[0]));
 	}
 }
