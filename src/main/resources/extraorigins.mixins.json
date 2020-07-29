@@ -4,13 +4,11 @@
   "package": "moriyashiine.extraorigins.common.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-	"PowerTypeAccessor",
 	"BiteSizedHandler",
 	"BiteSizedHandler$Server",
 	"BiteSizedHandler$JumpVelocity",
 	"BiteSizedHandler$Baby",
 	"BiteSizedHandler$MonsterAITracker",
-	"SmallAppetiteHandler",
 	"LightweightHandler",
 	"PhotosynthesisHandler",
 	"AbsorbingHandler"
