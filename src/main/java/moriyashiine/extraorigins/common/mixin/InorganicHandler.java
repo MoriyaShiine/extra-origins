@@ -32,6 +32,7 @@ public abstract class InorganicHandler extends LivingEntity {
 	private void tick(CallbackInfo callbackInfo) {
 		if (EOPowers.INORGANIC.isActive(this)) {
 			getHungerManager().setFoodLevel(0);
+			setAir(0);
 			if (world.isClient) {
 				getHungerManager().setSaturationLevelClient(20);
 			}
