@@ -8,6 +8,8 @@
 	"BiteSizedHandler",
 	"BiteSizedHandler$JumpVelocity",
 	"BiteSizedHandler$MonsterAITracker",
+	"InorganicHandler",
+	"InorganicHandler$EffectImmunity",
 	"LightweightHandler",
 	"PhotosynthesisHandler"
   ],

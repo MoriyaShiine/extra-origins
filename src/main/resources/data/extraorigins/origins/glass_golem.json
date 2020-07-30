@@ -1,0 +1,11 @@
+{
+  "powers": [
+	"extraorigins:inorganic",
+	"origins:fire_immunity",
+	"extraorigins:glass_cannon",
+	"extraorigins:glass_cannon_take"
+  ],
+  "icon": "minecraft:glass",
+  "order": 1,
+  "impact": 3
+}

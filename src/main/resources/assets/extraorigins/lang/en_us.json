@@ -5,6 +5,8 @@
   "origin.extraorigins.lunarian.description": "While their ancestors were human, the Lunarians branched off and evolved separately from them with unique adaptations to thrive during full moons.",
   "origin.extraorigins.floran.name": "Floran",
   "origin.extraorigins.floran.description": "A species of plant people that obtain their nutrients from the sun and gain strength from water.",
+  "origin.extraorigins.glass_golem.name": "Glass Golem",
+  "origin.extraorigins.glass_golem.description": "Beings made of pure glass, these individuals do not have to eat, breathe, or worry about most environmental dangers.",
   "power.extraorigins.bite_sized.name": "Bite Sized",
   "power.extraorigins.bite_sized.description": "You are a fourth of the size of a regular person, and this size makes it harder for monsters to detect you. You have five less hearts and have less attack range and build range. Additionally, Cacti and Sweet Berry Bushes are too large to hurt you.",
   "power.extraorigins.small_appetite.name": "Small Appetite",
@@ -24,5 +26,9 @@
   "power.extraorigins.absorbing.name": "Absorbing",
   "power.extraorigins.absorbing.description": "You regenerate health and deal more damage when wet.",
   "power.extraorigins.flammable.name": "Flammable",
-  "power.extraorigins.flammable.description": "You take twice as much damage from fire."
+  "power.extraorigins.flammable.description": "You take twice as much damage from fire.",
+  "power.extraorigins.inorganic.name": "Inorganic",
+  "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and cannot and do not need to eat, however your food level is always zero. You have passive health regeneration.",
+  "power.extraorigins.glass_cannon.name": "Glass Cannon",
+  "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage."
 }
