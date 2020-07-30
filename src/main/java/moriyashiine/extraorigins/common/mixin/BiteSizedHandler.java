@@ -7,8 +7,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,13 +21,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class BiteSizedHandler extends Entity {
+	@Shadow @Final public PlayerInventory inventory;
+	
 	protected BiteSizedHandler(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
 	}
 	
 	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
 	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.BITE_SIZED.isActive(this) && (damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH)) {
+		if (EOPowers.BITE_SIZED.isActive(this) && (damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH || (damageSource instanceof EntityDamageSource && ((EntityDamageSource) damageSource).isThorns()))) {
 			callbackInfo.setReturnValue(true);
 		}
 	}
