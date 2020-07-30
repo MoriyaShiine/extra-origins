@@ -3,7 +3,7 @@
 	"extraorigins:inorganic",
 	"origins:fire_immunity",
 	"extraorigins:glass_cannon",
-	"extraorigins:glass_cannon_take"
+	"extraorigins:glass_cannon_dummy"
   ],
   "icon": "minecraft:glass",
   "order": 1,

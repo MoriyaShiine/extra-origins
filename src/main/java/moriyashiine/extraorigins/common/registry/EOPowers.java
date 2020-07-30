@@ -46,7 +46,7 @@ public class EOPowers {
 	public static final PowerType<Power> INORGANIC = create("inorganic", new PowerType<>((powerType, playerEntity) -> new PreventItemUsePower(powerType, playerEntity, ItemStack::isFood)));
 	public static final PowerType<Power> GLASS_CANNON = create("glass_cannon", new PowerType<>((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2)));
 	@SuppressWarnings("unchecked")
-	public static final PowerType<Power> GLASS_CANNON_TAKE = create("glass_cannon_take", new PowerType<>((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2)).setHidden());
+	public static final PowerType<Power> GLASS_CANNON_DUMMY = create("glass_cannon_dummy", new PowerType<>((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2)).setHidden());
 	
 	private static <T extends Power> PowerType<T> create(String name, PowerType<T> power) {
 		POWER_TYPES.put(power, new Identifier("extraorigins", name));

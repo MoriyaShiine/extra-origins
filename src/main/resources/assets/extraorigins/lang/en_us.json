@@ -28,7 +28,7 @@
   "power.extraorigins.flammable.name": "Flammable",
   "power.extraorigins.flammable.description": "You take twice as much damage from fire.",
   "power.extraorigins.inorganic.name": "Inorganic",
-  "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and cannot and do not need to eat, however your food level is always zero. You have passive health regeneration.",
+  "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and cannot and do not need to eat, however your food level is always zero. You have passive health regeneration, albeit slowly.",
   "power.extraorigins.glass_cannon.name": "Glass Cannon",
   "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage."
 }
