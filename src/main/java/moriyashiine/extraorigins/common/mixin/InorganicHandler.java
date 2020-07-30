@@ -9,6 +9,8 @@ import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -43,6 +45,20 @@ public abstract class InorganicHandler extends LivingEntity {
 	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
 		if (EOPowers.INORGANIC.isActive(this) && (damageSource == DamageSource.STARVE || damageSource == DamageSource.DROWN || damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH || damageSource == DamageSource.IN_WALL || damageSource == DamageSource.FALLING_BLOCK || (damageSource instanceof EntityDamageSource && ((EntityDamageSource) damageSource).isThorns()))) {
 			callbackInfo.setReturnValue(true);
+		}
+	}
+	
+	@Inject(method = "getHurtSound", at = @At("HEAD"), cancellable = true)
+	private void getHurtSound(DamageSource source, CallbackInfoReturnable<SoundEvent> callbackInfo) {
+		if (EOPowers.INORGANIC.isActive(this)) {
+			callbackInfo.setReturnValue(SoundEvents.BLOCK_GLASS_HIT);
+		}
+	}
+	
+	@Inject(method = "getDeathSound", at = @At("HEAD"), cancellable = true)
+	private void getHurtSound(CallbackInfoReturnable<SoundEvent> callbackInfo) {
+		if (EOPowers.INORGANIC.isActive(this)) {
+			callbackInfo.setReturnValue(SoundEvents.BLOCK_GLASS_BREAK);
 		}
 	}
 	
