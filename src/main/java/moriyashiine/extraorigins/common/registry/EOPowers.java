@@ -19,8 +19,7 @@ import java.util.UUID;
 public class EOPowers {
 	private static final Map<PowerType<?>, Identifier> POWER_TYPES = new LinkedHashMap<>();
 	
-	public static final PowerType<Power> BITE_SIZED = create("bite_sized", new PowerType<>(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity)
-	{
+	public static final PowerType<Power> BITE_SIZED = create("bite_sized", new PowerType<>(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity) {
 		@Override
 		public void onAdded() {
 			super.onAdded();
