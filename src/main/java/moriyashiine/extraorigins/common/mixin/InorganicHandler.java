@@ -74,5 +74,12 @@ public abstract class InorganicHandler extends LivingEntity {
 				callbackInfo.setReturnValue(false);
 			}
 		}
+		
+		@Inject(method = "isAffectedBySplashPotions", at = @At("HEAD"), cancellable = true)
+		private void canHaveStatusEffect(CallbackInfoReturnable<Boolean> callbackInfo) {
+			if (EOPowers.INORGANIC.isActive(this)) {
+				callbackInfo.setReturnValue(false);
+			}
+		}
 	}
 }
