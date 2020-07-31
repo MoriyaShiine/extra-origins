@@ -20,7 +20,8 @@
 	]
   },
   "mixins": [
-	"extraorigins.mixins.json"
+	"extraorigins.mixins.json",
+	"extraorigins.client_mixins.json"
   ],
   "depends": {
 	"fabricloader": ">=0.7.4",

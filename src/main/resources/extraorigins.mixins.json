@@ -6,6 +6,7 @@
   "mixins": [
 	"AbsorbingHandler",
 	"BiteSizedHandler",
+	"BiteSizedHandler$Baby",
 	"BiteSizedHandler$JumpVelocity",
 	"BiteSizedHandler$MonsterAITracker",
 	"InorganicHandler",

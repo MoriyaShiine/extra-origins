@@ -3,6 +3,7 @@ package moriyashiine.extraorigins.common.registry;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import io.github.apace100.origins.power.*;
 import io.github.apace100.origins.registry.ModRegistries;
+import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import moriyashiine.sizeentityattributes.SizeEntityAttributes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -22,12 +23,14 @@ public class EOPowers {
 		@Override
 		public void onAdded() {
 			super.onAdded();
+			((BabyAccessor) playerEntity).setBaby(true);
 			playerEntity.calculateDimensions();
 		}
 		
 		@Override
 		public void onRemoved() {
 			super.onRemoved();
+			((BabyAccessor) playerEntity).setBaby(false);
 			playerEntity.calculateDimensions();
 		}
 	}.addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -10, EntityAttributeModifier.Operation.ADDITION)).addModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("Movement speed mod", -0.05, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier("Attack range mod", -1, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.REACH, new EntityAttributeModifier("Reach mod", -2, EntityAttributeModifier.Operation.ADDITION)).addModifier(SizeEntityAttributes.WIDTH_MULTIPLIER, new EntityAttributeModifier("Width multiplier mod", -0.75, EntityAttributeModifier.Operation.ADDITION)).addModifier(SizeEntityAttributes.HEIGHT_MULTIPLIER, new EntityAttributeModifier("Height multiplier mod", -0.75, EntityAttributeModifier.Operation.ADDITION)))));
