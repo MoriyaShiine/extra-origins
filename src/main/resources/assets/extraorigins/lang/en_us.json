@@ -34,9 +34,11 @@
   "power.extraorigins.glass_cannon.name": "Glass Cannon",
   "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage.",
   "power.extraorigins.all_that_glitters.name": "All That Glitters",
-  "power.extraorigins.all_that_glitters.description": "You are adept at using gold tools and armor, making them last much longer. Golden tools deal 2 extra damage and golden armor reduces damage taken by 10% for each armor piece equipped. Piglins are neutral towards you.",
+  "power.extraorigins.all_that_glitters.description": "You are adept at using gold tools and armor, making them last much longer. Golden tools deal 2 extra damage and golden armor reduces damage taken by 8% for each armor piece equipped. Piglins are passive towards you.",
   "power.extraorigins.crossbow_master.name": "Crossbow Master",
   "power.extraorigins.crossbow_master.description": "You deal twice as much damage with crossbows.",
   "power.extraorigins.homesick.name": "Homesick",
-  "power.extraorigins.homesick.description": "When outside of the Nether, you zombify, becoming undead and immune to fire, but slower."
+  "power.extraorigins.homesick.description": "When outside of the Nether, you zombify, becoming undead and immune to fire, but slower.",
+  "power.extraorigins.pigskin.name": "Pigskin",
+  "power.extraorigins.pigskin.description": "Your flesh is softer, reducing your health by 2 hearts."
 }

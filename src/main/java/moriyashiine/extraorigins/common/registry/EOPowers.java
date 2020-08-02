@@ -63,10 +63,11 @@ public class EOPowers {
 				armorPieces++;
 			}
 		}
-		return damage * (1 - (armorPieces * 0.1f));
+		return damage * (1 - (armorPieces * 0.08f));
 	}))).setHidden());
 	public static final PowerType<Power> CROSSBOW_MASTER = create("crossbow_master", new PowerType<>(Power::new));
 	public static final PowerType<Power> HOMESICK = create("homesick", new PowerType<>(Power::new));
+	public static final PowerType<Power> PIGSKIN = create("pigskin", new PowerType<>(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity).addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -4, EntityAttributeModifier.Operation.ADDITION)))));
 	
 	private static <T extends Power> PowerType<T> create(String name, PowerType<T> power) {
 		POWER_TYPES.put(power, new Identifier("extraorigins", name));

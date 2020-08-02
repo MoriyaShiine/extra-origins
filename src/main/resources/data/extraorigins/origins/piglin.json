@@ -4,7 +4,8 @@
 	"extraorigins:all_that_glitters_dummy",
 	"extraorigins:crossbow_master",
 	"extraorigins:homesick",
-	"origins:nether_spawn"
+	"origins:nether_spawn",
+	"extraorigins:pigskin"
   ],
   "icon": "minecraft:golden_sword",
   "order": 1,
