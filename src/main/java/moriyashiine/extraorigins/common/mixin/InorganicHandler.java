@@ -32,7 +32,6 @@ public abstract class InorganicHandler extends LivingEntity {
 	private void tick(CallbackInfo callbackInfo) {
 		if (EOPowers.INORGANIC.isActive(this)) {
 			getHungerManager().setFoodLevel(0);
-			setAir(0);
 			if (world.isClient) {
 				getHungerManager().setSaturationLevelClient(20);
 			}
@@ -80,6 +79,21 @@ public abstract class InorganicHandler extends LivingEntity {
 		private void canHaveStatusEffect(CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (EOPowers.INORGANIC.isActive(this)) {
 				callbackInfo.setReturnValue(false);
+			}
+		}
+	}
+	
+	@Mixin(Entity.class)
+	private static abstract class NoAir {
+		@Shadow
+		public World world;
+		
+		@Inject(method = "getAir", at = @At("HEAD"), cancellable = true)
+		private void canHaveStatusEffect(CallbackInfoReturnable<Integer> callbackInfo) {
+			Object obj = this;
+			//noinspection ConstantConditions
+			if (EOPowers.INORGANIC.isActive((Entity) obj) && world.isClient) {
+				callbackInfo.setReturnValue(0);
 			}
 		}
 	}

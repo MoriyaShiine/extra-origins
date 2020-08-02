@@ -11,6 +11,7 @@
 	"BiteSizedHandler$MonsterAITracker",
 	"InorganicHandler",
 	"InorganicHandler$EffectImmunity",
+	"InorganicHandler$NoAir",
 	"LightweightHandler",
 	"PhotosynthesisHandler"
   ],
