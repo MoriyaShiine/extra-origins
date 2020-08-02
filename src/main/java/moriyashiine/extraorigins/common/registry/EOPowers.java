@@ -8,7 +8,7 @@ import moriyashiine.sizeentityattributes.SizeEntityAttributes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
@@ -50,6 +50,23 @@ public class EOPowers {
 	public static final PowerType<Power> GLASS_CANNON = create("glass_cannon", new PowerType<>((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2)));
 	@SuppressWarnings("unchecked")
 	public static final PowerType<Power> GLASS_CANNON_DUMMY = create("glass_cannon_dummy", new PowerType<>((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2)).setHidden());
+	
+	public static final PowerType<Power> ALL_THAT_GLITTERS = create("all_that_glitters", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> {
+		Item item = playerEntity.getMainHandStack().getItem();
+		return damage + (item instanceof ToolItem && ((ToolItem) item).getMaterial() == ToolMaterials.GOLD ? 2 : 0);
+	}))));
+	@SuppressWarnings("unchecked")
+	public static final PowerType<Power> ALL_THAT_GLITTERS_DUMMY = create("all_that_glitters_dummy", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> {
+		byte armorPieces = 0;
+		for (ItemStack stack : playerEntity.getArmorItems()) {
+			if (stack.getItem() instanceof ArmorItem && ((ArmorItem) stack.getItem()).getMaterial() == ArmorMaterials.GOLD) {
+				armorPieces++;
+			}
+		}
+		return damage * (1 - (armorPieces * 0.1f));
+	}))).setHidden());
+	public static final PowerType<Power> CROSSBOW_MASTER = create("crossbow_master", new PowerType<>(Power::new));
+	public static final PowerType<Power> HOMESICK = create("homesick", new PowerType<>(Power::new));
 	
 	private static <T extends Power> PowerType<T> create(String name, PowerType<T> power) {
 		POWER_TYPES.put(power, new Identifier("extraorigins", name));

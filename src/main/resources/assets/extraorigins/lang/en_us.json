@@ -7,6 +7,8 @@
   "origin.extraorigins.floran.description": "A species of plant people that obtain their nutrients from the sun and gain strength from water.",
   "origin.extraorigins.glass_golem.name": "Glass Golem",
   "origin.extraorigins.glass_golem.description": "Beings made of pure glass, these individuals do not have to eat, breathe, or worry about most environmental dangers.",
+  "origin.extraorigins.piglin.name": "Piglin",
+  "origin.extraorigins.piglin.description": "Natives of the Nether, Piglins are very fond of gold and are experts at utilizing it.",
   "power.extraorigins.bite_sized.name": "Bite Sized",
   "power.extraorigins.bite_sized.description": "You are a fourth of the size of a regular person, and this size makes it harder for monsters to detect you. You have five less hearts and have less attack range and build range. Additionally, Cacti and Sweet Berry Bushes are too large to hurt you.",
   "power.extraorigins.small_appetite.name": "Small Appetite",
@@ -30,5 +32,11 @@
   "power.extraorigins.inorganic.name": "Inorganic",
   "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and cannot and do not need to eat, however your food level is always zero. You have passive health regeneration, albeit slowly.",
   "power.extraorigins.glass_cannon.name": "Glass Cannon",
-  "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage."
+  "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage.",
+  "power.extraorigins.all_that_glitters.name": "All That Glitters",
+  "power.extraorigins.all_that_glitters.description": "You are adept at using gold tools and armor, making them last much longer. Golden tools deal 2 extra damage and golden armor reduces damage taken by 10% for each armor piece equipped. Piglins are neutral towards you.",
+  "power.extraorigins.crossbow_master.name": "Crossbow Master",
+  "power.extraorigins.crossbow_master.description": "You deal twice as much damage with crossbows.",
+  "power.extraorigins.homesick.name": "Homesick",
+  "power.extraorigins.homesick.description": "When outside of the Nether, you zombify, becoming undead and immune to fire, but slower."
 }
