@@ -6,7 +6,7 @@
   "mixins": [
 	"AbsorbingHandler",
 	"AllThatGlittersHandler",
-	"AllThatGlittersHandler$NeutralPiglins",
+	"AllThatGlittersHandler$PassivePiglins",
 	"BiteSizedHandler",
 	"BiteSizedHandler$Baby",
 	"BiteSizedHandler$JumpVelocity",
