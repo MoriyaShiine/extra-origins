@@ -1,4 +1,4 @@
-package moriyashiine.extraorigins.common.mixin;
+package moriyashiine.extraorigins.mixin;
 
 import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import moriyashiine.extraorigins.common.registry.EOPowers;

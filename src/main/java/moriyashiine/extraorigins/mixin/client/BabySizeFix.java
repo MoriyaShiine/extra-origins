@@ -1,4 +1,4 @@
-package moriyashiine.extraorigins.client.mixin;
+package moriyashiine.extraorigins.mixin.client;
 
 import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import net.fabricmc.api.EnvType;
