@@ -17,8 +17,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BabySizeFix {
 	@Inject(method = "scale", at = @At("TAIL"))
 	private <T extends LivingEntity> void scale(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, CallbackInfo callbackInfo) {
-		if (abstractClientPlayerEntity instanceof BabyAccessor && ((BabyAccessor) abstractClientPlayerEntity).getBaby()) {
-			matrixStack.scale(2, 2, 2);
-		}
+		BabyAccessor.get(abstractClientPlayerEntity).ifPresent(babyAccessor -> {
+			if (babyAccessor.getBaby()) {
+				matrixStack.scale(2, 2, 2);
+			}
+		});
 	}
 }

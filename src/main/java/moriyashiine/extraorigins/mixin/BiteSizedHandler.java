@@ -72,10 +72,11 @@ public abstract class BiteSizedHandler extends Entity implements BabyAccessor {
 		
 		@Inject(method = "isBaby", at = @At("HEAD"), cancellable = true)
 		private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo) {
-			Entity obj = this;
-			if (obj instanceof BabyAccessor && ((BabyAccessor) obj).getBaby()) {
-				callbackInfo.setReturnValue(true);
-			}
+			BabyAccessor.get(this).ifPresent(babyAccessor -> {
+				if (babyAccessor.getBaby()) {
+					callbackInfo.setReturnValue(true);
+				}
+			});
 		}
 	}
 	
