@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "origins": [
+	"extraorigins:inchling",
+	"extraorigins:lunarian",
+	"extraorigins:floran",
+	"extraorigins:glass_golem",
+	"extraorigins:piglin"
+  ]
+}
