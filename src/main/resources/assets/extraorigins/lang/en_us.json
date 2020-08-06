@@ -40,5 +40,7 @@
   "power.extraorigins.homesick.name": "Homesick",
   "power.extraorigins.homesick.description": "When outside of the Nether, you zombify, becoming undead and immune to fire, but slower.",
   "power.extraorigins.flabby.name": "Flabby",
-  "power.extraorigins.flabby.description": "Your flesh is softer, reducing your health by 2 hearts."
+  "power.extraorigins.flabby.description": "Your flesh is softer, reducing your health by 2 hearts.",
+  "power.extraorigins.soul_spooked.name": "Soul Spooked",
+  "power.extraorigins.soul_spooked.description": "You are afraid of soul fire, becoming weak when near it."
 }

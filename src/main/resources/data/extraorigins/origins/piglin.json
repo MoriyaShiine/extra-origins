@@ -5,7 +5,9 @@
 	"extraorigins:crossbow_master",
 	"extraorigins:homesick",
 	"origins:nether_spawn",
-	"extraorigins:flabby"
+	"origins:carnivore",
+	"extraorigins:flabby",
+	"extraorigins:soul_spooked"
   ],
   "icon": "minecraft:golden_sword",
   "order": 1,

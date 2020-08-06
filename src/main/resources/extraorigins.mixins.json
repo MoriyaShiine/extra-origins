@@ -18,7 +18,8 @@
 	"InorganicHandler$EffectImmunity",
 	"InorganicHandler$NoAir",
 	"LightweightHandler",
-	"PhotosynthesisHandler"
+	"PhotosynthesisHandler",
+	"SoulSpookedHandler"
   ],
   "client": [
 	"client.BabySizeFix"

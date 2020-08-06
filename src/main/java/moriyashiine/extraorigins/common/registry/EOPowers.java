@@ -68,6 +68,7 @@ public class EOPowers {
 	public static final PowerType<Power> CROSSBOW_MASTER = create("crossbow_master", new PowerType<>(Power::new));
 	public static final PowerType<Power> HOMESICK = create("homesick", new PowerType<>(Power::new));
 	public static final PowerType<Power> FLABBY = create("flabby", new PowerType<>(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity).addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -4, EntityAttributeModifier.Operation.ADDITION)))));
+	public static final PowerType<Power> SOUL_SPOOKED = create("soul_spooked", new PowerType<>(Power::new));
 	
 	private static <T extends Power> PowerType<T> create(String name, PowerType<T> power) {
 		POWER_TYPES.put(power, new Identifier("extraorigins", name));
