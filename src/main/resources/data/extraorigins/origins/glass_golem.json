@@ -1,5 +1,6 @@
 {
   "powers": [
+	"origins:translucent",
 	"extraorigins:inorganic",
 	"origins:fire_immunity",
 	"extraorigins:glass_cannon",

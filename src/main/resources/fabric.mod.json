@@ -26,7 +26,7 @@
 	"fabricloader": ">=0.7.4",
 	"fabric": "*",
 	"minecraft": "1.16.x",
-	"origins": ">=1.16-0.2.6",
+	"origins": ">=1.16-0.3.3",
 	"sizeentityattributes": "*"
   },
   "suggests": {
