@@ -3,6 +3,7 @@ package moriyashiine.extraorigins.mixin;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
+import net.minecraft.entity.mob.PiglinBruteBrain;
 import net.minecraft.item.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,6 +35,16 @@ public abstract class AllThatGlittersHandler {
 	@Mixin(PiglinBrain.class)
 	private static class PassivePiglins {
 		@Inject(method = "shouldAttack", at = @At("HEAD"), cancellable = true)
+		private static void shouldAttack(LivingEntity target, CallbackInfoReturnable<Boolean> callbackInfo) {
+			if (EOPowers.ALL_THAT_GLITTERS.isActive(target)) {
+				callbackInfo.setReturnValue(false);
+			}
+		}
+	}
+	
+	@Mixin(PiglinBruteBrain.class)
+	private static class PassivePiglinBrutes {
+		@Inject(method = "method_30245", at = @At("HEAD"), cancellable = true)
 		private static void shouldAttack(LivingEntity target, CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (EOPowers.ALL_THAT_GLITTERS.isActive(target)) {
 				callbackInfo.setReturnValue(false);

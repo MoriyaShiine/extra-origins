@@ -39,7 +39,7 @@ public class EOPowers {
 	public static final PowerType<Power> WEAK = create("weak", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2 / 3f))));
 	
 	public static final PowerType<Power> LUNAR_DEALER = create("lunar_dealer", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (playerEntity.world.getMoonSize() + 0.5f)))));
-	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (DimensionType.field_24752[playerEntity.world.getDimension().method_28531(playerEntity.world.getTimeOfDay() + 96000)] + 0.5f)))));
+	public static final PowerType<Power> LUNAR_TAKER = create("lunar_taker", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageTakenPower(powerType, playerEntity, (player, source) -> true, damage -> damage * (DimensionType.MOON_SIZES[playerEntity.world.getDimension().getMoonPhase(playerEntity.world.getTimeOfDay() + 96000)] + 0.5f)))));
 	public static final PowerType<Power> NIGHT_VISION = create("night_vision", new PowerType<>(((powerType, playerEntity) -> new NightVisionPower(powerType, playerEntity).addCondition(usingPlayer -> true))));
 	
 	public static final PowerType<Power> PHOTOSYNTHESIS = create("photosynthesis", new PowerType<>(((powerType, playerEntity) -> new PreventItemUsePower(powerType, playerEntity, ItemStack::isFood))));
