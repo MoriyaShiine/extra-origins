@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
@@ -71,12 +72,12 @@ public abstract class InorganicHandler extends LivingEntity {
 		@Inject(method = "canHaveStatusEffect", at = @At("HEAD"), cancellable = true)
 		private void canHaveStatusEffect(StatusEffectInstance effect, CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (EOPowers.INORGANIC.isActive(this)) {
-				callbackInfo.setReturnValue(false);
+				callbackInfo.setReturnValue(effect.getEffectType() == StatusEffects.BAD_OMEN);
 			}
 		}
 		
 		@Inject(method = "isAffectedBySplashPotions", at = @At("HEAD"), cancellable = true)
-		private void canHaveStatusEffect(CallbackInfoReturnable<Boolean> callbackInfo) {
+		private void isAffectedBySplashPotions(CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (EOPowers.INORGANIC.isActive(this)) {
 				callbackInfo.setReturnValue(false);
 			}
