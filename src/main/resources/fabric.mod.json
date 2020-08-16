@@ -11,7 +11,6 @@
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/extra-origins",
 	"sources": "https://github.com/MoriyaShiine/extra-origins"
   },
-  "license": "GPL-3.0",
   "icon": "assets/extraorigins/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -25,7 +24,7 @@
   "depends": {
 	"fabricloader": ">=0.7.4",
 	"fabric": "*",
-	"minecraft": "1.16.x",
+	"minecraft": "1.16.2",
 	"origins": ">=1.16-0.3.3",
 	"sizeentityattributes": "*"
   },
