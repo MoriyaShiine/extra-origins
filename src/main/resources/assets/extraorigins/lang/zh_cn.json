@@ -20,7 +20,7 @@
   "power.extraorigins.lunar_dealer.name": "月光赐予我力量！",
   "power.extraorigins.lunar_dealer.description": "越接近满月，你造成的伤害越高，你最多增加50%的伤害。",
   "power.extraorigins.lunar_taker.name": "月光赐予我体格！",
-  "power.extraorigins.lunar_taker.description": "月接近满月，你收到的伤害月底，你最低只会受到50%的伤害。",
+  "power.extraorigins.lunar_taker.description": "月接近满月，你收到的伤害越低，你最低只会受到50%的伤害。",
   "power.extraorigins.night_vision.name": "夜视",
   "power.extraorigins.night_vision.description": "你在黑暗中看得很清楚。",
   "power.extraorigins.photosynthesis.name": "光合作用",
