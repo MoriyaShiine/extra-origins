@@ -26,7 +26,7 @@
 	"fabric": "*",
 	"minecraft": "1.16.2",
 	"origins": ">=1.16-0.3.3",
-	"sizeentityattributes": "*"
+	"pehkui": "*"
   },
   "suggests": {
 	"flamingo": "*"

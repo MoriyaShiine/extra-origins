@@ -4,7 +4,6 @@ import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import io.github.apace100.origins.power.*;
 import io.github.apace100.origins.registry.ModRegistries;
 import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
-import moriyashiine.sizeentityattributes.SizeEntityAttributes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -12,6 +11,8 @@ import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
+import virtuoel.pehkui.api.ScaleData;
+import virtuoel.pehkui.api.ScaleType;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,16 +25,38 @@ public class EOPowers {
 		public void onAdded() {
 			super.onAdded();
 			BabyAccessor.get(playerEntity).ifPresent(babyAccessor -> babyAccessor.setBaby(true));
-			playerEntity.calculateDimensions();
+			ScaleData width = ScaleData.of(playerEntity, ScaleType.WIDTH);
+			ScaleData height = ScaleData.of(playerEntity, ScaleType.HEIGHT);
+			ScaleData drops = ScaleData.of(playerEntity, ScaleType.DROPS);
+			width.setScale(0.25f);
+			height.setScale(0.25f);
+			drops.setScale(0.25f);
+			width.setTargetScale(0.25f);
+			height.setTargetScale(0.25f);
+			drops.setTargetScale(0.25f);
+			width.markForSync();
+			height.markForSync();
+			drops.markForSync();
 		}
 		
 		@Override
 		public void onRemoved() {
 			super.onRemoved();
 			BabyAccessor.get(playerEntity).ifPresent(babyAccessor -> babyAccessor.setBaby(false));
-			playerEntity.calculateDimensions();
+			ScaleData width = ScaleData.of(playerEntity, ScaleType.WIDTH);
+			ScaleData height = ScaleData.of(playerEntity, ScaleType.HEIGHT);
+			ScaleData drops = ScaleData.of(playerEntity, ScaleType.DROPS);
+			width.setScale(1);
+			height.setScale(1);
+			drops.setScale(1);
+			width.setTargetScale(1);
+			height.setTargetScale(1);
+			drops.setTargetScale(1);
+			width.markForSync();
+			height.markForSync();
+			drops.markForSync();
 		}
-	}.addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -10, EntityAttributeModifier.Operation.ADDITION)).addModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("Movement speed mod", -0.05, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier("Attack range mod", -1, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.REACH, new EntityAttributeModifier("Reach mod", -2, EntityAttributeModifier.Operation.ADDITION)).addModifier(SizeEntityAttributes.WIDTH_MULTIPLIER, new EntityAttributeModifier("Width multiplier mod", -0.75, EntityAttributeModifier.Operation.ADDITION)).addModifier(SizeEntityAttributes.HEIGHT_MULTIPLIER, new EntityAttributeModifier("Height multiplier mod", -0.75, EntityAttributeModifier.Operation.ADDITION)))));
+	}.addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -10, EntityAttributeModifier.Operation.ADDITION)).addModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("Movement speed mod", -0.05, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier("Attack range mod", -1, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.REACH, new EntityAttributeModifier("Reach mod", -2, EntityAttributeModifier.Operation.ADDITION)))));
 	public static final PowerType<Power> SMALL_APPETITE = create("small_appetite", new PowerType<>((powerType, playerEntity) -> new ModifyExhaustionPower(powerType, playerEntity, 0.25f)));
 	public static final PowerType<Power> LIGHTWEIGHT = create("lightweight", new PowerType<>(Power::new));
 	public static final PowerType<Power> WEAK = create("weak", new PowerType<>(((powerType, playerEntity) -> new ModifyDamageDealtPower(powerType, playerEntity, (player, source) -> true, damage -> damage * 2 / 3f))));

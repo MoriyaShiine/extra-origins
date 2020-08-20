@@ -19,8 +19,15 @@ repositories {
 		url = "https://jitpack.io"
 	}
 	maven {
-		name "entity reach, size"
+		name "entity reach"
 		url "https://maven.jamieswhiteshirt.com/libs-release/"
+	}
+	maven {
+		name = "pehkui"
+		url = "https://jitpack.io"
+		content {
+			includeGroup "com.github.Virtuoel"
+		}
 	}
 }
 
@@ -33,7 +40,7 @@ dependencies {
 	modImplementation "io.github.OnyxStudios.Cardinal-Components-API:cardinal-components-base:${project.cca_version}"
 	modImplementation "io.github.OnyxStudios.Cardinal-Components-API:cardinal-components-entity:${project.cca_version}"
 	modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_version}"
-	modImplementation "moriyashiine:sizeentityattributes:${project.size_version}"
+	modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
 }
 
 processResources {
