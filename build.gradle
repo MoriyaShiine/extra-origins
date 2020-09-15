@@ -23,6 +23,10 @@ repositories {
 		url "https://maven.jamieswhiteshirt.com/libs-release/"
 	}
 	maven {
+		name = "fall flying lib"
+		url = "https://dl.bintray.com/adriantodt/maven"
+	}
+	maven {
 		name = "pehkui"
 		url = "https://jitpack.io"
 		content {
@@ -40,6 +44,14 @@ dependencies {
 	modImplementation "io.github.OnyxStudios.Cardinal-Components-API:cardinal-components-base:${project.cca_version}"
 	modImplementation "io.github.OnyxStudios.Cardinal-Components-API:cardinal-components-entity:${project.cca_version}"
 	modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_version}"
+	modImplementation "net.adriantodt.fabricmc:fallflyinglib:${project.ffl_version}"
+	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modApi("me.shedaniel.cloth:config-2:${project.clothconfig_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
 	modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
 }
 

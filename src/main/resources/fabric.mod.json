@@ -22,10 +22,10 @@
 	"extraorigins.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=0.7.4",
+	"fabricloader": ">=0.9.0",
 	"fabric": "*",
-	"minecraft": "1.16.2",
-	"origins": ">=1.16-0.3.3",
+	"minecraft": "1.16.3",
+	"origins": ">=1.16.3-0.3.8",
 	"pehkui": "*"
   },
   "suggests": {

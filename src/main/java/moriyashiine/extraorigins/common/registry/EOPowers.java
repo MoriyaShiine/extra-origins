@@ -20,41 +20,31 @@ import java.util.Map;
 public class EOPowers {
 	private static final Map<PowerType<?>, Identifier> POWER_TYPES = new LinkedHashMap<>();
 	
+	private static final ScaleType[] BITE_SIZED_TYPES = {ScaleType.WIDTH, ScaleType.HEIGHT, ScaleType.DROPS};
+	
 	public static final PowerType<Power> BITE_SIZED = create("bite_sized", new PowerType<>(((powerType, playerEntity) -> new AttributePower(powerType, playerEntity) {
 		@Override
 		public void onAdded() {
 			super.onAdded();
 			BabyAccessor.get(playerEntity).ifPresent(babyAccessor -> babyAccessor.setBaby(true));
-			ScaleData width = ScaleData.of(playerEntity, ScaleType.WIDTH);
-			ScaleData height = ScaleData.of(playerEntity, ScaleType.HEIGHT);
-			ScaleData drops = ScaleData.of(playerEntity, ScaleType.DROPS);
-			width.setScale(0.25f);
-			height.setScale(0.25f);
-			drops.setScale(0.25f);
-			width.setTargetScale(0.25f);
-			height.setTargetScale(0.25f);
-			drops.setTargetScale(0.25f);
-			width.markForSync();
-			height.markForSync();
-			drops.markForSync();
+			for (ScaleType type : BITE_SIZED_TYPES) {
+				ScaleData data = ScaleData.of(playerEntity, type);
+				data.setScale(0.25f);
+				data.setTargetScale(0.25f);
+				data.markForSync();
+			}
 		}
 		
 		@Override
 		public void onRemoved() {
 			super.onRemoved();
 			BabyAccessor.get(playerEntity).ifPresent(babyAccessor -> babyAccessor.setBaby(false));
-			ScaleData width = ScaleData.of(playerEntity, ScaleType.WIDTH);
-			ScaleData height = ScaleData.of(playerEntity, ScaleType.HEIGHT);
-			ScaleData drops = ScaleData.of(playerEntity, ScaleType.DROPS);
-			width.setScale(1);
-			height.setScale(1);
-			drops.setScale(1);
-			width.setTargetScale(1);
-			height.setTargetScale(1);
-			drops.setTargetScale(1);
-			width.markForSync();
-			height.markForSync();
-			drops.markForSync();
+			for (ScaleType type : BITE_SIZED_TYPES) {
+				ScaleData data = ScaleData.of(playerEntity, type);
+				data.setScale(1);
+				data.setTargetScale(1);
+				data.markForSync();
+			}
 		}
 	}.addModifier(EntityAttributes.GENERIC_MAX_HEALTH, new EntityAttributeModifier("Health mod", -10, EntityAttributeModifier.Operation.ADDITION)).addModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, new EntityAttributeModifier("Movement speed mod", -0.05, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier("Attack range mod", -1, EntityAttributeModifier.Operation.ADDITION)).addModifier(ReachEntityAttributes.REACH, new EntityAttributeModifier("Reach mod", -2, EntityAttributeModifier.Operation.ADDITION)))));
 	public static final PowerType<Power> SMALL_APPETITE = create("small_appetite", new PowerType<>((powerType, playerEntity) -> new ModifyExhaustionPower(powerType, playerEntity, 0.25f)));
