@@ -34,7 +34,7 @@
   "power.extraorigins.glass_cannon.name": "玻璃大炮",
   "power.extraorigins.glass_cannon.description": "你造成并受到两倍的伤害。",
   "power.extraorigins.all_that_glitters.name": "金玉其外",
-  "power.extraorigins.all_that_glitters.description": "你擅长使用黄金工具和盔甲，使它们更耐用。黄金工具造成2点额外伤害，黄金护甲每装备一件护甲减少8%的伤害。猪灵们不会主动挑衅你。",
+  "power.extraorigins.all_that_glitters.description": "你擅长使用黄金工具和盔甲，使它们更耐用。黄金工具造成2点额外伤害，黄金护甲每装备一件护甲减少8%的伤害。猪灵们不会主动挑衅你。(pending new description)",
   "power.extraorigins.crossbow_master.name": "弩射专家",
   "power.extraorigins.crossbow_master.description": "你用弩造成两倍的伤害。",
   "power.extraorigins.homesick.name": "思乡病",
