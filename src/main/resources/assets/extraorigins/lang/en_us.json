@@ -22,7 +22,7 @@
   "power.extraorigins.antivore.name": "Antivore",
   "power.extraorigins.antivore.description": "You are unable to eat anything.",
   "power.extraorigins.inorganic.name": "Inorganic",
-  "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and cannot and do not need to eat, however your food level is always zero. You have passive health regeneration, albeit slowly.",
+  "power.extraorigins.inorganic.description": "You are immune to most environmental damage sources and starving, cannot have potion effects, and do not need to eat, however your food level is always zero. You have passive health regeneration, albeit slowly.",
   "power.extraorigins.glass_cannon.name": "Glass Cannon",
   "power.extraorigins.glass_cannon.description": "You deal and take twice as much damage.",
   "power.extraorigins.all_that_glitters.name": "All That Glitters",
