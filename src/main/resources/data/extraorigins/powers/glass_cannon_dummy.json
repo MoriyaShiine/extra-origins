@@ -1,0 +1,9 @@
+{
+  "type": "origins:modify_damage_taken",
+  "modifier": {
+	"name": "More damage taken",
+	"value": 1,
+	"operation": "multiply_base"
+  },
+  "hidden": true
+}

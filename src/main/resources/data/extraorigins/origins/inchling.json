@@ -1,10 +1,11 @@
 {
   "powers": [
 	"extraorigins:bite_sized",
+	"extraorigins:bite_sized_dummy",
+	"extraorigins:bite_sized_dummy2",
 	"extraorigins:small_appetite",
 	"extraorigins:lightweight",
-	"origins:climbing",
-	"extraorigins:weak"
+	"origins:climbing"
   ],
   "icon": "minecraft:anvil",
   "order": 1,

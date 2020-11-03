@@ -1,14 +1,13 @@
 package moriyashiine.extraorigins.mixin;
 
+import io.github.apace100.origins.component.OriginComponent;
 import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
-import moriyashiine.extraorigins.common.registry.EOPowers;
+import moriyashiine.extraorigins.common.power.ModifySizePower;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -25,10 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class BiteSizedHandler extends Entity implements BabyAccessor {
+public abstract class ModifySizeHandler extends Entity implements BabyAccessor {
 	private static final TrackedData<Boolean> BABY = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 	
-	protected BiteSizedHandler(EntityType<? extends LivingEntity> entityType, World world) {
+	protected ModifySizeHandler(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
 	}
 	
@@ -57,13 +56,6 @@ public abstract class BiteSizedHandler extends Entity implements BabyAccessor {
 		dataTracker.startTracking(BABY, false);
 	}
 	
-	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
-	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.BITE_SIZED.isActive(this) && (damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH || (damageSource instanceof EntityDamageSource && ((EntityDamageSource) damageSource).isThorns()))) {
-			callbackInfo.setReturnValue(true);
-		}
-	}
-	
 	@Mixin(LivingEntity.class)
 	private static abstract class Baby extends Entity {
 		public Baby(EntityType<?> type, World world) {
@@ -88,8 +80,10 @@ public abstract class BiteSizedHandler extends Entity implements BabyAccessor {
 		
 		@Inject(method = "getJumpVelocity", at = @At("RETURN"), cancellable = true)
 		private void getJumpVelocity(CallbackInfoReturnable<Float> callbackInfo) {
-			if (EOPowers.BITE_SIZED.isActive(this)) {
-				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * 0.6f);
+			Entity obj = this;
+			//noinspection ConstantConditions
+			if (obj instanceof PlayerEntity && OriginComponent.hasPower(obj, ModifySizePower.class)) {
+				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(obj, ModifySizePower.class).get(0).scale * 2);
 			}
 		}
 	}
@@ -109,8 +103,8 @@ public abstract class BiteSizedHandler extends Entity implements BabyAccessor {
 			if (target == null) {
 				target = this.target;
 			}
-			if (EOPowers.BITE_SIZED.isActive(target)) {
-				callbackInfo.setReturnValue(callbackInfo.getReturnValue() / 4);
+			if (target instanceof PlayerEntity && OriginComponent.hasPower(target, ModifySizePower.class)) {
+				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(target, ModifySizePower.class).get(0).scale);
 			}
 		}
 	}

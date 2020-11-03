@@ -4,7 +4,8 @@
 	"extraorigins:inorganic",
 	"origins:fire_immunity",
 	"extraorigins:glass_cannon",
-	"extraorigins:glass_cannon_dummy"
+	"extraorigins:glass_cannon_dummy",
+	"extraorigins:antivore"
   ],
   "icon": "minecraft:glass",
   "order": 1,

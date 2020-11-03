@@ -1,0 +1,22 @@
+{
+  "type": "origins:modify_damage_dealt",
+  "modifier": {
+	"name": "Additional damage while wet",
+	"value": 1.5,
+	"operation": "multiply_base"
+  },
+  "condition": {
+	"type": "origins:or",
+	"conditions": [
+	  {
+		"type": "origins:fluid_height",
+		"fluid": "minecraft:water",
+		"comparison": ">",
+		"compare_to": 0.0
+	  },
+	  {
+		"type": "origins:in_rain"
+	  }
+	]
+  }
+}

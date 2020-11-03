@@ -5,7 +5,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.HungerManager;
@@ -39,13 +38,6 @@ public abstract class InorganicHandler extends LivingEntity {
 			if (age % 100 == 0) {
 				heal(1);
 			}
-		}
-	}
-	
-	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
-	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.INORGANIC.isActive(this) && (damageSource == DamageSource.STARVE || damageSource == DamageSource.DROWN || damageSource == DamageSource.CACTUS || damageSource == DamageSource.SWEET_BERRY_BUSH || damageSource == DamageSource.IN_WALL || damageSource == DamageSource.FALLING_BLOCK || (damageSource instanceof EntityDamageSource && ((EntityDamageSource) damageSource).isThorns()))) {
-			callbackInfo.setReturnValue(true);
 		}
 	}
 	
@@ -90,7 +82,7 @@ public abstract class InorganicHandler extends LivingEntity {
 		public World world;
 		
 		@Inject(method = "getAir", at = @At("HEAD"), cancellable = true)
-		private void canHaveStatusEffect(CallbackInfoReturnable<Integer> callbackInfo) {
+		private void getAir(CallbackInfoReturnable<Integer> callbackInfo) {
 			Object obj = this;
 			//noinspection ConstantConditions
 			if (EOPowers.INORGANIC.isActive((Entity) obj) && world.isClient) {

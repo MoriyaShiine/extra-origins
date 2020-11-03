@@ -1,0 +1,14 @@
+{
+  "type": "origins:modify_damage_dealt",
+  "modifier": {
+	"name": "Additional damage while using gold",
+	"value": 2,
+	"operation": "addition"
+  },
+  "item_condition": {
+	"type": "origins:ingredient",
+	"ingredient": {
+	  "tag": "extraorigins:golden_tools"
+	}
+  }
+}

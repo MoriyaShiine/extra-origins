@@ -2,7 +2,8 @@
   "powers": [
 	"extraorigins:photosynthesis",
 	"extraorigins:absorbing",
-	"extraorigins:flammable"
+	"extraorigins:flammable",
+	"extraorigins:antivore"
   ],
   "icon": "minecraft:oak_sapling",
   "order": 1,
