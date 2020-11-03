@@ -3,7 +3,7 @@
   "modifier": {
 	"name": "Additional damage while wet",
 	"value": 3,
-	"operation": "additional"
+	"operation": "addition"
   },
   "condition": {
 	"type": "origins:or",
