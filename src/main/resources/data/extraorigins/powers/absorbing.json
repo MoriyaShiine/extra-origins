@@ -2,8 +2,8 @@
   "type": "origins:modify_damage_dealt",
   "modifier": {
 	"name": "Additional damage while wet",
-	"value": 1.5,
-	"operation": "multiply_base"
+	"value": 3,
+	"operation": "additional"
   },
   "condition": {
 	"type": "origins:or",
