@@ -17,6 +17,9 @@
   "entrypoints": {
 	"main": [
 	  "moriyashiine.extraorigins.common.ExtraOrigins"
+	],
+	"client": [
+	  "moriyashiine.extraorigins.client.ExtraOriginsClient"
 	]
   },
   "mixins": [

@@ -2,7 +2,7 @@
   "type": "extraorigins:regenerate_hunger",
   "amount": 1,
   "chance": 0.0125,
-  "item_condition": {
+  "condition": {
 	"type": "origins:exposed_to_sun"
   }
 }

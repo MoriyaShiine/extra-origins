@@ -41,11 +41,11 @@ public abstract class AllThatGlittersHandler {
 	}
 	
 	@Mixin(PiglinBrain.class)
-	private static class PassivePiglins {
-		@Inject(method = "shouldAttack", at = @At("HEAD"), cancellable = true)
+	private static class NeutralPiglins {
+		@Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
 		private static void shouldAttack(LivingEntity target, CallbackInfoReturnable<Boolean> callbackInfo) {
 			if (EOPowers.ALL_THAT_GLITTERS.isActive(target)) {
-				callbackInfo.setReturnValue(false);
+				callbackInfo.setReturnValue(true);
 			}
 		}
 	}
