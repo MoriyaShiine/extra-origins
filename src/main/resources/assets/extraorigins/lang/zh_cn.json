@@ -1,6 +1,6 @@
 {
   "power.extraorigins.soul_spooked.name": "灵魂惊吓",
-  "power.extraorigins.soul_spooked.description": "你害怕灵魂之火，靠近它你会变得虚弱。",
+  "power.extraorigins.soul_spooked.description": "你害怕灵魂之火，靠近它你会变得虚弱。(needs updating)",
   "power.extraorigins.small_appetite.name": "小胃口",
   "power.extraorigins.small_appetite.description": "你需要更少的食物来维持生活。",
   "power.extraorigins.photosynthesis.name": "光合作用",
@@ -20,7 +20,7 @@
   "power.extraorigins.crossbow_master.name": "弩射专家",
   "power.extraorigins.crossbow_master.description": "你用弩造成两倍的伤害。",
   "power.extraorigins.bite_sized.name": "小个子",
-  "power.extraorigins.bite_sized.description": "你的体型只有正常人的四分之一，更难被怪物发现。你的生命上限减少了5颗，攻击距离和建造距离也同样减少。此外，仙人掌和甜浆果的灌木太大，伤害不到你。",
+  "power.extraorigins.bite_sized.description": "你的体型只有正常人的四分之一，更难被怪物发现。你的生命上限减少了5颗，攻击距离和建造距离也同样减少。此外，仙人掌和甜浆果的灌木太大，伤害不到你。(needs updating)",
   "power.extraorigins.antivore.name": "吞咽不能",
   "power.extraorigins.antivore.description": "你无法进食。",
   "power.extraorigins.all_that_glitters.name": "金玉其外",
