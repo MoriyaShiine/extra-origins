@@ -11,9 +11,6 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	flatDir {
-		dirs 'libs'
-	}
 	maven {
 		name = "cardinal components"
 		url = "https://jitpack.io"
