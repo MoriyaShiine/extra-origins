@@ -80,10 +80,9 @@ public abstract class ModifySizeHandler extends Entity implements BabyAccessor {
 		
 		@Inject(method = "getJumpVelocity", at = @At("RETURN"), cancellable = true)
 		private void getJumpVelocity(CallbackInfoReturnable<Float> callbackInfo) {
-			Entity obj = this;
 			//noinspection ConstantConditions
-			if (obj instanceof PlayerEntity && OriginComponent.hasPower(obj, ModifySizePower.class)) {
-				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(obj, ModifySizePower.class).get(0).scale * 2);
+			if (((Object) this) instanceof PlayerEntity && OriginComponent.hasPower(this, ModifySizePower.class)) {
+				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(this, ModifySizePower.class).get(0).scale * 2);
 			}
 		}
 	}

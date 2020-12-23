@@ -83,9 +83,7 @@ public abstract class InorganicHandler extends LivingEntity {
 		
 		@Inject(method = "getAir", at = @At("HEAD"), cancellable = true)
 		private void getAir(CallbackInfoReturnable<Integer> callbackInfo) {
-			Object obj = this;
-			//noinspection ConstantConditions
-			if (EOPowers.INORGANIC.isActive((Entity) obj) && world.isClient) {
+			if (EOPowers.INORGANIC.isActive(((Entity) (Object) this)) && world.isClient) {
 				callbackInfo.setReturnValue(0);
 			}
 		}
