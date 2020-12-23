@@ -23,8 +23,8 @@ public class ModifySizePower extends Power {
 		BabyAccessor.get(player).ifPresent(babyAccessor -> babyAccessor.setBaby(scale <= 0.5));
 		for (ScaleType type : BITE_SIZED_TYPES) {
 			ScaleData data = ScaleData.of(player, type);
-			data.setScale(data.getScale() * scale);
-			data.setTargetScale(data.getTargetScale() * scale);
+			data.setScale(scale);
+			data.setTargetScale(scale);
 			data.markForSync();
 		}
 	}
@@ -35,8 +35,8 @@ public class ModifySizePower extends Power {
 		BabyAccessor.get(player).ifPresent(babyAccessor -> babyAccessor.setBaby(false));
 		for (ScaleType type : BITE_SIZED_TYPES) {
 			ScaleData data = ScaleData.of(player, type);
-			data.setScale(data.getScale() / scale);
-			data.setTargetScale(data.getTargetScale() / scale);
+			data.setScale(1);
+			data.setTargetScale(1);
 			data.markForSync();
 		}
 	}
