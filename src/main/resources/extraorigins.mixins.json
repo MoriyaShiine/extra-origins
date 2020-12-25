@@ -4,26 +4,17 @@
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-	"AbsorbingHandler",
-	"AllThatGlittersHandler",
-	"AllThatGlittersHandler$GoldArmorBuff",
-	"AllThatGlittersHandler$NeutralPiglins",
-	"CrossbowMasterHandler",
-	"HomesickHandler",
-	"HomesickHandler$FireImmune",
-	"InorganicHandler",
-	"InorganicHandler$EffectImmunity",
-	"InorganicHandler$NoAir",
-	"LiquidSunlightHandler",
-	"ModifySizeHandler",
-	"ModifySizeHandler$Baby",
-	"ModifySizeHandler$JumpVelocity",
-	"ModifySizeHandler$MonsterAITracker",
-	"RegenerateHungerHandler",
-	"SoulSpookedHandler"
+	"DaylightDetectorBlockMixin",
+	"EntityMixin",
+	"HungerManagerMixin",
+	"ItemStackMixin",
+	"LivingEntityMixin",
+	"PiglinBrainMixin",
+	"PlayerEntityMixin",
+	"TrackTargetGoalMixin"
   ],
   "client": [
-	"client.BabySizeFix"
+	"client.PlayerEntityRendererMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

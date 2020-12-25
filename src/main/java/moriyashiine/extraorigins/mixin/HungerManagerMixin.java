@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HungerManager.class)
-public abstract class RegenerateHungerHandler {
+public abstract class HungerManagerMixin {
 	@Shadow
 	public abstract void add(int food, float f);
 	

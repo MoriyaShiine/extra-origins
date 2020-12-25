@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(PlayerEntityRenderer.class)
-public class BabySizeFix {
+public class PlayerEntityRendererMixin {
 	@Inject(method = "scale", at = @At("TAIL"))
 	private <T extends LivingEntity> void scale(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, CallbackInfo callbackInfo) {
 		BabyAccessor.get(abstractClientPlayerEntity).ifPresent(babyAccessor -> {
