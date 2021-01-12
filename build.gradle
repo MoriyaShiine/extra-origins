@@ -12,7 +12,7 @@ group = project.maven_group
 
 repositories {
 	maven {
-		name = "cardinal components"
+		name = "jitpack"
 		url = "https://jitpack.io"
 	}
 	maven {
@@ -22,13 +22,6 @@ repositories {
 	maven {
 		name = "fall flying lib"
 		url = "https://dl.bintray.com/adriantodt/maven"
-	}
-	maven {
-		name = "pehkui"
-		url = "https://jitpack.io"
-		content {
-			includeGroup "com.github.Virtuoel"
-		}
 	}
 }
 
