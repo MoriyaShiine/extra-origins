@@ -73,8 +73,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements BabyAcce
 	}
 	
 	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
-	private void isInvulnerableTo(CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
+	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
+		if (damageSource.isFire() && EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
 			callbackInfo.setReturnValue(true);
 		}
 	}
