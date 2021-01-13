@@ -26,13 +26,10 @@
 	"extraorigins.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=0.10.0",
+	"fabricloader": ">=0.11.0",
 	"fabric": "*",
 	"minecraft": "1.16.4",
-	"origins": ">=0.4.0",
+	"origins": ">=0.4.6",
 	"pehkui": "*"
-  },
-  "suggests": {
-	"flamingo": "*"
   }
 }
