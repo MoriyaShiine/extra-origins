@@ -7,7 +7,7 @@
 	"extraorigins:lightweight",
 	"origins:climbing"
   ],
-  "icon": "minecraft:anvil",
+  "icon": "anvil",
   "order": 1,
   "impact": 3
 }

@@ -30,8 +30,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation 'com.github.apace100:origins-fabric:dev-SNAPSHOT'
-//	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 	modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
 }
 

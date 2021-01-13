@@ -2,7 +2,7 @@
   "type": "origins:attribute",
   "modifier": {
 	"name": "Flabby health reduction",
-	"attribute": "minecraft:generic.max_health",
+	"attribute": "generic.max_health",
 	"value": -4.0,
 	"operation": "addition"
   }

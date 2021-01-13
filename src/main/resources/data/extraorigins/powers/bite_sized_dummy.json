@@ -3,19 +3,19 @@
   "modifiers": [
 	{
 	  "name": "Bite Sized health reduction",
-	  "attribute": "minecraft:generic.max_health",
+	  "attribute": "generic.max_health",
 	  "value": -10.0,
 	  "operation": "addition"
 	},
 	{
 	  "name": "Bite Sized damage reduction",
-	  "attribute": "minecraft:generic.attack_damage",
+	  "attribute": "generic.attack_damage",
 	  "value": -3.0,
 	  "operation": "addition"
 	},
 	{
 	  "name": "Bite Sized movement speed reduction",
-	  "attribute": "minecraft:generic.movement_speed",
+	  "attribute": "generic.movement_speed",
 	  "value": -0.04,
 	  "operation": "addition"
 	},

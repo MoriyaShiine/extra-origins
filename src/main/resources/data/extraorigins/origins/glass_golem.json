@@ -7,7 +7,7 @@
 	"extraorigins:glass_cannon_dummy",
 	"extraorigins:antivore"
   ],
-  "icon": "minecraft:glass",
+  "icon": "glass",
   "order": 1,
   "impact": 3
 }

@@ -5,7 +5,7 @@
 	"extraorigins:flammable",
 	"extraorigins:antivore"
   ],
-  "icon": "minecraft:oak_sapling",
+  "icon": "oak_sapling",
   "order": 1,
   "impact": 2
 }

@@ -17,10 +17,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -46,30 +44,13 @@ public abstract class LivingEntityMixin extends Entity {
 		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
 			addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1, true, false));
 		}
-		if (EOPowers.SOUL_SPOOKED.isActive(this) && age % 20 == 0) {
-			boolean foundSoulFire = false;
-			BlockPos.Mutable mutablePos = new BlockPos.Mutable();
-			for (byte x = -8; x <= 8; x++) {
-				for (byte y = -8; y <= 8; y++) {
-					for (byte z = -8; z <= 8; z++) {
-						if (BlockTags.PIGLIN_REPELLENTS.contains(world.getBlockState(mutablePos.set(getX() + x, getY() + y, getZ() + z)).getBlock())) {
-							foundSoulFire = true;
-							break;
-						}
-					}
-				}
-			}
-			if (foundSoulFire) {
-				addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 2));
-			}
-		}
 	}
 	
 	@ModifyVariable(method = "damage", at = @At("HEAD"))
-	private float damage(float amount, DamageSource damageSource) {
-		Entity attacker = damageSource.getAttacker();
+	private float damage(float amount, DamageSource source) {
+		Entity attacker = source.getAttacker();
 		if (EOPowers.CROSSBOW_MASTER.isActive(attacker)) {
-			Entity projectile = damageSource.getSource();
+			Entity projectile = source.getSource();
 			if (projectile instanceof PersistentProjectileEntity && ((PersistentProjectileEntity) projectile).isShotFromCrossbow()) {
 				return amount * 2;
 			}
