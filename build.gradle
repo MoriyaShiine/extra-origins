@@ -1,6 +1,6 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
-	id 'maven-publish'
+    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'maven-publish'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -11,46 +11,46 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	maven {
-		name = "jitpack"
-		url = "https://jitpack.io"
-	}
-	maven {
-		name "entity reach"
-		url "https://maven.jamieswhiteshirt.com/libs-release/"
-	}
-	maven {
-		name = "fall flying lib"
-		url = "https://dl.bintray.com/adriantodt/maven"
-	}
+    maven {
+        name = "jitpack"
+        url = "https://jitpack.io"
+    }
+    maven {
+        name "entity reach"
+        url "https://maven.jamieswhiteshirt.com/libs-release/"
+    }
+    maven {
+        name = "fall flying lib"
+        url = "https://dl.bintray.com/adriantodt/maven"
+    }
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
-	modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+    modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
 }
 
 processResources {
-	inputs.property "version", project.version
+    inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
-		expand "version": project.version
-	}
+    from(sourceSets.main.resources.srcDirs) {
+        include "fabric.mod.json"
+        expand "version": project.version
+    }
 
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
-	}
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "fabric.mod.json"
+    }
 }
 
 tasks.withType(JavaCompile) {
-	options.encoding = "UTF-8"
+    options.encoding = "UTF-8"
 }
 
 jar {
-	from "LICENSE"
+    from "LICENSE"
 }
