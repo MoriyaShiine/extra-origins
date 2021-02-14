@@ -16,8 +16,8 @@ repositories {
         url = "https://jitpack.io"
     }
     maven {
-        name "entity reach"
-        url "https://maven.jamieswhiteshirt.com/libs-release/"
+        name = "entity reach"
+        url = "https://maven.jamieswhiteshirt.com/libs-release/"
     }
     maven {
         name = "fall flying lib"
