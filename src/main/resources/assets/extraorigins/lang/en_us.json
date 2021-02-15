@@ -37,5 +37,6 @@
   "power.extraorigins.flabby.name": "Flabby",
   "power.extraorigins.flabby.description": "Your flesh is softer, reducing your health by 2 hearts.",
   "power.extraorigins.soul_spooked.name": "Soul Spooked",
-  "power.extraorigins.soul_spooked.description": "You are afraid of Soul Fire, becoming weak when near it."
+  "power.extraorigins.soul_spooked.description": "You are afraid of Soul Fire, becoming weak when near it.",
+  "tooltip.extraorigins.piglin_damage_bonus": "+%d Origin Damage Bonus"
 }
