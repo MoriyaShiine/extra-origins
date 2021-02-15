@@ -19,7 +19,7 @@ public class ModifySizePower extends Power {
 	@Override
 	public void onAdded() {
 		super.onAdded();
-		BabyAccessor.get(player).ifPresent(babyAccessor -> babyAccessor.setBaby(scale <= 0.5));
+		((BabyAccessor) player).setBaby(scale <= 0.5);
 		for (ScaleType type : BITE_SIZED_TYPES) {
 			type.getScaleData(player).setScale(type.getScaleData(player).getScale() / 4f);
 		}
@@ -28,7 +28,7 @@ public class ModifySizePower extends Power {
 	@Override
 	public void onRemoved() {
 		super.onRemoved();
-		BabyAccessor.get(player).ifPresent(babyAccessor -> babyAccessor.setBaby(false));
+		((BabyAccessor) player).setBaby(false);
 		for (ScaleType type : BITE_SIZED_TYPES) {
 			type.getScaleData(player).setScale(type.getScaleData(player).getScale() * 4f);
 		}

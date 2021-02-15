@@ -16,6 +16,10 @@ repositories {
         url = "https://jitpack.io"
     }
     maven {
+        name = "pehkui"
+        url = "https://www.cursemaven.com"
+    }
+    maven {
         name = "entity reach"
         url = "https://maven.jamieswhiteshirt.com/libs-release/"
     }
@@ -31,7 +35,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
-    modImplementation "com.github.Virtuoel:Pehkui:${project.pehkui_commit}"
+    modImplementation "curse.maven:Pehkui-319596:${project.pehkui_version}"
 }
 
 processResources {

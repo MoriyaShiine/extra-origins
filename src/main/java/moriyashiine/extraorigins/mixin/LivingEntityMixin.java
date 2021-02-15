@@ -90,11 +90,9 @@ public abstract class LivingEntityMixin extends Entity {
 	
 	@Inject(method = "isBaby", at = @At("HEAD"), cancellable = true)
 	private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo) {
-		BabyAccessor.get(this).ifPresent(babyAccessor -> {
-			if (babyAccessor.getBaby()) {
-				callbackInfo.setReturnValue(true);
-			}
-		});
+		if (this instanceof BabyAccessor && ((BabyAccessor) this).getBaby()) {
+			callbackInfo.setReturnValue(true);
+		}
 	}
 	
 	@Inject(method = "getJumpVelocity", at = @At("RETURN"), cancellable = true)
