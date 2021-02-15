@@ -29,6 +29,9 @@
 	  },
 	  {
 		"type": "extraorigins:thorns_enchantment"
+	  },
+	  {
+		"type": "origins:fire"
 	  }
 	]
   }
