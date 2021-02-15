@@ -42,7 +42,7 @@ public abstract class ItemStackMixin {
 	private void getTooltip(@Nullable PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> callbackInfo) {
 		if (EOPowers.ALL_THAT_GLITTERS.isActive(player)) {
 			if (getItem() instanceof ToolItem && ((ToolItem) getItem()).getMaterial() == ToolMaterials.GOLD) {
-				callbackInfo.getReturnValue().add(new TranslatableText("tooltip.extraorigins.damage_bonus", 3).formatted(Formatting.GOLD));
+				callbackInfo.getReturnValue().add(new TranslatableText("tooltip.extraorigins.damage_bonus", 2).formatted(Formatting.GOLD));
 			}
 			if (EOTags.GOLDEN_ARMOR.contains(getItem())) {
 				callbackInfo.getReturnValue().add(new TranslatableText("tooltip.extraorigins.damage_reduction", 8).formatted(Formatting.GOLD));
