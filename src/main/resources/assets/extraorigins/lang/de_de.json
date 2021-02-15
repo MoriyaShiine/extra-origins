@@ -38,5 +38,6 @@
   "power.extraorigins.flabby.description": "Dein Fleisch ist zarter, was deine maximale Gesundheit um zwei reduziert.",
   "power.extraorigins.soul_spooked.name": "Seelenschreckig",
   "power.extraorigins.soul_spooked.description": "Seelenfeuer macht dir Angst, wodurch du in seiner Nähe schwach wirst.",
-  "tooltip.extraorigins.piglin_damage_bonus": "+%d Ursprungs-Schadensbonus"
+  "tooltip.extraorigins.damage_bonus": " %d Schadensbonus",
+  "tooltip.extraorigins.damage_reduction": "+%d%% Schadensreduzierung"
 }

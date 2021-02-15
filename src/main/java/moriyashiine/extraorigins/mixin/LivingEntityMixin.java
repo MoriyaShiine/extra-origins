@@ -1,11 +1,10 @@
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.origins.component.OriginComponent;
-import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
 import moriyashiine.extraorigins.common.registry.EOPowers;
-import net.fabricmc.fabric.api.tag.TagRegistry;
+import moriyashiine.extraorigins.common.registry.EOTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
@@ -15,10 +14,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tag.Tag;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,8 +26,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-	private static final Tag<Item> GOLDEN_ARMOR = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor"));
-	
 	@Shadow
 	public abstract boolean addStatusEffect(StatusEffectInstance effect);
 	
@@ -58,7 +52,7 @@ public abstract class LivingEntityMixin extends Entity {
 		if (EOPowers.ALL_THAT_GLITTERS.isActive(this)) {
 			int armorPieces = 0;
 			for (ItemStack stack : getArmorItems()) {
-				if (GOLDEN_ARMOR.contains(stack.getItem())) {
+				if (EOTags.GOLDEN_ARMOR.contains(stack.getItem())) {
 					armorPieces++;
 				}
 			}
