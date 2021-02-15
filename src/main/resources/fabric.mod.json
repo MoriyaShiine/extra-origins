@@ -30,6 +30,6 @@
 	"fabric": "*",
 	"minecraft": "1.16.5",
 	"origins": ">=0.4.7",
-	"pehkui": "*"
+	"pehkui": ">=1.7.1+21w03a"
   }
 }
