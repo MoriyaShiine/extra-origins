@@ -1,5 +1,6 @@
 package moriyashiine.extraorigins.common.registry;
 
+import io.github.apace100.origins.power.Active;
 import io.github.apace100.origins.power.Power;
 import io.github.apace100.origins.power.PowerType;
 import io.github.apace100.origins.power.PowerTypeReference;
@@ -8,6 +9,7 @@ import io.github.apace100.origins.registry.ModRegistries;
 import io.github.apace100.origins.util.SerializableData;
 import io.github.apace100.origins.util.SerializableDataType;
 import moriyashiine.extraorigins.common.ExtraOrigins;
+import moriyashiine.extraorigins.common.power.BoneMealPower;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
 import moriyashiine.extraorigins.common.power.RegenerateHungerPower;
 import net.minecraft.util.Identifier;
@@ -19,6 +21,11 @@ import java.util.Map;
 public class EOPowers {
 	private static final Map<PowerFactory<?>, Identifier> POWER_FACTORIES = new LinkedHashMap<>();
 	
+	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("key", SerializableDataType.ACTIVE_KEY_TYPE, Active.KeyType.PRIMARY), data -> (type, player) -> {
+		BoneMealPower power = new BoneMealPower(type, player);
+		power.setKey((Active.KeyType) data.get("key"));
+		return power;
+	}).allowCondition());
 	public static final PowerFactory<Power> REGENERATE_HUNGER = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "regenerate_hunger"), new SerializableData().add("amount", SerializableDataType.INT).add("chance", SerializableDataType.FLOAT), data -> (type, player) -> new RegenerateHungerPower(type, player, data.getInt("amount"), data.getFloat("chance"))).allowCondition());
 	public static final PowerType<Power> PHOTOSYNTHESIS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "photosynthesis"));
 	public static final PowerType<Power> ABSORBING = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "absorbing"));
