@@ -1,6 +1,5 @@
 package moriyashiine.extraorigins.mixin.client;
 
-import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerEntityRendererMixin {
 	@Inject(method = "scale", at = @At("TAIL"))
 	private <T extends LivingEntity> void scale(AbstractClientPlayerEntity abstractClientPlayerEntity, MatrixStack matrixStack, float f, CallbackInfo callbackInfo) {
-		if (((BabyAccessor) abstractClientPlayerEntity).getBaby()) {
+		if (abstractClientPlayerEntity.isBaby()) {
 			matrixStack.scale(2, 2, 2);
 		}
 	}
