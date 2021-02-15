@@ -2,10 +2,10 @@
   "powers": [
 	"extraorigins:bite_sized",
 	"extraorigins:bite_sized_dummy",
-	"extraorigins:bite_sized_dummy2",
+	"extraorigins:nimble",
 	"extraorigins:small_appetite",
-	"extraorigins:lightweight",
-	"origins:climbing"
+	"origins:climbing",
+	"extraorigins:short_arms"
   ],
   "icon": "anvil",
   "order": 1,

@@ -2,33 +2,21 @@
   "type": "origins:attribute",
   "modifiers": [
 	{
-	  "name": "Bite Sized health reduction",
+	  "name": "Origin modifier",
 	  "attribute": "generic.max_health",
 	  "value": -10.0,
 	  "operation": "addition"
 	},
 	{
-	  "name": "Bite Sized damage reduction",
+	  "name": "Origin modifier",
 	  "attribute": "generic.attack_damage",
 	  "value": -3.0,
 	  "operation": "addition"
 	},
 	{
-	  "name": "Bite Sized movement speed reduction",
+	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
 	  "value": -0.04,
-	  "operation": "addition"
-	},
-	{
-	  "name": "Bite Sized reach reduction",
-	  "attribute": "reach-entity-attributes:reach",
-	  "value": -2,
-	  "operation": "addition"
-	},
-	{
-	  "name": "Bite Sized attack range reduction",
-	  "attribute": "reach-entity-attributes:attack_range",
-	  "value": -1,
 	  "operation": "addition"
 	}
   ],

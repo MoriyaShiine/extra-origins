@@ -10,6 +10,17 @@
 	  {
 		"type": "origins:name",
 		"name": "flyIntoWall"
+	  },
+	  {
+		"type": "origins:name",
+		"name": "cactus"
+	  },
+	  {
+		"type": "origins:name",
+		"name": "sweetBerryBush"
+	  },
+	  {
+		"type": "extraorigins:thorns_enchantment"
 	  }
 	]
   }

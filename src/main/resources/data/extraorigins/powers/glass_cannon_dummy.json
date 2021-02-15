@@ -1,7 +1,7 @@
 {
   "type": "origins:modify_damage_taken",
   "modifier": {
-	"name": "More damage taken",
+	"name": "Origin modifier",
 	"value": 1,
 	"operation": "multiply_base"
   },

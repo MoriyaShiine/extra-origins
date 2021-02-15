@@ -46,7 +46,7 @@ public abstract class LivingEntityMixin extends Entity {
 		if (EOPowers.CROSSBOW_MASTER.isActive(attacker)) {
 			Entity projectile = source.getSource();
 			if (projectile instanceof PersistentProjectileEntity && ((PersistentProjectileEntity) projectile).isShotFromCrossbow()) {
-				return amount * 2;
+				amount *= 2;
 			}
 		}
 		if (EOPowers.ALL_THAT_GLITTERS.isActive(this)) {
@@ -56,7 +56,7 @@ public abstract class LivingEntityMixin extends Entity {
 					armorPieces++;
 				}
 			}
-			return amount * (1 - (armorPieces * 0.08f));
+			amount *= (1 - (armorPieces * 0.08f));
 		}
 		return amount;
 	}
