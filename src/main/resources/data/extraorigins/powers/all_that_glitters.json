@@ -2,7 +2,7 @@
   "type": "origins:modify_damage_dealt",
   "modifier": {
 	"name": "Origin modifier",
-	"value": 3,
+	"value": 2,
 	"operation": "addition"
   },
   "item_condition": {
