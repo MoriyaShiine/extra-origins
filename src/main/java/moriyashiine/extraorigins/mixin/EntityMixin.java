@@ -16,7 +16,7 @@ public abstract class EntityMixin {
 	
 	@Inject(method = "getAir", at = @At("HEAD"), cancellable = true)
 	private void getAir(CallbackInfoReturnable<Integer> callbackInfo) {
-		if (EOPowers.INORGANIC.isActive(((Entity) (Object) this)) && world.isClient) {
+		if (EOPowers.INORGANIC.isActive(((Entity) (Object) this))) {
 			callbackInfo.setReturnValue(0);
 		}
 	}

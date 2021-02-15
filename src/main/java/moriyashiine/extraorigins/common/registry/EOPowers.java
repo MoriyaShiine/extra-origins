@@ -31,6 +31,7 @@ public class EOPowers {
 	public static final PowerType<Power> ABSORBING = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "absorbing"));
 	
 	public static final PowerType<Power> INORGANIC = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "inorganic"));
+	public static final PowerType<Power> EFFECT_IMMUNITY = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "effect_immunity"));
 	
 	public static final PowerFactory<Power> MODIFY_SIZE = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale", SerializableDataType.FLOAT), data -> (type, player) -> new ModifySizePower(type, player, data.getFloat("scale"))).allowCondition());
 	

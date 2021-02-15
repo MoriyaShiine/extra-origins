@@ -24,6 +24,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("ConstantConditions")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 	@Shadow
@@ -70,14 +71,14 @@ public abstract class LivingEntityMixin extends Entity {
 	
 	@Inject(method = "canHaveStatusEffect", at = @At("HEAD"), cancellable = true)
 	private void canHaveStatusEffect(StatusEffectInstance effect, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.INORGANIC.isActive(this)) {
+		if (EOPowers.EFFECT_IMMUNITY.isActive(this)) {
 			callbackInfo.setReturnValue(effect.getEffectType() == StatusEffects.BAD_OMEN);
 		}
 	}
 	
 	@Inject(method = "isAffectedBySplashPotions", at = @At("HEAD"), cancellable = true)
 	private void isAffectedBySplashPotions(CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.INORGANIC.isActive(this)) {
+		if (EOPowers.EFFECT_IMMUNITY.isActive(this)) {
 			callbackInfo.setReturnValue(false);
 		}
 	}
@@ -91,7 +92,6 @@ public abstract class LivingEntityMixin extends Entity {
 	
 	@Inject(method = "getJumpVelocity", at = @At("RETURN"), cancellable = true)
 	private void getJumpVelocity(CallbackInfoReturnable<Float> callbackInfo) {
-		//noinspection ConstantConditions
 		if (((Object) this) instanceof PlayerEntity && OriginComponent.hasPower(this, ModifySizePower.class)) {
 			callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(this, ModifySizePower.class).get(0).scale * 2);
 		}
