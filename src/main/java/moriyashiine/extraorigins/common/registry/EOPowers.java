@@ -28,6 +28,7 @@ public class EOPowers {
 	public static final PowerType<Power> INORGANIC = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "inorganic"));
 	
 	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "all_that_glitters"));
+	public static final PowerType<Power> PIGLIN_NEUTRALITY = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "piglin_neutrality"));
 	public static final PowerType<Power> CROSSBOW_MASTER = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "crossbow_master"));
 	public static final PowerType<Power> HOMESICK = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "homesick"));
 	public static final PowerType<Power> SOUL_SPOOKED = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "soul_spooked"));

@@ -14,14 +14,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PiglinBrainMixin {
 	@Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
 	private static void wearsGoldArmor(LivingEntity target, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.ALL_THAT_GLITTERS.isActive(target)) {
+		if (EOPowers.PIGLIN_NEUTRALITY.isActive(target)) {
 			callbackInfo.setReturnValue(true);
 		}
 	}
 	
 	@Inject(method = "onGuardedBlockInteracted", at = @At("HEAD"), cancellable = true)
 	private static void onGuardedBlockInteracted(PlayerEntity player, boolean blockOpen, CallbackInfo callbackInfo) {
-		if (EOPowers.ALL_THAT_GLITTERS.isActive(player)) {
+		if (EOPowers.PIGLIN_NEUTRALITY.isActive(player)) {
 			callbackInfo.cancel();
 		}
 	}
