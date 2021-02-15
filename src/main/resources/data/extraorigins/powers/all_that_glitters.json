@@ -1,7 +1,7 @@
 {
   "type": "origins:modify_damage_dealt",
   "modifier": {
-	"name": "Additional damage while using gold",
+	"name": "Origin modifier",
 	"value": 3,
 	"operation": "addition"
   },
