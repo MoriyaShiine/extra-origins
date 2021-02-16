@@ -5,10 +5,14 @@
 	"value": 2,
 	"operation": "addition"
   },
-  "item_condition": {
-	"type": "origins:ingredient",
-	"ingredient": {
-	  "tag": "extraorigins:golden_tools"
+  "condition": {
+	"type": "origins:equipped_item",
+	"equipment_slot": "mainhand",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_tools"
+	  }
 	}
   }
 }

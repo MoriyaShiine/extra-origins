@@ -2,6 +2,8 @@ package moriyashiine.extraorigins.mixin;
 
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import moriyashiine.extraorigins.common.registry.EOTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,9 +40,10 @@ public abstract class ItemStackMixin {
 		}
 	}
 	
+	@Environment(EnvType.CLIENT)
 	@Inject(method = "getTooltip", at = @At("RETURN"))
 	private void getTooltip(@Nullable PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> callbackInfo) {
-		if (EOPowers.ALL_THAT_GLITTERS.isActive(player)) {
+		if (EOPowers.ALL_THAT_GLITTERS.get(player) != null) {
 			if (getItem() instanceof ToolItem && ((ToolItem) getItem()).getMaterial() == ToolMaterials.GOLD) {
 				callbackInfo.getReturnValue().add(new TranslatableText("tooltip.extraorigins.damage_bonus", 2).formatted(Formatting.GOLD));
 			}
