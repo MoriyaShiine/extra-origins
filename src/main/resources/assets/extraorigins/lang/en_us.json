@@ -44,6 +44,6 @@
   "power.extraorigins.flabby.description": "You have 2 less hearts of health than humans.",
   "power.extraorigins.soul_spooked.name": "Soul Spooked",
   "power.extraorigins.soul_spooked.description": "You are afraid of Soul Fire, becoming weak when near it.",
-  "tooltip.extraorigins.damage_bonus": " +%d Attack Damage Bonus",
+  "tooltip.extraorigins.damage_bonus": " %d Attack Damage Bonus",
   "tooltip.extraorigins.damage_reduction": "+%d%% Damage Reduction"
 }
