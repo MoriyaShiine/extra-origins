@@ -1,5 +1,4 @@
 {
-  "item.extraorigins.liquid_sunlight": "Flüssiges Sonnenlicht",
   "origin.extraorigins.floran.name": "Floran",
   "origin.extraorigins.floran.description": "Planzenmenschen, die ihre Nährstoffe durch die Sonne erhalten und durch Wasser gestärkt werden.",
   "origin.extraorigins.glass_golem.name": "Glas-Golem",
@@ -11,7 +10,7 @@
   "power.extraorigins.green_thumb.name": "Grüner Daumen",
   "power.extraorigins.green_thumb.description": "Du kannst Pflanzen mit ein wenig Nahrung zum Wachsen bringen.",
   "power.extraorigins.photosynthesis.name": "Photosynthese",
-  "power.extraorigins.photosynthesis.description": "Sonnenlicht nährt dich, ob flüssig oder real. Flüssiges Sonnenlicht kann mit einer Glasflasche und einem Tageslichtsensor gesammelt werden.",
+  "power.extraorigins.photosynthesis.description": "Sonnenlicht nährt dich.",
   "power.extraorigins.absorbing.name": "Absorbtion",
   "power.extraorigins.absorbing.description": "Du regenerierst schneller und teilst mehr Schaden aus, wenn du feucht bist.",
   "power.extraorigins.flammable.name": "Brennbar",
