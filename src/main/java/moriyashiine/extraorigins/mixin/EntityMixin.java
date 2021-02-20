@@ -11,9 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-	@Shadow
-	public World world;
-	
 	@Inject(method = "getAir", at = @At("HEAD"), cancellable = true)
 	private void getAir(CallbackInfoReturnable<Integer> callbackInfo) {
 		if (EOPowers.INORGANIC.isActive(((Entity) (Object) this))) {
