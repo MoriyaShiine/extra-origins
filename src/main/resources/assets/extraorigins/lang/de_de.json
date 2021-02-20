@@ -33,7 +33,7 @@
   "power.extraorigins.nimble.name": "Flink",
   "power.extraorigins.nimble.description": "Dornen sowie geschwindigkeitsbasierter Schaden können dir nichts anhaben.",
   "power.extraorigins.all_that_glitters.name": "Alles Glitzernde",
-  "power.extraorigins.all_that_glitters.description": "Du bist mit Goldwerkzeug und -rüstung geübt, was deren Haltbarkeit erhöht. Goldwerkezeug teilt zwei zusätzliche Schadenspunkte aus, Goldrüstung reduziert genommenen Schaden um jeweils 8%. Goldene Ausrüstung hält deutlich länger.",
+  "power.extraorigins.all_that_glitters.description": "Du bist mit Goldwerkzeug und -rüstung geübt, was deren Haltbarkeit erhöht. Goldwerkezeug teilt 2.5 zusätzliche Schadenspunkte aus, Goldrüstung reduziert genommenen Schaden um jeweils 8%. Goldene Ausrüstung hält deutlich länger.",
   "power.extraorigins.piglin_neutrality.name": "Piglin-Neutralität",
   "power.extraorigins.piglin_neutrality.description": "Piglins greifen dich nicht an, außer du provozierst sie. Barbaren greifen dich trotzdem an.",
   "power.extraorigins.crossbow_master.name": "Armbrustmeister",
