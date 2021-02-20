@@ -50,7 +50,7 @@ public abstract class LivingEntityMixin extends Entity {
 				amount *= 2;
 			}
 		}
-		if (EOPowers.ALL_THAT_GLITTERS.isActive(this)) {
+		if (EOPowers.ALL_THAT_GLITTERS.get(this) != null) {
 			int armorPieces = 0;
 			for (ItemStack stack : getArmorItems()) {
 				if (EOTags.GOLDEN_ARMOR.contains(stack.getItem())) {

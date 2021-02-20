@@ -7,7 +7,8 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
@@ -30,11 +31,10 @@ public abstract class ItemStackMixin {
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
 	private <T extends LivingEntity> void damage(int amount, T entity, Consumer<T> breakCallback, CallbackInfo callbackInfo) {
 		if (EOPowers.ALL_THAT_GLITTERS.isActive(entity)) {
-			Item item = getItem();
-			if (item instanceof ToolItem && ((ToolItem) item).getMaterial() == ToolMaterials.GOLD && entity.world.random.nextFloat() < 15 / 16f) {
+			if (EOTags.GOLDEN_TOOLS.contains(getItem()) && entity.world.random.nextFloat() < 15 / 16f) {
 				callbackInfo.cancel();
 			}
-			if (item instanceof ArmorItem && ((ArmorItem) item).getMaterial() == ArmorMaterials.GOLD && entity.world.random.nextFloat() < 3 / 4f) {
+			if (EOTags.GOLDEN_ARMOR.contains(getItem()) && entity.world.random.nextFloat() < 3 / 4f) {
 				callbackInfo.cancel();
 			}
 		}
@@ -44,7 +44,7 @@ public abstract class ItemStackMixin {
 	@Inject(method = "getTooltip", at = @At("RETURN"))
 	private void getTooltip(@Nullable PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> callbackInfo) {
 		if (EOPowers.ALL_THAT_GLITTERS.get(player) != null) {
-			if (getItem() instanceof ToolItem && ((ToolItem) getItem()).getMaterial() == ToolMaterials.GOLD) {
+			if (EOTags.GOLDEN_TOOLS.contains(getItem())) {
 				callbackInfo.getReturnValue().add(new TranslatableText("tooltip.extraorigins.damage_bonus", 2).formatted(Formatting.GOLD));
 			}
 			if (EOTags.GOLDEN_ARMOR.contains(getItem())) {
