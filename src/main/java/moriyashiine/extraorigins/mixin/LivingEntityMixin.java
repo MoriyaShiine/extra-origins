@@ -37,7 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo callbackInfo) {
 		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
-			addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1, true, false));
+			addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 0, true, false));
 		}
 	}
 	
