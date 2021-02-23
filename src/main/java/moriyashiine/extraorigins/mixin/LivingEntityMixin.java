@@ -37,7 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo callbackInfo) {
 		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
-			addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 0, true, false));
+			addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1, true, false));
 		}
 	}
 	
@@ -47,7 +47,7 @@ public abstract class LivingEntityMixin extends Entity {
 		if (EOPowers.CROSSBOW_MASTER.isActive(attacker)) {
 			Entity projectile = source.getSource();
 			if (projectile instanceof PersistentProjectileEntity && ((PersistentProjectileEntity) projectile).isShotFromCrossbow()) {
-				amount *= 2;
+				amount *= 1.75f;
 			}
 		}
 		if (EOPowers.ALL_THAT_GLITTERS.get(this) != null) {
