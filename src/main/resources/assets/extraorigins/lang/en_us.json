@@ -1,5 +1,4 @@
 {
-  "item.extraorigins.liquid_sunlight": "Liquid Sunlight",
   "origin.extraorigins.floran.name": "Floran",
   "origin.extraorigins.floran.description": "A species of plant people that obtain their nutrients from the sun and gain strength from water.",
   "origin.extraorigins.glass_golem.name": "Glass Golem",
@@ -11,7 +10,7 @@
   "power.extraorigins.green_thumb.name": "Green Thumb",
   "power.extraorigins.green_thumb.description": "You can grow plants at the cost of some food.",
   "power.extraorigins.photosynthesis.name": "Photosynthesis",
-  "power.extraorigins.photosynthesis.description": "You are satiated by being exposed to sunlight or by drinking Liquid Sunlight, which can be collected by using a Glass Bottle on a Daylight Detector.",
+  "power.extraorigins.photosynthesis.description": "You are satiated by being exposed to sunlight.",
   "power.extraorigins.absorbing.name": "Absorbing",
   "power.extraorigins.absorbing.description": "You regenerate health and deal more damage when wet.",
   "power.extraorigins.flammable.name": "Flammable",

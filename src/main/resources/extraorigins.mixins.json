@@ -4,7 +4,6 @@
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-	"DaylightDetectorBlockMixin",
 	"EntityMixin",
 	"HungerManagerMixin",
 	"ItemStackMixin",
