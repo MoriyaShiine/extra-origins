@@ -4,13 +4,7 @@
 	{
 	  "name": "Origin modifier",
 	  "attribute": "generic.max_health",
-	  "value": -6,
-	  "operation": "addition"
-	},
-	{
-	  "name": "Origin modifier",
-	  "attribute": "generic.attack_damage",
-	  "value": -3,
+	  "value": -10,
 	  "operation": "addition"
 	},
 	{

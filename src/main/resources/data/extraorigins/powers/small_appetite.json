@@ -1,7 +1,7 @@
 {
   "type": "origins:modify_exhaustion",
   "modifier": {
-	"name": "Less exhaustion from small appetite",
+	"name": "Origin modifier",
 	"value": -0.75,
 	"operation": "multiply_base"
   }
