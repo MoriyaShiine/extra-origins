@@ -1,10 +1,8 @@
 package moriyashiine.extraorigins.mixin;
 
-import io.github.apace100.origins.component.OriginComponent;
-import moriyashiine.extraorigins.common.power.RegenerateHungerPower;
+import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,13 +14,21 @@ public abstract class HungerManagerMixin {
 	@Shadow
 	public abstract void add(int food, float f);
 	
-	@Inject(method = "update", at = @At("HEAD"))
+	@Shadow
+	public abstract void addExhaustion(float exhaustion);
+	
+	@Shadow
+	private int foodLevel;
+	
+	@Inject(method = "update", at = @At("HEAD"), cancellable = true)
 	private void update(PlayerEntity player, CallbackInfo callbackInfo) {
-		World world = player.world;
-		if (OriginComponent.hasPower(player, RegenerateHungerPower.class)) {
-			RegenerateHungerPower power = OriginComponent.getPowers(player, RegenerateHungerPower.class).get(0);
-			if (world.random.nextFloat() < power.chance) {
-				add(power.amount, 1);
+		if (EOPowers.PHOTOSYNTHESIS.isActive(player)) {
+			if (player.age % 20 == 0 && player.world.isDay() && player.world.isSkyVisible(player.getBlockPos())) {
+				add(1, 1);
+			}
+			if (foodLevel > 0 && player.age % 30 == 0 && player.getHealth() < player.getMaxHealth()) {
+				player.heal(1);
+				addExhaustion(4);
 			}
 		}
 	}

@@ -12,7 +12,6 @@ import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.BoneMealPower;
 import moriyashiine.extraorigins.common.power.LargeHeadPower;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
-import moriyashiine.extraorigins.common.power.RegenerateHungerPower;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -29,12 +28,8 @@ public class EOPowers {
 		power.setKey((Active.KeyType) data.get("key"));
 		return power;
 	}).allowCondition());
-	public static final PowerFactory<Power> REGENERATE_HUNGER = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "regenerate_hunger"), new SerializableData().add("amount", SerializableDataType.INT).add("chance", SerializableDataType.FLOAT), data -> (type, player) -> new RegenerateHungerPower(type, player, data.getInt("amount"), data.getFloat("chance"))).allowCondition());
 	public static final PowerType<Power> PHOTOSYNTHESIS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "photosynthesis"));
-	public static final PowerType<Power> ABSORBING = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "absorbing"));
-	
-	public static final PowerType<Power> INORGANIC = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "inorganic"));
-	public static final PowerType<Power> EFFECT_IMMUNITY = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "effect_immunity"));
+	public static final PowerType<Power> DELICATE = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "delicate"));
 	
 	public static final PowerFactory<Power> MODIFY_SIZE = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale", SerializableDataType.FLOAT), data -> (type, player) -> new ModifySizePower(type, player, data.getFloat("scale"))).allowCondition());
 	public static final PowerFactory<Power> LARGE_HEAD = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "large_head"), new SerializableData(), data -> (BiFunction<PowerType<Power>, PlayerEntity, Power>) LargeHeadPower::new).allowCondition());

@@ -1,9 +1,0 @@
-{
-  "type": "origins:modify_damage_taken",
-  "modifier": {
-	"name": "Origin modifier",
-	"value": 1,
-	"operation": "multiply_base"
-  },
-  "hidden": true
-}

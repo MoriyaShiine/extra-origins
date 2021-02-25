@@ -4,7 +4,8 @@
 	"extraorigins:photosynthesis",
 	"extraorigins:absorbing",
 	"extraorigins:flammable",
-	"extraorigins:antivore"
+	"extraorigins:delicate",
+	"extraorigins:nectarivore"
   ],
   "icon": "oak_sapling",
   "order": 1,

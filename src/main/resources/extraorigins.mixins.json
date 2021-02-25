@@ -4,7 +4,6 @@
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-	"EntityMixin",
 	"HungerManagerMixin",
 	"ItemStackMixin",
 	"LivingEntityMixin",

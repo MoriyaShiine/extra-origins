@@ -1,0 +1,20 @@
+{
+  "type": "origins:conditioned_attribute",
+  "modifier": {
+	"name": "Origin modifier",
+	"attribute": "generic.armor",
+	"value": 1,
+	"operation": "addition"
+  },
+  "condition": {
+	"type": "origins:equipped_item",
+	"equipment_slot": "feet",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor_0"
+	  }
+	}
+  },
+  "hidden": true
+}

@@ -26,7 +26,7 @@ public class BoneMealPacket {
 	public static void handle(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
 		BlockPos pos = BlockPos.fromLong(buf.readLong());
 		server.execute(() -> {
-			if (player.isCreative() || player.getHungerManager().getFoodLevel() > 0) {
+			if (player.getHungerManager().getFoodLevel() > 0) {
 				BlockState state = player.world.getBlockState(pos);
 				if (state.getBlock() instanceof Fertilizable) {
 					Fertilizable fertilizable = ((Fertilizable) state.getBlock());
@@ -34,7 +34,7 @@ public class BoneMealPacket {
 						fertilizable.grow(player.getServerWorld(), player.getRandom(), pos, state);
 						player.world.syncWorldEvent(2005, pos, 0);
 						player.swingHand(Hand.MAIN_HAND, true);
-						player.addExhaustion(3);
+						player.addExhaustion(20);
 					}
 				}
 			}
