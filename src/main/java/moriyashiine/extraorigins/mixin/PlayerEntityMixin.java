@@ -13,7 +13,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -42,12 +41,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements BabyAcce
 	private void tick(CallbackInfo callbackInfo) {
 		if (!world.isClient) {
 			if (EOPowers.DELICATE.isActive(this)) {
-				Biome.Category category = world.getBiome(getBlockPos()).getCategory();
-				if (category == Biome.Category.EXTREME_HILLS || category == Biome.Category.THEEND || category == Biome.Category.MESA || category == Biome.Category.DESERT) {
+				float temperature = world.getBiome(getBlockPos()).getTemperature(getBlockPos());
+				if (temperature < 0.15f || temperature > 1) {
 					addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 0, true, false));
-				}
-				else if (category == Biome.Category.ICY || category == Biome.Category.NETHER) {
-					addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1, true, false));
 				}
 			}
 			if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
