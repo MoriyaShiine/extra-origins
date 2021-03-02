@@ -2,12 +2,11 @@ package moriyashiine.extraorigins.common.power;
 
 import io.github.apace100.origins.power.Power;
 import io.github.apace100.origins.power.PowerType;
+import moriyashiine.extraorigins.common.registry.EOScaleTypes;
 import net.minecraft.entity.player.PlayerEntity;
-import virtuoel.pehkui.api.ScaleType;
+import virtuoel.pehkui.api.ScaleData;
 
 public class ModifySizePower extends Power {
-	private static final ScaleType[] MODIFY_SIZE_TYPES = {ScaleType.WIDTH, ScaleType.HEIGHT, ScaleType.DROPS};
-	
 	public final float scale;
 	
 	public ModifySizePower(PowerType<?> type, PlayerEntity player, float scale) {
@@ -18,16 +17,14 @@ public class ModifySizePower extends Power {
 	@Override
 	public void onAdded() {
 		super.onAdded();
-		for (ScaleType type : MODIFY_SIZE_TYPES) {
-			type.getScaleData(player).setScale(type.getScaleData(player).getScale() * scale);
-		}
+		ScaleData data = EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player);
+		data.setScale(data.getBaseScale() * scale);
 	}
 	
 	@Override
 	public void onRemoved() {
 		super.onRemoved();
-		for (ScaleType type : MODIFY_SIZE_TYPES) {
-			type.getScaleData(player).setScale(type.getScaleData(player).getScale() / scale);
-		}
+		ScaleData data = EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player);
+		data.setScale(data.getBaseScale() / scale);
 	}
 }
