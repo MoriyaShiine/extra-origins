@@ -31,7 +31,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	
 	@Inject(method = "canFoodHeal", at = @At("HEAD"), cancellable = true)
 	private void canFoodHeal(CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (EOPowers.PHOTOSYNTHESIS.isActive(this)) {
+		if (EOPowers.PHOTOSYNTHESIS.get(this) != null) {
 			callbackInfo.setReturnValue(false);
 		}
 	}

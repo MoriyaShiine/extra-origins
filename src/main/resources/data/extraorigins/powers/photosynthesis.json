@@ -1,3 +1,20 @@
 {
-  "type": "origins:simple"
+  "type": "origins:action_over_time",
+  "interval": 20,
+  "entity_action": {
+	"type": "origins:feed",
+	"food": 1,
+	"saturation": 1
+  },
+  "condition": {
+	"type": "origins:and",
+	"conditions": [
+	  {
+		"type": "origins:exposed_to_sky"
+	  },
+	  {
+		"type": "origins:daytime"
+	  }
+	]
+  }
 }

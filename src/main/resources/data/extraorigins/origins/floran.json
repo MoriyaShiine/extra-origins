@@ -2,6 +2,8 @@
   "powers": [
 	"extraorigins:green_thumb",
 	"extraorigins:photosynthesis",
+	"extraorigins:photosynthesis_dummy0",
+	"extraorigins:photosynthesis_dummy1",
 	"extraorigins:absorbing",
 	"extraorigins:flammable",
 	"extraorigins:delicate",
