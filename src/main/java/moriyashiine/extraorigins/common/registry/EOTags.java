@@ -10,4 +10,5 @@ public class EOTags {
 	public static final Tag<Item> GOLDEN_ARMOR_0 = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor_0"));
 	public static final Tag<Item> GOLDEN_ARMOR_1 = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor_1"));
 	public static final Tag<Item> GOLDEN_TOOLS = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_tools"));
+	public static final Tag<Item> PIGLIN_EFFECTIVE = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "piglin_effective"));
 }

@@ -46,7 +46,7 @@ public abstract class ItemStackMixin {
 						callbackInfo.cancel();
 					}
 				}
-				else if (entity.getRandom().nextBoolean()) {
+				if (entity.getRandom().nextBoolean() && !EOTags.PIGLIN_EFFECTIVE.contains(getItem())) {
 					damage(1, entity.getRandom(), null);
 				}
 			}
@@ -56,7 +56,7 @@ public abstract class ItemStackMixin {
 						callbackInfo.cancel();
 					}
 				}
-				else if (entity.getRandom().nextBoolean()) {
+				if (entity.getRandom().nextBoolean() && !EOTags.PIGLIN_EFFECTIVE.contains(getItem())) {
 					damage(1, entity.getRandom(), null);
 				}
 			}
