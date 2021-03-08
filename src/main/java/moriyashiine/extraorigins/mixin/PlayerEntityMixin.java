@@ -1,17 +1,12 @@
 package moriyashiine.extraorigins.mixin;
 
-import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,21 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity implements BabyAccessor {
-	private static final TrackedData<Boolean> BABY = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-	
+public abstract class PlayerEntityMixin extends LivingEntity {
 	protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
-	}
-	
-	@Override
-	public boolean getBaby() {
-		return dataTracker.get(BABY);
-	}
-	
-	@Override
-	public void setBaby(boolean baby) {
-		dataTracker.set(BABY, baby);
 	}
 	
 	@Inject(method = "tick", at = @At("HEAD"))
@@ -64,20 +47,5 @@ public abstract class PlayerEntityMixin extends LivingEntity implements BabyAcce
 		if (damageSource.isFire() && EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
 			callbackInfo.setReturnValue(true);
 		}
-	}
-	
-	@Inject(method = "readCustomDataFromTag", at = @At("TAIL"))
-	private void readCustomDataFromTag(CompoundTag tag, CallbackInfo callbackInfo) {
-		setBaby(tag.getBoolean("Baby"));
-	}
-	
-	@Inject(method = "writeCustomDataToTag", at = @At("TAIL"))
-	private void writeCustomDataToTag(CompoundTag tag, CallbackInfo callbackInfo) {
-		tag.putBoolean("Baby", getBaby());
-	}
-	
-	@Inject(method = "initDataTracker", at = @At("TAIL"))
-	private void initDataTracker(CallbackInfo callbackInfo) {
-		dataTracker.startTracking(BABY, false);
 	}
 }

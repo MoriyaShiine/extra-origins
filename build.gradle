@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'fabric-loom' version '0.6-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -11,13 +11,10 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+    jcenter()
     maven {
         name = "jitpack"
         url = "https://jitpack.io"
-    }
-    maven {
-        name = "pehkui"
-        url = "https://www.cursemaven.com"
     }
     maven {
         name = "entity reach"
@@ -35,7 +32,9 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
-    modImplementation "curse.maven:Pehkui-319596:${project.pehkui_version}"
+    modImplementation("com.github.virtuoel:pehkui:${project.pehkui_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 }
 
 processResources {

@@ -11,10 +11,6 @@
 	"PlayerEntityMixin",
 	"TrackTargetGoalMixin"
   ],
-  "client": [
-	"client.BipedEntityModelMixin",
-	"client.PlayerEntityRendererMixin"
-  ],
   "injectors": {
 	"defaultRequire": 1
   }

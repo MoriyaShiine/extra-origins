@@ -1,7 +1,6 @@
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.origins.component.OriginComponent;
-import moriyashiine.extraorigins.common.interfaces.BabyAccessor;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.Entity;
@@ -41,13 +40,6 @@ public abstract class LivingEntityMixin extends Entity {
 	private void getGroup(CallbackInfoReturnable<EntityGroup> callbackInfo) {
 		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
 			callbackInfo.setReturnValue(EntityGroup.UNDEAD);
-		}
-	}
-	
-	@Inject(method = "isBaby", at = @At("HEAD"), cancellable = true)
-	private void isBaby(CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (this instanceof BabyAccessor && ((BabyAccessor) this).getBaby()) {
-			callbackInfo.setReturnValue(true);
 		}
 	}
 	
