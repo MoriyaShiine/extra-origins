@@ -9,5 +9,6 @@
   "condition": {
 	"type": "extraorigins:piglin_safe",
 	"inverted": true
-  }
+  },
+  "hidden": true
 }
