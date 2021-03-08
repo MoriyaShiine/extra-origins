@@ -29,12 +29,10 @@ public class EOPowers {
 	public static final PowerType<Power> DELICATE = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "delicate"));
 	
 	public static final PowerFactory<Power> MODIFY_SIZE = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale", SerializableDataType.FLOAT), data -> (type, player) -> new ModifySizePower(type, player, data.getFloat("scale"))).allowCondition());
-	public static final PowerType<Power> LARGE_HEAD = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "large_head"));
 	
 	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "all_that_glitters"));
 	public static final PowerType<Power> PIGLIN_NEUTRALITY = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "piglin_neutrality"));
 	public static final PowerType<Power> CROSSBOW_MASTER = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "crossbow_master"));
-	public static final PowerType<Power> HOMESICK = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "homesick"));
 	
 	private static <T extends Power> PowerFactory<T> create(PowerFactory<T> factory) {
 		POWER_FACTORIES.put(factory, factory.getSerializerId());

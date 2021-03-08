@@ -1,6 +1,5 @@
 {
-  "type": "origins:entity_group",
-  "group": "undead",
+  "type": "origins:fire_immunity",
   "condition": {
 	"type": "extraorigins:piglin_safe",
 	"inverted": true

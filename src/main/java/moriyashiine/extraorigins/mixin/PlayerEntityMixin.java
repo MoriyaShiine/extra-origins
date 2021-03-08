@@ -3,7 +3,6 @@ package moriyashiine.extraorigins.mixin;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,15 +21,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void tick(CallbackInfo callbackInfo) {
-		if (!world.isClient) {
-			if (EOPowers.DELICATE.isActive(this)) {
-				float temperature = world.getBiome(getBlockPos()).getTemperature(getBlockPos());
-				if (temperature < 0.15f || temperature > 1) {
-					addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 0, true, false));
-				}
-			}
-			if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
-				addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1, true, false));
+		if (!world.isClient && EOPowers.DELICATE.isActive(this)) {
+			float temperature = world.getBiome(getBlockPos()).getTemperature(getBlockPos());
+			if (temperature < 0.15f || temperature > 1) {
+				addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 0, true, false));
 			}
 		}
 	}
@@ -39,13 +33,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 	private void canFoodHeal(CallbackInfoReturnable<Boolean> callbackInfo) {
 		if (EOPowers.PHOTOSYNTHESIS.isActive(this)) {
 			callbackInfo.setReturnValue(false);
-		}
-	}
-	
-	@Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
-	private void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
-		if (damageSource.isFire() && EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
-			callbackInfo.setReturnValue(true);
 		}
 	}
 }

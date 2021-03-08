@@ -4,7 +4,6 @@ import io.github.apace100.origins.component.OriginComponent;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -34,13 +33,6 @@ public abstract class LivingEntityMixin extends Entity {
 			}
 		}
 		return amount;
-	}
-	
-	@Inject(method = "getGroup", at = @At("HEAD"), cancellable = true)
-	private void getGroup(CallbackInfoReturnable<EntityGroup> callbackInfo) {
-		if (EOPowers.HOMESICK.isActive(this) && !world.getDimension().isPiglinSafe()) {
-			callbackInfo.setReturnValue(EntityGroup.UNDEAD);
-		}
 	}
 	
 	@Inject(method = "getJumpVelocity", at = @At("RETURN"), cancellable = true)
