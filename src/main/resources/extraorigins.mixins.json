@@ -7,7 +7,6 @@
 	"ItemStackMixin",
 	"LivingEntityMixin",
 	"PiglinBrainMixin",
-	"PlayerEntityMixin",
 	"TrackTargetGoalMixin"
   ],
   "injectors": {

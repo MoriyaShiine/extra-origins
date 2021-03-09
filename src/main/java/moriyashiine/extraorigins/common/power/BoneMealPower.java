@@ -10,7 +10,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
 public class BoneMealPower extends Power implements Active {
-	private KeyType keyType;
+	private Key key;
 	
 	public BoneMealPower(PowerType<?> type, PlayerEntity player) {
 		super(type, player);
@@ -27,12 +27,12 @@ public class BoneMealPower extends Power implements Active {
 	}
 	
 	@Override
-	public KeyType getKey() {
-		return keyType;
+	public Key getKey() {
+		return key;
 	}
 	
 	@Override
-	public void setKey(KeyType keyType) {
-		this.keyType = keyType;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 }

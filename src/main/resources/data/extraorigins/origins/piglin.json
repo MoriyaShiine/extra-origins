@@ -1,16 +1,10 @@
 {
   "powers": [
 	"extraorigins:all_that_glitters",
-	"extraorigins:all_that_glitters_dummy0",
-	"extraorigins:all_that_glitters_dummy1",
-	"extraorigins:all_that_glitters_dummy2",
-	"extraorigins:all_that_glitters_dummy3",
 	"extraorigins:piglin_neutrality",
 	"extraorigins:crossbow_master",
 	"origins:nether_spawn",
 	"extraorigins:homesick",
-	"extraorigins:homesick_dummy0",
-	"extraorigins:homesick_dummy1",
 	"origins:carnivore",
 	"extraorigins:flabby",
 	"extraorigins:soul_spooked"

@@ -1,17 +1,172 @@
 {
-  "type": "origins:modify_damage_dealt",
-  "modifier": {
-	"name": "Origin modifier",
-	"value": 2.5,
-	"operation": "addition"
+  "type": "origins:multiple",
+  "golden_tool_boost": {
+	"type": "origins:modify_damage_dealt",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "value": 2.5,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "mainhand",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:golden_tools"
+		}
+	  }
+	}
   },
-  "condition": {
-	"type": "origins:equipped_item",
-	"equipment_slot": "mainhand",
-	"item_condition": {
-	  "type": "origins:ingredient",
-	  "ingredient": {
-		"tag": "extraorigins:golden_tools"
+  "golden_helmet_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.armor",
+	  "value": 1,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "head",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:golden_armor"
+		}
+	  }
+	}
+  },
+  "golden_chestplate_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.armor",
+	  "value": 2,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "chest",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:golden_armor"
+		}
+	  }
+	}
+  },
+  "golden_leggings_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.armor",
+	  "value": 2,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "legs",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:golden_armor"
+		}
+	  }
+	}
+  },
+  "golden_boots_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.armor",
+	  "value": 1,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "feet",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:golden_armor"
+		}
+	  }
+	}
+  },
+  "netherite_helmet_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.movement_speed",
+	  "value": 0.008,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "head",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:netherite_armor"
+		}
+	  }
+	}
+  },
+  "netherite_chestplate_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.movement_speed",
+	  "value": 0.008,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "chest",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:netherite_armor"
+		}
+	  }
+	}
+  },
+  "netherite_leggings_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.movement_speed",
+	  "value": 0.008,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "legs",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:netherite_armor"
+		}
+	  }
+	}
+  },
+  "netherite_boots_boost": {
+	"type": "origins:conditioned_attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.movement_speed",
+	  "value": 0.008,
+	  "operation": "addition"
+	},
+	"condition": {
+	  "type": "origins:equipped_item",
+	  "equipment_slot": "feet",
+	  "item_condition": {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "extraorigins:netherite_armor"
+		}
 	  }
 	}
   }

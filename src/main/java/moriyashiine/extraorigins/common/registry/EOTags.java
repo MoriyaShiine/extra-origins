@@ -7,8 +7,8 @@ import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 public class EOTags {
-	public static final Tag<Item> GOLDEN_ARMOR_0 = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor_0"));
-	public static final Tag<Item> GOLDEN_ARMOR_1 = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor_1"));
+	public static final Tag<Item> GOLDEN_ARMOR = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_armor"));
 	public static final Tag<Item> GOLDEN_TOOLS = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "golden_tools"));
-	public static final Tag<Item> PIGLIN_EFFECTIVE = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "piglin_effective"));
+	public static final Tag<Item> NETHERITE_ARMOR = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "netherite_armor"));
+	public static final Tag<Item> NETHERITE_TOOLS = TagRegistry.item(new Identifier(ExtraOrigins.MODID, "netherite_tools"));
 }

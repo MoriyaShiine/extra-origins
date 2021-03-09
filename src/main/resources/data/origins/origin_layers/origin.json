@@ -1,8 +1,8 @@
 {
   "replace": false,
   "origins": [
+	"extraorigins:dweller",
 	"extraorigins:floran",
-	"extraorigins:glass_golem",
 	"extraorigins:inchling",
 	"extraorigins:piglin"
   ]

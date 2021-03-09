@@ -1,8 +1,42 @@
 {
-  "type": "origins:entity_group",
-  "group": "undead",
-  "condition": {
-	"type": "extraorigins:piglin_safe",
-	"inverted": true
+  "type": "origins:multiple",
+  "change_group": {
+	"type": "origins:entity_group",
+	"group": "undead",
+	"condition": {
+	  "type": "extraorigins:piglin_safe",
+	  "inverted": true
+	}
+  },
+  "fire_immunity": {
+	"type": "origins:fire_immunity",
+	"condition": {
+	  "type": "extraorigins:piglin_safe",
+	  "inverted": true
+	}
+  },
+  "slowness": {
+	"type": "origins:stacking_status_effect",
+	"min_stacks": 0,
+	"max_stacks": 1,
+	"duration_per_stack": 30,
+	"effect": {
+	  "effect": "slowness",
+	  "amplifier": 1,
+	  "is_ambient": true,
+	  "show_particles": false,
+	  "show_icon": false
+	},
+	"condition": {
+	  "type": "extraorigins:piglin_safe",
+	  "inverted": true
+	}
+  },
+  "shaking": {
+	"type": "origins:shaking",
+	"condition": {
+	  "type": "extraorigins:piglin_safe",
+	  "inverted": true
+	}
   }
 }

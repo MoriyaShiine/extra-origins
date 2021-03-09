@@ -5,7 +5,10 @@
   "duration_per_stack": 30,
   "effect": {
 	"effect": "weakness",
-	"amplifier": 2
+	"amplifier": 2,
+	"is_ambient": true,
+	"show_particles": false,
+	"show_icon": false
   },
   "condition": {
 	"type": "origins:block_in_radius",

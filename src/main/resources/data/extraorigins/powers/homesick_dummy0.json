@@ -1,8 +1,0 @@
-{
-  "type": "origins:fire_immunity",
-  "condition": {
-	"type": "extraorigins:piglin_safe",
-	"inverted": true
-  },
-  "hidden": true
-}

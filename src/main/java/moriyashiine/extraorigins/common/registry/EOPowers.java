@@ -20,9 +20,9 @@ import java.util.Map;
 public class EOPowers {
 	private static final Map<PowerFactory<?>, Identifier> POWER_FACTORIES = new LinkedHashMap<>();
 	
-	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("key", SerializableDataType.ACTIVE_KEY_TYPE, Active.KeyType.PRIMARY), data -> (type, player) -> {
+	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("key", SerializableDataType.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, player) -> {
 		BoneMealPower power = new BoneMealPower(type, player);
-		power.setKey((Active.KeyType) data.get("key"));
+		power.setKey((Active.Key) data.get("key"));
 		return power;
 	}).allowCondition());
 	public static final PowerType<Power> PHOTOSYNTHESIS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "photosynthesis"));
