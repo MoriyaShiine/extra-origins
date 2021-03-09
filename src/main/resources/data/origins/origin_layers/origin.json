@@ -1,7 +1,6 @@
 {
   "replace": false,
   "origins": [
-	"extraorigins:dweller",
 	"extraorigins:floran",
 	"extraorigins:inchling",
 	"extraorigins:piglin"
