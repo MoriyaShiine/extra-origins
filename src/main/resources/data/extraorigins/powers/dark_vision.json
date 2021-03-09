@@ -16,5 +16,9 @@
 	  "type": "origins:submerged_in",
 	  "fluid": "water"
 	}
+  },
+  "shader": {
+	"type": "origins:shader",
+	"shader": "shaders/post/desaturate.json"
   }
 }
