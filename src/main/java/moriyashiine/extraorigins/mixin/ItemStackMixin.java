@@ -41,21 +41,25 @@ public abstract class ItemStackMixin {
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
 	private <T extends LivingEntity> void damage(int amount, T entity, Consumer<T> breakCallback, CallbackInfo callbackInfo) {
 		if (!entity.world.isClient && EOPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity && ((PlayerEntity) entity).isCreative())) {
-			if (EOTags.GOLDEN_TOOLS.contains(getItem())) {
-				if (entity.world.random.nextFloat() < 15 / 16f) {
-					callbackInfo.cancel();
+			if (getItem() instanceof ToolItem) {
+				if (EOTags.GOLDEN_TOOLS.contains(getItem())) {
+					if (entity.world.random.nextFloat() < 15 / 16f) {
+						callbackInfo.cancel();
+					}
+				}
+				else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_TOOLS.contains(getItem())) {
+					damage(amount, entity.getRandom(), null);
 				}
 			}
-			else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_TOOLS.contains(getItem())) {
-				damage(amount, entity.getRandom(), null);
-			}
-			else if (EOTags.GOLDEN_ARMOR.contains(getItem())) {
-				if (entity.world.random.nextFloat() < 3 / 4f) {
-					callbackInfo.cancel();
+			if (getItem() instanceof ArmorItem) {
+				if (EOTags.GOLDEN_ARMOR.contains(getItem())) {
+					if (entity.world.random.nextFloat() < 3 / 4f) {
+						callbackInfo.cancel();
+					}
 				}
-			}
-			else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_ARMOR.contains(getItem())) {
-				damage(amount, entity.getRandom(), null);
+				else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_ARMOR.contains(getItem())) {
+					damage(amount, entity.getRandom(), null);
+				}
 			}
 		}
 	}
