@@ -26,7 +26,7 @@
 	"fabricloader": ">=0.11.0",
 	"fabric": "*",
 	"minecraft": "1.16.5",
-	"origins": ">=0.5.1",
+	"origins": ">=0.6.0",
 	"pehkui": ">=1.7.1+21w03a"
   }
 }
