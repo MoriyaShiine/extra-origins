@@ -1,11 +1,12 @@
 package moriyashiine.extraorigins.mixin;
 
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import moriyashiine.extraorigins.common.registry.EOTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -16,29 +17,28 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.*;
+import java.util.Random;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
-	private static final UUID ATTACK_DAMAGE_MODIFIER_ID = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+	@Environment(EnvType.CLIENT)
+	private static final EntityAttributeModifier ATTACK_DAMAGE_MODIFIER = new EntityAttributeModifier("Origin modifier", 2.5, EntityAttributeModifier.Operation.ADDITION);
+	@Environment(EnvType.CLIENT)
+	private static final EntityAttributeModifier ARMOR_MODIFIER_0 = new EntityAttributeModifier("Origin modifier", 1, EntityAttributeModifier.Operation.ADDITION);
+	@Environment(EnvType.CLIENT)
+	private static final EntityAttributeModifier ARMOR_MODIFIER_1 = new EntityAttributeModifier("Origin modifier", 2, EntityAttributeModifier.Operation.ADDITION);
+	@Environment(EnvType.CLIENT)
+	private static final EntityAttributeModifier MOVEMENT_SPEED_MODIFIER = new EntityAttributeModifier("Origin modifier", 0.08, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 	
 	@Shadow
 	public abstract Item getItem();
@@ -72,22 +72,23 @@ public abstract class ItemStackMixin {
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
 	@Environment(EnvType.CLIENT)
-	@Inject(method = "getTooltip", at = @At(value = "INVOKE", shift = At.Shift.AFTER, ordinal = 7, target = "Ljava/util/List;add(Ljava/lang/Object;)Z"), locals = LocalCapture.CAPTURE_FAILSOFT)
-	private void getTooltip(@Nullable PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> callbackInfo, List<Text> list, MutableText dumb0, int dumb1, int dumb2, CompoundTag dumb3, ListTag dumb4, String dumb5, MutableText dumb6, EquipmentSlot[] dumb7, EquipmentSlot dumb8, Multimap dumb9, Iterator dumb10, Map.Entry dumb11, EntityAttributeModifier modifier) {
-		if (EOPowers.ALL_THAT_GLITTERS.get(player) != null) {
-			if (getItem() instanceof ToolItem && EOTags.GOLDEN_TOOLS.contains(getItem()) && modifier.getId() == ATTACK_DAMAGE_MODIFIER_ID) {
-				list.add(new LiteralText(" ").append(new TranslatableText("attribute.modifier.equals.0", ItemStack.MODIFIER_FORMAT.format(2.5), new TranslatableText(EntityAttributes.GENERIC_ATTACK_DAMAGE.getTranslationKey())).formatted(Formatting.GOLD)));
+	@Redirect(method = "getTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getAttributeModifiers(Lnet/minecraft/entity/EquipmentSlot;)Lcom/google/common/collect/Multimap;"))
+	private Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot equipmentSlot) {
+		Multimap<EntityAttribute, EntityAttributeModifier> multimap = LinkedHashMultimap.create(stack.getAttributeModifiers(equipmentSlot));
+		if (EOPowers.ALL_THAT_GLITTERS.get(MinecraftClient.getInstance().player) != null && !multimap.isEmpty()) {
+			if (getItem() instanceof ToolItem && EOTags.GOLDEN_TOOLS.contains(getItem())) {
+				multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
 			}
-//			if (getItem() instanceof ArmorItem) {
-//				if (getItem() instanceof ArmorItem && EOTags.GOLDEN_ARMOR.contains(getItem())) {
-//					callbackInfo.getReturnValue().add(4, new TranslatableText("attribute.modifier.plus.0", ItemStack.MODIFIER_FORMAT.format((((ArmorItem) getItem()).getSlotType() == EquipmentSlot.CHEST || ((ArmorItem) getItem()).getSlotType() == EquipmentSlot.LEGS) ? 2 : 1), new TranslatableText(EntityAttributes.GENERIC_ARMOR.getTranslationKey())).formatted(Formatting.GOLD));
-//				}
-//				if (EOTags.NETHERITE_ARMOR.contains(getItem())) {
-//					callbackInfo.getReturnValue().add(6, new TranslatableText("attribute.modifier.plus.1", ItemStack.MODIFIER_FORMAT.format(8), new TranslatableText(EntityAttributes.GENERIC_MOVEMENT_SPEED.getTranslationKey())).formatted(Formatting.GOLD));
-//				}
-//			}
+			if (getItem() instanceof ArmorItem) {
+				if (getItem() instanceof ArmorItem && EOTags.GOLDEN_ARMOR.contains(getItem())) {
+					multimap.put(EntityAttributes.GENERIC_ARMOR, (((ArmorItem) getItem()).getSlotType() == EquipmentSlot.CHEST || ((ArmorItem) getItem()).getSlotType() == EquipmentSlot.LEGS) ? ARMOR_MODIFIER_1 : ARMOR_MODIFIER_0);
+				}
+				if (EOTags.NETHERITE_ARMOR.contains(getItem())) {
+					multimap.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, MOVEMENT_SPEED_MODIFIER);
+				}
+			}
 		}
+		return multimap;
 	}
 }
