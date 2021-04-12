@@ -25,8 +25,6 @@ public class EOPowers {
 		power.setKey((Active.Key) data.get("key"));
 		return power;
 	}).allowCondition());
-	public static final PowerType<Power> PHOTOSYNTHESIS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "photosynthesis"));
-	public static final PowerType<Power> DELICATE = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "delicate"));
 	
 	public static final PowerFactory<Power> MODIFY_SIZE = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale", SerializableDataType.FLOAT), data -> (type, player) -> new ModifySizePower(type, player, data.getFloat("scale"))).allowCondition());
 	
