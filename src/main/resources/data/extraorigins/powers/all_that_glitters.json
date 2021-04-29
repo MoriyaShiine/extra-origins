@@ -137,8 +137,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
-	  "value": 0.08,
-	  "operation": "multiply_base"
+	  "value": 0.008,
+	  "operation": "addition"
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
