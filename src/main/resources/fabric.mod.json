@@ -27,6 +27,6 @@
 	"fabric": "*",
 	"minecraft": "1.16.5",
 	"origins": ">=0.6.0",
-	"pehkui": ">=2.0.0"
+	"pehkui": ">=2.1.0"
   }
 }
