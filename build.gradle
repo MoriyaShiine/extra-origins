@@ -12,20 +12,20 @@ group = project.maven_group
 
 repositories {
     maven {
-        name = "jitpack"
-        url = "https://jitpack.io"
-    }
-    maven {
         name = "entity reach"
         url = "https://maven.jamieswhiteshirt.com/libs-release/"
     }
     maven {
-        name = "fall flying lib"
-        url = "https://dl.bintray.com/adriantodt/maven"
+        name "fall flying lib"
+        url "https://maven.terraformersmc.com/"
     }
     maven {
         name = "cloth config"
         url = "https://maven.shedaniel.me/"
+    }
+    maven {
+        name = "jitpack"
+        url = "https://jitpack.io"
     }
 }
 

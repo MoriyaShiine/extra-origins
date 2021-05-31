@@ -11,20 +11,25 @@ public class ModifySizePower extends Power {
 	
 	public ModifySizePower(PowerType<?> type, PlayerEntity player, float scale) {
 		super(type, player);
+		setTicking(true);
 		this.scale = scale;
 	}
 	
 	@Override
-	public void onAdded() {
-		super.onAdded();
+	public void tick() {
+		super.tick();
 		ScaleData data = EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player);
-		data.setScale(data.getBaseScale() * scale);
+		if (isActive() && data.getScale() != scale) {
+			data.setScale(scale);
+		}
+		else if (!isActive() && data.getScale() != 1) {
+			data.setScale(1);
+		}
 	}
 	
 	@Override
-	public void onRemoved() {
-		super.onRemoved();
-		ScaleData data = EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player);
-		data.setScale(data.getBaseScale() / scale);
+	public void onLost() {
+		super.onLost();
+		EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).setScale(1);
 	}
 }
