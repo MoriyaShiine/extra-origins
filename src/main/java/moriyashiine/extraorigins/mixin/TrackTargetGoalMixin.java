@@ -1,11 +1,10 @@
 package moriyashiine.extraorigins.mixin;
 
-import io.github.apace100.origins.component.OriginComponent;
+import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.TrackTargetGoal;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,8 +27,10 @@ public abstract class TrackTargetGoalMixin {
 		if (target == null) {
 			target = this.target;
 		}
-		if (target instanceof PlayerEntity && OriginComponent.hasPower(target, ModifySizePower.class)) {
-			callbackInfo.setReturnValue(callbackInfo.getReturnValue() * OriginComponent.getPowers(target, ModifySizePower.class).get(0).scale);
-		}
+		PowerHolderComponent.getPowers(target, ModifySizePower.class).forEach(power -> {
+			if (power.isActive()) {
+				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * power.scale);
+			}
+		});
 	}
 }

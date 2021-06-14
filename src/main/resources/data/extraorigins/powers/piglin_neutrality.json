@@ -1,3 +1,6 @@
 {
-  "type": "origins:simple"
+  "type": "extraorigins:mob_neutrality",
+  "entity_types": [
+	"piglin"
+  ]
 }

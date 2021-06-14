@@ -2,11 +2,13 @@
   "required": true,
   "minVersion": "0.8",
   "package": "moriyashiine.extraorigins.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
+	"FollowTargetGoalMixin",
 	"ItemStackMixin",
-	"LivingEntityMixin",
 	"PiglinBrainMixin",
+	"PiglinBruteBrainMixin",
+	"TargetPredicateAccessor",
 	"TrackTargetGoalMixin"
   ],
   "injectors": {

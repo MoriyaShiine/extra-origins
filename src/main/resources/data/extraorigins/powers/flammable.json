@@ -2,8 +2,8 @@
   "type": "origins:modify_damage_taken",
   "modifier": {
 	"name": "Origin modifier",
-	"value": 1,
-	"operation": "multiply_base"
+	"operation": "multiply_base",
+	"value": 1
   },
   "damage_condition": {
 	"type": "origins:fire"

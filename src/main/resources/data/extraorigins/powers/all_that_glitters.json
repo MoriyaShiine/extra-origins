@@ -4,8 +4,8 @@
 	"type": "origins:modify_damage_dealt",
 	"modifier": {
 	  "name": "Origin modifier",
-	  "value": 2.5,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 2.5
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -23,8 +23,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.armor",
-	  "value": 1,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 1
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -42,8 +42,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.armor",
-	  "value": 2,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 2
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -61,8 +61,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.armor",
-	  "value": 2,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 2
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -80,8 +80,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.armor",
-	  "value": 1,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 1
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -99,8 +99,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
-	  "value": 0.008,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 0.008
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -118,8 +118,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
-	  "value": 0.008,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 0.008
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -137,8 +137,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
-	  "value": 0.008,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 0.008
 	},
 	"condition": {
 	  "type": "origins:equipped_item",
@@ -156,8 +156,8 @@
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "generic.movement_speed",
-	  "value": 0.008,
-	  "operation": "addition"
+	  "operation": "addition",
+	  "value": 0.008
 	},
 	"condition": {
 	  "type": "origins:equipped_item",

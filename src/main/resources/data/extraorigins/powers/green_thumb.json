@@ -1,3 +1,6 @@
 {
-  "type": "extraorigins:bone_meal"
+  "type": "extraorigins:bone_meal",
+  "key": {
+	"key": "key.origins.primary_active"
+  }
 }

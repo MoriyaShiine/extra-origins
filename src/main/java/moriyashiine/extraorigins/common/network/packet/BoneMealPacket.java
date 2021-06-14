@@ -10,6 +10,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -28,11 +30,11 @@ public class BoneMealPacket {
 		server.execute(() -> {
 			if (player.getHungerManager().getFoodLevel() > 0) {
 				BlockState state = player.world.getBlockState(pos);
-				if (state.getBlock() instanceof Fertilizable) {
-					Fertilizable fertilizable = ((Fertilizable) state.getBlock());
+				if (state.getBlock() instanceof Fertilizable fertilizable) {
 					if (fertilizable.canGrow(player.world, player.getRandom(), pos, state)) {
 						fertilizable.grow(player.getServerWorld(), player.getRandom(), pos, state);
 						player.world.syncWorldEvent(2005, pos, 0);
+						player.world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1, 1);
 						player.swingHand(Hand.MAIN_HAND, true);
 						player.addExhaustion(20);
 					}

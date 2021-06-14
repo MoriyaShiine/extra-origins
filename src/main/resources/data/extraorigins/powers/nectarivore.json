@@ -12,6 +12,13 @@
 		  "item": "honey_bottle"
 		},
 		"inverted": true
+	  },
+	  {
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "origins:ignore_diet"
+		},
+		"inverted": true
 	  }
 	]
   }

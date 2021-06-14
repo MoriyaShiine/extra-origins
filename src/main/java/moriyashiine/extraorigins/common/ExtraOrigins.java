@@ -12,9 +12,9 @@ public class ExtraOrigins implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		ServerPlayNetworking.registerGlobalReceiver(BoneMealPacket.ID, BoneMealPacket::handle);
 		EOScaleTypes.init();
 		EOPowers.init();
 		EOConditions.init();
+		ServerPlayNetworking.registerGlobalReceiver(BoneMealPacket.ID, BoneMealPacket::handle);
 	}
 }

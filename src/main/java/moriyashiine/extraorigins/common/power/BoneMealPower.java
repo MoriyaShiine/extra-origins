@@ -1,24 +1,25 @@
 package moriyashiine.extraorigins.common.power;
 
-import io.github.apace100.origins.power.Active;
-import io.github.apace100.origins.power.Power;
-import io.github.apace100.origins.power.PowerType;
+import io.github.apace100.apoli.power.Active;
+import io.github.apace100.apoli.power.Power;
+import io.github.apace100.apoli.power.PowerType;
 import moriyashiine.extraorigins.common.network.packet.BoneMealPacket;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
 public class BoneMealPower extends Power implements Active {
 	private Key key;
 	
-	public BoneMealPower(PowerType<?> type, PlayerEntity player) {
-		super(type, player);
+	public BoneMealPower(PowerType<?> type, LivingEntity entity) {
+		super(type, entity);
 	}
 	
 	@Override
 	public void onUse() {
-		if (player.world.isClient) {
+		if (entity.world.isClient && entity instanceof ClientPlayerEntity) {
 			MinecraftClient client = MinecraftClient.getInstance();
 			if (client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.BLOCK) {
 				BoneMealPacket.send(((BlockHitResult) client.crosshairTarget).getBlockPos());
