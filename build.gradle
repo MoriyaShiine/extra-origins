@@ -13,7 +13,7 @@ group = project.maven_group
 repositories {
     maven {
         name "player ability lib"
-        url 'https://ladysnake.jfrog.io/artifactory/mods'
+        url "https://ladysnake.jfrog.io/artifactory/mods"
     }
     maven {
         name "fall flying lib"
