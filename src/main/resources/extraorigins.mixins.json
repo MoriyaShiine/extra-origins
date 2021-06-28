@@ -4,6 +4,7 @@
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+	"EndermanEntityMixin",
 	"FollowTargetGoalMixin",
 	"ItemStackMixin",
 	"PiglinBrainMixin",
