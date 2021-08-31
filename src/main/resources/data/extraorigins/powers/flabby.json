@@ -4,6 +4,6 @@
 	"name": "Origin modifier",
 	"attribute": "generic.max_health",
 	"operation": "multiply_total",
-	"value": 0.8
+	"value": -0.8
   }
 }
