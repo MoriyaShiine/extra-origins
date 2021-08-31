@@ -10,7 +10,7 @@
 	  {
 		"name": "Origin modifier",
 		"attribute": "generic.max_health",
-		"operation": "multiply_total",
+		"operation": "multiply_base",
 		"value": 0.5
 	  },
 	  {
