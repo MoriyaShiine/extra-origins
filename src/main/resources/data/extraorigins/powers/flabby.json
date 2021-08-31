@@ -3,7 +3,7 @@
   "modifier": {
 	"name": "Origin modifier",
 	"attribute": "generic.max_health",
-	"operation": "addition",
-	"value": -4
+	"operation": "multiply_total",
+	"value": 0.8
   }
 }
