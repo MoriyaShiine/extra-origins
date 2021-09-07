@@ -19,16 +19,18 @@ import net.minecraft.util.math.BlockPos;
 public class BoneMealPacket {
 	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "bone_meal");
 	
-	public static void send(BlockPos pos) {
+	public static void send(BlockPos pos, int exhaustion) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
 		buf.writeLong(pos.asLong());
+		buf.writeInt(exhaustion);
 		ClientPlayNetworking.send(ID, buf);
 	}
 	
 	public static void handle(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
 		BlockPos pos = BlockPos.fromLong(buf.readLong());
+		int exhaustion = buf.readInt();
 		server.execute(() -> {
-			if (player.getHungerManager().getFoodLevel() > 0) {
+			if (exhaustion == 0 || player.getHungerManager().getFoodLevel() > 0) {
 				BlockState state = player.world.getBlockState(pos);
 				if (state.getBlock() instanceof Fertilizable fertilizable) {
 					if (fertilizable.canGrow(player.world, player.getRandom(), pos, state)) {
@@ -36,7 +38,9 @@ public class BoneMealPacket {
 						player.world.syncWorldEvent(2005, pos, 0);
 						player.world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1, 1);
 						player.swingHand(Hand.MAIN_HAND, true);
-						player.addExhaustion(20);
+						if (exhaustion > 0) {
+							player.addExhaustion(exhaustion);
+						}
 					}
 				}
 			}

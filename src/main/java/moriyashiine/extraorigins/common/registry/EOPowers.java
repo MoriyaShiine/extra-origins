@@ -27,8 +27,8 @@ import java.util.Map;
 public class EOPowers {
 	private static final Map<PowerFactory<?>, Identifier> POWER_FACTORIES = new LinkedHashMap<>();
 	
-	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("key", ApoliDataTypes.KEY), data -> (type, entity) -> {
-		BoneMealPower power = new BoneMealPower(type, entity);
+	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("exhaustion", SerializableDataTypes.INT, 0).add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
+		BoneMealPower power = new BoneMealPower(type, entity, data.getInt("exhaustion"));
 		power.setKey((Active.Key) data.get("key"));
 		return power;
 	}).allowCondition());

@@ -11,10 +11,13 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
 public class BoneMealPower extends Power implements Active {
+	private final int exhaustion;
+	
 	private Key key;
 	
-	public BoneMealPower(PowerType<?> type, LivingEntity entity) {
+	public BoneMealPower(PowerType<?> type, LivingEntity entity, int exhaustion) {
 		super(type, entity);
+		this.exhaustion = exhaustion;
 	}
 	
 	@Override
@@ -22,7 +25,7 @@ public class BoneMealPower extends Power implements Active {
 		if (entity.world.isClient && entity instanceof ClientPlayerEntity) {
 			MinecraftClient client = MinecraftClient.getInstance();
 			if (client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.BLOCK) {
-				BoneMealPacket.send(((BlockHitResult) client.crosshairTarget).getBlockPos());
+				BoneMealPacket.send(((BlockHitResult) client.crosshairTarget).getBlockPos(), exhaustion);
 			}
 		}
 	}

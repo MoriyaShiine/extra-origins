@@ -1,6 +1,4 @@
 {
   "type": "extraorigins:bone_meal",
-  "key": {
-	"key": "key.origins.primary_active"
-  }
+  "exhaustion": 20
 }
