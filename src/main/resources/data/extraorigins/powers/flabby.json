@@ -5,5 +5,9 @@
 	"attribute": "generic.max_health",
 	"operation": "addition",
 	"value": -4
+  },
+  "condition": {
+	"type": "extraorigins:piglin_safe",
+	"inverted": false
   }
 }
