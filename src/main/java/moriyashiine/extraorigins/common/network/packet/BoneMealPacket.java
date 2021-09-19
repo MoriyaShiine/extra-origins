@@ -26,7 +26,7 @@ public class BoneMealPacket {
 		ClientPlayNetworking.send(ID, buf);
 	}
 	
-	public static void handle(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
+	public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
 		BlockPos pos = BlockPos.fromLong(buf.readLong());
 		int exhaustion = buf.readInt();
 		server.execute(() -> {
