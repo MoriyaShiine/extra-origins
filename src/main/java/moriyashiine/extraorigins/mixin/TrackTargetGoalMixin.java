@@ -27,10 +27,16 @@ public abstract class TrackTargetGoalMixin {
 		if (target == null) {
 			target = this.target;
 		}
-		PowerHolderComponent.getPowers(target, ModifySizePower.class).forEach(power -> {
+		boolean dirty = false;
+		double followRange = callbackInfo.getReturnValue();
+		for (ModifySizePower power : PowerHolderComponent.getPowers(target, ModifySizePower.class)) {
 			if (power.isActive()) {
-				callbackInfo.setReturnValue(callbackInfo.getReturnValue() * power.scale);
+				dirty = true;
+				followRange *= power.scale;
 			}
-		});
+		}
+		if (dirty) {
+			callbackInfo.setReturnValue(followRange);
+		}
 	}
 }

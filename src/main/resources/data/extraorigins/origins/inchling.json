@@ -3,7 +3,8 @@
 	"extraorigins:bite_sized",
 	"extraorigins:nimble",
 	"extraorigins:small_appetite",
-	"origins:climbing"
+	"origins:climbing",
+	"extraorigins:jockey"
   ],
   "icon": "anvil",
   "order": 1,

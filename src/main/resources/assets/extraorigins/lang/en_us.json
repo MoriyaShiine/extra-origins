@@ -23,6 +23,8 @@
   "power.extraorigins.small_appetite.description": "You require less food to keep going.",
   "power.extraorigins.nimble.name": "Nimble",
   "power.extraorigins.nimble.description": "You are immune to thorns and velocity based damage. You are not slowed down at all by blocks such as Sweet Berry Bushes or Cobwebs.",
+  "power.extraorigins.jockey.name": "Jockey",
+  "power.extraorigins.jockey.description": "You can ride other players.",
   "power.extraorigins.all_that_glitters.name": "All That Glitters",
   "power.extraorigins.all_that_glitters.description": "Golden tools deal extra damage and golden armor has additional protection. Golden equipment lasts much longer, but non golden and non netherite equipment breaks faster. Netherite armor gives a small speed boost.",
   "power.extraorigins.piglin_neutrality.name": "Piglin Neutrality",

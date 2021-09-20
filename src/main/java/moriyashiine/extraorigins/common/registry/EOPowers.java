@@ -14,6 +14,7 @@ import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.BoneMealPower;
 import moriyashiine.extraorigins.common.power.MobNeutralityPower;
 import moriyashiine.extraorigins.common.power.ModifySizePower;
+import moriyashiine.extraorigins.common.power.StartRidingPower;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -29,6 +30,12 @@ public class EOPowers {
 	
 	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("exhaustion", SerializableDataTypes.INT, 0).add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
 		BoneMealPower power = new BoneMealPower(type, entity, data.getInt("exhaustion"));
+		power.setKey((Active.Key) data.get("key"));
+		return power;
+	}).allowCondition());
+	
+	public static final PowerFactory<Power> START_RIDING = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
+		StartRidingPower power = new StartRidingPower(type, entity);
 		power.setKey((Active.Key) data.get("key"));
 		return power;
 	}).allowCondition());
