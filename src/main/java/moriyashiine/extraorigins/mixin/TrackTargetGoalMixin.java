@@ -22,13 +22,13 @@ public abstract class TrackTargetGoalMixin {
 	protected LivingEntity target;
 	
 	@Inject(method = "getFollowRange", at = @At("RETURN"), cancellable = true)
-	private void getFollowRange(CallbackInfoReturnable<Double> callbackInfo) {
+	private void getFollowRange(CallbackInfoReturnable<Double> cir) {
 		LivingEntity target = mob.getTarget();
 		if (target == null) {
 			target = this.target;
 		}
 		boolean dirty = false;
-		double followRange = callbackInfo.getReturnValue();
+		double followRange = cir.getReturnValue();
 		for (ModifySizePower power : PowerHolderComponent.getPowers(target, ModifySizePower.class)) {
 			if (power.isActive()) {
 				dirty = true;
@@ -36,7 +36,7 @@ public abstract class TrackTargetGoalMixin {
 			}
 		}
 		if (dirty) {
-			callbackInfo.setReturnValue(followRange);
+			cir.setReturnValue(followRange);
 		}
 	}
 }

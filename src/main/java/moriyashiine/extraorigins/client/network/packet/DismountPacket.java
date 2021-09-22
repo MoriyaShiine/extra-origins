@@ -11,8 +11,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class StartRidingPacketS2C {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "start_riding_s2c");
+public class DismountPacket {
+	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "dismount");
 	
 	public static void send(ServerPlayerEntity player, Entity entity) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
@@ -27,7 +27,7 @@ public class StartRidingPacketS2C {
 			public void run() {
 				Entity entity = client.world.getEntityById(id);
 				if (entity != null) {
-					entity.startRiding(client.player, true);
+					entity.stopRiding();
 				}
 			}
 		});

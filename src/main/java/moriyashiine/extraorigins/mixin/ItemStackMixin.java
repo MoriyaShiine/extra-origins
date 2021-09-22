@@ -47,12 +47,12 @@ public abstract class ItemStackMixin {
 	public abstract boolean damage(int amount, Random random, @Nullable ServerPlayerEntity player);
 	
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
-	private <T extends LivingEntity> void damage(int amount, T entity, Consumer<T> breakCallback, CallbackInfo callbackInfo) {
+	private <T extends LivingEntity> void damage(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
 		if (!entity.world.isClient && EOPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
 			if (getItem() instanceof ToolItem) {
 				if (EOTags.GOLDEN_TOOLS.contains(getItem())) {
 					if (entity.world.random.nextFloat() < 15 / 16f) {
-						callbackInfo.cancel();
+						ci.cancel();
 					}
 				}
 				else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_TOOLS.contains(getItem())) {
@@ -62,7 +62,7 @@ public abstract class ItemStackMixin {
 			if (getItem() instanceof ArmorItem) {
 				if (EOTags.GOLDEN_ARMOR.contains(getItem())) {
 					if (entity.world.random.nextFloat() < 3 / 4f) {
-						callbackInfo.cancel();
+						ci.cancel();
 					}
 				}
 				else if (entity.getRandom().nextBoolean() && !EOTags.NETHERITE_ARMOR.contains(getItem())) {

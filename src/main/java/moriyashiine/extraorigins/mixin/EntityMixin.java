@@ -1,6 +1,8 @@
 package moriyashiine.extraorigins.mixin;
 
-import moriyashiine.extraorigins.client.network.packet.StopRidingPacket;
+import io.github.apace100.apoli.component.PowerHolderComponent;
+import moriyashiine.extraorigins.client.network.packet.DismountPacket;
+import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.registry.EOPowers;
 import moriyashiine.extraorigins.common.registry.EOScaleTypes;
 import net.minecraft.block.BlockState;
@@ -9,6 +11,7 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,8 +22,9 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-	@Shadow
-	private EntityDimensions dimensions;
+	@Shadow private EntityDimensions dimensions;
+	
+	@Shadow @Nullable public abstract Entity getFirstPassenger();
 	
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
 	private void slowMovement(BlockState state, Vec3d multiplier, CallbackInfo ci) {
@@ -32,19 +36,15 @@ public abstract class EntityMixin {
 	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
 	private void getMountedHeightOffset(CallbackInfoReturnable<Double> cir) {
-		if ((Object) this instanceof PlayerEntity player) {
-			float scale = EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale();
-			double height = dimensions.height / scale;
-			height += 0;
-			height *= scale;
-			cir.setReturnValue(height);
+		if ((Object) this instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
+			cir.setReturnValue((double) (dimensions.height * EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
 		}
 	}
 	
 	@Inject(method = "dismountVehicle", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;removePassenger(Lnet/minecraft/entity/Entity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void dismountVehicle(CallbackInfo ci, Entity entity) {
-		if (entity instanceof ServerPlayerEntity player) {
-			StopRidingPacket.send(player, (Entity) (Object) this);
+		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower((Entity) (Object) this, MountPower.class)) {
+			DismountPacket.send(player, (Entity) (Object) this);
 		}
 	}
 }

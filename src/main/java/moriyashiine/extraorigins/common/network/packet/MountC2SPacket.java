@@ -1,7 +1,7 @@
 package moriyashiine.extraorigins.common.network.packet;
 
 import io.netty.buffer.Unpooled;
-import moriyashiine.extraorigins.client.network.packet.StartRidingPacketS2C;
+import moriyashiine.extraorigins.client.network.packet.MountS2CPacket;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -12,8 +12,8 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class StartRidingPacketC2S {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "start_riding_c2s");
+public class MountC2SPacket {
+	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "mount_c2s");
 	
 	public static void send(Entity entity) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
@@ -28,7 +28,7 @@ public class StartRidingPacketC2S {
 			if (entity != null) {
 				player.startRiding(entity, true);
 				if (entity instanceof ServerPlayerEntity playerBeingRidden) {
-					StartRidingPacketS2C.send(playerBeingRidden, player);
+					MountS2CPacket.send(playerBeingRidden, player);
 				}
 			}
 		});
