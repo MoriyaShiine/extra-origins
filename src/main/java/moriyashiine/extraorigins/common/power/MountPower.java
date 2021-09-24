@@ -7,6 +7,7 @@ import moriyashiine.extraorigins.common.network.packet.MountC2SPacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 
@@ -21,8 +22,8 @@ public class MountPower extends Power implements Active {
 	public void onUse() {
 		if (entity.world.isClient && entity instanceof ClientPlayerEntity) {
 			MinecraftClient client = MinecraftClient.getInstance();
-			if (client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.ENTITY) {
-				MountC2SPacket.send(((EntityHitResult) client.crosshairTarget).getEntity());
+			if (client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.ENTITY && ((EntityHitResult) client.crosshairTarget).getEntity() instanceof PlayerEntity player) {
+				MountC2SPacket.send(player);
 			}
 		}
 	}
