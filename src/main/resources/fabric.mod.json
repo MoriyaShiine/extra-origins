@@ -28,8 +28,9 @@
   "depends": {
 	"fabricloader": "*",
 	"fabric": "*",
-	"minecraft": "1.17.*",
+	"minecraft": "1.17.x",
 	"origins": "*",
-	"pehkui": ">=2.2.1"
+	"pehkui": "*",
+	"java": ">=16"
   }
 }
