@@ -1,7 +1,7 @@
 package moriyashiine.extraorigins.client;
 
-import moriyashiine.extraorigins.client.network.packet.MountS2CPacket;
 import moriyashiine.extraorigins.client.network.packet.DismountPacket;
+import moriyashiine.extraorigins.client.network.packet.MountS2CPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

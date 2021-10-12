@@ -22,9 +22,12 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-	@Shadow private EntityDimensions dimensions;
+	@Shadow
+	private EntityDimensions dimensions;
 	
-	@Shadow @Nullable public abstract Entity getFirstPassenger();
+	@Shadow
+	@Nullable
+	public abstract Entity getFirstPassenger();
 	
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
 	private void slowMovement(BlockState state, Vec3d multiplier, CallbackInfo ci) {

@@ -21,41 +21,35 @@ import net.minecraft.util.registry.Registry;
 import virtuoel.pehkui.api.ScaleRegistries;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EOPowers {
-	private static final Map<PowerFactory<?>, Identifier> POWER_FACTORIES = new LinkedHashMap<>();
-	
-	public static final PowerFactory<Power> BONE_MEAL = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("exhaustion", SerializableDataTypes.INT, 0).add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
+	public static final PowerFactory<Power> BONE_MEAL = new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "bone_meal"), new SerializableData().add("exhaustion", SerializableDataTypes.INT, 0).add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
 		BoneMealPower power = new BoneMealPower(type, entity, data.getInt("exhaustion"));
 		power.setKey((Active.Key) data.get("key"));
 		return power;
-	}).allowCondition());
+	}).allowCondition();
 	
-	public static final PowerFactory<Power> START_RIDING = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
+	public static final PowerFactory<Power> START_RIDING = new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
 		MountPower power = new MountPower(type, entity);
 		power.setKey((Active.Key) data.get("key"));
 		return power;
-	}).allowCondition());
+	}).allowCondition();
 	
 	@SuppressWarnings("unchecked")
-	public static final PowerFactory<Power> MODIFY_SIZE = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS, Collections.singletonList(ScaleRegistries.getId(ScaleRegistries.SCALE_TYPES, EOScaleTypes.MODIFY_SIZE_TYPE))).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, (List<Identifier>) data.get("scale_types"), data.getFloat("scale"))).allowCondition());
+	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS, Collections.singletonList(ScaleRegistries.getId(ScaleRegistries.SCALE_TYPES, EOScaleTypes.MODIFY_SIZE_TYPE))).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, (List<Identifier>) data.get("scale_types"), data.getFloat("scale"))).allowCondition();
 	
 	@SuppressWarnings("unchecked")
-	public static final PowerFactory<Power> MOB_NEUTRALITY = create(new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE)), data -> (type, entity) -> new MobNeutralityPower(type, entity, (List<EntityType<?>>) data.get("entity_types"))).allowCondition());
+	public static final PowerFactory<Power> MOB_NEUTRALITY = new PowerFactory<>(new Identifier(ExtraOrigins.MODID, "mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE)), data -> (type, entity) -> new MobNeutralityPower(type, entity, (List<EntityType<?>>) data.get("entity_types"))).allowCondition();
 	
 	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "all_that_glitters"));
 	
 	public static final PowerType<Power> NIMBLE = new PowerTypeReference<>(new Identifier(ExtraOrigins.MODID, "nimble"));
 	
-	private static <T extends Power> PowerFactory<T> create(PowerFactory<T> factory) {
-		POWER_FACTORIES.put(factory, factory.getSerializerId());
-		return factory;
-	}
-	
 	public static void init() {
-		POWER_FACTORIES.keySet().forEach(powerType -> Registry.register(ApoliRegistries.POWER_FACTORY, POWER_FACTORIES.get(powerType), powerType));
+		Registry.register(ApoliRegistries.POWER_FACTORY, BONE_MEAL.getSerializerId(), BONE_MEAL);
+		Registry.register(ApoliRegistries.POWER_FACTORY, START_RIDING.getSerializerId(), START_RIDING);
+		Registry.register(ApoliRegistries.POWER_FACTORY, MODIFY_SIZE.getSerializerId(), MODIFY_SIZE);
+		Registry.register(ApoliRegistries.POWER_FACTORY, MOB_NEUTRALITY.getSerializerId(), MOB_NEUTRALITY);
 	}
 }
