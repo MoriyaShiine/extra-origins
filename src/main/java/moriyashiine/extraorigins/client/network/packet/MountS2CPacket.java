@@ -12,7 +12,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class MountS2CPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "mount_s2c");
+	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "mount_s2c");
 	
 	public static void send(ServerPlayerEntity player, Entity entity) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());

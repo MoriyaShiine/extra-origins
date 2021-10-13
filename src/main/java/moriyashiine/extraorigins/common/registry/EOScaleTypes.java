@@ -17,7 +17,7 @@ public class EOScaleTypes {
 	public static final ScaleType MODIFY_SIZE_TYPE = register(ScaleRegistries.SCALE_TYPES, ScaleType.Builder.create().addDependentModifier(MODIFY_SIZE_MODIFIER).affectsDimensions().build());
 	
 	private static <T> T register(Map<Identifier, T> registry, T entry) {
-		return ScaleRegistries.register(registry, new Identifier(ExtraOrigins.MODID, "modify_size"), entry);
+		return ScaleRegistries.register(registry, new Identifier(ExtraOrigins.MOD_ID, "modify_size"), entry);
 	}
 	
 	public static void init() {

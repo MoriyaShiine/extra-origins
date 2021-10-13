@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
 public class BoneMealPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MODID, "bone_meal");
+	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "bone_meal");
 	
 	public static void send(BlockPos pos, int exhaustion) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());

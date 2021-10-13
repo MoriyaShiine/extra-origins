@@ -9,7 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class ExtraOrigins implements ModInitializer {
-	public static final String MODID = "extraorigins";
+	public static final String MOD_ID = "extraorigins";
 	
 	@Override
 	public void onInitialize() {
