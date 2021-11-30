@@ -1,10 +1,10 @@
 plugins {
-    id 'fabric-loom' version '0.9-SNAPSHOT'
+    id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
@@ -12,24 +12,20 @@ group = project.maven_group
 
 repositories {
     maven {
-        name "player ability lib"
-        url "https://ladysnake.jfrog.io/artifactory/mods"
-    }
-    maven {
-        name "fall flying lib"
-        url "https://maven.cafeteria.dev"
-    }
-    maven {
-        name "entity reach"
-        url "https://maven.jamieswhiteshirt.com/libs-release/"
-    }
-    maven {
         name "cloth config"
         url "https://maven.shedaniel.me/"
     }
     maven {
         name "mod menu"
         url "https://maven.terraformersmc.com/"
+    }
+    maven {
+        name "player ability lib"
+        url "https://ladysnake.jfrog.io/artifactory/mods"
+    }
+    maven {
+        name "reach entity attributes"
+        url "https://maven.jamieswhiteshirt.com/libs-release/"
     }
     maven {
         name "jitpack"
@@ -40,8 +36,8 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
-
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     modImplementation "com.github.apace100:origins-fabric:${origins_version}"
     modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
@@ -58,8 +54,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.encoding = "UTF-8"
-    it.options.release = 16
+    it.options.release = 17
 }
 
 java {

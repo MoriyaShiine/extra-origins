@@ -34,7 +34,7 @@ public class BoneMealPacket {
 				BlockState state = player.world.getBlockState(pos);
 				if (state.getBlock() instanceof Fertilizable fertilizable) {
 					if (fertilizable.canGrow(player.world, player.getRandom(), pos, state)) {
-						fertilizable.grow(player.getServerWorld(), player.getRandom(), pos, state);
+						fertilizable.grow(player.getWorld(), player.getRandom(), pos, state);
 						player.world.syncWorldEvent(2005, pos, 0);
 						player.world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1, 1);
 						player.swingHand(Hand.MAIN_HAND, true);

@@ -17,7 +17,7 @@ import java.util.Optional;
 @Mixin(PiglinBruteBrain.class)
 public abstract class PiglinBruteBrainMixin {
 	@Inject(method = "method_30249", at = @At("RETURN"), cancellable = true)
-	private static void method_30249(AbstractPiglinEntity piglin, MemoryModuleType<LivingEntity> memoryModuleType, CallbackInfoReturnable<Optional<LivingEntity>> cir) {
+	private static void addMobNeutrality(AbstractPiglinEntity piglin, MemoryModuleType<? extends LivingEntity> memoryModuleType, CallbackInfoReturnable<Optional<? extends LivingEntity>> cir) {
 		if (cir.getReturnValue().isPresent()) {
 			piglin.getBrain().getOptionalMemory(memoryModuleType).filter(entity -> {
 				PowerHolderComponent.getPowers(entity, MobNeutralityPower.class).forEach(power -> {

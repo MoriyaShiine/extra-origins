@@ -22,7 +22,7 @@
   "power.extraorigins.small_appetite.name": "Small Appetite",
   "power.extraorigins.small_appetite.description": "You require less food to keep going.",
   "power.extraorigins.nimble.name": "Nimble",
-  "power.extraorigins.nimble.description": "You are immune to thorns and velocity based damage. You are not slowed down at all by blocks such as Sweet Berry Bushes or Cobwebs.",
+  "power.extraorigins.nimble.description": "You are immune to thorns and velocity based damage. You are not slowed down at all by blocks such as Sweet Berry Bushes or Cobwebs. You can walk on Powdered Snow.",
   "power.extraorigins.jockey.name": "Jockey",
   "power.extraorigins.jockey.description": "You can ride other players.",
   "power.extraorigins.all_that_glitters.name": "All That Glitters",

@@ -3,8 +3,8 @@ package moriyashiine.extraorigins.mixin;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.client.network.packet.DismountPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
-import moriyashiine.extraorigins.common.registry.EOPowers;
-import moriyashiine.extraorigins.common.registry.EOScaleTypes;
+import moriyashiine.extraorigins.common.registry.ModPowers;
+import moriyashiine.extraorigins.common.registry.ModScaleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -30,22 +30,22 @@ public abstract class EntityMixin {
 	public abstract Entity getFirstPassenger();
 	
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
-	private void slowMovement(BlockState state, Vec3d multiplier, CallbackInfo ci) {
-		if (EOPowers.NIMBLE.isActive((Entity) (Object) this)) {
+	private void disableNimbleSlownessFromBlocks(BlockState state, Vec3d multiplier, CallbackInfo ci) {
+		if (ModPowers.NIMBLE.isActive((Entity) (Object) this)) {
 			ci.cancel();
 		}
 	}
 	
 	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
-	private void getMountedHeightOffset(CallbackInfoReturnable<Double> cir) {
+	private void changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
 		if ((Object) this instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
-			cir.setReturnValue((double) (dimensions.height * EOScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
+			cir.setReturnValue((double) (dimensions.height * ModScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
 		}
 	}
 	
 	@Inject(method = "dismountVehicle", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;removePassenger(Lnet/minecraft/entity/Entity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
-	private void dismountVehicle(CallbackInfo ci, Entity entity) {
+	private void dismountPlayerWithPower(CallbackInfo ci, Entity entity) {
 		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower((Entity) (Object) this, MountPower.class)) {
 			DismountPacket.send(player, (Entity) (Object) this);
 		}

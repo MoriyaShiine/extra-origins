@@ -10,8 +10,8 @@
 	"ItemStackMixin",
 	"PiglinBrainMixin",
 	"PiglinBruteBrainMixin",
-	"TargetPredicateAccessor",
-	"TrackTargetGoalMixin"
+	"PowderSnowBlockMixin",
+	"TargetPredicateAccessor"
   ],
   "injectors": {
 	"defaultRequire": 1

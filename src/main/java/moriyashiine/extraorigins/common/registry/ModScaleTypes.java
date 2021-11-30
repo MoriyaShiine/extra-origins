@@ -2,17 +2,14 @@ package moriyashiine.extraorigins.common.registry;
 
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import net.minecraft.util.Identifier;
-import virtuoel.pehkui.api.ScaleModifier;
-import virtuoel.pehkui.api.ScaleRegistries;
-import virtuoel.pehkui.api.ScaleType;
-import virtuoel.pehkui.api.TypedScaleModifier;
+import virtuoel.pehkui.api.*;
 
 import java.util.Map;
 
-public class EOScaleTypes {
-	private static final ScaleType[] MODIFY_SIZE_TYPES = {ScaleType.WIDTH, ScaleType.HEIGHT, ScaleType.DROPS};
+public class ModScaleTypes {
+	private static final ScaleType[] MODIFY_SIZE_TYPES = {ScaleTypes.WIDTH, ScaleTypes.HEIGHT, ScaleTypes.DROPS, ScaleTypes.VISIBILITY};
 	
-	public static final ScaleModifier MODIFY_SIZE_MODIFIER = register(ScaleRegistries.SCALE_MODIFIERS, new TypedScaleModifier(() -> EOScaleTypes.MODIFY_SIZE_TYPE));
+	public static final ScaleModifier MODIFY_SIZE_MODIFIER = register(ScaleRegistries.SCALE_MODIFIERS, new TypedScaleModifier(() -> ModScaleTypes.MODIFY_SIZE_TYPE));
 	
 	public static final ScaleType MODIFY_SIZE_TYPE = register(ScaleRegistries.SCALE_TYPES, ScaleType.Builder.create().addDependentModifier(MODIFY_SIZE_MODIFIER).affectsDimensions().build());
 	

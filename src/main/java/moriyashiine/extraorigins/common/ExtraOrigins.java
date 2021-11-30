@@ -4,9 +4,9 @@ import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.network.packet.BoneMealPacket;
 import moriyashiine.extraorigins.common.network.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
-import moriyashiine.extraorigins.common.registry.EOConditions;
-import moriyashiine.extraorigins.common.registry.EOPowers;
-import moriyashiine.extraorigins.common.registry.EOScaleTypes;
+import moriyashiine.extraorigins.common.registry.ModConditions;
+import moriyashiine.extraorigins.common.registry.ModPowers;
+import moriyashiine.extraorigins.common.registry.ModScaleTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -17,9 +17,9 @@ public class ExtraOrigins implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		EOScaleTypes.init();
-		EOPowers.init();
-		EOConditions.init();
+		ModScaleTypes.init();
+		ModPowers.init();
+		ModConditions.init();
 		ServerPlayNetworking.registerGlobalReceiver(BoneMealPacket.ID, BoneMealPacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {

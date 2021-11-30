@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PiglinBrain.class)
 public abstract class PiglinBrainMixin {
 	@Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
-	private static void wearsGoldArmor(LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
+	private static void addMobNeutrality(LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
 		PowerHolderComponent.getPowers(target, MobNeutralityPower.class).forEach(power -> {
 			if (power.entityTypes.contains(EntityType.PIGLIN)) {
 				cir.setReturnValue(true);
@@ -24,7 +24,7 @@ public abstract class PiglinBrainMixin {
 	}
 	
 	@Inject(method = "onGuardedBlockInteracted", at = @At("HEAD"), cancellable = true)
-	private static void onGuardedBlockInteracted(PlayerEntity player, boolean blockOpen, CallbackInfo ci) {
+	private static void addMobNeutrality(PlayerEntity player, boolean blockOpen, CallbackInfo ci) {
 		PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(power -> {
 			if (power.entityTypes.contains(EntityType.PIGLIN)) {
 				ci.cancel();
