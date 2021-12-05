@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-	"netherite_helmet",
-	"netherite_chestplate",
-	"netherite_leggings",
-	"netherite_boots"
+	"minecraft:netherite_helmet",
+	"minecraft:netherite_chestplate",
+	"minecraft:netherite_leggings",
+	"minecraft:netherite_boots"
   ]
 }

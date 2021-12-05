@@ -7,7 +7,7 @@
 	"extraorigins:delicate",
 	"extraorigins:nectarivore"
   ],
-  "icon": "oak_sapling",
+  "icon": "minecraft:oak_sapling",
   "order": 1,
   "impact": 2
 }

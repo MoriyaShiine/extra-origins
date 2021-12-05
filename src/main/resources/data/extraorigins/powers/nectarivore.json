@@ -9,7 +9,7 @@
 	  {
 		"type": "origins:ingredient",
 		"ingredient": {
-		  "item": "honey_bottle"
+		  "item": "minecraft:honey_bottle"
 		},
 		"inverted": true
 	  },

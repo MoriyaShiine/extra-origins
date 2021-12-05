@@ -10,7 +10,7 @@
 	"conditions": [
 	  {
 		"type": "origins:fluid_height",
-		"fluid": "water",
+		"fluid": "minecraft:water",
 		"comparison": ">",
 		"compare_to": 0.0
 	  },

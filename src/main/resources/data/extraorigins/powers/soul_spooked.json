@@ -4,7 +4,7 @@
   "max_stacks": 1,
   "duration_per_stack": 30,
   "effect": {
-	"effect": "weakness",
+	"effect": "minecraft:weakness",
 	"amplifier": 2,
 	"is_ambient": true,
 	"show_particles": false,
@@ -15,7 +15,7 @@
 	"radius": 8,
 	"block_condition": {
 	  "type": "origins:in_tag",
-	  "tag": "piglin_repellents"
+	  "tag": "minecraft:piglin_repellents"
 	}
   }
 }

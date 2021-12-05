@@ -19,7 +19,7 @@
 	"type": "origins:attribute",
 	"modifier": {
 	  "name": "Origin modifier",
-	  "attribute": "generic.movement_speed",
+	  "attribute": "minecraft:generic.movement_speed",
 	  "operation": "multiply_total",
 	  "value": -0.15
 	},
