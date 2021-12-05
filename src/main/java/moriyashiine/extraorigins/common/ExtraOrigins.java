@@ -1,7 +1,6 @@
 package moriyashiine.extraorigins.common;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.network.packet.BoneMealPacket;
 import moriyashiine.extraorigins.common.network.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.registry.ModConditions;
@@ -20,7 +19,6 @@ public class ExtraOrigins implements ModInitializer {
 		ModScaleTypes.init();
 		ModPowers.init();
 		ModConditions.init();
-		ServerPlayNetworking.registerGlobalReceiver(BoneMealPacket.ID, BoneMealPacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
 			if (PowerHolderComponent.hasPower(handler.player, MountPower.class) && handler.player.getVehicle() instanceof PlayerEntity) {

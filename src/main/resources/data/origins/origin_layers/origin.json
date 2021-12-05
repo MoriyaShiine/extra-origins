@@ -2,6 +2,7 @@
   "replace": false,
   "origins": [
 	"extraorigins:floran",
+	"extraorigins:truffle",
 	"extraorigins:inchling",
 	"extraorigins:piglin"
   ]
