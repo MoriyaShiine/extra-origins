@@ -16,16 +16,12 @@
 	}
   },
   "slowness": {
-	"type": "origins:stacking_status_effect",
-	"min_stacks": 0,
-	"max_stacks": 1,
-	"duration_per_stack": 30,
-	"effect": {
-	  "effect": "slowness",
-	  "amplifier": 1,
-	  "is_ambient": true,
-	  "show_particles": false,
-	  "show_icon": false
+	"type": "origins:attribute",
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "generic.movement_speed",
+	  "operation": "multiply_total",
+	  "value": -0.15
 	},
 	"condition": {
 	  "type": "extraorigins:piglin_safe",
