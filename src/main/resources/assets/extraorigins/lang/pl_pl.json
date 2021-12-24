@@ -13,8 +13,6 @@
   "power.extraorigins.absorbing.description": "Zadajesz 2 punkty dodatkowe obrażenia, gdy jest mokry. ",
   "power.extraorigins.flammable.name": "Łatwopalny",
   "power.extraorigins.flammable.description": "Otrzymujesz dwa razy więcej obrażeń od ognia.",
-  "power.extraorigins.delicate.name": "Delikatny",
-  "power.extraorigins.delicate.description": "Biomy, które są zbyt gorące lub zbyt zimne, spowalniają Cię.",
   "power.extraorigins.nectarivore.name": "Nektarożerca",
   "power.extraorigins.nectarivore.description": "Możesz spożywać tylko butelki miodu.",
   "power.extraorigins.bite_sized.name": "Malutki",
