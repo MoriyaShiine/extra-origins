@@ -1,19 +1,14 @@
 {
   "type": "origins:action_on_block_use",
-  "block_action": {
-	"type": "origins:bonemeal",
-	"effects": true
-  },
-  "entity_action": {
-	"type": "origins:exhaust",
-	"amount": 20
-  },
   "block_condition": {
 	"type": "extraorigins:fertilizable"
   },
   "item_condition": {
 	"type": "origins:empty"
   },
+  "hands": [
+	"main_hand"
+  ],
   "condition": {
 	"type": "origins:and",
 	"conditions": [
@@ -26,5 +21,13 @@
 		"compare_to": 0
 	  }
 	]
+  },
+  "block_action": {
+	"type": "origins:bonemeal",
+	"effects": true
+  },
+  "entity_action": {
+	"type": "origins:exhaust",
+	"amount": 20
   }
 }

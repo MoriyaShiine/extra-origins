@@ -1,0 +1,53 @@
+{
+  "type": "origins:action_on_block_use",
+  "block_condition": {
+	"type": "origins:and",
+	"conditions": [
+	  {
+		"type": "origins:in_tag",
+		"tag": "minecraft:dirt"
+	  },
+	  {
+		"type": "origins:block",
+		"block": "minecraft:mycelium",
+		"inverted": true
+	  }
+	]
+  },
+  "item_condition": {
+	"type": "origins:empty"
+  },
+  "hands": [
+	"main_hand"
+  ],
+  "condition": {
+	"type": "origins:and",
+	"conditions": [
+	  {
+		"type": "origins:sneaking"
+	  },
+	  {
+		"type": "origins:food_level",
+		"comparison": ">",
+		"compare_to": 0
+	  }
+	]
+  },
+  "block_action": {
+	"type": "origins:set_block",
+	"block": "minecraft:mycelium"
+  },
+  "entity_action": {
+	"type": "origins:and",
+	"actions": [
+	  {
+		"type": "origins:exhaust",
+		"amount": 20
+	  },
+	  {
+		"type": "origins:play_sound",
+		"sound": "extraorigins:block.mycelium.grow"
+	  }
+	]
+  }
+}

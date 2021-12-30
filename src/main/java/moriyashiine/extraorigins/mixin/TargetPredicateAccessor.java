@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin;
 
 import net.minecraft.entity.LivingEntity;

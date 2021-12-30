@@ -1,0 +1,11 @@
+{
+  "powers": [
+	"extraorigins:magic_spores",
+	"extraorigins:infestation",
+	"extraorigins:rooted",
+	"extraorigins:decomposition"
+  ],
+  "icon": "minecraft:red_mushroom",
+  "order": 1,
+  "impact": 2
+}

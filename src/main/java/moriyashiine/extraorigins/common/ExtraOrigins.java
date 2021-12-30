@@ -1,11 +1,18 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.common;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import moriyashiine.extraorigins.common.network.packet.ChangeSporePacket;
 import moriyashiine.extraorigins.common.network.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
-import moriyashiine.extraorigins.common.registry.ModConditions;
-import moriyashiine.extraorigins.common.registry.ModPowers;
-import moriyashiine.extraorigins.common.registry.ModScaleTypes;
+import moriyashiine.extraorigins.common.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -16,9 +23,12 @@ public class ExtraOrigins implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
+		ModParticleTypes.init();
+		ModSoundEvents.init();
 		ModScaleTypes.init();
 		ModPowers.init();
 		ModConditions.init();
+		ServerPlayNetworking.registerGlobalReceiver(ChangeSporePacket.ID, ChangeSporePacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
 			if (PowerHolderComponent.hasPower(handler.player, MountPower.class) && handler.player.getVehicle() instanceof PlayerEntity) {

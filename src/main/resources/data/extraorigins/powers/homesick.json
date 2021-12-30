@@ -2,11 +2,11 @@
   "type": "origins:multiple",
   "change_group": {
 	"type": "origins:entity_group",
-	"group": "undead",
 	"condition": {
 	  "type": "extraorigins:piglin_safe",
 	  "inverted": true
-	}
+	},
+	"group": "undead"
   },
   "fire_immunity": {
 	"type": "origins:fire_immunity",
@@ -16,16 +16,16 @@
 	}
   },
   "slowness": {
-	"type": "origins:attribute",
+	"type": "origins:conditioned_attribute",
+	"condition": {
+	  "type": "extraorigins:piglin_safe",
+	  "inverted": true
+	},
 	"modifier": {
 	  "name": "Origin modifier",
 	  "attribute": "minecraft:generic.movement_speed",
 	  "operation": "multiply_total",
 	  "value": -0.15
-	},
-	"condition": {
-	  "type": "extraorigins:piglin_safe",
-	  "inverted": true
 	}
   },
   "shaking": {

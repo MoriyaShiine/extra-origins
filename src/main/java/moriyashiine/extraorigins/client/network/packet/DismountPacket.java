@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.client.network.packet;
 
 import io.netty.buffer.Unpooled;
@@ -20,6 +28,7 @@ public class DismountPacket {
 		ServerPlayNetworking.send(player, ID, buf);
 	}
 	
+	@SuppressWarnings("Convert2Lambda")
 	public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 		int id = buf.readInt();
 		client.execute(new Runnable() {

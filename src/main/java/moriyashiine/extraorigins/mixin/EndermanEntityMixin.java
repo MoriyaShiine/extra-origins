@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -13,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EndermanEntity.class)
 public abstract class EndermanEntityMixin {
 	@Inject(method = "isPlayerStaring", at = @At("RETURN"), cancellable = true)
-	private void addMobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
+	private void extraorigins$addMobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
 		if (cir.getReturnValue()) {
 			PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(power -> {
 				if (power.entityTypes.contains(EntityType.ENDERMAN) && power.isActive()) {

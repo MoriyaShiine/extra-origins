@@ -1,10 +1,5 @@
 {
   "type": "origins:modify_damage_dealt",
-  "modifier": {
-	"name": "Origin modifier",
-	"operation": "addition",
-	"value": 2
-  },
   "condition": {
 	"type": "origins:or",
 	"conditions": [
@@ -18,5 +13,10 @@
 		"type": "origins:in_rain"
 	  }
 	]
+  },
+  "modifier": {
+	"name": "Origin modifier",
+	"operation": "addition",
+	"value": 2
   }
 }

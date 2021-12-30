@@ -7,12 +7,15 @@
   "authors": [
 	"MoriyaShiine"
   ],
+  "contributors": [
+	"cybercat5555"
+  ],
   "contact": {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/extra-origins",
 	"sources": "https://github.com/MoriyaShiine/extra-origins",
 	"issues": "https://github.com/MoriyaShiine/extra-origins/issues"
   },
-  "license": "CC BY-NC-ND 4.0",
+  "license": "All Rights Reserved",
   "icon": "assets/extraorigins/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -21,17 +24,25 @@
 	],
 	"client": [
 	  "moriyashiine.extraorigins.client.ExtraOriginsClient"
+	],
+	"cardinal-components-entity": [
+	  "moriyashiine.extraorigins.common.registry.ModComponents"
 	]
   },
   "mixins": [
 	"extraorigins.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=0.12.6",
-	"fabric": ">=0.43.1",
+	"fabricloader": ">=0.12.12",
+	"fabric": ">=0.45.0",
 	"minecraft": "1.18.x",
 	"java": ">=17",
-	"origins": ">=1.3.0",
-	"pehkui": ">=3.0.0"
+	"origins": ">=1.3.1",
+	"pehkui": ">=3.1.0"
+  },
+  "custom": {
+	"cardinal-components": [
+	  "extraorigins:magic_spores"
+	]
   }
 }

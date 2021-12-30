@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin;
 
 import com.google.common.collect.LinkedHashMultimap;
@@ -47,11 +55,11 @@ public abstract class ItemStackMixin {
 	public abstract boolean damage(int amount, Random random, @Nullable ServerPlayerEntity player);
 	
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
-	private <T extends LivingEntity> void increaseGoldToolDurability(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
+	private <T extends LivingEntity> void extraorigins$increaseGoldToolDurability(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
 		if (!entity.world.isClient && ModPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
 			if (getItem() instanceof ToolItem) {
 				if (ModTags.GOLDEN_TOOLS.contains(getItem())) {
-					if (entity.world.random.nextFloat() < 15 / 16f) {
+					if (entity.world.random.nextFloat() < 15 / 16F) {
 						ci.cancel();
 					}
 				}
@@ -61,7 +69,7 @@ public abstract class ItemStackMixin {
 			}
 			if (getItem() instanceof ArmorItem) {
 				if (ModTags.GOLDEN_ARMOR.contains(getItem())) {
-					if (entity.world.random.nextFloat() < 3 / 4f) {
+					if (entity.world.random.nextFloat() < 3 / 4F) {
 						ci.cancel();
 					}
 				}
@@ -74,7 +82,7 @@ public abstract class ItemStackMixin {
 	
 	@Environment(EnvType.CLIENT)
 	@ModifyVariable(method = "getTooltip", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/ItemStack;getAttributeModifiers(Lnet/minecraft/entity/EquipmentSlot;)Lcom/google/common/collect/Multimap;"))
-	private Multimap<EntityAttribute, EntityAttributeModifier> addToolBonusTooltips(Multimap<EntityAttribute, EntityAttributeModifier> obj, PlayerEntity player, TooltipContext context) {
+	private Multimap<EntityAttribute, EntityAttributeModifier> extraorigins$addToolBonusTooltips(Multimap<EntityAttribute, EntityAttributeModifier> obj, PlayerEntity player, TooltipContext context) {
 		if (ModPowers.ALL_THAT_GLITTERS.get(player) != null && !obj.isEmpty()) {
 			obj = LinkedHashMultimap.create(obj);
 			if (getItem() instanceof ToolItem && ModTags.GOLDEN_TOOLS.contains(getItem())) {

@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -21,7 +29,7 @@ public abstract class ActiveTargetGoalMixin<T extends LivingEntity> {
 	protected TargetPredicate targetPredicate;
 	
 	@Inject(method = "<init>(Lnet/minecraft/entity/mob/MobEntity;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V", at = @At("TAIL"))
-	private void addMobNeutrality(MobEntity mob, Class<T> targetClass, int reciprocalChance, boolean checkVisibility, boolean checkCanNavigate, @Nullable Predicate<LivingEntity> predicate, CallbackInfo ci) {
+	private void extraorigins$addMobNeutrality(MobEntity mob, Class<T> targetClass, int reciprocalChance, boolean checkVisibility, boolean checkCanNavigate, @Nullable Predicate<LivingEntity> predicate, CallbackInfo ci) {
 		Predicate<LivingEntity> originalPredicate = ((TargetPredicateAccessor) targetPredicate).eo_getTargetPredicate();
 		if (originalPredicate == null) {
 			originalPredicate = entity -> true;

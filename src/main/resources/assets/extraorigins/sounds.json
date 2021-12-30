@@ -1,0 +1,20 @@
+{
+  "block.mycelium.grow": {
+	"sounds": [
+	  "minecraft:item/hoe/till1",
+	  "minecraft:item/hoe/till2",
+	  "minecraft:item/hoe/till3",
+	  "minecraft:item/hoe/till4"
+	],
+	"subtitle": "extraorigins.subtitles.block.mycelium.grow"
+  },
+  "entity.generic.spore_shift": {
+	"sounds": [
+	  "minecraft:block/chorus_flower/grow1",
+	  "minecraft:block/chorus_flower/grow2",
+	  "minecraft:block/chorus_flower/grow3",
+	  "minecraft:block/chorus_flower/grow4"
+	],
+	"subtitle": "extraorigins.subtitles.entity.generic.spore_shift"
+  }
+}

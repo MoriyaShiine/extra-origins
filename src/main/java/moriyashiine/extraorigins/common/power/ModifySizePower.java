@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.common.power;
 
 import io.github.apace100.apoli.power.Power;
@@ -25,7 +33,6 @@ public class ModifySizePower extends Power {
 	
 	@Override
 	public void tick() {
-		super.tick();
 		scaleTypes.forEach(scaleType -> {
 			ScaleData data = scaleType.getScaleData(entity);
 			if (isActive() && data.getScale() != scale) {
@@ -39,7 +46,6 @@ public class ModifySizePower extends Power {
 	
 	@Override
 	public void onLost() {
-		super.onLost();
 		scaleTypes.forEach(scaleType -> scaleType.getScaleData(entity).setScale(1));
 	}
 }

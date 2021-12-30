@@ -1,3 +1,11 @@
+/*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
+ * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -30,7 +38,7 @@ public abstract class EntityMixin {
 	public abstract Entity getFirstPassenger();
 	
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
-	private void disableNimbleSlownessFromBlocks(BlockState state, Vec3d multiplier, CallbackInfo ci) {
+	private void extraorigins$disableNimbleSlownessFromBlocks(BlockState state, Vec3d multiplier, CallbackInfo ci) {
 		if (ModPowers.NIMBLE.isActive((Entity) (Object) this)) {
 			ci.cancel();
 		}
@@ -38,14 +46,14 @@ public abstract class EntityMixin {
 	
 	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
-	private void changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
+	private void extraorigins$changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
 		if ((Object) this instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
 			cir.setReturnValue((double) (dimensions.height * ModScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
 		}
 	}
 	
 	@Inject(method = "dismountVehicle", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;removePassenger(Lnet/minecraft/entity/Entity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
-	private void dismountPlayerWithPower(CallbackInfo ci, Entity entity) {
+	private void extraorigins$dismountPlayerWithPower(CallbackInfo ci, Entity entity) {
 		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower((Entity) (Object) this, MountPower.class)) {
 			DismountPacket.send(player, (Entity) (Object) this);
 		}
