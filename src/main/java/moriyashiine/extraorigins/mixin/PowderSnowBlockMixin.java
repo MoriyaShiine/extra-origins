@@ -1,14 +1,11 @@
 /*
- * All Rights Reserved (c) 2021 MoriyaShiine
- */
-
-/*
  * All Rights Reserved (c) 2021-2022 MoriyaShiine
  */
 
 package moriyashiine.extraorigins.mixin;
 
-import moriyashiine.extraorigins.common.registry.ModPowers;
+import io.github.apace100.apoli.component.PowerHolderComponent;
+import moriyashiine.extraorigins.common.power.CanStandOnPowderSnowPower;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,10 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PowderSnowBlock.class)
 public abstract class PowderSnowBlockMixin {
-	@Inject(method = "canWalkOnPowderSnow", at = @At("RETURN"), cancellable = true)
+	@Inject(method = "canWalkOnPowderSnow", at = @At("HEAD"), cancellable = true)
 	private static void extraorigins$allowNimble(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-		if (!cir.getReturnValue() && ModPowers.NIMBLE.isActive(entity)) {
-			cir.setReturnValue(true);
+		for (CanStandOnPowderSnowPower canStandOnPowderSnowPower : PowerHolderComponent.getPowers(entity, CanStandOnPowderSnowPower.class)) {
+			if (canStandOnPowderSnowPower.isActive()) {
+				cir.setReturnValue(true);
+				return;
+			}
 		}
 	}
 }

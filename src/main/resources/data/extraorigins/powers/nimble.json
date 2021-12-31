@@ -1,28 +1,34 @@
 {
-  "type": "origins:invulnerability",
-  "damage_condition": {
-	"type": "origins:or",
-	"conditions": [
-	  {
-		"type": "origins:name",
-		"name": "fall"
-	  },
-	  {
-		"type": "origins:name",
-		"name": "flyIntoWall"
-	  },
-	  {
-		"type": "origins:name",
-		"name": "cactus"
-	  },
-	  {
-		"type": "origins:name",
-		"name": "sweetBerryBush"
-	  },
-	  {
-		"type": "origins:name",
-		"name": "thorns"
-	  }
-	]
+  "type": "origins:multiple",
+  "damage_immunity": {
+	"type": "origins:invulnerability",
+	"damage_condition": {
+	  "type": "origins:or",
+	  "conditions": [
+		{
+		  "type": "origins:name",
+		  "name": "fall"
+		},
+		{
+		  "type": "origins:name",
+		  "name": "flyIntoWall"
+		},
+		{
+		  "type": "origins:name",
+		  "name": "cactus"
+		},
+		{
+		  "type": "origins:name",
+		  "name": "sweetBerryBush"
+		},
+		{
+		  "type": "origins:name",
+		  "name": "thorns"
+		}
+	  ]
+	}
+  },
+  "can_stand_on_powder_snow": {
+	"type": "extraorigins:can_stand_on_powder_snow"
   }
 }

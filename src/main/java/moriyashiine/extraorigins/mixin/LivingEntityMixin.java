@@ -1,16 +1,4 @@
 /*
- * All Rights Reserved (c) 2021 MoriyaShiine
- */
-
-/*
- * All Rights Reserved (c) 2021 MoriyaShiine
- */
-
-/*
- * All Rights Reserved (c) 2021 MoriyaShiine
- */
-
-/*
  * All Rights Reserved (c) 2021-2022 MoriyaShiine
  */
 
