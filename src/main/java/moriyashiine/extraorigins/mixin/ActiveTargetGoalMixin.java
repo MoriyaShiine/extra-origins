@@ -3,6 +3,10 @@
  */
 
 /*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
  * All Rights Reserved (c) 2021-2022 MoriyaShiine
  */
 
@@ -35,8 +39,8 @@ public abstract class ActiveTargetGoalMixin<T extends LivingEntity> {
 			originalPredicate = entity -> true;
 		}
 		targetPredicate.setPredicate(originalPredicate.and(target -> {
-			for (MobNeutralityPower power : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
-				if (power.entityTypes.contains(mob.getType())) {
+			for (MobNeutralityPower mobNeutralityPower : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
+				if (mobNeutralityPower.shouldBeNeutral(mob.getType())) {
 					return false;
 				}
 			}

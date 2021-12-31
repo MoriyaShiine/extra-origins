@@ -3,6 +3,10 @@
  */
 
 /*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
  * All Rights Reserved (c) 2021-2022 MoriyaShiine
  */
 
@@ -28,8 +32,8 @@ public abstract class PiglinBruteBrainMixin {
 	private static void extraorigins$addMobNeutrality(AbstractPiglinEntity piglin, MemoryModuleType<? extends LivingEntity> memoryModuleType, CallbackInfoReturnable<Optional<? extends LivingEntity>> cir) {
 		if (cir.getReturnValue().isPresent()) {
 			piglin.getBrain().getOptionalMemory(memoryModuleType).filter(entity -> {
-				PowerHolderComponent.getPowers(entity, MobNeutralityPower.class).forEach(power -> {
-					if (power.entityTypes.contains(EntityType.PIGLIN_BRUTE)) {
+				PowerHolderComponent.getPowers(entity, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
+					if (mobNeutralityPower.shouldBeNeutral(EntityType.PIGLIN_BRUTE)) {
 						cir.setReturnValue(Optional.empty());
 					}
 				});

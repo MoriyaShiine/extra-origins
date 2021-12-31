@@ -3,6 +3,10 @@
  */
 
 /*
+ * All Rights Reserved (c) 2021 MoriyaShiine
+ */
+
+/*
  * All Rights Reserved (c) 2021-2022 MoriyaShiine
  */
 
@@ -23,8 +27,8 @@ public abstract class EndermanEntityMixin {
 	@Inject(method = "isPlayerStaring", at = @At("RETURN"), cancellable = true)
 	private void extraorigins$addMobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
 		if (cir.getReturnValue()) {
-			PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(power -> {
-				if (power.entityTypes.contains(EntityType.ENDERMAN) && power.isActive()) {
+			PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
+				if (mobNeutralityPower.shouldBeNeutral(EntityType.ENDERMAN) && mobNeutralityPower.isActive()) {
 					cir.setReturnValue(false);
 				}
 			});
