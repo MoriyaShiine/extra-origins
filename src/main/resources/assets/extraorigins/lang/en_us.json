@@ -10,7 +10,7 @@
   "origin.extraorigins.piglin.name": "Piglin",
   "origin.extraorigins.piglin.description": "Natives of the Nether, Piglins are very fond of gold and are experts at utilizing it.",
   "power.extraorigins.green_thumb.name": "Green Thumb",
-  "power.extraorigins.green_thumb.description": "Sneak using on a fertilizable with an empty hand will grow plants at the cost of some food.",
+  "power.extraorigins.green_thumb.description": "Sneak using on a fertilizable block with an empty hand will grow plants at the cost of some food.",
   "power.extraorigins.photosynthesis.name": "Photosynthesis",
   "power.extraorigins.photosynthesis.description": "You are satiated by being exposed to sunlight.",
   "power.extraorigins.absorbing.name": "Absorbing",
