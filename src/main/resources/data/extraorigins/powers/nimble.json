@@ -28,7 +28,7 @@
 	  ]
 	}
   },
-  "can_stand_on_powder_snow": {
-	"type": "extraorigins:can_stand_on_powder_snow"
+  "can_walk_on_powder_snow": {
+	"type": "extraorigins:can_walk_on_powder_snow"
   }
 }
