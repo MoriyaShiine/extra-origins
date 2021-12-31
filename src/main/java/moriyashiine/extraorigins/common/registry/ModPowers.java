@@ -33,6 +33,8 @@ public class ModPowers {
 	
 	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS, Collections.singletonList(ScaleRegistries.getId(ScaleRegistries.SCALE_TYPES, ModScaleTypes.MODIFY_SIZE_TYPE))).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
 	
+	public static final PowerFactory<Power> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "prevent_block_slowness"), new SerializableData().add("blocks", SerializableDataType.list(SerializableDataTypes.BLOCK), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity, data.get("blocks"), data.getBoolean("inverted"))).allowCondition();
+	
 	public static final PowerFactory<Power> CAN_WALK_ON_POWDER_SNOW = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "can_walk_on_powder_snow"), new SerializableData(), data -> (type, entity) -> new CanStandOnPowderSnowPower(type, entity)).allowCondition();
 	
 	public static final PowerFactory<Power> START_RIDING = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
@@ -43,14 +45,13 @@ public class ModPowers {
 	
 	public static final PowerFactory<Power> MOB_NEUTRALITY = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE)).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new MobNeutralityPower(type, entity, data.get("entity_types"), data.getBoolean("inverted"))).allowCondition();
 	
-	public static final PowerType<Power> NIMBLE = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "nimble"));
-	
 	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "all_that_glitters"));
 	
 	public static void init() {
 		Registry.register(ApoliRegistries.POWER_FACTORY, MAGIC_SPORES.getSerializerId(), MAGIC_SPORES);
 		Registry.register(ApoliRegistries.POWER_FACTORY, FOOD_EFFECT_IMMUNITY.getSerializerId(), FOOD_EFFECT_IMMUNITY);
 		Registry.register(ApoliRegistries.POWER_FACTORY, MODIFY_SIZE.getSerializerId(), MODIFY_SIZE);
+		Registry.register(ApoliRegistries.POWER_FACTORY, PREVENT_BLOCK_SLOWNESS.getSerializerId(), PREVENT_BLOCK_SLOWNESS);
 		Registry.register(ApoliRegistries.POWER_FACTORY, CAN_WALK_ON_POWDER_SNOW.getSerializerId(), CAN_WALK_ON_POWDER_SNOW);
 		Registry.register(ApoliRegistries.POWER_FACTORY, START_RIDING.getSerializerId(), START_RIDING);
 		Registry.register(ApoliRegistries.POWER_FACTORY, MOB_NEUTRALITY.getSerializerId(), MOB_NEUTRALITY);

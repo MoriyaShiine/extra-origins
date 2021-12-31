@@ -28,6 +28,10 @@
 	  ]
 	}
   },
+  "prevent_block_slowness": {
+	"type": "extraorigins:prevent_block_slowness",
+	"inverted": true
+  },
   "can_walk_on_powder_snow": {
 	"type": "extraorigins:can_walk_on_powder_snow"
   }

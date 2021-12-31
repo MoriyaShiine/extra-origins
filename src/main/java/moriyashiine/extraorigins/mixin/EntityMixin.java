@@ -7,7 +7,7 @@ package moriyashiine.extraorigins.mixin;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.client.network.packet.DismountPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
-import moriyashiine.extraorigins.common.registry.ModPowers;
+import moriyashiine.extraorigins.common.power.PreventBlockSlownessPower;
 import moriyashiine.extraorigins.common.registry.ModScaleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -34,10 +34,12 @@ public abstract class EntityMixin {
 	public abstract Entity getFirstPassenger();
 	
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
-	private void extraorigins$disableNimbleSlownessFromBlocks(BlockState state, Vec3d multiplier, CallbackInfo ci) {
-		if (ModPowers.NIMBLE.isActive((Entity) (Object) this)) {
-			ci.cancel();
-		}
+	private void extraorigins$preventBlockSlowness(BlockState state, Vec3d multiplier, CallbackInfo ci) {
+		PowerHolderComponent.getPowers(Entity.class.cast(this), PreventBlockSlownessPower.class).forEach(preventBlockSlownessPower -> {
+			if (preventBlockSlownessPower.shouldPreventSlowness(state.getBlock())) {
+				ci.cancel();
+			}
+		});
 	}
 	
 	@SuppressWarnings("ConstantConditions")
