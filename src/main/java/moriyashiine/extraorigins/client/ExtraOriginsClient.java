@@ -38,9 +38,17 @@ public class ExtraOriginsClient implements ClientModInitializer {
 	
 	@Override
 	public void onInitializeClient() {
+		registerPackets();
+		registerEvents();
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.SPORE, SporeParticle.Factory::new);
+	}
+	
+	private void registerPackets() {
 		ClientPlayNetworking.registerGlobalReceiver(MountS2CPacket.ID, MountS2CPacket::receive);
 		ClientPlayNetworking.registerGlobalReceiver(DismountPacket.ID, DismountPacket::receive);
-		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.SPORE, SporeParticle.Factory::new);
+	}
+	
+	private void registerEvents() {
 		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
 			targetMode = null;
 			renderModeSwitch = false;

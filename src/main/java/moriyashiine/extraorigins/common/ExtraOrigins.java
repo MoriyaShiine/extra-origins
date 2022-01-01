@@ -24,8 +24,16 @@ public class ExtraOrigins implements ModInitializer {
 		ModScaleTypes.init();
 		ModPowers.init();
 		ModConditions.init();
+		registerPackets();
+		registerEvents();
+	}
+	
+	private void registerPackets() {
 		ServerPlayNetworking.registerGlobalReceiver(ChangeSporePacket.ID, ChangeSporePacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
+	}
+	
+	private void registerEvents() {
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
 			if (PowerHolderComponent.hasPower(handler.player, MountPower.class) && handler.player.getVehicle() instanceof PlayerEntity) {
 				handler.player.dismountVehicle();

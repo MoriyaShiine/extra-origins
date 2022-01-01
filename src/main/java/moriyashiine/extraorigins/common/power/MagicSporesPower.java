@@ -24,13 +24,18 @@ public class MagicSporesPower extends Power implements Active {
 	}
 	
 	@Override
+	public void onAdded() {
+		update(false);
+	}
+	
+	@Override
 	public void onGained() {
-		update();
+		update(true);
 	}
 	
 	@Override
 	public void onLost() {
-		update();
+		update(true);
 	}
 	
 	@Override
@@ -43,9 +48,11 @@ public class MagicSporesPower extends Power implements Active {
 		this.key = key;
 	}
 	
-	private void update() {
+	private void update(boolean setMobility) {
 		ModComponents.MAGIC_SPORES.maybeGet(entity).ifPresent(magicSporesComponent -> {
-			magicSporesComponent.setMode(MagicSporesComponent.Mode.MOBILITY);
+			if (setMobility) {
+				magicSporesComponent.setMode(MagicSporesComponent.Mode.MOBILITY);
+			}
 			if (entity instanceof ServerPlayerEntity player) {
 				magicSporesComponent.updateAttributes(player);
 			}
