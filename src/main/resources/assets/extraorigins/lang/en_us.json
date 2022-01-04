@@ -18,13 +18,13 @@
   "power.extraorigins.flammable.name": "Flammable",
   "power.extraorigins.flammable.description": "You take twice as much damage from fire.",
   "power.extraorigins.nectarivore.name": "Nectarivore",
-  "power.extraorigins.nectarivore.description": "You can only consume Honey Bottles.",
+  "power.extraorigins.nectarivore.description": "You can only consume honey bottles.",
   "power.extraorigins.magic_spores.name": "Magic Spores",
   "power.extraorigins.magic_spores.description": "You can switch between different Magic Spores. Red Cap boosts offense, Green Cap boosts defense, and Blue Cap boosts mobility. Changing Spores will decrease the abilities of the other two Caps.",
   "power.extraorigins.infestation.name": "Infestation",
-  "power.extraorigins.infestation.description": "Sneak using on a soil block with an empty hand will turn it into Mycelium at the cost of some food.",
+  "power.extraorigins.infestation.description": "Sneak using on a soil block with an empty hand will turn it into mycelium at the cost of some food.",
   "power.extraorigins.rooted.name": "Rooted",
-  "power.extraorigins.rooted.description": "You gain buffs based on the Spore you have active when standing on Mycelium. Red Cap increases attack speed, Green Cap grants knockback immunity, and Blue Cap amplifies jump height.",
+  "power.extraorigins.rooted.description": "You gain buffs based on the Spore you have active when standing on mycelium. Red Cap increases attack speed, Green Cap grants knockback immunity, and Blue Cap amplifies jump height.",
   "power.extraorigins.decomposition.name": "Decomposition",
   "power.extraorigins.decomposition.description": "Food is decomposed before it's consumed, nullifying any status effects you would otherwise gain.",
   "power.extraorigins.bite_sized.name": "Bite Sized",
@@ -32,7 +32,7 @@
   "power.extraorigins.small_appetite.name": "Small Appetite",
   "power.extraorigins.small_appetite.description": "You exhaust much slower than others, thus requiring you to eat less.",
   "power.extraorigins.nimble.name": "Nimble",
-  "power.extraorigins.nimble.description": "You are immune to thorns and velocity based damage. You are not slowed down at all by blocks such as Sweet Berry Bushes or Cobwebs. You can walk on Powdered Snow.",
+  "power.extraorigins.nimble.description": "You are immune to thorns and velocity based damage. You are not slowed down at all by blocks such as sweet berry bushes or cobwebs. You can walk on powder snow.",
   "power.extraorigins.jockey.name": "Jockey",
   "power.extraorigins.jockey.description": "You can ride other players.",
   "power.extraorigins.all_that_glitters.name": "All That Glitters",
@@ -46,5 +46,5 @@
   "power.extraorigins.flabby.name": "Flabby",
   "power.extraorigins.flabby.description": "You have 2 less hearts of health than humans.",
   "power.extraorigins.soul_spooked.name": "Soul Spooked",
-  "power.extraorigins.soul_spooked.description": "You are afraid of Soul Fire, becoming weak when near it."
+  "power.extraorigins.soul_spooked.description": "You are afraid of soul fire, becoming weak when near it."
 }
