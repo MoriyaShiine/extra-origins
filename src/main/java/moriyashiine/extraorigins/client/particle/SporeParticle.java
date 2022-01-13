@@ -15,9 +15,9 @@ import net.minecraft.util.math.MathHelper;
 public class SporeParticle extends SpriteBillboardParticle {
 	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double red, double green, double blue) {
 		super(clientWorld, posX, posY, posZ, red, green, blue);
-		this.colorRed = MathHelper.clamp((float) red, 0, 1);
-		this.colorGreen = MathHelper.clamp((float) green, 0, 1);
-		this.colorBlue = MathHelper.clamp((float) blue, 0, 1);
+		this.red = MathHelper.clamp((float) red, 0, 1);
+		this.green = MathHelper.clamp((float) green, 0, 1);
+		this.blue = MathHelper.clamp((float) blue, 0, 1);
 		setBoundingBoxSpacing(0.02F, 0.02F);
 		scale *= random.nextFloat() * 0.6F + 0.5F;
 		velocityX *= 0.02F;
