@@ -8,6 +8,7 @@ import com.mojang.datafixers.util.Pair;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.component.entity.MagicSporesComponent;
 import moriyashiine.extraorigins.common.power.FoodEffectImmunityPower;
+import moriyashiine.extraorigins.common.power.MagicSporesPower;
 import moriyashiine.extraorigins.common.registry.ModComponents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -38,9 +39,11 @@ public abstract class LivingEntityMixin {
 	
 	@ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
 	private float extraorigins$magicSporesDamageTakenModifier(float obj, DamageSource source) {
-		MagicSporesComponent magicSporesComponent = ModComponents.MAGIC_SPORES.getNullable(this);
-		if (magicSporesComponent != null) {
-			obj *= magicSporesComponent.getMode().getDamageTakenModifier();
+		if (PowerHolderComponent.hasPower(LivingEntity.class.cast(this), MagicSporesPower.class)) {
+			MagicSporesComponent magicSporesComponent = ModComponents.MAGIC_SPORES.getNullable(this);
+			if (magicSporesComponent != null) {
+				obj *= magicSporesComponent.getMode().getDamageTakenModifier();
+			}
 		}
 		return obj;
 	}
