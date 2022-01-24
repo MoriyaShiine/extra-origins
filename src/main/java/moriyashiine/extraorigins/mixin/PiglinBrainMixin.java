@@ -26,7 +26,7 @@ public abstract class PiglinBrainMixin {
 			}
 		});
 	}
-	
+
 	@Inject(method = "onGuardedBlockInteracted", at = @At("HEAD"), cancellable = true)
 	private static void extraorigins$addMobNeutrality(PlayerEntity player, boolean blockOpen, CallbackInfo ci) {
 		PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {

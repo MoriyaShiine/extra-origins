@@ -7,12 +7,12 @@ package moriyashiine.extraorigins.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.origins.OriginsClient;
-import moriyashiine.extraorigins.client.network.packet.DismountPacket;
-import moriyashiine.extraorigins.client.network.packet.MountS2CPacket;
+import moriyashiine.extraorigins.client.packet.DismountPacket;
+import moriyashiine.extraorigins.client.packet.MountS2CPacket;
 import moriyashiine.extraorigins.client.particle.SporeParticle;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.component.entity.MagicSporesComponent;
-import moriyashiine.extraorigins.common.network.packet.ChangeSporePacket;
+import moriyashiine.extraorigins.common.packet.ChangeSporePacket;
 import moriyashiine.extraorigins.common.power.MagicSporesPower;
 import moriyashiine.extraorigins.common.registry.ModComponents;
 import moriyashiine.extraorigins.common.registry.ModParticleTypes;
@@ -35,19 +35,19 @@ public class ExtraOriginsClient implements ClientModInitializer {
 	private static MagicSporesComponent.Mode targetMode = null;
 	private static boolean renderModeSwitch = false;
 	private static int timer = 0;
-	
+
 	@Override
 	public void onInitializeClient() {
 		registerPackets();
 		registerEvents();
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.SPORE, SporeParticle.Factory::new);
 	}
-	
+
 	private void registerPackets() {
 		ClientPlayNetworking.registerGlobalReceiver(MountS2CPacket.ID, MountS2CPacket::receive);
 		ClientPlayNetworking.registerGlobalReceiver(DismountPacket.ID, DismountPacket::receive);
 	}
-	
+
 	private void registerEvents() {
 		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
 			targetMode = null;
@@ -65,15 +65,14 @@ public class ExtraOriginsClient implements ClientModInitializer {
 					changeTargetMode(client);
 					handleModeChange(client);
 					renderModeSwitch = true;
-				}
-				else {
+				} else {
 					client.mouse.lockCursor();
 					targetMode = null;
 					renderModeSwitch = false;
 					timer = 0;
 				}
 			}
-			
+
 			private void changeTargetMode(MinecraftClient client) {
 				double x = client.mouse.getX() - (client.getWindow().getWidth() / 2F);
 				double y = (client.getWindow().getHeight() / 2F) - client.mouse.getY();
@@ -88,13 +87,12 @@ public class ExtraOriginsClient implements ClientModInitializer {
 						targetMode = modeFromDirection;
 						timer = 0;
 					}
-				}
-				else {
+				} else {
 					targetMode = null;
 					timer = 0;
 				}
 			}
-			
+
 			@SuppressWarnings("ConstantConditions")
 			private void handleModeChange(MinecraftClient client) {
 				if (targetMode != null && ModComponents.MAGIC_SPORES.get(client.player).getMode() != targetMode) {
@@ -108,7 +106,7 @@ public class ExtraOriginsClient implements ClientModInitializer {
 		});
 		HudRenderCallback.EVENT.register(new HudRenderCallback() {
 			private static final Identifier ICONS = new Identifier(ExtraOrigins.MOD_ID, "textures/gui/icons.png");
-			
+
 			@Override
 			public void onHudRender(MatrixStack matrixStack, float tickDelta) {
 				if (!renderModeSwitch) {
@@ -131,14 +129,13 @@ public class ExtraOriginsClient implements ClientModInitializer {
 				}
 				RenderSystem.setShaderTexture(0, InGameHud.GUI_ICONS_TEXTURE);
 			}
-			
+
 			@SuppressWarnings("ConstantConditions")
 			private void renderSection(MagicSporesComponent.Mode targetMode, MatrixStack matrixStack, int posXOffset, int posYOffset, int u) {
 				int v = 0;
 				if (ModComponents.MAGIC_SPORES.get(MinecraftClient.getInstance().player).getMode() == targetMode) {
 					v += 64;
-				}
-				else if (ExtraOriginsClient.targetMode == targetMode) {
+				} else if (ExtraOriginsClient.targetMode == targetMode) {
 					v += 32;
 				}
 				MinecraftClient.getInstance().inGameHud.drawTexture(matrixStack, (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2) + posXOffset, (MinecraftClient.getInstance().getWindow().getScaledHeight() / 2) + posYOffset, u, v, 32, 32);

@@ -13,7 +13,7 @@ import net.minecraft.util.registry.Registry;
 
 public class ModParticleTypes {
 	public static final ParticleType<DefaultParticleType> SPORE = FabricParticleTypes.simple();
-	
+
 	public static void init() {
 		Registry.register(Registry.PARTICLE_TYPE, new Identifier(ExtraOrigins.MOD_ID, "spore"), SPORE);
 	}

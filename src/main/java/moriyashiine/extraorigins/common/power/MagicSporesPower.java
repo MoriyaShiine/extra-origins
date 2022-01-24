@@ -14,40 +14,40 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class MagicSporesPower extends Power implements Active {
 	private Key key;
-	
+
 	public MagicSporesPower(PowerType<?> type, LivingEntity entity) {
 		super(type, entity);
 	}
-	
+
 	@Override
 	public void onUse() {
 	}
-	
+
 	@Override
 	public void onAdded() {
 		update(false);
 	}
-	
+
 	@Override
 	public void onGained() {
 		update(true);
 	}
-	
+
 	@Override
 	public void onLost() {
 		update(true);
 	}
-	
+
 	@Override
 	public Key getKey() {
 		return key;
 	}
-	
+
 	@Override
 	public void setKey(Key key) {
 		this.key = key;
 	}
-	
+
 	private void update(boolean setMobility) {
 		ModComponents.MAGIC_SPORES.maybeGet(entity).ifPresent(magicSporesComponent -> {
 			if (setMobility) {

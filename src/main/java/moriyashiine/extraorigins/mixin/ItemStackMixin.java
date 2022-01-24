@@ -43,13 +43,13 @@ public abstract class ItemStackMixin {
 	private static final EntityAttributeModifier ARMOR_MODIFIER_1 = new EntityAttributeModifier("Origin modifier", 2, EntityAttributeModifier.Operation.ADDITION);
 	@Environment(EnvType.CLIENT)
 	private static final EntityAttributeModifier MOVEMENT_SPEED_MODIFIER = new EntityAttributeModifier("Origin modifier", 0.08, EntityAttributeModifier.Operation.MULTIPLY_BASE);
-	
+
 	@Shadow
 	public abstract Item getItem();
-	
+
 	@Shadow
 	public abstract boolean damage(int amount, Random random, @Nullable ServerPlayerEntity player);
-	
+
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
 	private <T extends LivingEntity> void extraorigins$increaseGoldToolDurability(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
 		if (!entity.world.isClient && ModPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
@@ -58,8 +58,7 @@ public abstract class ItemStackMixin {
 					if (entity.world.random.nextFloat() < 15 / 16F) {
 						ci.cancel();
 					}
-				}
-				else if (entity.getRandom().nextBoolean() && !ModTags.NETHERITE_TOOLS.contains(getItem())) {
+				} else if (entity.getRandom().nextBoolean() && !ModTags.NETHERITE_TOOLS.contains(getItem())) {
 					damage(amount, entity.getRandom(), null);
 				}
 			}
@@ -68,14 +67,13 @@ public abstract class ItemStackMixin {
 					if (entity.world.random.nextFloat() < 3 / 4F) {
 						ci.cancel();
 					}
-				}
-				else if (entity.getRandom().nextBoolean() && !ModTags.NETHERITE_ARMOR.contains(getItem())) {
+				} else if (entity.getRandom().nextBoolean() && !ModTags.NETHERITE_ARMOR.contains(getItem())) {
 					damage(amount, entity.getRandom(), null);
 				}
 			}
 		}
 	}
-	
+
 	@Environment(EnvType.CLIENT)
 	@ModifyVariable(method = "getTooltip", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/ItemStack;getAttributeModifiers(Lnet/minecraft/entity/EquipmentSlot;)Lcom/google/common/collect/Multimap;"))
 	private Multimap<EntityAttribute, EntityAttributeModifier> extraorigins$addToolBonusTooltips(Multimap<EntityAttribute, EntityAttributeModifier> obj, PlayerEntity player, TooltipContext context) {

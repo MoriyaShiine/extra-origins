@@ -19,27 +19,26 @@ import java.util.Set;
 public class ModifySizePower extends Power {
 	private final Set<ScaleType> scaleTypes = new HashSet<>();
 	public final float scale;
-	
+
 	public ModifySizePower(PowerType<?> type, LivingEntity entity, List<Identifier> identifiers, float scale) {
 		super(type, entity);
 		identifiers.forEach(identifier -> scaleTypes.add(ScaleRegistries.SCALE_TYPES.get(identifier)));
 		this.scale = scale;
 		setTicking(true);
 	}
-	
+
 	@Override
 	public void tick() {
 		scaleTypes.forEach(scaleType -> {
 			ScaleData data = scaleType.getScaleData(entity);
 			if (isActive() && data.getScale() != scale) {
 				data.setScale(scale);
-			}
-			else if (!isActive() && data.getScale() != 1) {
+			} else if (!isActive() && data.getScale() != 1) {
 				data.setScale(1);
 			}
 		});
 	}
-	
+
 	@Override
 	public void onLost() {
 		scaleTypes.forEach(scaleType -> scaleType.getScaleData(entity).setScale(1));

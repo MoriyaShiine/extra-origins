@@ -5,7 +5,7 @@
 package moriyashiine.extraorigins.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.client.network.packet.DismountPacket;
+import moriyashiine.extraorigins.client.packet.DismountPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.power.PreventBlockSlownessPower;
 import moriyashiine.extraorigins.common.registry.ModScaleTypes;
@@ -28,11 +28,11 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public abstract class EntityMixin {
 	@Shadow
 	private EntityDimensions dimensions;
-	
+
 	@Shadow
 	@Nullable
 	public abstract Entity getFirstPassenger();
-	
+
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$preventBlockSlowness(BlockState state, Vec3d multiplier, CallbackInfo ci) {
 		PowerHolderComponent.getPowers(Entity.class.cast(this), PreventBlockSlownessPower.class).forEach(preventBlockSlownessPower -> {
@@ -41,7 +41,7 @@ public abstract class EntityMixin {
 			}
 		});
 	}
-	
+
 	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
@@ -49,7 +49,7 @@ public abstract class EntityMixin {
 			cir.setReturnValue((double) (dimensions.height * ModScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
 		}
 	}
-	
+
 	@Inject(method = "dismountVehicle", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;removePassenger(Lnet/minecraft/entity/Entity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void extraorigins$dismountPlayerWithPower(CallbackInfo ci, Entity entity) {
 		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower((Entity) (Object) this, MountPower.class)) {

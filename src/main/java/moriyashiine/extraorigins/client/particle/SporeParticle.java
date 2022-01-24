@@ -25,12 +25,12 @@ public class SporeParticle extends SpriteBillboardParticle {
 		velocityZ *= 0.02F;
 		maxAge = (int) (20 / (Math.random() * 0.8 + 0.2));
 	}
-	
+
 	@Override
 	public ParticleTextureSheet getType() {
 		return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
 	}
-	
+
 	@Override
 	public void tick() {
 		prevPosX = x;
@@ -45,21 +45,21 @@ public class SporeParticle extends SpriteBillboardParticle {
 		velocityY *= 0.99;
 		velocityZ *= 0.99;
 	}
-	
+
 	@Override
 	public void move(double dx, double dy, double dz) {
 		setBoundingBox(getBoundingBox().offset(dx, dy, dz));
 		repositionFromBoundingBox();
 	}
-	
+
 	@Environment(EnvType.CLIENT)
 	public static class Factory implements ParticleFactory<DefaultParticleType> {
 		private final SpriteProvider spriteProvider;
-		
+
 		public Factory(SpriteProvider spriteProvider) {
 			this.spriteProvider = spriteProvider;
 		}
-		
+
 		@Override
 		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
 			SporeParticle particle = new SporeParticle(clientWorld, posX, posY, posZ, velocityX, velocityY, velocityZ);

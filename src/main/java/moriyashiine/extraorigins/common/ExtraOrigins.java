@@ -5,8 +5,8 @@
 package moriyashiine.extraorigins.common;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.network.packet.ChangeSporePacket;
-import moriyashiine.extraorigins.common.network.packet.MountC2SPacket;
+import moriyashiine.extraorigins.common.packet.ChangeSporePacket;
+import moriyashiine.extraorigins.common.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.registry.*;
 import net.fabricmc.api.ModInitializer;
@@ -16,7 +16,7 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class ExtraOrigins implements ModInitializer {
 	public static final String MOD_ID = "extraorigins";
-	
+
 	@Override
 	public void onInitialize() {
 		ModParticleTypes.init();
@@ -27,12 +27,12 @@ public class ExtraOrigins implements ModInitializer {
 		registerPackets();
 		registerEvents();
 	}
-	
+
 	private void registerPackets() {
 		ServerPlayNetworking.registerGlobalReceiver(ChangeSporePacket.ID, ChangeSporePacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
 	}
-	
+
 	private void registerEvents() {
 		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
 			if (PowerHolderComponent.hasPower(handler.player, MountPower.class) && handler.player.getVehicle() instanceof PlayerEntity) {

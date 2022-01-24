@@ -36,7 +36,7 @@ public abstract class LivingEntityMixin {
 		}
 		return obj;
 	}
-	
+
 	@ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
 	private float extraorigins$magicSporesDamageTakenModifier(float obj, DamageSource source) {
 		if (PowerHolderComponent.hasPower(LivingEntity.class.cast(this), MagicSporesPower.class)) {
