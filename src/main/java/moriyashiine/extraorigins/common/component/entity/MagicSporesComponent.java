@@ -59,7 +59,7 @@ public class MagicSporesComponent implements AutoSyncedComponent, CommonTickingC
 			return;
 		}
 		obj.airStrafingSpeed *= getMode().airStrafingSpeedModifier;
-		if (obj.world.isClient && obj.getRandom().nextBoolean()) {
+		if (obj.world.isClient && obj.getRandom().nextBoolean() && !obj.isInvisible()) {
 			if (MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson() || !MinecraftClient.getInstance().player.getUuid().equals(obj.getUuid())) {
 				obj.world.addParticle((ParticleEffect) ModParticleTypes.SPORE, obj.getParticleX(1), obj.getRandomBodyY(), obj.getParticleZ(1), getMode().red + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05), getMode().green + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05), getMode().blue + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05));
 			}
