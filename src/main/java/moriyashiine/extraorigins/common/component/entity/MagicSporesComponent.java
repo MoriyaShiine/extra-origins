@@ -20,10 +20,7 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.MathHelper;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class MagicSporesComponent implements AutoSyncedComponent, CommonTickingComponent {
@@ -45,7 +42,7 @@ public class MagicSporesComponent implements AutoSyncedComponent, CommonTickingC
 
 	@Override
 	public void readFromNbt(NbtCompound tag) {
-		setMode(Mode.valueOf(tag.getString("Mode").toUpperCase()));
+		setMode(Mode.valueOf(tag.getString("Mode").toUpperCase(Locale.ROOT)));
 	}
 
 	@Override

@@ -22,10 +22,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Locale;
+
 public class ModConditions {
 	public static final ConditionFactory<CachedBlockPosition> FERTILIZABLE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "fertilizable"), new SerializableData(), (instance, cachedBlockPosition) -> cachedBlockPosition.getBlockState().getBlock() instanceof Fertilizable);
 
-	public static final ConditionFactory<Entity> MAGIC_SPORES_MODE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "magic_spores_mode"), new SerializableData().add("mode", SerializableDataTypes.STRING), (instance, entity) -> entity instanceof PlayerEntity player && PowerHolderComponent.hasPower(player, MagicSporesPower.class) && ModComponents.MAGIC_SPORES.get(player).getMode() == MagicSporesComponent.Mode.valueOf(instance.getString("mode").toUpperCase()));
+	public static final ConditionFactory<Entity> MAGIC_SPORES_MODE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "magic_spores_mode"), new SerializableData().add("mode", SerializableDataTypes.STRING), (instance, entity) -> entity instanceof PlayerEntity player && PowerHolderComponent.hasPower(player, MagicSporesPower.class) && ModComponents.MAGIC_SPORES.get(player).getMode() == MagicSporesComponent.Mode.valueOf(instance.getString("mode").toUpperCase(Locale.ROOT)));
 	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "piglin_safe"), new SerializableData(), (instance, entity) -> entity.world.getDimension().isPiglinSafe());
 
 	public static final ConditionFactory<Pair<DamageSource, Float>> CROSSBOW_ARROW = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "crossbow_arrow"), new SerializableData(), (instance, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());

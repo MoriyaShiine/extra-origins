@@ -18,6 +18,8 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 
+import java.util.Locale;
+
 public class ChangeSporePacket {
 	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "change_spore");
 
@@ -28,7 +30,7 @@ public class ChangeSporePacket {
 	}
 
 	public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
-		MagicSporesComponent.Mode mode = MagicSporesComponent.Mode.valueOf(buf.readString().toUpperCase());
+		MagicSporesComponent.Mode mode = MagicSporesComponent.Mode.valueOf(buf.readString().toUpperCase(Locale.ROOT));
 		server.execute(() -> ModComponents.MAGIC_SPORES.maybeGet(player).ifPresent(magicSporesComponent -> {
 			magicSporesComponent.setMode(mode);
 			magicSporesComponent.updateAttributes(player);
