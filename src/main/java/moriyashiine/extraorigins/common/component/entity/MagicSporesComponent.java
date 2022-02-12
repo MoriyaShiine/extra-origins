@@ -16,7 +16,9 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.MathHelper;
 
@@ -58,7 +60,12 @@ public class MagicSporesComponent implements AutoSyncedComponent, CommonTickingC
 		obj.airStrafingSpeed *= getMode().airStrafingSpeedModifier;
 		if (obj.world.isClient && obj.getRandom().nextBoolean() && !obj.isInvisible()) {
 			if (MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson() || !MinecraftClient.getInstance().player.getUuid().equals(obj.getUuid())) {
-				obj.world.addParticle((ParticleEffect) ModParticleTypes.SPORE, obj.getParticleX(1), obj.getRandomBodyY(), obj.getParticleZ(1), getMode().red + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05), getMode().green + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05), getMode().blue + MathHelper.nextDouble(obj.getRandom(), -0.05, 0.05));
+				ParticleType<DefaultParticleType> effect = switch (getMode()) {
+					case OFFENSE -> ModParticleTypes.OFFENSE_SPORE;
+					case DEFENSE -> ModParticleTypes.DEFENSE_SPORE;
+					case MOBILITY -> ModParticleTypes.MOBILITY_SPORE;
+				};
+				obj.world.addParticle((ParticleEffect) effect, obj.getParticleX(1), obj.getRandomBodyY(), obj.getParticleZ(1), MathHelper.nextDouble(obj.getRandom(), 0.85, 1), MathHelper.nextDouble(obj.getRandom(), 0.85, 1), MathHelper.nextDouble(obj.getRandom(), 0.85, 1));
 			}
 		}
 	}
@@ -90,19 +97,15 @@ public class MagicSporesComponent implements AutoSyncedComponent, CommonTickingC
 	}
 
 	public enum Mode {
-		OFFENSE("Offense", 1.5F, 0.875F, 0.886, 0.071, 0.071), DEFENSE("Defense", 0.75F, 0.75F, 0.059, 0.624, 0.369), MOBILITY("Mobility", 1.25F, 1.5F, 0.125, 0.549, 0.576);
+		OFFENSE("Offense", 1.5F, 0.875F), DEFENSE("Defense", 0.75F, 0.75F), MOBILITY("Mobility", 1.25F, 1.5F);
 
 		private final String name;
 		private final float damageTakenModifier, airStrafingSpeedModifier;
-		private final double red, green, blue;
 
-		Mode(String name, float damageTakenModifier, float airStrafingSpeedModifier, double red, double green, double blue) {
+		Mode(String name, float damageTakenModifier, float airStrafingSpeedModifier) {
 			this.name = name;
 			this.damageTakenModifier = damageTakenModifier;
 			this.airStrafingSpeedModifier = airStrafingSpeedModifier;
-			this.red = red;
-			this.green = green;
-			this.blue = blue;
 		}
 
 		@Override

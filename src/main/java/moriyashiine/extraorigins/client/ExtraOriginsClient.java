@@ -21,8 +21,14 @@ public class ExtraOriginsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		MagicSporesHandler.init();
+		initParticles();
 		initPackets();
-		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.SPORE, SporeParticle.Factory::new);
+	}
+
+	private void initParticles() {
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.OFFENSE_SPORE, SporeParticle.Factory::new);
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.DEFENSE_SPORE, SporeParticle.Factory::new);
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.MOBILITY_SPORE, SporeParticle.Factory::new);
 	}
 
 	private void initPackets() {

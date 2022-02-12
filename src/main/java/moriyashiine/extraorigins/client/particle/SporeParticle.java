@@ -9,17 +9,16 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class SporeParticle extends SpriteBillboardParticle {
 	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double red, double green, double blue) {
 		super(clientWorld, posX, posY, posZ, red, green, blue);
-		this.red = MathHelper.clamp((float) red, 0, 1);
-		this.green = MathHelper.clamp((float) green, 0, 1);
-		this.blue = MathHelper.clamp((float) blue, 0, 1);
+		this.red = (float) red;
+		this.green = (float) green;
+		this.blue = (float) blue;
 		setBoundingBoxSpacing(0.02F, 0.02F);
-		scale *= random.nextFloat() * 0.6F + 0.5F;
+		scale *= 0.1F;
 		velocityX *= 0.02F;
 		velocityY *= 0.02F;
 		velocityZ *= 0.02F;
