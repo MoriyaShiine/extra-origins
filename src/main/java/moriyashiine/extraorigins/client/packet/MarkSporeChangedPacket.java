@@ -1,5 +1,5 @@
 /*
- * All Rights Reserved (c) 2021-2022 MoriyaShiine
+ * All Rights Reserved (c) 2022 MoriyaShiine
  */
 
 package moriyashiine.extraorigins.client.packet;
