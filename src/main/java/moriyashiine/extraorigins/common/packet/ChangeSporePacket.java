@@ -5,6 +5,7 @@
 package moriyashiine.extraorigins.common.packet;
 
 import io.netty.buffer.Unpooled;
+import moriyashiine.extraorigins.client.packet.MarkSporeChangedPacket;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.component.entity.MagicSporesComponent;
 import moriyashiine.extraorigins.common.registry.ModComponents;
@@ -35,6 +36,7 @@ public class ChangeSporePacket {
 			magicSporesComponent.setMode(mode);
 			magicSporesComponent.updateAttributes(player);
 			player.world.playSoundFromEntity(null, player, ModSoundEvents.ENTITY_GENERIC_SPORE_SHIFT, SoundCategory.PLAYERS, 1, player.getSoundPitch());
+			MarkSporeChangedPacket.send(player);
 		}));
 	}
 }
