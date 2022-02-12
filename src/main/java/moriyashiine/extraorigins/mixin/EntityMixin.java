@@ -52,8 +52,8 @@ public abstract class EntityMixin {
 
 	@Inject(method = "dismountVehicle", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;removePassenger(Lnet/minecraft/entity/Entity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void extraorigins$dismountPlayerWithPower(CallbackInfo ci, Entity entity) {
-		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower((Entity) (Object) this, MountPower.class)) {
-			DismountPacket.send(player, (Entity) (Object) this);
+		if (entity instanceof ServerPlayerEntity player && PowerHolderComponent.hasPower(Entity.class.cast(this), MountPower.class)) {
+			DismountPacket.send(player, Entity.class.cast(this));
 		}
 	}
 }

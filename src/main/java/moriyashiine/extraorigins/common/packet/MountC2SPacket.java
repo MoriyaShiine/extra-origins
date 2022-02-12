@@ -30,6 +30,9 @@ public class MountC2SPacket {
 		server.execute(() -> {
 			Entity entity = player.world.getEntityById(id);
 			if (entity != null) {
+				if (player.getUuid().equals(entity.getUuid())) {
+					return;
+				}
 				player.startRiding(entity, true);
 				if (entity instanceof ServerPlayerEntity playerBeingRidden) {
 					MountS2CPacket.send(playerBeingRidden, player);
