@@ -13,12 +13,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ExtraOrigins implements ModInitializer {
 	public static final String MOD_ID = "extraorigins";
-	public static final Logger LOGGER = LogManager.getLogger(ExtraOrigins.class);
 
 	@Override
 	public void onInitialize() {

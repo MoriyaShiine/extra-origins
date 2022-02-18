@@ -12,8 +12,6 @@ import io.netty.buffer.Unpooled;
 import moriyashiine.extraorigins.client.packet.MarkSporeChangedPacket;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.MagicSporesPower;
-import moriyashiine.extraorigins.common.registry.ModComponents;
-import moriyashiine.extraorigins.common.registry.ModSoundEvents;
 import moriyashiine.extraorigins.common.util.MagicSporeOption;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -21,7 +19,6 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 
 import java.util.Locale;
@@ -40,7 +37,6 @@ public class ChangeSporePacket {
 		MagicSporeOption option = MagicSporeOption.valueOf(buf.readString().toUpperCase(Locale.ROOT));
 		PowerTypeReference<?> power = ApoliDataTypes.POWER_TYPE.receive(buf);
 		if (!(power.get(player) instanceof MagicSporesPower magicSporesPower)) return;
-		ExtraOrigins.LOGGER.info(power.getIdentifier() + " " + option);
 		switch (option) {
 			case LEFT -> {
 				if (magicSporesPower.storeOption) {
