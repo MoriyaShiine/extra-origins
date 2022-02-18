@@ -18,6 +18,17 @@ public enum MagicSporeOption {
 	}
 
 	public enum BackwardsCompatibleMagicSporeMode {
-		OFFENSE, DEFENSE, MOBILITY, CONVERTED;
+		OFFENSE("Offense"), DEFENSE("Defense"), MOBILITY("Mobility"), CONVERTED("Converted");
+
+		private final String name;
+
+		BackwardsCompatibleMagicSporeMode(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return this.name;
+		}
 	}
 }
