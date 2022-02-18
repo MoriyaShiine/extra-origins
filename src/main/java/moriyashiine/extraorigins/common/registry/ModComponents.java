@@ -18,6 +18,6 @@ public class ModComponents implements EntityComponentInitializer {
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-		registry.registerForPlayers(MAGIC_SPORES, MagicSporesComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
+		registry.registerForPlayers(MAGIC_SPORES, MagicSporesComponent::new, RespawnCopyStrategy.NEVER_COPY);
 	}
 }

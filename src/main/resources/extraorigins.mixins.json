@@ -15,6 +15,9 @@
 	"SuspiciousStewItemMixin",
 	"TargetPredicateAccessor"
   ],
+  "client": [
+	"client.ApoliClientAccessor"
+  ],
   "injectors": {
 	"defaultRequire": 1
   }

@@ -23,6 +23,8 @@ public class MarkSporeChangedPacket {
 	}
 
 	public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		client.execute(() -> MagicSporesHandler.sporeChanged = false);
+		client.execute(() -> {
+			MagicSporesHandler.sporeChanged = false;
+		});
 	}
 }
