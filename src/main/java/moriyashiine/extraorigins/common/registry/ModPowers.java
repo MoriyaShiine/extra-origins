@@ -25,7 +25,7 @@ public class ModPowers {
 		MagicSporesPower power = new MagicSporesPower(type, entity, data.getId("sprite_location"), data.get("up_action"), data.get("right_action"), data.get("left_action"), data.get("lost_action"), data.getInt("swap_time"), data.get("default"), data.getBoolean("store_option"));
 		power.setKey(data.get("key"));
 		return power;
-	});
+	}).allowCondition();
 
 	public static final PowerFactory<Power> FOOD_EFFECT_IMMUNITY = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "food_effect_immunity"), new SerializableData().add("effects", SerializableDataTypes.STATUS_EFFECTS, Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new FoodEffectImmunityPower(type, entity, data.get("effects"), data.getBoolean("inverted"))).allowCondition();
 
