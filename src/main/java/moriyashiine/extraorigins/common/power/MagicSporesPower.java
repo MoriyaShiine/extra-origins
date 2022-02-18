@@ -7,6 +7,7 @@ package moriyashiine.extraorigins.common.power;
 import io.github.apace100.apoli.power.Active;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
+import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.registry.ModComponents;
 import moriyashiine.extraorigins.common.util.MagicSporeOption;
 import net.minecraft.entity.Entity;
@@ -122,6 +123,7 @@ public class MagicSporesPower extends Power implements Active {
 	}
 
 	private void convertToNewFormat() {
+		if (!this.getType().getIdentifier().equals(new Identifier(ExtraOrigins.MOD_ID, "magic_spores"))) return;
 		ModComponents.MAGIC_SPORES.maybeGet(entity).ifPresent(magicSporesComponent -> {
 			switch (magicSporesComponent.getMode()) {
 				case OFFENSE -> {
