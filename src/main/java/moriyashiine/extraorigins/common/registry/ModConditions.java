@@ -55,7 +55,7 @@ public class ModConditions {
 				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporeOption.NONE;
 			}
 		}
-		return entity instanceof PlayerEntity player && PowerHolderComponent.hasPower(player, MagicSporesPower.class) && hasSpecifiedSpore;
+		return entity instanceof PlayerEntity && hasSpecifiedSpore;
 	});
 	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "piglin_safe"), new SerializableData(), (instance, entity) -> entity.world.getDimension().isPiglinSafe());
 
