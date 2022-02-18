@@ -1,6 +1,6 @@
 package moriyashiine.extraorigins.common.util;
 
-public enum MagicSporeOption {
+public enum MagicSporesOption {
 	LEFT("Left"), OFFENSE("Offense"),
 	RIGHT("Right"), DEFENSE("Defense"),
 	UP("Up"), MOBILITY("Mobility"),
@@ -8,7 +8,7 @@ public enum MagicSporeOption {
 
 	private final String name;
 
-	MagicSporeOption(String name) {
+	MagicSporesOption(String name) {
 		this.name = name;
 	}
 
@@ -17,12 +17,12 @@ public enum MagicSporeOption {
 		return this.name;
 	}
 
-	public enum BackwardsCompatibleMagicSporeMode {
+	public enum BackwardsCompatibleMagicSporesMode {
 		OFFENSE("Offense"), DEFENSE("Defense"), MOBILITY("Mobility"), CONVERTED("Converted");
 
 		private final String name;
 
-		BackwardsCompatibleMagicSporeMode(String name) {
+		BackwardsCompatibleMagicSporesMode(String name) {
 			this.name = name;
 		}
 

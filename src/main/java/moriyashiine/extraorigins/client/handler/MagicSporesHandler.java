@@ -6,11 +6,9 @@ package moriyashiine.extraorigins.client.handler;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.packet.ChangeSporePacket;
 import moriyashiine.extraorigins.common.power.MagicSporesPower;
-import moriyashiine.extraorigins.common.registry.ModComponents;
-import moriyashiine.extraorigins.common.util.MagicSporeOption;
+import moriyashiine.extraorigins.common.util.MagicSporesOption;
 import moriyashiine.extraorigins.mixin.client.ApoliClientAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -28,7 +26,7 @@ import java.util.List;
 public class MagicSporesHandler {
 	public static boolean sporeChanged = false;
 
-	private static MagicSporeOption targetMode = null;
+	private static MagicSporesOption targetMode = null;
 	private static boolean renderModeSwitch = false;
 	private static int timer = 0;
 	private static MagicSporesPower lastUsedPower;
@@ -66,10 +64,10 @@ public class MagicSporesHandler {
 				double x = client.mouse.getX() - (client.getWindow().getWidth() / 2F);
 				double y = (client.getWindow().getHeight() / 2F) - client.mouse.getY();
 				if (Math.abs(x) > 48 || Math.abs(y) > 48) {
-					MagicSporeOption modeFromDirection = switch (Direction.getFacing(x, y, 0)) {
-						case UP -> MagicSporeOption.UP;
-						case WEST -> MagicSporeOption.LEFT;
-						case EAST -> MagicSporeOption.RIGHT;
+					MagicSporesOption modeFromDirection = switch (Direction.getFacing(x, y, 0)) {
+						case UP -> MagicSporesOption.UP;
+						case WEST -> MagicSporesOption.LEFT;
+						case EAST -> MagicSporesOption.RIGHT;
 						default -> null;
 					};
 					if (targetMode != modeFromDirection) {
@@ -89,7 +87,7 @@ public class MagicSporesHandler {
 					lastUsedPower = activePowers.get(0);
 				}
 				if (targetMode != null && (!lastUsedPower.storeOption || lastUsedPower.getStoredOption() != targetMode)) {
-					if (lastUsedPower.upAction == null && targetMode == MagicSporeOption.UP || lastUsedPower.rightAction == null && targetMode == MagicSporeOption.RIGHT || lastUsedPower.leftAction == null && targetMode == MagicSporeOption.LEFT) {
+					if (lastUsedPower.upAction == null && targetMode == MagicSporesOption.UP || lastUsedPower.rightAction == null && targetMode == MagicSporesOption.RIGHT || lastUsedPower.leftAction == null && targetMode == MagicSporesOption.LEFT) {
 						return;
 					}
 					if (!sporeChanged) {
@@ -114,11 +112,11 @@ public class MagicSporesHandler {
 				//outline
 				MinecraftClient.getInstance().inGameHud.drawTexture(matrixStack, (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2) - 64, (MinecraftClient.getInstance().getWindow().getScaledHeight() / 2) - 64, 0, 0, 128, 128);
 				//left
-				renderSection(MagicSporeOption.LEFT, matrixStack, -67, -28, 128);
+				renderSection(MagicSporesOption.LEFT, matrixStack, -67, -28, 128);
 				//right
-				renderSection(MagicSporeOption.RIGHT, matrixStack, 34, -32, 160);
+				renderSection(MagicSporesOption.RIGHT, matrixStack, 34, -32, 160);
 				//up
-				renderSection(MagicSporeOption.UP, matrixStack, -16, -71, 192);
+				renderSection(MagicSporesOption.UP, matrixStack, -16, -71, 192);
 				//progress
 				if (timer > 0) {
 					MinecraftClient.getInstance().inGameHud.drawTexture(matrixStack, (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2) - 13, (MinecraftClient.getInstance().getWindow().getScaledHeight() / 2) - 13, 48, 128, 26, 26);
@@ -129,11 +127,11 @@ public class MagicSporesHandler {
 			}
 
 			@SuppressWarnings("ConstantConditions")
-			private void renderSection(MagicSporeOption targetMode, MatrixStack matrixStack, int posXOffset, int posYOffset, int u) {
+			private void renderSection(MagicSporesOption targetMode, MatrixStack matrixStack, int posXOffset, int posYOffset, int u) {
 				int v = 0;
 				if (lastUsedPower.getStoredOption() == targetMode) {
 					v += 64;
-				} else if (MagicSporesHandler.targetMode == targetMode && !(lastUsedPower.upAction == null && targetMode == MagicSporeOption.UP || lastUsedPower.leftAction == null && targetMode == MagicSporeOption.LEFT || lastUsedPower.rightAction == null && targetMode == MagicSporeOption.RIGHT)) {
+				} else if (MagicSporesHandler.targetMode == targetMode && !(lastUsedPower.upAction == null && targetMode == MagicSporesOption.UP || lastUsedPower.leftAction == null && targetMode == MagicSporesOption.LEFT || lastUsedPower.rightAction == null && targetMode == MagicSporesOption.RIGHT)) {
 					v += 32;
 				}
 				MinecraftClient.getInstance().inGameHud.drawTexture(matrixStack, (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2) + posXOffset, (MinecraftClient.getInstance().getWindow().getScaledHeight() / 2) + posYOffset, u, v, 32, 32);

@@ -4,7 +4,6 @@
 
 package moriyashiine.extraorigins.common.registry;
 
-import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerTypeReference;
@@ -12,11 +11,9 @@ import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
-import io.github.apace100.calio.data.SerializableDataTypes;
 import moriyashiine.extraorigins.common.ExtraOrigins;
-import moriyashiine.extraorigins.common.component.entity.MagicSporesComponent;
 import moriyashiine.extraorigins.common.power.MagicSporesPower;
-import moriyashiine.extraorigins.common.util.MagicSporeOption;
+import moriyashiine.extraorigins.common.util.MagicSporesOption;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.block.pattern.CachedBlockPosition;
 import net.minecraft.entity.Entity;
@@ -27,12 +24,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Locale;
-
 public class ModConditions {
 	public static final ConditionFactory<CachedBlockPosition> FERTILIZABLE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "fertilizable"), new SerializableData(), (instance, cachedBlockPosition) -> cachedBlockPosition.getBlockState().getBlock() instanceof Fertilizable);
 
-	public static final ConditionFactory<Entity> MAGIC_SPORES_MODE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "magic_spores_mode"), new SerializableData().add("mode", SerializableDataType.enumValue(MagicSporeOption.class)).add("power", ApoliDataTypes.POWER_TYPE), (instance, entity) -> {
+	public static final ConditionFactory<Entity> MAGIC_SPORES_MODE = new ConditionFactory<>(new Identifier(ExtraOrigins.MOD_ID, "magic_spores_mode"), new SerializableData().add("mode", SerializableDataType.enumValue(MagicSporesOption.class)).add("power", ApoliDataTypes.POWER_TYPE), (instance, entity) -> {
 		if (!((PowerTypeReference<?>)instance.get("power")).isActive(entity)) {
 			return false;
 		}
@@ -41,18 +36,18 @@ public class ModConditions {
 			return false;
 		}
 		boolean hasSpecifiedSpore = false;
-		switch ((MagicSporeOption)instance.get("mode")) {
+		switch ((MagicSporesOption)instance.get("mode")) {
 			case LEFT, OFFENSE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporeOption.LEFT;
+				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.LEFT;
 			}
 			case RIGHT, DEFENSE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporeOption.RIGHT;
+				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.RIGHT;
 			}
 			case UP, MOBILITY -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporeOption.UP;
+				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.UP;
 			}
 			case NONE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporeOption.NONE;
+				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.NONE;
 			}
 		}
 		return entity instanceof PlayerEntity && hasSpecifiedSpore;
