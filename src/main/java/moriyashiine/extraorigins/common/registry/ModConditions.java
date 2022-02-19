@@ -37,18 +37,10 @@ public class ModConditions {
 		}
 		boolean hasSpecifiedSpore = false;
 		switch ((MagicSporesOption)instance.get("mode")) {
-			case LEFT, OFFENSE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.LEFT;
-			}
-			case RIGHT, DEFENSE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.RIGHT;
-			}
-			case UP, MOBILITY -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.UP;
-			}
-			case NONE -> {
-				hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.NONE;
-			}
+			case LEFT, OFFENSE -> hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.LEFT;
+			case RIGHT, DEFENSE -> hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.RIGHT;
+			case UP, MOBILITY -> hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.UP;
+			case NONE -> hasSpecifiedSpore = sporesPower.getStoredOption() == MagicSporesOption.NONE;
 		}
 		return entity instanceof PlayerEntity && hasSpecifiedSpore;
 	});
