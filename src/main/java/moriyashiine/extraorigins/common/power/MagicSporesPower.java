@@ -7,8 +7,6 @@ package moriyashiine.extraorigins.common.power;
 import io.github.apace100.apoli.power.Active;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
-import moriyashiine.extraorigins.common.ExtraOrigins;
-import moriyashiine.extraorigins.common.registry.ModComponents;
 import moriyashiine.extraorigins.common.util.MagicSporesOption;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -46,11 +44,6 @@ public class MagicSporesPower extends Power implements Active {
 
 	@Override
 	public void onUse() {
-	}
-
-	@Override
-	public void onAdded() {
-		convertToNewFormat();
 	}
 
 	@Override
@@ -120,32 +113,5 @@ public class MagicSporesPower extends Power implements Active {
 		NbtCompound nbt =  new NbtCompound();
 		nbt.putString("StoredOption", this.storedOption.toString());
 		return nbt;
-	}
-
-	private void convertToNewFormat() {
-		if (!this.getType().getIdentifier().equals(new Identifier(ExtraOrigins.MOD_ID, "magic_spores"))) return;
-		ModComponents.MAGIC_SPORES.maybeGet(entity).ifPresent(magicSporesComponent -> {
-			switch (magicSporesComponent.getMode()) {
-				case OFFENSE -> {
-					if (storeOption) {
-						this.storedOption = MagicSporesOption.LEFT;
-					}
-					leftAction.accept(entity);
-				}
-				case DEFENSE -> {
-				if (storeOption) {
-						this.storedOption = MagicSporesOption.RIGHT;
-				}
-					rightAction.accept(entity);
-				}
-				case MOBILITY -> {
-					if (storeOption) {
-						this.storedOption = MagicSporesOption.UP;
-					}
-					upAction.accept(entity);
-				}
-			}
-			magicSporesComponent.setMode(MagicSporesOption.BackwardsCompatibleMagicSporesMode.CONVERTED);
-		});
 	}
 }

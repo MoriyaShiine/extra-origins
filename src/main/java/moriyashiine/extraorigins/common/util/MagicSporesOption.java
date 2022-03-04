@@ -16,19 +16,4 @@ public enum MagicSporesOption {
 	public String toString() {
 		return this.name;
 	}
-
-	public enum BackwardsCompatibleMagicSporesMode {
-		OFFENSE("Offense"), DEFENSE("Defense"), MOBILITY("Mobility"), CONVERTED("Converted");
-
-		private final String name;
-
-		BackwardsCompatibleMagicSporesMode(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public String toString() {
-			return this.name;
-		}
-	}
 }

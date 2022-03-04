@@ -6,18 +6,14 @@ package moriyashiine.extraorigins.mixin;
 
 import com.mojang.datafixers.util.Pair;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.component.entity.MagicSporesComponent;
 import moriyashiine.extraorigins.common.power.FoodEffectImmunityPower;
-import moriyashiine.extraorigins.common.power.MagicSporesPower;
 import moriyashiine.extraorigins.common.power.ModifyAirStrafingSpeedPower;
-import moriyashiine.extraorigins.common.registry.ModComponents;
 import moriyashiine.extraorigins.common.registry.ModParticleTypes;
 import moriyashiine.extraorigins.common.registry.ModPowers;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
