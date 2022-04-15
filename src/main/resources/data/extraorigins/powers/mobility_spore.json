@@ -1,0 +1,39 @@
+{
+  "type": "origins:multiple",
+  "air_strafing_speed_modifiers": {
+    "type": "extraorigins:modify_air_strafing_speed",
+    "modifier": {
+      "name": "Origin modifier",
+      "operation": "multiply_total",
+      "value": 0.5
+    }
+  },
+  "attribute_modifiers": {
+    "type": "origins:attribute",
+    "modifiers": [
+      {
+        "name": "Origin modifier",
+        "attribute": "minecraft:generic.attack_damage",
+        "value": -0.25,
+        "operation": "multiply_total"
+      },
+      {
+        "name": "Origin modifier",
+        "attribute": "minecraft:generic.movement_speed",
+        "value": 0.5,
+        "operation": "multiply_total"
+      }
+    ]
+  },
+  "damage_taken_modifier": {
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+      "name": "Origin modifier",
+      "operation": "multiply_total",
+      "value": 0.25
+    }
+  },
+  "particles": {
+    "type": "origins:simple"
+  }
+}

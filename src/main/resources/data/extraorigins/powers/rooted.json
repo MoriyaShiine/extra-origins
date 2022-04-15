@@ -7,7 +7,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "offense"
+		  "mode": "offense",
+		  "power": "extraorigins:magic_spores"
 		},
 		{
 		  "type": "origins:on_block",
@@ -32,7 +33,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "defense"
+		  "mode": "defense",
+		  "power": "extraorigins:magic_spores"
 		},
 		{
 		  "type": "origins:on_block",
@@ -57,7 +59,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "mobility"
+		  "mode": "mobility",
+		  "power": "extraorigins:magic_spores"
 		},
 		{
 		  "type": "origins:sprinting"
@@ -84,7 +87,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "mobility"
+		  "mode": "mobility",
+		  "power": "extraorigins:magic_spores"
 		},
 		{
 		  "type": "origins:block_in_radius",
