@@ -1,5 +1,8 @@
 {
   "type": "extraorigins:radial_menu",
+  "key": {
+	"key": "key.origins.primary_active"
+  },
   "sprite_location": "extraorigins:textures/gui/icons.png",
   "up_action": {
 	"type": "origins:and",
