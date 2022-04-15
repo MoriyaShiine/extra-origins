@@ -1,98 +1,96 @@
 {
-  "type": "extraorigins:magic_spores",
-  "key": {
-    "key": "key.origins.primary_active"
-  },
+  "type": "extraorigins:radial_menu",
+  "sprite_location": "extraorigins:textures/gui/icons.png",
   "up_action": {
-    "type": "origins:and",
-    "actions": [
-      {
-        "type": "origins:grant_power",
-        "power": "extraorigins:mobility_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:defense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:offense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:play_sound",
-        "sound": "extraorigins:entity.generic.spore_shift"
-      }
-    ]
+	"type": "origins:and",
+	"actions": [
+	  {
+		"type": "origins:grant_power",
+		"power": "extraorigins:mobility_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:defense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:offense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:play_sound",
+		"sound": "extraorigins:entity.generic.spore_shift"
+	  }
+	]
   },
   "left_action": {
-    "type": "origins:and",
-    "actions": [
-      {
-        "type": "origins:grant_power",
-        "power": "extraorigins:offense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:defense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:mobility_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:play_sound",
-        "sound": "extraorigins:entity.generic.spore_shift"
-      }
-    ]
+	"type": "origins:and",
+	"actions": [
+	  {
+		"type": "origins:grant_power",
+		"power": "extraorigins:offense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:defense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:mobility_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:play_sound",
+		"sound": "extraorigins:entity.generic.spore_shift"
+	  }
+	]
   },
   "right_action": {
-    "type": "origins:and",
-    "actions": [
-      {
-        "type": "origins:grant_power",
-        "power": "extraorigins:defense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:offense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:mobility_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:play_sound",
-        "sound": "extraorigins:entity.generic.spore_shift"
-      }
-    ]
+	"type": "origins:and",
+	"actions": [
+	  {
+		"type": "origins:grant_power",
+		"power": "extraorigins:defense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:offense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:mobility_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:play_sound",
+		"sound": "extraorigins:entity.generic.spore_shift"
+	  }
+	]
   },
   "lost_action": {
-    "type": "origins:and",
-    "actions": [
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:offense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:defense_spore",
-        "source": "extraorigins:truffle"
-      },
-      {
-        "type": "origins:revoke_power",
-        "power": "extraorigins:mobility_spore",
-        "source": "extraorigins:truffle"
-      }
-    ]
+	"type": "origins:and",
+	"actions": [
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:offense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:defense_spores",
+		"source": "extraorigins:magic_spores"
+	  },
+	  {
+		"type": "origins:revoke_power",
+		"power": "extraorigins:mobility_spores",
+		"source": "extraorigins:magic_spores"
+	  }
+	]
   }
 }

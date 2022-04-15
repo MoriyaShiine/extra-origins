@@ -1,3 +1,7 @@
+/*
+ * All Rights Reserved (c) 2022 MoriyaShiine
+ */
+
 package moriyashiine.extraorigins.mixin.client;
 
 import io.github.apace100.apoli.ApoliClient;
@@ -10,10 +14,10 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.HashMap;
 
 @Environment(EnvType.CLIENT)
-@Mixin(ApoliClient.class)
+@Mixin(value = ApoliClient.class, remap = false)
 public interface ApoliClientAccessor {
-    @Accessor(value = "idToKeyBindingMap", remap = false)
-    static HashMap<String, KeyBinding> eo_getIdToKeybindingMap() {
-        throw new RuntimeException("");
-    }
+	@Accessor("idToKeyBindingMap")
+	static HashMap<String, KeyBinding> extraorigins$idToKeyBindingMap() {
+		throw new UnsupportedOperationException();
+	}
 }

@@ -42,10 +42,9 @@ public abstract class EntityMixin {
 		});
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
-		if ((Object) this instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
+		if (Entity.class.cast(this) instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
 			cir.setReturnValue((double) (dimensions.height * ModScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
 		}
 	}

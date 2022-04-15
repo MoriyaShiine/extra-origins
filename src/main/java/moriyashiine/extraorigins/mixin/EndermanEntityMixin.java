@@ -15,15 +15,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EndermanEntity.class)
-public abstract class EndermanEntityMixin {
-	@Inject(method = "isPlayerStaring", at = @At("RETURN"), cancellable = true)
-	private void extraorigins$addMobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
-		if (cir.getReturnValue()) {
-			PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
-				if (mobNeutralityPower.shouldBeNeutral(EntityType.ENDERMAN) && mobNeutralityPower.isActive()) {
-					cir.setReturnValue(false);
-				}
-			});
-		}
+public class EndermanEntityMixin {
+	@Inject(method = "isPlayerStaring", at = @At("HEAD"), cancellable = true)
+	private void extraorigins$mobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
+		PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
+			if (mobNeutralityPower.shouldBeNeutral(EntityType.ENDERMAN) && mobNeutralityPower.isActive()) {
+				cir.setReturnValue(false);
+			}
+		});
 	}
 }

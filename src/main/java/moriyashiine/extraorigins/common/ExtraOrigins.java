@@ -5,7 +5,7 @@
 package moriyashiine.extraorigins.common;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.packet.ChangeSporePacket;
+import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.registry.*;
@@ -21,15 +21,15 @@ public class ExtraOrigins implements ModInitializer {
 	public void onInitialize() {
 		ModParticleTypes.init();
 		ModSoundEvents.init();
-		ModScaleTypes.init();
 		ModPowers.init();
 		ModConditions.init();
+		ModScaleTypes.init();
 		initPackets();
 		initEvents();
 	}
 
 	private void initPackets() {
-		ServerPlayNetworking.registerGlobalReceiver(ChangeSporePacket.ID, ChangeSporePacket::receive);
+		ServerPlayNetworking.registerGlobalReceiver(ChangeRadialDirectionPacket.ID, ChangeRadialDirectionPacket::receive);
 		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
 	}
 

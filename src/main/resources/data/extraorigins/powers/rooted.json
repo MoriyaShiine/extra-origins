@@ -1,65 +1,13 @@
 {
   "type": "origins:multiple",
-  "offense": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:and",
-	  "conditions": [
-		{
-		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "offense",
-		  "power": "extraorigins:magic_spores"
-		},
-		{
-		  "type": "origins:on_block",
-		  "block_condition": {
-			"type": "origins:block",
-			"block": "minecraft:mycelium"
-		  }
-		}
-	  ]
-	},
-	"modifier": {
-	  "name": "Origins modifier",
-	  "attribute": "minecraft:generic.attack_speed",
-	  "operation": "addition",
-	  "value": 0.4
-	}
-  },
-  "defense": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:and",
-	  "conditions": [
-		{
-		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "defense",
-		  "power": "extraorigins:magic_spores"
-		},
-		{
-		  "type": "origins:on_block",
-		  "block_condition": {
-			"type": "origins:block",
-			"block": "minecraft:mycelium"
-		  }
-		}
-	  ]
-	},
-	"modifier": {
-	  "name": "Origins modifier",
-	  "attribute": "minecraft:generic.knockback_resistance",
-	  "operation": "addition",
-	  "value": 10
-	}
-  },
   "mobility": {
 	"type": "origins:modify_jump",
 	"condition": {
 	  "type": "origins:and",
 	  "conditions": [
 		{
-		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "mobility",
+		  "type": "extraorigins:radial_menu_direction",
+		  "direction": "up",
 		  "power": "extraorigins:magic_spores"
 		},
 		{
@@ -86,8 +34,8 @@
 	  "type": "origins:and",
 	  "conditions": [
 		{
-		  "type": "extraorigins:magic_spores_mode",
-		  "mode": "mobility",
+		  "type": "extraorigins:radial_menu_direction",
+		  "direction": "up",
 		  "power": "extraorigins:magic_spores"
 		},
 		{
@@ -103,6 +51,58 @@
 	"damage_condition": {
 	  "type": "origins:name",
 	  "name": "fall"
+	}
+  },
+  "offense": {
+	"type": "origins:conditioned_attribute",
+	"condition": {
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:radial_menu_direction",
+		  "direction": "left",
+		  "power": "extraorigins:magic_spores"
+		},
+		{
+		  "type": "origins:on_block",
+		  "block_condition": {
+			"type": "origins:block",
+			"block": "minecraft:mycelium"
+		  }
+		}
+	  ]
+	},
+	"modifier": {
+	  "name": "Origins modifier",
+	  "attribute": "minecraft:generic.attack_speed",
+	  "operation": "addition",
+	  "value": 0.4
+	}
+  },
+  "defense": {
+	"type": "origins:conditioned_attribute",
+	"condition": {
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:radial_menu_direction",
+		  "direction": "right",
+		  "power": "extraorigins:magic_spores"
+		},
+		{
+		  "type": "origins:on_block",
+		  "block_condition": {
+			"type": "origins:block",
+			"block": "minecraft:mycelium"
+		  }
+		}
+	  ]
+	},
+	"modifier": {
+	  "name": "Origins modifier",
+	  "attribute": "minecraft:generic.knockback_resistance",
+	  "operation": "addition",
+	  "value": 10
 	}
   }
 }

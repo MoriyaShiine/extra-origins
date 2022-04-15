@@ -19,9 +19,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 @Mixin(PiglinBruteBrain.class)
-public abstract class PiglinBruteBrainMixin {
+public class PiglinBruteBrainMixin {
 	@Inject(method = "method_30249", at = @At("RETURN"), cancellable = true)
-	private static void extraorigins$addMobNeutrality(AbstractPiglinEntity piglin, MemoryModuleType<? extends LivingEntity> memoryModuleType, CallbackInfoReturnable<Optional<? extends LivingEntity>> cir) {
+	private static void extraorigins$mobNeutrality(AbstractPiglinEntity piglin, MemoryModuleType<? extends LivingEntity> memoryModuleType, CallbackInfoReturnable<Optional<? extends LivingEntity>> cir) {
 		if (cir.getReturnValue().isPresent()) {
 			piglin.getBrain().getOptionalMemory(memoryModuleType).filter(entity -> {
 				PowerHolderComponent.getPowers(entity, MobNeutralityPower.class).forEach(mobNeutralityPower -> {

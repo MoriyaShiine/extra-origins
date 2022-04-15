@@ -13,7 +13,7 @@ import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.*;
-import moriyashiine.extraorigins.common.util.MagicSporesOption;
+import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import virtuoel.pehkui.api.ScaleRegistries;
@@ -21,8 +21,17 @@ import virtuoel.pehkui.api.ScaleRegistries;
 import java.util.Collections;
 
 public class ModPowers {
-	public static final PowerFactory<Power> MAGIC_SPORES = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "magic_spores"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()).add("sprite_location", SerializableDataTypes.IDENTIFIER, new Identifier(ExtraOrigins.MOD_ID, "textures/gui/icons.png")).add("up_action", ApoliDataTypes.ENTITY_ACTION, null).add("right_action", ApoliDataTypes.ENTITY_ACTION, null).add("left_action", ApoliDataTypes.ENTITY_ACTION, null).add("lost_action", ApoliDataTypes.ENTITY_ACTION, null).add("swap_time", SerializableDataTypes.INT, 20).add("default", SerializableDataType.enumValue(MagicSporesOption.class), MagicSporesOption.MOBILITY).add("store_option", SerializableDataTypes.BOOLEAN, true), data -> (type, entity) -> {
-		MagicSporesPower power = new MagicSporesPower(type, entity, data.getId("sprite_location"), data.get("up_action"), data.get("right_action"), data.get("left_action"), data.get("lost_action"), data.getInt("swap_time"), data.get("default"), data.getBoolean("store_option"));
+	public static final PowerFactory<Power> RADIAL_MENU = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "radial_menu"), new SerializableData()
+			.add("key", ApoliDataTypes.KEY, new Active.Key())
+			.add("sprite_location", SerializableDataTypes.IDENTIFIER)
+			.add("up_action", ApoliDataTypes.ENTITY_ACTION, null)
+			.add("down_action", ApoliDataTypes.ENTITY_ACTION, null)
+			.add("left_action", ApoliDataTypes.ENTITY_ACTION, null)
+			.add("right_action", ApoliDataTypes.ENTITY_ACTION, null)
+			.add("lost_action", ApoliDataTypes.ENTITY_ACTION, null)
+			.add("swap_time", SerializableDataTypes.INT, 20)
+			.add("default_direction", SerializableDataType.enumValue(RadialMenuDirection.class), RadialMenuDirection.UP), data -> (type, entity) -> {
+		RadialMenuPower power = new RadialMenuPower(type, entity, data.getId("sprite_location"), data.get("up_action"), data.get("down_action"), data.get("left_action"), data.get("right_action"), data.get("lost_action"), data.getInt("swap_time"), data.get("default_direction"));
 		power.setKey(data.get("key"));
 		return power;
 	}).allowCondition();
@@ -47,12 +56,8 @@ public class ModPowers {
 
 	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "all_that_glitters"));
 
-	public static final PowerType<Power> OFFENSE_SPORE_PARTICLES = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "offense_spore_particles"));
-	public static final PowerType<Power> DEFENSE_SPORE_PARTICLES = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "defense_spore_particles"));
-	public static final PowerType<Power> MOBILITY_SPORE_PARTICLES = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "mobility_spore_particles"));
-
 	public static void init() {
-		Registry.register(ApoliRegistries.POWER_FACTORY, MAGIC_SPORES.getSerializerId(), MAGIC_SPORES);
+		Registry.register(ApoliRegistries.POWER_FACTORY, RADIAL_MENU.getSerializerId(), RADIAL_MENU);
 		Registry.register(ApoliRegistries.POWER_FACTORY, FOOD_EFFECT_IMMUNITY.getSerializerId(), FOOD_EFFECT_IMMUNITY);
 		Registry.register(ApoliRegistries.POWER_FACTORY, MODIFY_SIZE.getSerializerId(), MODIFY_SIZE);
 		Registry.register(ApoliRegistries.POWER_FACTORY, PREVENT_BLOCK_SLOWNESS.getSerializerId(), PREVENT_BLOCK_SLOWNESS);

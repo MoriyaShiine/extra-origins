@@ -16,14 +16,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(SuspiciousStewItem.class)
-public abstract class SuspiciousStewItemMixin {
+public class SuspiciousStewItemMixin {
 	@ModifyVariable(method = "finishUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/effect/StatusEffect;byRawId(I)Lnet/minecraft/entity/effect/StatusEffect;"))
-	private StatusEffect extraorigins$foodEffectImmunity(StatusEffect obj, ItemStack stack, World world, LivingEntity user) {
+	private StatusEffect extraorigins$foodEffectImmunity(StatusEffect value, ItemStack stack, World world, LivingEntity user) {
 		for (FoodEffectImmunityPower foodEffectImmunityPower : PowerHolderComponent.getPowers(user, FoodEffectImmunityPower.class)) {
-			if (foodEffectImmunityPower.shouldRemove(obj)) {
+			if (foodEffectImmunityPower.shouldRemove(value)) {
 				return null;
 			}
 		}
-		return obj;
+		return value;
 	}
 }

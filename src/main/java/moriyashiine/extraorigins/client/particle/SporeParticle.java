@@ -12,16 +12,13 @@ import net.minecraft.particle.DefaultParticleType;
 
 @Environment(EnvType.CLIENT)
 public class SporeParticle extends SpriteBillboardParticle {
-	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double red, double green, double blue) {
-		super(clientWorld, posX, posY, posZ, red, green, blue);
-		this.red = (float) red;
-		this.green = (float) green;
-		this.blue = (float) blue;
+	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
+		super(clientWorld, posX, posY, posZ, velocityX, velocityY, velocityZ);
 		setBoundingBoxSpacing(0.02F, 0.02F);
 		scale *= 0.1F;
-		velocityX *= 0.02F;
-		velocityY *= 0.02F;
-		velocityZ *= 0.02F;
+		this.velocityX *= 0.02F;
+		this.velocityY *= 0.02F;
+		this.velocityZ *= 0.02F;
 		maxAge = (int) (20 / (Math.random() * 0.8 + 0.2));
 	}
 

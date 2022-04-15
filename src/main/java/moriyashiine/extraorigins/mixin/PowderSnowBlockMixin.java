@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PowderSnowBlock.class)
-public abstract class PowderSnowBlockMixin {
+public class PowderSnowBlockMixin {
 	@Inject(method = "canWalkOnPowderSnow", at = @At("HEAD"), cancellable = true)
-	private static void extraorigins$canWalkOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir) {
+	private static void extraorigins$canStandOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir) {
 		for (CanStandOnPowderSnowPower canStandOnPowderSnowPower : PowerHolderComponent.getPowers(entity, CanStandOnPowderSnowPower.class)) {
 			if (canStandOnPowderSnowPower.isActive()) {
 				cir.setReturnValue(true);

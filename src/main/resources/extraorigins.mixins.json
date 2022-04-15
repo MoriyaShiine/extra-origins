@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "moriyashiine.extraorigins.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
 	"ActiveTargetGoalMixin",
 	"EndermanEntityMixin",
@@ -12,8 +12,7 @@
 	"PiglinBrainMixin",
 	"PiglinBruteBrainMixin",
 	"PowderSnowBlockMixin",
-	"SuspiciousStewItemMixin",
-	"TargetPredicateAccessor"
+	"SuspiciousStewItemMixin"
   ],
   "client": [
 	"client.ApoliClientAccessor"
