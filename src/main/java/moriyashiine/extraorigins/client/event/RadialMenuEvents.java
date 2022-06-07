@@ -35,7 +35,7 @@ public class RadialMenuEvents {
 
 	public static void init() {
 		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
-			activePowers.clear();
+			activePowers = null;
 			lastUsedPower = null;
 			directionChanged = false;
 			targetDirection = null;
