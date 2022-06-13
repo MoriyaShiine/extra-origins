@@ -6,8 +6,8 @@ package moriyashiine.extraorigins.mixin;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import moriyashiine.extraorigins.common.registry.ModItemTags;
 import moriyashiine.extraorigins.common.registry.ModPowers;
+import moriyashiine.extraorigins.common.registry.ModTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
@@ -23,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.tag.TagKey;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -32,7 +33,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
@@ -63,20 +63,20 @@ public abstract class ItemStackMixin {
 	private <T extends LivingEntity> void extraorigins$increaseGoldToolDurability(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
 		if (!entity.world.isClient && ModPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
 			if (getItem() instanceof ToolItem) {
-				if (isIn(ModItemTags.GOLDEN_TOOLS)) {
+				if (isIn(ModTags.Items.GOLDEN_TOOLS)) {
 					if (entity.world.random.nextFloat() < 15 / 16F) {
 						ci.cancel();
 					}
-				} else if (entity.getRandom().nextBoolean() && !isIn(ModItemTags.NETHERITE_TOOLS)) {
+				} else if (entity.getRandom().nextBoolean() && !isIn(ModTags.Items.NETHERITE_TOOLS)) {
 					damage(amount, entity.getRandom(), null);
 				}
 			}
 			if (getItem() instanceof ArmorItem) {
-				if (isIn(ModItemTags.GOLDEN_ARMOR)) {
+				if (isIn(ModTags.Items.GOLDEN_ARMOR)) {
 					if (entity.world.random.nextFloat() < 3 / 4F) {
 						ci.cancel();
 					}
-				} else if (entity.getRandom().nextBoolean() && !isIn(ModItemTags.NETHERITE_ARMOR)) {
+				} else if (entity.getRandom().nextBoolean() && !isIn(ModTags.Items.NETHERITE_ARMOR)) {
 					damage(amount, entity.getRandom(), null);
 				}
 			}
@@ -88,14 +88,14 @@ public abstract class ItemStackMixin {
 	private Multimap<EntityAttribute, EntityAttributeModifier> extraorigins$addToolBonusTooltips(Multimap<EntityAttribute, EntityAttributeModifier> value, PlayerEntity player, TooltipContext context) {
 		if (ModPowers.ALL_THAT_GLITTERS.get(player) != null && !value.isEmpty()) {
 			value = LinkedHashMultimap.create(value);
-			if (getItem() instanceof ToolItem && isIn(ModItemTags.GOLDEN_TOOLS)) {
+			if (getItem() instanceof ToolItem && isIn(ModTags.Items.GOLDEN_TOOLS)) {
 				value.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER);
 			}
 			if (getItem() instanceof ArmorItem armorItem) {
-				if (isIn(ModItemTags.GOLDEN_ARMOR)) {
+				if (isIn(ModTags.Items.GOLDEN_ARMOR)) {
 					value.put(EntityAttributes.GENERIC_ARMOR, armorItem.getSlotType() == EquipmentSlot.CHEST || ((ArmorItem) getItem()).getSlotType() == EquipmentSlot.LEGS ? ARMOR_MODIFIER_1 : ARMOR_MODIFIER_0);
 				}
-				if (isIn(ModItemTags.NETHERITE_ARMOR)) {
+				if (isIn(ModTags.Items.NETHERITE_ARMOR)) {
 					value.put(EntityAttributes.GENERIC_MOVEMENT_SPEED, MOVEMENT_SPEED_MODIFIER);
 				}
 			}

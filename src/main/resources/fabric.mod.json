@@ -30,11 +30,11 @@
 	"extraorigins.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=0.13.3",
-	"minecraft": "~1.18.2",
+	"fabricloader": ">=0.14.6",
+	"minecraft": "1.19.x",
 	"java": ">=17",
-	"fabric": ">=0.48.0",
-	"origins": ">=1.4.1",
-	"pehkui": ">=3.2.2"
+	"fabric": ">=0.55.1",
+	"origins": ">=1.6.1",
+	"pehkui": ">=3.3.2"
   }
 }
