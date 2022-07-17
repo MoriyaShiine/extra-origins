@@ -24,15 +24,18 @@ public abstract class ActiveTargetGoalMixin<T extends LivingEntity> extends Trac
 
 	@ModifyArg(method = "<init>(Lnet/minecraft/entity/mob/MobEntity;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/TargetPredicate;setPredicate(Ljava/util/function/Predicate;)Lnet/minecraft/entity/ai/TargetPredicate;"))
 	private Predicate<LivingEntity> extraorigins$mobNeutrality(Predicate<LivingEntity> value) {
-		if (value != null) {
-			value = value.and(targetPredicate -> {
-				for (MobNeutralityPower mobNeutralityPower : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
-					if (mobNeutralityPower.shouldBeNeutral(mob.getType())) {
-						return false;
-					}
+		Predicate<LivingEntity> neutralityPredicate = target -> {
+			for (MobNeutralityPower mobNeutralityPower : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
+				if (mobNeutralityPower.shouldBeNeutral(mob.getType())) {
+					return false;
 				}
-				return true;
-			});
+			}
+			return true;
+		};
+		if (value == null) {
+			value = neutralityPredicate;
+		} else {
+			value = value.and(neutralityPredicate);
 		}
 		return value;
 	}
