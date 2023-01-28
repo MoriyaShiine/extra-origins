@@ -16,7 +16,6 @@ import moriyashiine.extraorigins.common.power.*;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import virtuoel.pehkui.api.ScaleRegistries;
 
 import java.util.Collections;
 
@@ -38,7 +37,7 @@ public class ModPowers {
 
 	public static final PowerFactory<Power> FOOD_EFFECT_IMMUNITY = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "food_effect_immunity"), new SerializableData().add("effects", SerializableDataTypes.STATUS_EFFECTS, Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new FoodEffectImmunityPower(type, entity, data.get("effects"), data.getBoolean("inverted"))).allowCondition();
 
-	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS, Collections.singletonList(ScaleRegistries.getId(ScaleRegistries.SCALE_TYPES, ModScaleTypes.MODIFY_SIZE_TYPE))).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
+	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
 
 	public static final PowerFactory<Power> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "prevent_block_slowness"), new SerializableData().add("blocks", SerializableDataType.list(SerializableDataTypes.BLOCK), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity, data.get("blocks"), data.getBoolean("inverted"))).allowCondition();
 

@@ -8,7 +8,6 @@ import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.client.packet.DismountPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
 import moriyashiine.extraorigins.common.power.PreventBlockSlownessPower;
-import moriyashiine.extraorigins.common.registry.ModScaleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -23,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import virtuoel.pehkui.api.ScaleTypes;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
@@ -42,10 +42,10 @@ public abstract class EntityMixin {
 		});
 	}
 
-	@Inject(method = "getMountedHeightOffset", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "getMountedHeightOffset", at = @At("RETURN"), cancellable = true)
 	private void extraorigins$changeMountedPlayerOffsetWithPower(CallbackInfoReturnable<Double> cir) {
-		if (Entity.class.cast(this) instanceof PlayerEntity player && getFirstPassenger() != null && PowerHolderComponent.hasPower(getFirstPassenger(), MountPower.class)) {
-			cir.setReturnValue((double) (dimensions.height * ModScaleTypes.MODIFY_SIZE_TYPE.getScaleData(player).getScale()));
+		if (Entity.class.cast(this) instanceof PlayerEntity player && getFirstPassenger() instanceof PlayerEntity rider && PowerHolderComponent.hasPower(rider, MountPower.class)) {
+			cir.setReturnValue(cir.getReturnValueD() * ScaleTypes.HEIGHT.getScaleData(player).getScale() / dimensions.height);
 		}
 	}
 

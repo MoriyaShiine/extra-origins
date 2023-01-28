@@ -2,7 +2,20 @@
   "type": "origins:multiple",
   "modify_size": {
 	"type": "extraorigins:modify_size",
+	"scale_types": [
+	  "pehkui:width",
+	  "pehkui:height",
+	  "pehkui:drops",
+	  "pehkui:visibility"
+	],
 	"scale": 0.25
+  },
+  "modify_hitbox_width": {
+	"type": "extraorigins:modify_size",
+	"scale_types": [
+	  "pehkui:hitbox_width"
+	],
+	"scale": 2
   },
   "attribute_modifiers": {
 	"type": "origins:attribute",
