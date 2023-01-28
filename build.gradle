@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -20,12 +20,12 @@ repositories {
         url "https://maven.terraformersmc.com/"
     }
     maven {
-        name "player ability lib"
-        url "https://ladysnake.jfrog.io/artifactory/mods"
+        name "playerabilitylib"
+        url = 'https://ladysnake.jfrog.io/artifactory/mods'
     }
     maven {
         name "reach entity attributes"
-        url "https://maven.jamieswhiteshirt.com/libs-release/"
+        url "https://maven.jamieswhiteshirt.com/libs-release"
     }
     maven {
         name "jitpack"
@@ -40,9 +40,7 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     modImplementation "com.github.apace100:origins-fabric:${origins_version}"
-    modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
+    modImplementation "com.github.virtuoel:pehkui:${pehkui_version}"
 }
 
 processResources {

@@ -14,8 +14,8 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.*;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import virtuoel.pehkui.api.ScaleRegistries;
 
 import java.util.Collections;
