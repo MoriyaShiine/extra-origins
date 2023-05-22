@@ -1,27 +1,23 @@
 plugins {
-    id 'fabric-loom' version '1.0-SNAPSHOT'
+    id 'fabric-loom' version '1.2-SNAPSHOT'
     id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
 repositories {
     maven {
         name "cloth config"
-        url "https://maven.shedaniel.me/"
+        url "https://maven.shedaniel.me"
     }
     maven {
         name "mod menu"
-        url "https://maven.terraformersmc.com/"
+        url "https://maven.terraformersmc.com"
     }
     maven {
         name "playerabilitylib"
-        url = 'https://ladysnake.jfrog.io/artifactory/mods'
+        url 'https://ladysnake.jfrog.io/artifactory/mods'
     }
     maven {
         name "reach entity attributes"
@@ -38,9 +34,17 @@ dependencies {
     mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
+    modImplementation "com.github.apace100:apoli:${apoli_version}"
+    modImplementation "com.github.apace100:calio:v${calio_version}"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     modImplementation "com.github.apace100:origins-fabric:${origins_version}"
     modImplementation "com.github.virtuoel:pehkui:${pehkui_version}"
+}
+
+base {
+    archivesName = project.archives_base_name
 }
 
 processResources {
@@ -57,10 +61,13 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
     withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
+        rename { "${it}_${base.archivesName.get()}" }
     }
 }
