@@ -17,7 +17,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class MountC2SPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "mount_c2s");
+	public static final Identifier ID = ExtraOrigins.id("mount_c2s");
 
 	public static void send(Entity entity) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());

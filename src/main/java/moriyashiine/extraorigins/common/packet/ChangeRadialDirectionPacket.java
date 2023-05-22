@@ -24,7 +24,7 @@ import net.minecraft.util.Identifier;
 import java.util.Locale;
 
 public class ChangeRadialDirectionPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "change_radial_direction");
+	public static final Identifier ID = ExtraOrigins.id("change_radial_direction");
 
 	public static void send(RadialMenuDirection direction, PowerType<?> powerType) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());

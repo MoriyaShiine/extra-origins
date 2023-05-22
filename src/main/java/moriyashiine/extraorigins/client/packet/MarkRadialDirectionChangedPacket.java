@@ -16,7 +16,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class MarkRadialDirectionChangedPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "mark_radial_direction_changed");
+	public static final Identifier ID = ExtraOrigins.id("mark_radial_direction_changed");
 
 	public static void send(ServerPlayerEntity player) {
 		ServerPlayNetworking.send(player, ID, new PacketByteBuf(Unpooled.buffer()));

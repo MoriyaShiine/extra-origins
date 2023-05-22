@@ -16,6 +16,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Identifier;
 
 public class ExtraOrigins implements ModInitializer {
 	public static final String MOD_ID = "extraorigins";
@@ -28,6 +29,10 @@ public class ExtraOrigins implements ModInitializer {
 		ModConditions.init();
 		initPackets();
 		initEvents();
+	}
+
+	public static Identifier id(String value) {
+		return new Identifier(MOD_ID, value);
 	}
 
 	private void initPackets() {

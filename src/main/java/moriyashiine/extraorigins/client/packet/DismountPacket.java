@@ -16,7 +16,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class DismountPacket {
-	public static final Identifier ID = new Identifier(ExtraOrigins.MOD_ID, "dismount");
+	public static final Identifier ID = ExtraOrigins.id("dismount");
 
 	public static void send(ServerPlayerEntity player, Entity entity) {
 		PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());

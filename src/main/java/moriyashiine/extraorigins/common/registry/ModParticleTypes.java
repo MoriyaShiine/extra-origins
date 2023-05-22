@@ -10,7 +10,6 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 public class ModParticleTypes {
 	public static final ParticleType<DefaultParticleType> OFFENSE_SPORE = FabricParticleTypes.simple();
@@ -18,8 +17,8 @@ public class ModParticleTypes {
 	public static final ParticleType<DefaultParticleType> MOBILITY_SPORE = FabricParticleTypes.simple();
 
 	public static void init() {
-		Registry.register(Registries.PARTICLE_TYPE, new Identifier(ExtraOrigins.MOD_ID, "offense_spore"), OFFENSE_SPORE);
-		Registry.register(Registries.PARTICLE_TYPE, new Identifier(ExtraOrigins.MOD_ID, "defense_spore"), DEFENSE_SPORE);
-		Registry.register(Registries.PARTICLE_TYPE, new Identifier(ExtraOrigins.MOD_ID, "mobility_spore"), MOBILITY_SPORE);
+		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("offense_spore"), OFFENSE_SPORE);
+		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("defense_spore"), DEFENSE_SPORE);
+		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("mobility_spore"), MOBILITY_SPORE);
 	}
 }

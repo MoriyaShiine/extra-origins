@@ -15,12 +15,11 @@ import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.power.*;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 import java.util.Collections;
 
 public class ModPowers {
-	public static final PowerFactory<Power> RADIAL_MENU = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "radial_menu"), new SerializableData()
+	public static final PowerFactory<Power> RADIAL_MENU = new PowerFactory<>(ExtraOrigins.id("radial_menu"), new SerializableData()
 			.add("key", ApoliDataTypes.KEY, new Active.Key())
 			.add("sprite_location", SerializableDataTypes.IDENTIFIER)
 			.add("up_action", ApoliDataTypes.ENTITY_ACTION, null)
@@ -35,25 +34,25 @@ public class ModPowers {
 		return power;
 	}).allowCondition();
 
-	public static final PowerFactory<Power> FOOD_EFFECT_IMMUNITY = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "food_effect_immunity"), new SerializableData().add("effects", SerializableDataTypes.STATUS_EFFECTS, Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new FoodEffectImmunityPower(type, entity, data.get("effects"), data.getBoolean("inverted"))).allowCondition();
+	public static final PowerFactory<Power> FOOD_EFFECT_IMMUNITY = new PowerFactory<>(ExtraOrigins.id("food_effect_immunity"), new SerializableData().add("effects", SerializableDataTypes.STATUS_EFFECTS, Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new FoodEffectImmunityPower(type, entity, data.get("effects"), data.getBoolean("inverted"))).allowCondition();
 
-	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
+	public static final PowerFactory<Power> MODIFY_SIZE = new PowerFactory<>(ExtraOrigins.id("modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
 
-	public static final PowerFactory<Power> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "prevent_block_slowness"), new SerializableData().add("blocks", SerializableDataType.list(SerializableDataTypes.BLOCK), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity, data.get("blocks"), data.getBoolean("inverted"))).allowCondition();
+	public static final PowerFactory<Power> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(ExtraOrigins.id("prevent_block_slowness"), new SerializableData().add("blocks", SerializableDataType.list(SerializableDataTypes.BLOCK), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity, data.get("blocks"), data.getBoolean("inverted"))).allowCondition();
 
-	public static final PowerFactory<Power> CAN_WALK_ON_POWDER_SNOW = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "can_walk_on_powder_snow"), new SerializableData(), data -> (type, entity) -> new CanStandOnPowderSnowPower(type, entity)).allowCondition();
+	public static final PowerFactory<Power> CAN_WALK_ON_POWDER_SNOW = new PowerFactory<>(ExtraOrigins.id("can_walk_on_powder_snow"), new SerializableData(), data -> (type, entity) -> new CanStandOnPowderSnowPower(type, entity)).allowCondition();
 
-	public static final PowerFactory<Power> START_RIDING = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
+	public static final PowerFactory<Power> START_RIDING = new PowerFactory<>(ExtraOrigins.id("start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
 		MountPower power = new MountPower(type, entity);
 		power.setKey(data.get("key"));
 		return power;
 	}).allowCondition();
 
-	public static final PowerFactory<Power> MOB_NEUTRALITY = new PowerFactory<>(new Identifier(ExtraOrigins.MOD_ID, "mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new MobNeutralityPower(type, entity, data.get("entity_types"), data.getBoolean("inverted"))).allowCondition();
+	public static final PowerFactory<Power> MOB_NEUTRALITY = new PowerFactory<>(ExtraOrigins.id("mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new MobNeutralityPower(type, entity, data.get("entity_types"), data.getBoolean("inverted"))).allowCondition();
 
-	public static final PowerFactory<Power> MODIFY_AIR_STRAFING_SPEED = ValueModifyingPower.createValueModifyingFactory(ModifyAirStrafingSpeedPower::new, new Identifier(ExtraOrigins.MOD_ID, "modify_air_strafing_speed"));
+	public static final PowerFactory<Power> MODIFY_AIR_STRAFING_SPEED = ValueModifyingPower.createValueModifyingFactory(ModifyAirStrafingSpeedPower::new, ExtraOrigins.id("modify_air_strafing_speed"));
 
-	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(new Identifier(ExtraOrigins.MOD_ID, "all_that_glitters"));
+	public static final PowerType<Power> ALL_THAT_GLITTERS = new PowerTypeReference<>(ExtraOrigins.id("all_that_glitters"));
 
 	public static void init() {
 		Registry.register(ApoliRegistries.POWER_FACTORY, RADIAL_MENU.getSerializerId(), RADIAL_MENU);
