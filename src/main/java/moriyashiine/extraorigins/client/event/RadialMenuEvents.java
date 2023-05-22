@@ -18,6 +18,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Direction;
 
@@ -65,22 +66,36 @@ public class RadialMenuEvents {
 			}
 
 			private void changeTargetMode(MinecraftClient client) {
-				double x = client.mouse.getX() - (client.getWindow().getWidth() / 2F);
-				double y = (client.getWindow().getHeight() / 2F) - client.mouse.getY();
-				if (Math.abs(x) > 48 || Math.abs(y) > 48) {
-					RadialMenuDirection direction = switch (Direction.getFacing(x, y, 0)) {
-						case UP -> RadialMenuDirection.UP;
-						case DOWN -> RadialMenuDirection.DOWN;
-						case WEST -> RadialMenuDirection.LEFT;
-						case EAST -> RadialMenuDirection.RIGHT;
-						default -> null;
-					};
-					if (targetDirection != direction) {
-						targetDirection = direction;
-						timer = 0;
+				RadialMenuDirection direction = null;
+				boolean arrowKey = false;
+				if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_UP)) {
+					direction = RadialMenuDirection.UP;
+					arrowKey = true;
+				} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_DOWN)) {
+					direction = RadialMenuDirection.DOWN;
+					arrowKey = true;
+				} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_LEFT)) {
+					direction = RadialMenuDirection.LEFT;
+					arrowKey = true;
+				} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_RIGHT)) {
+					direction = RadialMenuDirection.RIGHT;
+					arrowKey = true;
+				}
+				if (!arrowKey) {
+					double x = client.mouse.getX() - (client.getWindow().getWidth() / 2F);
+					double y = (client.getWindow().getHeight() / 2F) - client.mouse.getY();
+					if (Math.abs(x) > 48 || Math.abs(y) > 48) {
+						direction = switch (Direction.getFacing(x, y, 0)) {
+							case UP -> RadialMenuDirection.UP;
+							case DOWN -> RadialMenuDirection.DOWN;
+							case WEST -> RadialMenuDirection.LEFT;
+							case EAST -> RadialMenuDirection.RIGHT;
+							default -> null;
+						};
 					}
-				} else {
-					targetDirection = null;
+				}
+				if (targetDirection != direction) {
+					targetDirection = direction;
 					timer = 0;
 				}
 			}
