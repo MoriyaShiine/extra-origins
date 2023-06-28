@@ -24,7 +24,7 @@ public class MountPower extends Power implements Active {
 
 	@Override
 	public void onUse() {
-		if (entity.world.isClient && entity instanceof ClientPlayerEntity) {
+		if (entity.getWorld().isClient && entity instanceof ClientPlayerEntity) {
 			MinecraftClient client = MinecraftClient.getInstance();
 			if (client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.ENTITY && ((EntityHitResult) client.crosshairTarget).getEntity() instanceof PlayerEntity player) {
 				MountC2SPacket.send(player);

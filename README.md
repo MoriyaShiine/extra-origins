@@ -1,5 +1,7 @@
 # Extra Origins
-Adds more origins to the [Origins](https://modrinth.com/mod/origins) mod, requires [Pehkui](https://modrinth.com/mod/pehkui)
+
+Adds more origins to the [Origins](https://modrinth.com/mod/origins) mod,
+requires [Pehkui](https://modrinth.com/mod/pehkui)
 
 Image by [zoovadude](https://www.curseforge.com/members/zoovadude)
 

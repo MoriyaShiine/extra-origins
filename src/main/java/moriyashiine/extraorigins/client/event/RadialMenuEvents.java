@@ -4,7 +4,6 @@
 
 package moriyashiine.extraorigins.client.event;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.power.RadialMenuPower;
@@ -16,10 +15,9 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.util.Window;
 import net.minecraft.util.math.Direction;
 
 import java.util.List;
@@ -119,26 +117,24 @@ public class RadialMenuEvents {
 		});
 		HudRenderCallback.EVENT.register(new HudRenderCallback() {
 			@Override
-			public void onHudRender(MatrixStack matrixStack, float tickDelta) {
+			public void onHudRender(DrawContext drawContext, float tickDelta) {
 				if (!renderModeSwitch) {
 					return;
 				}
-				MinecraftClient client = MinecraftClient.getInstance();
-				RenderSystem.setShaderTexture(0, lastUsedPower.spriteLocation);
-				DrawableHelper.drawTexture(matrixStack, (client.getWindow().getScaledWidth() / 2) - 64, (client.getWindow().getScaledHeight() / 2) - 64, 0, 0, 128, 128, 320, 256);
-				renderSection(RadialMenuDirection.UP, matrixStack, -32, -80, 0);
-				renderSection(RadialMenuDirection.DOWN, matrixStack, -32, 16, 64);
-				renderSection(RadialMenuDirection.LEFT, matrixStack, -80, -32, 128);
-				renderSection(RadialMenuDirection.RIGHT, matrixStack, 16, -32, 192);
+				Window window = MinecraftClient.getInstance().getWindow();
+				drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 64, (window.getScaledHeight() / 2) - 64, 0, 0, 128, 128, 320, 256);
+				renderSection(RadialMenuDirection.UP, drawContext, window, -32, -80, 0);
+				renderSection(RadialMenuDirection.DOWN, drawContext, window, -32, 16, 64);
+				renderSection(RadialMenuDirection.LEFT, drawContext, window, -80, -32, 128);
+				renderSection(RadialMenuDirection.RIGHT, drawContext, window, 16, -32, 192);
 				if (timer > 0) {
-					DrawableHelper.drawTexture(matrixStack, (client.getWindow().getScaledWidth() / 2) - 13, (client.getWindow().getScaledHeight() / 2) - 13, 48, 128, 26, 26, 320, 256);
-					DrawableHelper.drawTexture(matrixStack, (client.getWindow().getScaledWidth() / 2) - 12, (client.getWindow().getScaledHeight() / 2) - 12, 24, 128, 24, 24, 320, 256);
-					DrawableHelper.drawTexture(matrixStack, (client.getWindow().getScaledWidth() / 2) - 12, (client.getWindow().getScaledHeight() / 2) - 12, 0, 128, 24, (int) (24 - 24 * ((timer + 1) / (float) lastUsedPower.swapTime)), 320, 256);
+					drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 13, (window.getScaledHeight() / 2) - 13, 48, 128, 26, 26, 320, 256);
+					drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 12, (window.getScaledHeight() / 2) - 12, 24, 128, 24, 24, 320, 256);
+					drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 12, (window.getScaledHeight() / 2) - 12, 0, 128, 24, (int) (24 - 24 * ((timer + 1) / (float) lastUsedPower.swapTime)), 320, 256);
 				}
-				RenderSystem.setShaderTexture(0, InGameHud.GUI_ICONS_TEXTURE);
 			}
 
-			private void renderSection(RadialMenuDirection targetMode, MatrixStack matrixStack, int posXOffset, int posYOffset, int v) {
+			private void renderSection(RadialMenuDirection targetMode, DrawContext drawContext, Window window, int posXOffset, int posYOffset, int v) {
 				if (lastUsedPower.getActionFromDirection(targetMode) == null) {
 					return;
 				}
@@ -148,7 +144,7 @@ public class RadialMenuEvents {
 				} else if (targetDirection == targetMode) {
 					u += 64;
 				}
-				DrawableHelper.drawTexture(matrixStack, (MinecraftClient.getInstance().getWindow().getScaledWidth() / 2) + posXOffset, (MinecraftClient.getInstance().getWindow().getScaledHeight() / 2) + posYOffset, u, v, 64, 64, 320, 256);
+				drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) + posXOffset, (window.getScaledHeight() / 2) + posYOffset, u, v, 64, 64, 320, 256);
 			}
 		});
 	}

@@ -30,7 +30,7 @@ public class ModConditions {
 		}
 		return false;
 	});
-	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(ExtraOrigins.id("piglin_safe"), new SerializableData(), (instance, entity) -> entity.world.getDimension().piglinSafe());
+	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(ExtraOrigins.id("piglin_safe"), new SerializableData(), (instance, entity) -> entity.getWorld().getDimension().piglinSafe());
 
 	public static final ConditionFactory<Pair<DamageSource, Float>> CROSSBOW_ARROW = new ConditionFactory<>(ExtraOrigins.id("crossbow_arrow"), new SerializableData(), (instance, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());
 

@@ -61,10 +61,10 @@ public abstract class ItemStackMixin {
 
 	@Inject(method = "damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), cancellable = true)
 	private <T extends LivingEntity> void extraorigins$increaseGoldToolDurability(int amount, T entity, Consumer<T> breakCallback, CallbackInfo ci) {
-		if (!entity.world.isClient && ModPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
+		if (!entity.getWorld().isClient && ModPowers.ALL_THAT_GLITTERS.get(entity) != null && !(entity instanceof PlayerEntity player && player.isCreative())) {
 			if (getItem() instanceof ToolItem) {
 				if (isIn(ModTags.Items.GOLDEN_TOOLS)) {
-					if (entity.world.random.nextFloat() < 15 / 16F) {
+					if (entity.getWorld().random.nextFloat() < 15 / 16F) {
 						ci.cancel();
 					}
 				} else if (entity.getRandom().nextBoolean() && !isIn(ModTags.Items.NETHERITE_TOOLS)) {
@@ -73,7 +73,7 @@ public abstract class ItemStackMixin {
 			}
 			if (getItem() instanceof ArmorItem) {
 				if (isIn(ModTags.Items.GOLDEN_ARMOR)) {
-					if (entity.world.random.nextFloat() < 3 / 4F) {
+					if (entity.getWorld().random.nextFloat() < 3 / 4F) {
 						ci.cancel();
 					}
 				} else if (entity.getRandom().nextBoolean() && !isIn(ModTags.Items.NETHERITE_ARMOR)) {

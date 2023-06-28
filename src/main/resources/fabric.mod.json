@@ -31,10 +31,10 @@
   ],
   "depends": {
 	"fabricloader": "*",
-	"minecraft": "~1.19.4",
+	"minecraft": "~1.20.1",
 	"java": ">=17",
-	"fabric-api": ">=0.81.1",
-	"origins": ">=1.9.0",
-	"pehkui": ">=3.7.2"
+	"fabric-api": ">=0.83.1",
+	"origins": ">=1.10.0",
+	"pehkui": ">=3.7.6"
   }
 }

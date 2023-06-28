@@ -28,7 +28,7 @@ public class MountC2SPacket {
 	public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
 		int id = buf.readInt();
 		server.execute(() -> {
-			Entity entity = player.world.getEntityById(id);
+			Entity entity = player.getWorld().getEntityById(id);
 			if (entity != null) {
 				if (player.getUuid().equals(entity.getUuid())) {
 					return;

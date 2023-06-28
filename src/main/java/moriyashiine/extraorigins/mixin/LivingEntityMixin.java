@@ -44,7 +44,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@ModifyArg(method = "applyMovementInput", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;updateVelocity(FLnet/minecraft/util/math/Vec3d;)V"))
 	private float extraorigins$modifyAirStrafingSpeed(float value) {
-		if (!onGround) {
+		if (!isOnGround()) {
 			return PowerHolderComponent.modify(LivingEntity.class.cast(this), ModifyAirStrafingSpeedPower.class, value);
 		}
 		return value;
