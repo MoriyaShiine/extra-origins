@@ -15,7 +15,8 @@
 	"SuspiciousStewItemMixin"
   ],
   "client": [
-	"client.ApoliClientAccessor"
+	"client.ApoliClientAccessor",
+	"client.ProjectileUtilMixin"
   ],
   "injectors": {
 	"defaultRequire": 1
