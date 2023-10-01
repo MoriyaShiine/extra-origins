@@ -5,7 +5,6 @@
 package moriyashiine.extraorigins.client;
 
 import moriyashiine.extraorigins.client.event.RadialMenuEvents;
-import moriyashiine.extraorigins.client.packet.DismountPacket;
 import moriyashiine.extraorigins.client.packet.MarkRadialDirectionChangedPacket;
 import moriyashiine.extraorigins.client.packet.MountS2CPacket;
 import moriyashiine.extraorigins.client.particle.SporeParticle;
@@ -27,7 +26,6 @@ public class ExtraOriginsClient implements ClientModInitializer {
 
 	private void initPackets() {
 		ClientPlayNetworking.registerGlobalReceiver(MountS2CPacket.ID, new MountS2CPacket.Receiver());
-		ClientPlayNetworking.registerGlobalReceiver(DismountPacket.ID, new DismountPacket.Receiver());
 		ClientPlayNetworking.registerGlobalReceiver(MarkRadialDirectionChangedPacket.ID, new MarkRadialDirectionChangedPacket.Receiver());
 	}
 
