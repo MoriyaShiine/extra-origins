@@ -29,7 +29,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@ModifyVariable(method = "applyFoodEffects", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/FoodComponent;getStatusEffects()Ljava/util/List;"))
 	private List<Pair<StatusEffectInstance, Float>> extraorigins$foodEffectImmunity(List<Pair<StatusEffectInstance, Float>> value) {
-		for (FoodEffectImmunityPower foodEffectImmunityPower : PowerHolderComponent.getPowers(LivingEntity.class.cast(this), FoodEffectImmunityPower.class)) {
+		for (FoodEffectImmunityPower foodEffectImmunityPower : PowerHolderComponent.getPowers(this, FoodEffectImmunityPower.class)) {
 			if (!value.isEmpty()) {
 				value = new ArrayList<>(value);
 				for (int i = value.size() - 1; i >= 0; i--) {
@@ -45,7 +45,7 @@ public abstract class LivingEntityMixin extends Entity {
 	@ModifyArg(method = "applyMovementInput", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;updateVelocity(FLnet/minecraft/util/math/Vec3d;)V"))
 	private float extraorigins$modifyAirStrafingSpeed(float value) {
 		if (!isOnGround()) {
-			return PowerHolderComponent.modify(LivingEntity.class.cast(this), ModifyAirStrafingSpeedPower.class, value);
+			return PowerHolderComponent.modify(this, ModifyAirStrafingSpeedPower.class, value);
 		}
 		return value;
 	}
