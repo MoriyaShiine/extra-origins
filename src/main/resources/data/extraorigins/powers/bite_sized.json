@@ -3,10 +3,7 @@
   "modify_size": {
 	"type": "extraorigins:modify_size",
 	"scale_types": [
-	  "pehkui:width",
-	  "pehkui:height",
-	  "pehkui:drops",
-	  "pehkui:visibility"
+	  "extraorigins:modify_size"
 	],
 	"scale": 0.25
   },
