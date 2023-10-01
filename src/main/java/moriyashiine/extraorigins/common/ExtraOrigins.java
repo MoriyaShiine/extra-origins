@@ -36,8 +36,8 @@ public class ExtraOrigins implements ModInitializer {
 	}
 
 	private void initPackets() {
-		ServerPlayNetworking.registerGlobalReceiver(ChangeRadialDirectionPacket.ID, ChangeRadialDirectionPacket::receive);
-		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, MountC2SPacket::receive);
+		ServerPlayNetworking.registerGlobalReceiver(ChangeRadialDirectionPacket.ID, new ChangeRadialDirectionPacket.Receiver());
+		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, new MountC2SPacket.Receiver());
 	}
 
 	private void initEvents() {

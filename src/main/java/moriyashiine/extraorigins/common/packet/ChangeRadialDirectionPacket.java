@@ -15,6 +15,7 @@ import moriyashiine.extraorigins.common.power.RadialMenuPower;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -33,15 +34,18 @@ public class ChangeRadialDirectionPacket {
 		ClientPlayNetworking.send(ID, buf);
 	}
 
-	public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
-		String direction = buf.readString();
-		PowerTypeReference<?> power = ApoliDataTypes.POWER_TYPE.receive(buf);
-		server.execute(() -> {
-			if (power.get(player) instanceof RadialMenuPower radialMenuPower) {
-				radialMenuPower.setDirection(RadialMenuDirection.valueOf(direction));
-				PowerHolderComponent.syncPower(player, radialMenuPower.getType());
-				MarkRadialDirectionChangedPacket.send(player);
-			}
-		});
+	public static class Receiver implements ServerPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			String direction = buf.readString();
+			PowerTypeReference<?> power = ApoliDataTypes.POWER_TYPE.receive(buf);
+			server.execute(() -> {
+				if (power.get(player) instanceof RadialMenuPower radialMenuPower) {
+					radialMenuPower.setDirection(RadialMenuDirection.valueOf(direction));
+					PowerHolderComponent.syncPower(player, radialMenuPower.getType());
+					MarkRadialDirectionChangedPacket.send(player);
+				}
+			});
+		}
 	}
 }

@@ -9,6 +9,7 @@ import moriyashiine.extraorigins.client.packet.MountS2CPacket;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
@@ -25,19 +26,22 @@ public class MountC2SPacket {
 		ClientPlayNetworking.send(ID, buf);
 	}
 
-	public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler network, PacketByteBuf buf, PacketSender sender) {
-		int id = buf.readInt();
-		server.execute(() -> {
-			Entity entity = player.getWorld().getEntityById(id);
-			if (entity != null) {
-				if (player.getUuid().equals(entity.getUuid())) {
-					return;
+	public static class Receiver implements ServerPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			int id = buf.readInt();
+			server.execute(() -> {
+				Entity entity = player.getWorld().getEntityById(id);
+				if (entity != null) {
+					if (player.getUuid().equals(entity.getUuid())) {
+						return;
+					}
+					player.startRiding(entity, true);
+					if (entity instanceof ServerPlayerEntity playerBeingRidden) {
+						MountS2CPacket.send(playerBeingRidden, player);
+					}
 				}
-				player.startRiding(entity, true);
-				if (entity instanceof ServerPlayerEntity playerBeingRidden) {
-					MountS2CPacket.send(playerBeingRidden, player);
-				}
-			}
-		});
+			});
+		}
 	}
 }
