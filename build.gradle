@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.3-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -21,7 +21,7 @@ repositories {
     }
     maven {
         name "playerabilitylib"
-        url 'https://ladysnake.jfrog.io/artifactory/mods'
+        url "https://maven.ladysnake.org/releases"
     }
     maven {
         name "reach entity attributes"
@@ -39,11 +39,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    modImplementation files("libs/calio.jar")
-    modImplementation files("libs/cca-base.jar")
-    modImplementation files("libs/cca-entity.jar")
-    modImplementation files("libs/apoli.jar")
-    modImplementation files("libs/origins.jar")
+    modImplementation "com.github.apace100:origins-fabric:${origins_version}"
     modImplementation "com.github.virtuoel:pehkui:${pehkui_version}"
 }
 
