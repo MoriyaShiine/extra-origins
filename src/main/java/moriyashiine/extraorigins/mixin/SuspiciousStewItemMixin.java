@@ -38,12 +38,15 @@ public class SuspiciousStewItemMixin {
 
 	@ModifyVariable(method = "method_53207", at = @At("HEAD"), argsOnly = true)
 	private static List<SuspiciousStewIngredient.StewEffect> extraorigins$foodEffectImmunity(List<SuspiciousStewIngredient.StewEffect> list) {
-		ImmutableList.Builder<SuspiciousStewIngredient.StewEffect> newList = ImmutableList.builder();
-		for (SuspiciousStewIngredient.StewEffect stewEffect : list) {
-			if (PowerHolderComponent.getPowers(tempLiving, FoodEffectImmunityPower.class).stream().noneMatch(foodEffectImmunityPower -> foodEffectImmunityPower.shouldRemove(stewEffect.effect()))) {
-				newList.add(stewEffect);
+		if (PowerHolderComponent.hasPower(tempLiving, FoodEffectImmunityPower.class)) {
+			ImmutableList.Builder<SuspiciousStewIngredient.StewEffect> newList = ImmutableList.builder();
+			for (SuspiciousStewIngredient.StewEffect stewEffect : list) {
+				if (PowerHolderComponent.getPowers(tempLiving, FoodEffectImmunityPower.class).stream().noneMatch(foodEffectImmunityPower -> foodEffectImmunityPower.shouldRemove(stewEffect.effect()))) {
+					newList.add(stewEffect);
+				}
 			}
+			return newList.build();
 		}
-		return newList.build();
+		return list;
 	}
 }
