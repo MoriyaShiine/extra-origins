@@ -16,6 +16,10 @@ repositories {
         url "https://maven.shedaniel.me"
     }
     maven {
+        name "quiltmc"
+        url "https://maven.quiltmc.org/repository/release"
+    }
+    maven {
         name "mod menu"
         url "https://maven.terraformersmc.com"
     }
@@ -30,6 +34,10 @@ repositories {
     maven {
         name "jitpack"
         url "https://jitpack.io"
+    }
+    maven {
+        name "modrinth"
+        url "https://api.modrinth.com/maven"
     }
 }
 
