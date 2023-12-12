@@ -4,13 +4,10 @@
 
 package moriyashiine.extraorigins.client.particle;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-@Environment(EnvType.CLIENT)
 public class SporeParticle extends SpriteBillboardParticle {
 	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
 		super(clientWorld, posX, posY, posZ, velocityX, velocityY, velocityZ);
@@ -48,7 +45,6 @@ public class SporeParticle extends SpriteBillboardParticle {
 		repositionFromBoundingBox();
 	}
 
-	@Environment(EnvType.CLIENT)
 	public static class Factory implements ParticleFactory<DefaultParticleType> {
 		private final SpriteProvider spriteProvider;
 

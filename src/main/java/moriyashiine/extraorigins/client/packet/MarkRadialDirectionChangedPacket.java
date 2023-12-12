@@ -7,8 +7,6 @@ package moriyashiine.extraorigins.client.packet;
 import io.netty.buffer.Unpooled;
 import moriyashiine.extraorigins.client.event.RadialMenuEvents;
 import moriyashiine.extraorigins.common.ExtraOrigins;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -25,7 +23,6 @@ public class MarkRadialDirectionChangedPacket {
 		ServerPlayNetworking.send(player, ID, new PacketByteBuf(Unpooled.buffer()));
 	}
 
-	@Environment(EnvType.CLIENT)
 	public static class Receiver implements ClientPlayNetworking.PlayChannelHandler {
 		@Override
 		public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {

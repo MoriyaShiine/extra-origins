@@ -16,6 +16,7 @@
   ],
   "client": [
 	"client.ApoliClientAccessor",
+	"client.ItemStackMixin",
 	"client.ProjectileUtilMixin"
   ],
   "injectors": {

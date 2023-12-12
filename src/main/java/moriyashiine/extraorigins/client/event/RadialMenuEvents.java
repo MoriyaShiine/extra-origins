@@ -9,8 +9,6 @@ import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.power.RadialMenuPower;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import moriyashiine.extraorigins.mixin.client.ApoliClientAccessor;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -22,7 +20,6 @@ import net.minecraft.util.math.Direction;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 public class RadialMenuEvents {
 	public static boolean directionChanged = false;
 

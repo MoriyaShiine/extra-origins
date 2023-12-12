@@ -6,8 +6,6 @@ package moriyashiine.extraorigins.mixin.client;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.MountPower;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -17,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.function.Predicate;
 
-@Environment(EnvType.CLIENT)
 @Mixin(ProjectileUtil.class)
 public class ProjectileUtilMixin {
 	@ModifyVariable(method = "raycast", at = @At("HEAD"), argsOnly = true)
