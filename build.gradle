@@ -28,6 +28,10 @@ repositories {
         url "https://maven.ladysnake.org/releases"
     }
     maven {
+        name "masady"
+        url "https://masa.dy.fi/maven"
+    }
+    maven {
         name "reach entity attributes"
         url "https://maven.jamieswhiteshirt.com/libs-release"
     }
