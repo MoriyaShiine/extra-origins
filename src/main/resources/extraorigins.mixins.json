@@ -1,6 +1,5 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
