@@ -16,6 +16,10 @@ repositories {
         url "https://maven.shedaniel.me"
     }
     maven {
+        name "quiltmc"
+        url "https://maven.quiltmc.org/repository/release"
+    }
+    maven {
         name "mod menu"
         url "https://maven.terraformersmc.com"
     }
@@ -24,12 +28,20 @@ repositories {
         url "https://maven.ladysnake.org/releases"
     }
     maven {
+        name "masady"
+        url "https://masa.dy.fi/maven"
+    }
+    maven {
         name "reach entity attributes"
         url "https://maven.jamieswhiteshirt.com/libs-release"
     }
     maven {
         name "jitpack"
         url "https://jitpack.io"
+    }
+    maven {
+        name "modrinth"
+        url "https://api.modrinth.com/maven"
     }
 }
 

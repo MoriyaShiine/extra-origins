@@ -4,10 +4,11 @@
 
 package moriyashiine.extraorigins.mixin;
 
+import com.google.common.collect.ImmutableList;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.FoodEffectImmunityPower;
+import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SuspiciousStewItem;
 import net.minecraft.world.World;
@@ -17,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 @Mixin(SuspiciousStewItem.class)
 public class SuspiciousStewItemMixin {
@@ -33,13 +36,17 @@ public class SuspiciousStewItemMixin {
 		tempLiving = null;
 	}
 
-	@ModifyVariable(method = "forEachEffect", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/effect/StatusEffect;byRawId(I)Lnet/minecraft/entity/effect/StatusEffect;"))
-	private static StatusEffect extraorigins$foodEffectImmunity(StatusEffect value) {
-		for (FoodEffectImmunityPower foodEffectImmunityPower : PowerHolderComponent.getPowers(tempLiving, FoodEffectImmunityPower.class)) {
-			if (foodEffectImmunityPower.shouldRemove(value)) {
-				return null;
+	@ModifyVariable(method = "method_53207", at = @At("HEAD"), argsOnly = true)
+	private static List<SuspiciousStewIngredient.StewEffect> extraorigins$foodEffectImmunity(List<SuspiciousStewIngredient.StewEffect> list) {
+		if (PowerHolderComponent.hasPower(tempLiving, FoodEffectImmunityPower.class)) {
+			ImmutableList.Builder<SuspiciousStewIngredient.StewEffect> newList = ImmutableList.builder();
+			for (SuspiciousStewIngredient.StewEffect stewEffect : list) {
+				if (PowerHolderComponent.getPowers(tempLiving, FoodEffectImmunityPower.class).stream().noneMatch(foodEffectImmunityPower -> foodEffectImmunityPower.shouldRemove(stewEffect.effect()))) {
+					newList.add(stewEffect);
+				}
 			}
+			return newList.build();
 		}
-		return value;
+		return list;
 	}
 }
