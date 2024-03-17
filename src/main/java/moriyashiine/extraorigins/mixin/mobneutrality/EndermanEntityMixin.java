@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.mobneutrality;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.MobNeutralityPower;
@@ -18,10 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EndermanEntityMixin {
 	@Inject(method = "isPlayerStaring", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$mobNeutrality(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
-		PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
-			if (mobNeutralityPower.shouldBeNeutral(EntityType.ENDERMAN) && mobNeutralityPower.isActive()) {
+		for (MobNeutralityPower power : PowerHolderComponent.getPowers(player, MobNeutralityPower.class)) {
+			if (power.shouldBeNeutral(EntityType.ENDERMAN) && power.isActive()) {
 				cir.setReturnValue(false);
+				return;
 			}
-		});
+		}
 	}
 }

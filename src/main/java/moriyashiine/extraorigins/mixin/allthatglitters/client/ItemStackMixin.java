@@ -1,4 +1,4 @@
-package moriyashiine.extraorigins.mixin.client;
+package moriyashiine.extraorigins.mixin.allthatglitters.client;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;

@@ -3,20 +3,20 @@
   "package": "moriyashiine.extraorigins.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-	"ActiveTargetGoalMixin",
-	"EndermanEntityMixin",
-	"EntityMixin",
-	"ItemStackMixin",
-	"LivingEntityMixin",
-	"PiglinBrainMixin",
-	"PiglinBruteBrainMixin",
-	"PowderSnowBlockMixin",
-	"SuspiciousStewItemMixin"
+	"allthatglitters.ItemStackMixin",
+	"canstandonpowdersnow.PowderSnowBlockMixin",
+	"foodeffectimmunity.LivingEntityMixin",
+	"foodeffectimmunity.SuspiciousStewItemMixin",
+	"mobneutrality.ActiveTargetGoalMixin",
+	"mobneutrality.EndermanEntityMixin",
+	"mobneutrality.PiglinBrainMixin",
+	"mobneutrality.PiglinBruteBrainMixin",
+	"modifyairstrafingspeed.LivingEntityMixin",
+	"preventblockslowness.EntityMixin"
   ],
   "client": [
-	"client.ApoliClientAccessor",
-	"client.ItemStackMixin",
-	"client.ProjectileUtilMixin"
+	"allthatglitters.client.ItemStackMixin",
+	"mount.client.ProjectileUtilMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

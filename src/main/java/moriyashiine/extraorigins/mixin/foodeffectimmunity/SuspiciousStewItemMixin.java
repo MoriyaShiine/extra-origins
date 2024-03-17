@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.foodeffectimmunity;
 
 import com.google.common.collect.ImmutableList;
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -24,27 +24,23 @@ import java.util.List;
 @Mixin(SuspiciousStewItem.class)
 public class SuspiciousStewItemMixin {
 	@Unique
-	private static LivingEntity tempLiving = null;
+	private static LivingEntity cachedEntity = null;
 
 	@Inject(method = "finishUsing", at = @At("HEAD"))
 	private void extraorigins$cacheLivingBefore(ItemStack stack, World world, LivingEntity user, CallbackInfoReturnable<ItemStack> cir) {
-		tempLiving = user;
-	}
-
-	@Inject(method = "finishUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/SuspiciousStewItem;forEachEffect(Lnet/minecraft/item/ItemStack;Ljava/util/function/Consumer;)V", shift = At.Shift.AFTER))
-	private void extraorigins$cacheLivingAfter(ItemStack stack, World world, LivingEntity user, CallbackInfoReturnable<ItemStack> cir) {
-		tempLiving = null;
+		cachedEntity = user;
 	}
 
 	@ModifyVariable(method = "method_53207", at = @At("HEAD"), argsOnly = true)
 	private static List<SuspiciousStewIngredient.StewEffect> extraorigins$foodEffectImmunity(List<SuspiciousStewIngredient.StewEffect> list) {
-		if (PowerHolderComponent.hasPower(tempLiving, FoodEffectImmunityPower.class)) {
+		if (PowerHolderComponent.hasPower(cachedEntity, FoodEffectImmunityPower.class)) {
 			ImmutableList.Builder<SuspiciousStewIngredient.StewEffect> newList = ImmutableList.builder();
 			for (SuspiciousStewIngredient.StewEffect stewEffect : list) {
-				if (PowerHolderComponent.getPowers(tempLiving, FoodEffectImmunityPower.class).stream().noneMatch(foodEffectImmunityPower -> foodEffectImmunityPower.shouldRemove(stewEffect.effect()))) {
+				if (PowerHolderComponent.getPowers(cachedEntity, FoodEffectImmunityPower.class).stream().noneMatch(foodEffectImmunityPower -> foodEffectImmunityPower.shouldRemove(stewEffect.effect()))) {
 					newList.add(stewEffect);
 				}
 			}
+			cachedEntity = null;
 			return newList.build();
 		}
 		return list;

@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.mobneutrality;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.MobNeutralityPower;
@@ -20,19 +20,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PiglinBrainMixin {
 	@Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
 	private static void extraorigins$mobNeutrality(LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
-		PowerHolderComponent.getPowers(target, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
-			if (mobNeutralityPower.shouldBeNeutral(EntityType.PIGLIN)) {
+		for (MobNeutralityPower power : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
+			if (power.shouldBeNeutral(EntityType.PIGLIN)) {
 				cir.setReturnValue(true);
+				return;
 			}
-		});
+		}
 	}
 
 	@Inject(method = "onGuardedBlockInteracted", at = @At("HEAD"), cancellable = true)
 	private static void extraorigins$mobNeutrality(PlayerEntity player, boolean blockOpen, CallbackInfo ci) {
-		PowerHolderComponent.getPowers(player, MobNeutralityPower.class).forEach(mobNeutralityPower -> {
-			if (mobNeutralityPower.shouldBeNeutral(EntityType.PIGLIN)) {
+		for (MobNeutralityPower power : PowerHolderComponent.getPowers(player, MobNeutralityPower.class)) {
+			if (power.shouldBeNeutral(EntityType.PIGLIN)) {
 				ci.cancel();
+				return;
 			}
-		});
+		}
 	}
 }

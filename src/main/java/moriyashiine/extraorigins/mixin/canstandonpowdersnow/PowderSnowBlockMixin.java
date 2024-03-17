@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.canstandonpowdersnow;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.CanStandOnPowderSnowPower;

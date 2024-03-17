@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.allthatglitters;
 
 import moriyashiine.extraorigins.common.registry.ModPowers;
 import moriyashiine.extraorigins.common.registry.ModTags;
