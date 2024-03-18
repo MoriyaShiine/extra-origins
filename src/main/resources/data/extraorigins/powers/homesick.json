@@ -3,36 +3,110 @@
   "change_group": {
 	"type": "origins:entity_group",
 	"condition": {
-	  "type": "extraorigins:piglin_safe",
-	  "inverted": true
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:piglin_safe",
+		  "inverted": true
+		},
+		{
+		  "type": "origins:resource",
+		  "resource": "extraorigins:homesick_timer",
+		  "comparison": "==",
+		  "compare_to": 0
+		}
+	  ]
 	},
 	"group": "undead"
   },
   "fire_immunity": {
 	"type": "origins:fire_immunity",
 	"condition": {
-	  "type": "extraorigins:piglin_safe",
-	  "inverted": true
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:piglin_safe",
+		  "inverted": true
+		},
+		{
+		  "type": "origins:resource",
+		  "resource": "extraorigins:homesick_timer",
+		  "comparison": "==",
+		  "compare_to": 0
+		}
+	  ]
 	}
   },
-  "slowness": {
-	"type": "origins:conditioned_attribute",
+  "weakness": {
+	"type": "origins:stacking_status_effect",
 	"condition": {
-	  "type": "extraorigins:piglin_safe",
-	  "inverted": true
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:piglin_safe",
+		  "inverted": true
+		},
+		{
+		  "type": "origins:resource",
+		  "resource": "extraorigins:homesick_timer",
+		  "comparison": "==",
+		  "compare_to": 0
+		}
+	  ]
 	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.movement_speed",
-	  "operation": "multiply_total",
-	  "value": -0.15
+	"min_stacks": 0,
+	"max_stacks": 1,
+	"duration_per_stack": 30,
+	"effect": {
+	  "effect": "minecraft:weakness",
+	  "is_ambient": true,
+	  "show_particles": false,
+	  "show_icon": true
 	}
   },
   "shaking": {
 	"type": "origins:shaking",
 	"condition": {
-	  "type": "extraorigins:piglin_safe",
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "extraorigins:piglin_safe",
+		  "inverted": true
+		},
+		{
+		  "type": "origins:resource",
+		  "resource": "extraorigins:homesick_timer",
+		  "comparison": "==",
+		  "compare_to": 0
+		}
+	  ]
+	}
+  },
+  "timer": {
+	"type": "origins:cooldown",
+	"cooldown": 3600,
+	"hud_render": {
+	  "sprite_location": "extraorigins:textures/gui/resource_bar.png",
+	  "condition": {
+		"type": "origins:resource",
+		"resource": "extraorigins:homesick_timer",
+		"comparison": ">",
+		"compare_to": 0
+	  },
 	  "inverted": true
+	}
+  },
+  "set_timer": {
+	"type": "origins:action_on_item_use",
+	"entity_action": {
+	  "type": "origins:trigger_cooldown",
+	  "power": "extraorigins:homesick_timer"
+	},
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_food"
+	  }
 	}
   }
 }

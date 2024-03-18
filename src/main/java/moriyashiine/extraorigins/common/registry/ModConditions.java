@@ -32,12 +32,12 @@ public class ModConditions {
 	});
 	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(ExtraOrigins.id("piglin_safe"), new SerializableData(), (instance, entity) -> entity.getWorld().getDimension().piglinSafe());
 
-	public static final ConditionFactory<Pair<DamageSource, Float>> CROSSBOW_ARROW = new ConditionFactory<>(ExtraOrigins.id("crossbow_arrow"), new SerializableData(), (instance, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());
+	public static final ConditionFactory<Pair<DamageSource, Float>> SHOT_FROM_CROSSBOW = new ConditionFactory<>(ExtraOrigins.id("shot_from_crossbow"), new SerializableData(), (instance, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());
 
 	public static void init() {
 		Registry.register(ApoliRegistries.BLOCK_CONDITION, FERTILIZABLE.getSerializerId(), FERTILIZABLE);
 		Registry.register(ApoliRegistries.ENTITY_CONDITION, RADIAL_MENU_DIRECTION.getSerializerId(), RADIAL_MENU_DIRECTION);
 		Registry.register(ApoliRegistries.ENTITY_CONDITION, PIGLIN_SAFE.getSerializerId(), PIGLIN_SAFE);
-		Registry.register(ApoliRegistries.DAMAGE_CONDITION, CROSSBOW_ARROW.getSerializerId(), CROSSBOW_ARROW);
+		Registry.register(ApoliRegistries.DAMAGE_CONDITION, SHOT_FROM_CROSSBOW.getSerializerId(), SHOT_FROM_CROSSBOW);
 	}
 }
