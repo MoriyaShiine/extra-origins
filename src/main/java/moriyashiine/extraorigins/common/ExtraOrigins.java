@@ -8,7 +8,7 @@ import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.packet.MountC2SPacket;
 import moriyashiine.extraorigins.common.power.MountPower;
-import moriyashiine.extraorigins.common.registry.*;
+import moriyashiine.extraorigins.common.init.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

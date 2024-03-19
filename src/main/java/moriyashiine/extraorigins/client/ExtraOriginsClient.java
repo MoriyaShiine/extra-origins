@@ -8,7 +8,7 @@ import moriyashiine.extraorigins.client.event.RadialMenuEvents;
 import moriyashiine.extraorigins.client.packet.MarkRadialDirectionChangedPacket;
 import moriyashiine.extraorigins.client.packet.MountS2CPacket;
 import moriyashiine.extraorigins.client.particle.SporeParticle;
-import moriyashiine.extraorigins.common.registry.ModParticleTypes;
+import moriyashiine.extraorigins.common.init.ModParticleTypes;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;

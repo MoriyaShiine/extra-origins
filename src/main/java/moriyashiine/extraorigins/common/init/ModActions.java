@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.common.registry;
+package moriyashiine.extraorigins.common.init;
 
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import io.github.apace100.apoli.data.ApoliDataTypes;
