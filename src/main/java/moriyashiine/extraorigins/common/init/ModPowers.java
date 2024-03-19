@@ -28,7 +28,7 @@ public class ModPowers {
 	public static final PowerFactory<?> MODIFY_AIR_STRAFING_SPEED = ValueModifyingPower.createValueModifyingFactory(ModifyAirStrafingSpeedPower::new, ExtraOrigins.id("modify_air_strafing_speed"));
 	public static final PowerFactory<?> MODIFY_ITEM_ATTRIBUTE = ModifyItemAttributePower.createFactory(ExtraOrigins.id("modify_item_attribute"));
 	public static final PowerFactory<?> MODIFY_SIZE = new PowerFactory<>(ExtraOrigins.id("modify_size"), new SerializableData().add("scale_types", SerializableDataTypes.IDENTIFIERS).add("scale", SerializableDataTypes.FLOAT), data -> (type, entity) -> new ModifySizePower(type, entity, data.get("scale_types"), data.getFloat("scale"))).allowCondition();
-	public static final PowerFactory<?> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(ExtraOrigins.id("prevent_block_slowness"), new SerializableData().add("blocks", SerializableDataType.list(SerializableDataTypes.BLOCK), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity, data.get("blocks"), data.getBoolean("inverted"))).allowCondition();
+	public static final PowerFactory<?> PREVENT_BLOCK_SLOWNESS = new PowerFactory<>(ExtraOrigins.id("prevent_block_slowness"), new SerializableData(), data -> (type, entity) -> new PreventBlockSlownessPower(type, entity)).allowCondition();
 	public static final PowerFactory<?> RADIAL_MENU = new PowerFactory<>(ExtraOrigins.id("radial_menu"), new SerializableData()
 			.add("key", ApoliDataTypes.KEY, new Active.Key())
 			.add("sprite_location", SerializableDataTypes.IDENTIFIER)

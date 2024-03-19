@@ -19,7 +19,7 @@ public class EntityMixin {
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$preventBlockSlowness(BlockState state, Vec3d multiplier, CallbackInfo ci) {
 		for (PreventBlockSlownessPower power : PowerHolderComponent.getPowers((Entity) (Object) this, PreventBlockSlownessPower.class)) {
-			if (power.shouldPreventSlowness(state.getBlock())) {
+			if (power.isActive()) {
 				ci.cancel();
 				return;
 			}
