@@ -1,6 +1,7 @@
 {
   "type": "extraorigins:mob_neutrality",
-  "entity_types": [
-	"minecraft:piglin"
-  ]
+  "entity_condition": {
+	"type": "origins:entity_type",
+	"entity_type": "minecraft:piglin"
+  }
 }

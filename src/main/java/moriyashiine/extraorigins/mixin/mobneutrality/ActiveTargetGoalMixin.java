@@ -21,7 +21,7 @@ public class ActiveTargetGoalMixin {
 	private static Predicate<LivingEntity> extraorigins$mobNeutrality(Predicate<LivingEntity> value, MobEntity mob) {
 		Predicate<LivingEntity> neutralityPredicate = target -> {
 			for (MobNeutralityPower mobNeutralityPower : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
-				if (mobNeutralityPower.shouldBeNeutral(mob.getType())) {
+				if (mobNeutralityPower.shouldBeNeutral(mob)) {
 					return false;
 				}
 			}
