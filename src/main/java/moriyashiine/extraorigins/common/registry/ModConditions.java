@@ -22,17 +22,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Pair;
 
 public class ModConditions {
-	public static final ConditionFactory<CachedBlockPosition> FERTILIZABLE = new ConditionFactory<>(ExtraOrigins.id("fertilizable"), new SerializableData(), (instance, cachedBlockPosition) -> cachedBlockPosition.getBlockState().getBlock() instanceof Fertilizable);
+	public static final ConditionFactory<CachedBlockPosition> FERTILIZABLE = new ConditionFactory<>(ExtraOrigins.id("fertilizable"), new SerializableData(), (data, cachedBlockPosition) -> cachedBlockPosition.getBlockState().getBlock() instanceof Fertilizable fertilizable && fertilizable.isFertilizable(cachedBlockPosition.getWorld(), cachedBlockPosition.getBlockPos(), cachedBlockPosition.getBlockState()));
 
-	public static final ConditionFactory<Entity> RADIAL_MENU_DIRECTION = new ConditionFactory<>(ExtraOrigins.id("radial_menu_direction"), new SerializableData().add("direction", SerializableDataType.enumValue(RadialMenuDirection.class)).add("power", ApoliDataTypes.POWER_TYPE), (instance, entity) -> {
-		if (((PowerTypeReference<?>) instance.get("power")).get(entity) instanceof RadialMenuPower radialMenuPower) {
-			return radialMenuPower.isActive() && radialMenuPower.getDirection() == instance.get("direction");
+	public static final ConditionFactory<Entity> RADIAL_MENU_DIRECTION = new ConditionFactory<>(ExtraOrigins.id("radial_menu_direction"), new SerializableData().add("direction", SerializableDataType.enumValue(RadialMenuDirection.class)).add("power", ApoliDataTypes.POWER_TYPE), (data, entity) -> {
+		if (((PowerTypeReference<?>) data.get("power")).get(entity) instanceof RadialMenuPower radialMenuPower) {
+			return radialMenuPower.isActive() && radialMenuPower.getDirection() == data.get("direction");
 		}
 		return false;
 	});
-	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(ExtraOrigins.id("piglin_safe"), new SerializableData(), (instance, entity) -> entity.getWorld().getDimension().piglinSafe());
+	public static final ConditionFactory<Entity> PIGLIN_SAFE = new ConditionFactory<>(ExtraOrigins.id("piglin_safe"), new SerializableData(), (data, entity) -> entity.getWorld().getDimension().piglinSafe());
 
-	public static final ConditionFactory<Pair<DamageSource, Float>> SHOT_FROM_CROSSBOW = new ConditionFactory<>(ExtraOrigins.id("shot_from_crossbow"), new SerializableData(), (instance, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());
+	public static final ConditionFactory<Pair<DamageSource, Float>> SHOT_FROM_CROSSBOW = new ConditionFactory<>(ExtraOrigins.id("shot_from_crossbow"), new SerializableData(), (data, damageSourceFloatPair) -> damageSourceFloatPair.getLeft().getSource() instanceof PersistentProjectileEntity projectile && projectile.isShotFromCrossbow());
 
 	public static void init() {
 		Registry.register(ApoliRegistries.BLOCK_CONDITION, FERTILIZABLE.getSerializerId(), FERTILIZABLE);

@@ -24,6 +24,7 @@ public class ExtraOrigins implements ModInitializer {
 		ModSoundEvents.init();
 		ModPowers.init();
 		ModConditions.init();
+		ModActions.init();
 		ModScaleTypes.init();
 		initPackets();
 		initEvents();

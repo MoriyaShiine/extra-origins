@@ -1,33 +1,32 @@
 {
-  "type": "origins:action_on_block_use",
-  "block_condition": {
-	"type": "extraorigins:fertilizable"
-  },
-  "item_condition": {
-	"type": "origins:empty"
-  },
-  "hands": [
-	"main_hand"
-  ],
+  "type": "origins:active_self",
   "condition": {
-	"type": "origins:and",
-	"conditions": [
+	"type": "origins:food_level",
+	"comparison": ">",
+	"compare_to": 0
+  },
+  "entity_action": {
+	"type": "extraorigins:block_action_looking_at",
+	"block_condition": {
+	  "type": "extraorigins:fertilizable"
+	},
+	"block_action": {
+	  "type": "origins:bonemeal",
+	  "effects": true
+	},
+	"entity_actions": [
 	  {
-		"type": "origins:sneaking"
+		"type": "origins:exhaust",
+		"amount": 20
 	  },
 	  {
-		"type": "origins:food_level",
-		"comparison": ">",
-		"compare_to": 0
+		"type": "origins:swing_hand"
 	  }
 	]
   },
-  "block_action": {
-	"type": "origins:bonemeal",
-	"effects": true
+  "key": {
+	"key": "key.origins.primary_active",
+	"continuous": true
   },
-  "entity_action": {
-	"type": "origins:exhaust",
-	"amount": 20
-  }
+  "cooldown": 5
 }
