@@ -82,22 +82,22 @@
   },
   "golden_armor_durability_multiplier": {
 	"type": "extraorigins:innate_unbreaking",
-	"level": 3,
 	"item_condition": {
 	  "type": "origins:ingredient",
 	  "ingredient": {
 		"tag": "extraorigins:golden_armor"
 	  }
-	}
+	},
+	"level": 3
   },
   "golden_tool_durability_multiplier": {
 	"type": "extraorigins:innate_unbreaking",
-	"level": 15,
 	"item_condition": {
 	  "type": "origins:ingredient",
 	  "ingredient": {
 		"tag": "extraorigins:golden_tools"
 	  }
-	}
+	},
+	"level": 15
   }
 }

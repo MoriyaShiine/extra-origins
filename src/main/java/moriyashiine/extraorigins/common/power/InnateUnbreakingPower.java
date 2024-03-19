@@ -14,13 +14,13 @@ import net.minecraft.world.World;
 import java.util.function.Predicate;
 
 public class InnateUnbreakingPower extends Power {
-	private final int level;
 	private final Predicate<Pair<World, ItemStack>> itemCondition;
+	private final int level;
 
-	public InnateUnbreakingPower(PowerType<?> type, LivingEntity entity, int level, Predicate<Pair<World, ItemStack>> itemCondition) {
+	public InnateUnbreakingPower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> itemCondition, int level) {
 		super(type, entity);
-		this.level = level;
 		this.itemCondition = itemCondition;
+		this.level = level;
 	}
 
 	public boolean doesApply(ItemStack stack) {
