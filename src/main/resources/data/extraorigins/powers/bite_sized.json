@@ -50,5 +50,9 @@
 	  "operation": "multiply_total",
 	  "value": -0.3333
 	}
+  },
+  "delayed_hitbox": {
+	"type": "extraorigins:delayed_hitbox",
+	"ticks": 5
   }
 }

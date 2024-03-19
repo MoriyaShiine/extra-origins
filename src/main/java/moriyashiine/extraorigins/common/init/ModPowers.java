@@ -21,6 +21,7 @@ import java.util.Collections;
 
 public class ModPowers {
 	public static final PowerFactory<?> CAN_WALK_ON_POWDER_SNOW = new PowerFactory<>(ExtraOrigins.id("can_walk_on_powder_snow"), new SerializableData(), data -> (type, entity) -> new CanStandOnPowderSnowPower(type, entity)).allowCondition();
+	public static final PowerFactory<?> DELAYED_HITBOX = new PowerFactory<>(ExtraOrigins.id("delayed_hitbox"), new SerializableData().add("ticks", SerializableDataTypes.INT), data -> (type, entity) -> new DelayedHitboxPower(type, entity, data.getInt("ticks")));
 	public static final PowerFactory<?> FOOD_EFFECT_IMMUNITY = new PowerFactory<>(ExtraOrigins.id("food_effect_immunity"), new SerializableData().add("effects", SerializableDataTypes.STATUS_EFFECTS, Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new FoodEffectImmunityPower(type, entity, data.get("effects"), data.getBoolean("inverted"))).allowCondition();
 	public static final PowerFactory<?> INNATE_UNBREAKING = new PowerFactory<>(ExtraOrigins.id("innate_unbreaking"), new SerializableData().add("level", SerializableDataTypes.INT).add("item_condition", ApoliDataTypes.ITEM_CONDITION, null), data -> (type, entity) -> new InnateUnbreakingPower(type, entity, data.getInt("level"), data.get("item_condition")));
 	public static final PowerFactory<?> MOB_NEUTRALITY = new PowerFactory<>(ExtraOrigins.id("mob_neutrality"), new SerializableData().add("entity_types", SerializableDataType.list(SerializableDataTypes.ENTITY_TYPE), Collections.emptyList()).add("inverted", SerializableDataTypes.BOOLEAN, false), data -> (type, entity) -> new MobNeutralityPower(type, entity, data.get("entity_types"), data.getBoolean("inverted"))).allowCondition();
@@ -50,6 +51,7 @@ public class ModPowers {
 
 	public static void init() {
 		Registry.register(ApoliRegistries.POWER_FACTORY, CAN_WALK_ON_POWDER_SNOW.getSerializerId(), CAN_WALK_ON_POWDER_SNOW);
+		Registry.register(ApoliRegistries.POWER_FACTORY, DELAYED_HITBOX.getSerializerId(), DELAYED_HITBOX);
 		Registry.register(ApoliRegistries.POWER_FACTORY, FOOD_EFFECT_IMMUNITY.getSerializerId(), FOOD_EFFECT_IMMUNITY);
 		Registry.register(ApoliRegistries.POWER_FACTORY, INNATE_UNBREAKING.getSerializerId(), INNATE_UNBREAKING);
 		Registry.register(ApoliRegistries.POWER_FACTORY, MOB_NEUTRALITY.getSerializerId(), MOB_NEUTRALITY);

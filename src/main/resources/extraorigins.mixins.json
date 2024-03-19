@@ -15,6 +15,7 @@
 	"preventblockslowness.EntityMixin"
   ],
   "client": [
+	"delayedhitbox.client.MinecraftClientMixin",
 	"modifyitemattribute.client.ItemStackMixin",
 	"mount.client.ProjectileUtilMixin"
   ],
