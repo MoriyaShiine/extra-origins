@@ -1,53 +1,47 @@
 {
-  "type": "origins:action_on_block_use",
-  "block_condition": {
-	"type": "origins:and",
-	"conditions": [
-	  {
-		"type": "origins:in_tag",
-		"tag": "minecraft:dirt"
-	  },
-	  {
-		"type": "origins:block",
-		"block": "minecraft:mycelium",
-		"inverted": true
-	  }
-	]
-  },
-  "item_condition": {
-	"type": "origins:empty"
-  },
-  "hands": [
-	"main_hand"
-  ],
+  "type": "origins:active_self",
   "condition": {
-	"type": "origins:and",
-	"conditions": [
-	  {
-		"type": "origins:sneaking"
-	  },
-	  {
-		"type": "origins:food_level",
-		"comparison": ">",
-		"compare_to": 0
-	  }
-	]
-  },
-  "block_action": {
-	"type": "origins:set_block",
-	"block": "minecraft:mycelium"
+	"type": "origins:food_level",
+	"comparison": ">",
+	"compare_to": 0
   },
   "entity_action": {
-	"type": "origins:and",
-	"actions": [
-	  {
-		"type": "origins:exhaust",
-		"amount": 20
-	  },
+	"type": "extraorigins:block_action_looking_at",
+	"block_condition": {
+	  "type": "origins:and",
+	  "conditions": [
+		{
+		  "type": "origins:in_tag",
+		  "tag": "minecraft:dirt"
+		},
+		{
+		  "type": "origins:block",
+		  "block": "minecraft:mycelium",
+		  "inverted": true
+		}
+	  ]
+	},
+	"block_action": {
+	  "type": "origins:set_block",
+	  "block": "minecraft:mycelium"
+	},
+	"entity_actions": [
 	  {
 		"type": "origins:play_sound",
 		"sound": "extraorigins:block.mycelium.grow"
+	  },
+	  {
+		"type": "origins:exhaust",
+		"amount": 10
+	  },
+	  {
+		"type": "origins:swing_hand"
 	  }
 	]
-  }
+  },
+  "key": {
+	"key": "key.origins.secondary_active",
+	"continuous": true
+  },
+  "cooldown": 5
 }

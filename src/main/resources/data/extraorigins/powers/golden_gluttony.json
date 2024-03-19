@@ -4,6 +4,9 @@
 	"type": "origins:and",
 	"conditions": [
 	  {
+		"type": "origins:food"
+	  },
+	  {
 		"type": "origins:or",
 		"conditions": [
 		  {
@@ -19,19 +22,16 @@
 		"inverted": true
 	  },
 	  {
-		"type": "origins:food"
-	  },
-	  {
 		"type": "origins:ingredient",
 		"ingredient": {
-		  "tag": "origins:ignore_diet"
+		  "tag": "extraorigins:golden_food"
 		},
 		"inverted": true
 	  },
 	  {
 		"type": "origins:ingredient",
 		"ingredient": {
-		  "tag": "extraorigins:golden_food"
+		  "tag": "origins:ignore_diet"
 		},
 		"inverted": true
 	  }
