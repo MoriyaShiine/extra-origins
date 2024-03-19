@@ -26,7 +26,7 @@
   "power.extraorigins.magic_spores.name": "Magic Spores",
   "power.extraorigins.magic_spores.description": "You can switch between different Magic Spores. Red Cap boosts offense, Green Cap boosts defense, and Blue Cap boosts mobility. Changing Spores will decrease the abilities of the other two Caps.",
   "power.extraorigins.rooted.name": "Rooted",
-  "power.extraorigins.rooted.description": "You gain bonuses based on the Spore you have active when standing on mycelium. Red Cap increases attack speed, Green Cap grants knockback immunity, and Blue Cap amplifies jump height.",
+  "power.extraorigins.rooted.description": "You gain bonuses based on the Spore you have active when standing on mycelium. Red Cap increases attack speed, Green Cap grants knockback immunity, and Blue Cap amplifies jump height while sprinting.",
   "power.extraorigins.bite_sized.name": "Bite Sized",
   "power.extraorigins.bite_sized.description": "You are significantly smaller than a human and have half as much health.",
   "power.extraorigins.jockey.name": "Jockey",
