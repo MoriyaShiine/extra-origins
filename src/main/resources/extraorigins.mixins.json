@@ -11,6 +11,7 @@
 	"mobneutrality.EndermanEntityMixin",
 	"mobneutrality.PiglinBrainMixin",
 	"mobneutrality.PiglinBruteBrainMixin",
+	"mobneutrality.PiglinSpecificSensorMixin",
 	"modifyairstrafingspeed.LivingEntityMixin",
 	"preventblockslowness.EntityMixin"
   ],

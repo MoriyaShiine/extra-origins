@@ -4,49 +4,33 @@
 
 package moriyashiine.extraorigins.mixin.mobneutrality;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.MobNeutralityPower;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
-import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.Box;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 @Mixin(PiglinBrain.class)
 public class PiglinBrainMixin {
-	@Unique
-	private static Entity cachedEntity = null;
-
-	@ModifyVariable(method = "tickActivities", at = @At("HEAD"), argsOnly = true)
-	private static PiglinEntity extraorigins$mobNeutrality(PiglinEntity entity) {
-		cachedEntity = entity;
-		return entity;
-	}
-
-	@Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
-	private static void extraorigins$mobNeutrality(LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
-		for (MobNeutralityPower power : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
-			if (power.shouldBeNeutral(cachedEntity)) {
-				cir.setReturnValue(true);
-				return;
+	@WrapOperation(method = "onGuardedBlockInteracted", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getNonSpectatingEntities(Ljava/lang/Class;Lnet/minecraft/util/math/Box;)Ljava/util/List;"))
+	private static List<?> extraorigins$mobNeutrality(World instance, Class<? extends Entity> aClass, Box box, Operation<List<? extends Entity>> original, PlayerEntity player) {
+		List<? extends Entity> list = original.call(instance, aClass, box);
+		for (int i = list.size() - 1; i >= 0; i--) {
+			for (MobNeutralityPower power : PowerHolderComponent.getPowers(player, MobNeutralityPower.class)) {
+				if (power.shouldBeNeutral(list.get(i))) {
+					list.remove(i);
+					break;
+				}
 			}
 		}
-	}
-
-	@Inject(method = "onGuardedBlockInteracted", at = @At("HEAD"), cancellable = true)
-	private static void extraorigins$mobNeutrality(PlayerEntity player, boolean blockOpen, CallbackInfo ci) {
-		for (MobNeutralityPower power : PowerHolderComponent.getPowers(player, MobNeutralityPower.class)) {
-			if (power.shouldBeNeutral(cachedEntity)) {
-				ci.cancel();
-				return;
-			}
-		}
+		return list;
 	}
 }
