@@ -1,11 +1,11 @@
 {
   "powers": [
 	"extraorigins:all_that_glitters",
-	"extraorigins:piglin_neutrality",
 	"extraorigins:crossbow_master",
+	"extraorigins:piglin_neutrality",
 	"origins:nether_spawn",
 	"extraorigins:homesick",
-	"origins:carnivore",
+	"extraorigins:golden_gluttony",
 	"extraorigins:flabby",
 	"extraorigins:soul_spooked"
   ],

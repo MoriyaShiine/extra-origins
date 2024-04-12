@@ -10,6 +10,21 @@
 		},
 		{
 		  "type": "origins:exposed_to_sky"
+		},
+		{
+		  "type": "origins:or",
+		  "conditions": [
+			{
+			  "type": "origins:food_level",
+			  "comparison": "<",
+			  "compare_to": 20
+			},
+			{
+			  "type": "origins:saturation_level",
+			  "comparison": "<",
+			  "compare_to": 20
+			}
+		  ]
 		}
 	  ]
 	},
@@ -23,37 +38,47 @@
   "prevent_healing": {
 	"type": "origins:disable_regen"
   },
-  "heal_override": {
-	"type": "origins:action_over_time",
-	"condition": {
-	  "type": "origins:food_level",
-	  "comparison": ">",
-	  "compare_to": 0
-	},
-	"interval": 30,
-	"entity_action": {
-	  "type": "origins:heal",
-	  "amount": 1
-	}
-  },
-  "exhaust_when_healing": {
+  "natural_regeneration": {
 	"type": "origins:action_over_time",
 	"condition": {
 	  "type": "origins:and",
 	  "conditions": [
 		{
+		  "type": "origins:relative_health",
+		  "comparison": "<",
+		  "compare_to": 1
+		},
+		{
 		  "type": "origins:food_level",
 		  "comparison": ">",
 		  "compare_to": 0
-		},
+		}
+	  ]
+	},
+	"interval": 40,
+	"entity_action": {
+	  "type": "origins:heal",
+	  "amount": 1
+	}
+  },
+  "natural_regeneration_exhaustion": {
+	"type": "origins:action_over_time",
+	"condition": {
+	  "type": "origins:and",
+	  "conditions": [
 		{
 		  "type": "origins:relative_health",
 		  "comparison": "<",
 		  "compare_to": 1
+		},
+		{
+		  "type": "origins:food_level",
+		  "comparison": ">",
+		  "compare_to": 0
 		}
 	  ]
 	},
-	"interval": 30,
+	"interval": 40,
 	"entity_action": {
 	  "type": "origins:exhaust",
 	  "amount": 2

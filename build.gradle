@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.4-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -11,37 +11,53 @@ base {
 }
 
 repositories {
-    maven {
-        name "cloth config"
-        url "https://maven.shedaniel.me"
+    mavenLocal()
+    mavenCentral()
+    exclusiveContent {
+
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+
+        filter {
+            includeGroup "maven.modrinth"
+        }
+
     }
     maven {
-        name "quiltmc"
-        url "https://maven.quiltmc.org/repository/release"
+        name = "QuiltMC"
+        url = "https://maven.quiltmc.org/repository/release"
     }
     maven {
-        name "mod menu"
-        url "https://maven.terraformersmc.com"
+        name = 'Ladysnake Mods'
+        url = 'https://maven.ladysnake.org/releases'
     }
     maven {
-        name "playerabilitylib"
-        url "https://maven.ladysnake.org/releases"
+        url = 'https://maven.cafeteria.dev'
+        content {
+            includeGroup 'net.adriantodt.fabricmc'
+        }
     }
     maven {
-        name "masady"
+        url "https://maven.jamieswhiteshirt.com/libs-release"
+        content {
+            includeGroup "com.jamieswhiteshirt"
+        }
+    }
+    maven {
         url "https://masa.dy.fi/maven"
     }
     maven {
-        name "reach entity attributes"
-        url "https://maven.jamieswhiteshirt.com/libs-release"
-    }
-    maven {
-        name "modrinth"
-        url "https://api.modrinth.com/maven"
-    }
-    maven {
-        name "jitpack"
         url "https://jitpack.io"
+    }
+    maven {
+        url "https://maven.shedaniel.me/"
+    }
+    maven {
+        url "https://maven.terraformersmc.com/"
     }
 }
 
@@ -76,6 +92,6 @@ java {
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
+        rename { "${it}_${project.base.archivesName.get()}" }
     }
 }

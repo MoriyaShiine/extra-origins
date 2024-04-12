@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.common.registry;
+package moriyashiine.extraorigins.common.init;
 
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import virtuoel.pehkui.api.*;

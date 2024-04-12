@@ -1,173 +1,103 @@
 {
   "type": "origins:multiple",
-  "golden_tool_boost": {
-	"type": "origins:modify_damage_dealt",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "mainhand",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:golden_tools"
-		}
+  "golden_head_boost": {
+	"type": "extraorigins:modify_item_attribute",
+	"equipment_slot": "head",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor"
 	  }
 	},
 	"modifier": {
 	  "name": "Origin modifier",
+	  "attribute": "minecraft:generic.armor",
+	  "operation": "addition",
+	  "value": 1
+	}
+  },
+  "golden_chest_boost": {
+	"type": "extraorigins:modify_item_attribute",
+	"equipment_slot": "chest",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor"
+	  }
+	},
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "minecraft:generic.armor",
+	  "operation": "addition",
+	  "value": 2
+	}
+  },
+  "golden_legs_boost": {
+	"type": "extraorigins:modify_item_attribute",
+	"equipment_slot": "legs",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor"
+	  }
+	},
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "minecraft:generic.armor",
+	  "operation": "addition",
+	  "value": 2
+	}
+  },
+  "golden_feet_boost": {
+	"type": "extraorigins:modify_item_attribute",
+	"equipment_slot": "feet",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor"
+	  }
+	},
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "minecraft:generic.armor",
+	  "operation": "addition",
+	  "value": 1
+	}
+  },
+  "golden_mainhand_boost": {
+	"type": "extraorigins:modify_item_attribute",
+	"equipment_slot": "mainhand",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_tools"
+	  }
+	},
+	"modifier": {
+	  "name": "Origin modifier",
+	  "attribute": "minecraft:generic.attack_damage",
 	  "operation": "addition",
 	  "value": 2.5
 	}
   },
-  "golden_helmet_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "head",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:golden_armor"
-		}
+  "golden_armor_durability_multiplier": {
+	"type": "extraorigins:innate_unbreaking",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_armor"
 	  }
 	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.armor",
-	  "operation": "addition",
-	  "value": 1
-	}
+	"level": 3
   },
-  "golden_chestplate_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "chest",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:golden_armor"
-		}
+  "golden_tool_durability_multiplier": {
+	"type": "extraorigins:innate_unbreaking",
+	"item_condition": {
+	  "type": "origins:ingredient",
+	  "ingredient": {
+		"tag": "extraorigins:golden_tools"
 	  }
 	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.armor",
-	  "operation": "addition",
-	  "value": 2
-	}
-  },
-  "golden_leggings_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "legs",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:golden_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.armor",
-	  "operation": "addition",
-	  "value": 2
-	}
-  },
-  "golden_boots_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "feet",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:golden_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.armor",
-	  "operation": "addition",
-	  "value": 1
-	}
-  },
-  "netherite_helmet_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "head",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:netherite_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.movement_speed",
-	  "operation": "multiply_total",
-	  "value": 0.0375
-	}
-  },
-  "netherite_chestplate_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "chest",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:netherite_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.movement_speed",
-	  "operation": "multiply_total",
-	  "value": 0.0375
-	}
-  },
-  "netherite_leggings_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "legs",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:netherite_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.movement_speed",
-	  "operation": "multiply_total",
-	  "value": 0.0375
-	}
-  },
-  "netherite_boots_boost": {
-	"type": "origins:conditioned_attribute",
-	"condition": {
-	  "type": "origins:equipped_item",
-	  "equipment_slot": "feet",
-	  "item_condition": {
-		"type": "origins:ingredient",
-		"ingredient": {
-		  "tag": "extraorigins:netherite_armor"
-		}
-	  }
-	},
-	"modifier": {
-	  "name": "Origin modifier",
-	  "attribute": "minecraft:generic.movement_speed",
-	  "operation": "multiply_total",
-	  "value": 0.0375
-	}
+	"level": 15
   }
 }

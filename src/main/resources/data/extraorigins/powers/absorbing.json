@@ -1,5 +1,5 @@
 {
-  "type": "origins:modify_damage_dealt",
+  "type": "origins:stacking_status_effect",
   "condition": {
 	"type": "origins:or",
 	"conditions": [
@@ -14,9 +14,13 @@
 	  }
 	]
   },
-  "modifier": {
-	"name": "Origin modifier",
-	"operation": "addition",
-	"value": 2
+  "min_stacks": 0,
+  "max_stacks": 1,
+  "duration_per_stack": 30,
+  "effect": {
+	"effect": "minecraft:strength",
+	"is_ambient": true,
+	"show_particles": false,
+	"show_icon": true
   }
 }

@@ -20,14 +20,8 @@
 	  {
 		"name": "Origin modifier",
 		"attribute": "minecraft:generic.max_health",
-		"operation": "addition",
-		"value": -10
-	  },
-	  {
-		"name": "Origin modifier",
-		"attribute": "minecraft:generic.attack_speed",
-		"operation": "addition",
-		"value": 0.5
+		"operation": "multiply_total",
+		"value": -0.5
 	  },
 	  {
 		"name": "Origin modifier",
@@ -45,7 +39,7 @@
 		"name": "Origin modifier",
 		"attribute": "reach-entity-attributes:reach",
 		"operation": "addition",
-		"value": -1
+		"value": -1.5
 	  }
 	]
   },
@@ -56,5 +50,9 @@
 	  "operation": "multiply_total",
 	  "value": -0.3333
 	}
+  },
+  "delayed_hitbox": {
+	"type": "extraorigins:delayed_hitbox",
+	"ticks": 5
   }
 }

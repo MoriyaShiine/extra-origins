@@ -18,7 +18,7 @@ import java.util.Set;
 
 public class ModifySizePower extends Power {
 	private final Set<ScaleType> scaleTypes = new HashSet<>();
-	public final float scale;
+	private final float scale;
 
 	public ModifySizePower(PowerType<?> type, LivingEntity entity, List<Identifier> identifiers, float scale) {
 		super(type, entity);

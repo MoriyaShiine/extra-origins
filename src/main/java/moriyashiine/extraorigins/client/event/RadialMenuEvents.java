@@ -4,11 +4,11 @@
 
 package moriyashiine.extraorigins.client.event;
 
+import io.github.apace100.apoli.ApoliClient;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.power.RadialMenuPower;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
-import moriyashiine.extraorigins.mixin.client.ApoliClientAccessor;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -44,7 +44,7 @@ public class RadialMenuEvents {
 				if (client.currentScreen != null) {
 					return;
 				}
-				activePowers = PowerHolderComponent.getPowers(client.player, RadialMenuPower.class).stream().filter(power -> ApoliClientAccessor.extraorigins$idToKeyBindingMap().containsKey(power.getKey().key) && ApoliClientAccessor.extraorigins$idToKeyBindingMap().get(power.getKey().key).isPressed()).toList();
+				activePowers = PowerHolderComponent.getPowers(client.player, RadialMenuPower.class).stream().filter(power -> ApoliClient.idToKeyBindingMap.containsKey(power.getKey().key) && ApoliClient.idToKeyBindingMap.get(power.getKey().key).isPressed()).toList();
 				if (!activePowers.isEmpty()) {
 					client.mouse.unlockCursor();
 					changeTargetMode(client);

@@ -6,27 +6,20 @@ package moriyashiine.extraorigins.common.power;
 
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
 
 public class MobNeutralityPower extends Power {
-	private final Set<EntityType<?>> entityTypes = new HashSet<>();
-	private final boolean inverted;
+	private final Predicate<Entity> entityCondition;
 
-	public MobNeutralityPower(PowerType<?> type, LivingEntity entity, List<EntityType<?>> entityTypes, boolean inverted) {
+	public MobNeutralityPower(PowerType<?> type, LivingEntity entity, Predicate<Entity> entityCondition) {
 		super(type, entity);
-		this.entityTypes.addAll(entityTypes);
-		this.inverted = inverted;
+		this.entityCondition = entityCondition;
 	}
 
-	public boolean shouldBeNeutral(EntityType<?> entityType) {
-		if (inverted) {
-			return !entityTypes.contains(entityType);
-		}
-		return entityTypes.contains(entityType);
+	public boolean shouldBeNeutral(Entity entity) {
+		return entityCondition.test(entity);
 	}
 }

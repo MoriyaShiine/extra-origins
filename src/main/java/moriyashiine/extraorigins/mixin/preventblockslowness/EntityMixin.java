@@ -2,7 +2,7 @@
  * All Rights Reserved (c) MoriyaShiine
  */
 
-package moriyashiine.extraorigins.mixin;
+package moriyashiine.extraorigins.mixin.preventblockslowness;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.power.PreventBlockSlownessPower;
@@ -18,10 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class EntityMixin {
 	@Inject(method = "slowMovement", at = @At("HEAD"), cancellable = true)
 	private void extraorigins$preventBlockSlowness(BlockState state, Vec3d multiplier, CallbackInfo ci) {
-		PowerHolderComponent.getPowers((Entity) (Object) this, PreventBlockSlownessPower.class).forEach(preventBlockSlownessPower -> {
-			if (preventBlockSlownessPower.shouldPreventSlowness(state.getBlock())) {
+		for (PreventBlockSlownessPower power : PowerHolderComponent.getPowers((Entity) (Object) this, PreventBlockSlownessPower.class)) {
+			if (power.isActive()) {
 				ci.cancel();
+				return;
 			}
-		});
+		}
 	}
 }
