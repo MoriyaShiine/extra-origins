@@ -1,5 +1,6 @@
 {
   "type": "origins:multiple",
+  "hidden": true,
   "attribute_modifiers": {
 	"type": "origins:attribute",
 	"modifiers": [
