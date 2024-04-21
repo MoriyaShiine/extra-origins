@@ -4,15 +4,15 @@
 
 package moriyashiine.extraorigins.common;
 
-import io.github.apace100.apoli.component.PowerHolderComponent;
+import moriyashiine.extraorigins.common.event.DismountEvent;
+import moriyashiine.extraorigins.common.event.RandomPowerGranterEvent;
 import moriyashiine.extraorigins.common.init.*;
 import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
 import moriyashiine.extraorigins.common.packet.MountC2SPacket;
-import moriyashiine.extraorigins.common.power.MountPower;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class ExtraOrigins implements ModInitializer {
@@ -35,15 +35,12 @@ public class ExtraOrigins implements ModInitializer {
 	}
 
 	private void initPackets() {
-		ServerPlayNetworking.registerGlobalReceiver(ChangeRadialDirectionPacket.ID, new ChangeRadialDirectionPacket.Receiver());
-		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, new MountC2SPacket.Receiver());
+		ServerPlayNetworking.registerGlobalReceiver(ChangeRadialDirectionPacket.ID, new ChangeRadialDirectionPacket());
+		ServerPlayNetworking.registerGlobalReceiver(MountC2SPacket.ID, new MountC2SPacket());
 	}
 
 	private void initEvents() {
-		ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-			if (PowerHolderComponent.hasPower(handler.player, MountPower.class) && handler.player.getVehicle() instanceof PlayerEntity) {
-				handler.player.dismountVehicle();
-			}
-		});
+		ServerPlayConnectionEvents.DISCONNECT.register(new DismountEvent());
+		ServerPlayerEvents.AFTER_RESPAWN.register(new RandomPowerGranterEvent());
 	}
 }

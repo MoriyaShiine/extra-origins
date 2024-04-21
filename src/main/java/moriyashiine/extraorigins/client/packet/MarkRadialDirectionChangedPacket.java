@@ -16,17 +16,15 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class MarkRadialDirectionChangedPacket {
+public class MarkRadialDirectionChangedPacket implements ClientPlayNetworking.PlayChannelHandler {
 	public static final Identifier ID = ExtraOrigins.id("mark_radial_direction_changed");
 
 	public static void send(ServerPlayerEntity player) {
 		ServerPlayNetworking.send(player, ID, new PacketByteBuf(Unpooled.buffer()));
 	}
 
-	public static class Receiver implements ClientPlayNetworking.PlayChannelHandler {
-		@Override
-		public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-			client.execute(() -> RadialMenuEvents.directionChanged = false);
-		}
+	@Override
+	public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+		client.execute(() -> RadialMenuEvents.directionChanged = false);
 	}
 }

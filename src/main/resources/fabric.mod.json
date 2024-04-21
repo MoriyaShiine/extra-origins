@@ -24,6 +24,9 @@
 	],
 	"client": [
 	  "moriyashiine.extraorigins.client.ExtraOriginsClient"
+	],
+	"cardinal-components-entity": [
+	  "moriyashiine.extraorigins.common.init.ModEntityComponents"
 	]
   },
   "mixins": [
@@ -36,5 +39,10 @@
 	"fabric-api": "*",
 	"origins": "*",
 	"pehkui": "*"
+  },
+  "custom": {
+	"cardinal-components": [
+	  "extraorigins:random_power_granter"
+	]
   }
 }

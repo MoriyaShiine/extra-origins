@@ -13,6 +13,7 @@ import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import moriyashiine.extraorigins.common.ExtraOrigins;
+import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;
 import moriyashiine.extraorigins.common.power.*;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.minecraft.registry.Registry;
@@ -43,6 +44,7 @@ public class ModPowers {
 		power.setKey(data.get("key"));
 		return power;
 	}).allowCondition();
+	public static final PowerFactory<?> RANDOM_POWER_GRANTER = new PowerFactory<>(RandomPowerGranterComponent.RANDOM_POWER_GRANTER, new SerializableData(), data -> (type, entity) -> new RandomPowerGranterPower(type, entity));
 	public static final PowerFactory<?> START_RIDING = new PowerFactory<>(ExtraOrigins.id("start_riding"), new SerializableData().add("key", ApoliDataTypes.KEY, new Active.Key()), data -> (type, entity) -> {
 		MountPower power = new MountPower(type, entity);
 		power.setKey(data.get("key"));
@@ -60,6 +62,7 @@ public class ModPowers {
 		Registry.register(ApoliRegistries.POWER_FACTORY, MODIFY_SIZE.getSerializerId(), MODIFY_SIZE);
 		Registry.register(ApoliRegistries.POWER_FACTORY, PREVENT_BLOCK_SLOWNESS.getSerializerId(), PREVENT_BLOCK_SLOWNESS);
 		Registry.register(ApoliRegistries.POWER_FACTORY, RADIAL_MENU.getSerializerId(), RADIAL_MENU);
+		Registry.register(ApoliRegistries.POWER_FACTORY, RANDOM_POWER_GRANTER.getSerializerId(), RANDOM_POWER_GRANTER);
 		Registry.register(ApoliRegistries.POWER_FACTORY, START_RIDING.getSerializerId(), START_RIDING);
 	}
 }

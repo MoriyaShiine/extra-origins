@@ -13,12 +13,14 @@
 	"mobneutrality.PiglinBruteBrainMixin",
 	"mobneutrality.PiglinSpecificSensorMixin",
 	"modifyairstrafingspeed.LivingEntityMixin",
-	"preventblockslowness.EntityMixin"
+	"preventblockslowness.EntityMixin",
+	"util.impact4.ImpactMixin"
   ],
   "client": [
 	"delayedhitbox.client.MinecraftClientMixin",
 	"modifyitemattribute.client.ItemStackMixin",
-	"mount.client.ProjectileUtilMixin"
+	"mount.client.ProjectileUtilMixin",
+	"randompowergranter.client.OriginDisplayScreenMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

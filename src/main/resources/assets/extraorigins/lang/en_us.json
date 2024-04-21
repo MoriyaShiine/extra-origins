@@ -9,6 +9,8 @@
   "origin.extraorigins.inchling.description": "A subspecies of humans that are incredibly small. They utilize their size to hide from enemies and navigate small spaces.",
   "origin.extraorigins.piglin.name": "Piglin",
   "origin.extraorigins.piglin.description": "Natives of the Nether, Piglins are very fond of gold and are experts at utilizing it.",
+  "origin.extraorigins.nucleon.name": "Nucleon",
+  "origin.extraorigins.nucleon.description": "Named after the atomic nucleus, Nucleons are incredibly unpredictable and have a wide array of ever-changing powers.",
   "power.extraorigins.absorbing.name": "Absorbing",
   "power.extraorigins.absorbing.description": "You gain strength when exposed to water.",
   "power.extraorigins.flammable.name": "Flammable",
@@ -48,5 +50,8 @@
   "power.extraorigins.piglin_neutrality.name": "Piglin Neutrality",
   "power.extraorigins.piglin_neutrality.description": "Piglins do not attack you unless provoked. Brutes will still attack on sight.",
   "power.extraorigins.soul_spooked.name": "Soul Spooked",
-  "power.extraorigins.soul_spooked.description": "You are afraid of soul fire, becoming weak when near it."
+  "power.extraorigins.soul_spooked.description": "You are afraid of soul fire, becoming weak when near it.",
+  "power.extraorigins.radioactive.name": "Radioactive",
+  "power.extraorigins.radioactive.description": "You have 3 random powers, each of which will decay into a new power after a certain amount of time.",
+  "origins.gui.impact.very_high": "Very High"
 }
