@@ -9,6 +9,7 @@
 	"innateunbreaking.ItemStackMixin",
 	"mobneutrality.ActiveTargetGoalMixin",
 	"mobneutrality.EndermanEntityMixin",
+	"mobneutrality.FleeEntityGoalMixin",
 	"mobneutrality.PiglinBrainMixin",
 	"mobneutrality.PiglinBruteBrainMixin",
 	"mobneutrality.PiglinSpecificSensorMixin",
