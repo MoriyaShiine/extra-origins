@@ -33,4 +33,7 @@ requires [Pehkui](https://modrinth.com/mod/pehkui)
 - Your diet is restricted to meat, you can't eat vegetables. Golden food is still edible.
 - You have 2 less hearts of health than humans.
 - You are afraid of soul fire, becoming weak when near it.
+
+⚛️ Nucleon ⚛️
++- You have 3 random powers, each of which will decay into a new power after a certain amount of time.
 ```
