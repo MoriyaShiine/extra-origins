@@ -21,7 +21,7 @@ public class PiglinBruteBrainMixin {
 		boolean inRange = original.call(instance, entity, radius);
 		if (inRange) {
 			for (MobNeutralityPower power : PowerHolderComponent.getPowers(instance, MobNeutralityPower.class)) {
-				if (power.shouldBeNeutral(entity)) {
+				if (power.shouldBeNeutral(entity) && power.isActive()) {
 					return false;
 				}
 			}

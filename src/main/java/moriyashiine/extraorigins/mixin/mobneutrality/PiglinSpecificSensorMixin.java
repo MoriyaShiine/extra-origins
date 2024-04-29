@@ -21,7 +21,7 @@ public class PiglinSpecificSensorMixin {
 		boolean wearsGold = original.call(player);
 		if (!wearsGold) {
 			for (MobNeutralityPower power : PowerHolderComponent.getPowers(player, MobNeutralityPower.class)) {
-				if (power.shouldBeNeutral(entity)) {
+				if (power.shouldBeNeutral(entity) && power.isActive()) {
 					return true;
 				}
 			}

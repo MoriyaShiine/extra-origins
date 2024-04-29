@@ -20,8 +20,8 @@ public class ActiveTargetGoalMixin {
 	@ModifyVariable(method = "<init>(Lnet/minecraft/entity/mob/MobEntity;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V", at = @At("HEAD"), argsOnly = true)
 	private static Predicate<LivingEntity> extraorigins$mobNeutrality(Predicate<LivingEntity> value, MobEntity mob) {
 		Predicate<LivingEntity> neutralityPredicate = target -> {
-			for (MobNeutralityPower mobNeutralityPower : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
-				if (mobNeutralityPower.shouldBeNeutral(mob)) {
+			for (MobNeutralityPower power : PowerHolderComponent.getPowers(target, MobNeutralityPower.class)) {
+				if (power.shouldBeNeutral(mob) && power.isActive()) {
 					return false;
 				}
 			}
