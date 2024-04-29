@@ -10,9 +10,11 @@
 	"mobneutrality.ActiveTargetGoalMixin",
 	"mobneutrality.EndermanEntityMixin",
 	"mobneutrality.FleeEntityGoalMixin",
+	"mobneutrality.HoglinBrainMixin",
 	"mobneutrality.PiglinBrainMixin",
 	"mobneutrality.PiglinBruteBrainMixin",
 	"mobneutrality.PiglinSpecificSensorMixin",
+	"mobneutrality.ZoglinEntityMixin",
 	"modifyairstrafingspeed.LivingEntityMixin",
 	"preventblockslowness.EntityMixin",
 	"util.impact4.ImpactMixin"
