@@ -17,7 +17,7 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class MountC2SPacket implements ServerPlayNetworking.PlayChannelHandler {
+public class MountC2SPacket {
 	public static final Identifier ID = ExtraOrigins.id("mount_c2s");
 
 	public static void send(Entity entity) {
@@ -26,20 +26,22 @@ public class MountC2SPacket implements ServerPlayNetworking.PlayChannelHandler {
 		ClientPlayNetworking.send(ID, buf);
 	}
 
-	@Override
-	public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		int id = buf.readInt();
-		server.execute(() -> {
-			Entity entity = player.getWorld().getEntityById(id);
-			if (entity != null) {
-				if (player.getUuid().equals(entity.getUuid())) {
-					return;
+	public static class Receiver implements ServerPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			int id = buf.readInt();
+			server.execute(() -> {
+				Entity entity = player.getWorld().getEntityById(id);
+				if (entity != null) {
+					if (player.getUuid().equals(entity.getUuid())) {
+						return;
+					}
+					player.startRiding(entity, true);
+					if (entity instanceof ServerPlayerEntity playerBeingRidden) {
+						MountS2CPacket.send(playerBeingRidden, player);
+					}
 				}
-				player.startRiding(entity, true);
-				if (entity instanceof ServerPlayerEntity playerBeingRidden) {
-					MountS2CPacket.send(playerBeingRidden, player);
-				}
-			}
-		});
+			});
+		}
 	}
 }

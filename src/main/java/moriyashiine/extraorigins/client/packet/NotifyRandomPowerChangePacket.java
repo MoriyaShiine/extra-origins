@@ -16,7 +16,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class NotifyRandomPowerChangePacket implements ClientPlayNetworking.PlayChannelHandler {
+public class NotifyRandomPowerChangePacket {
 	public static final Identifier ID = ExtraOrigins.id("notify_random_power_change");
 
 	public static void send(ServerPlayerEntity player, int index, Identifier oldPower, Identifier newPower) {
@@ -27,13 +27,15 @@ public class NotifyRandomPowerChangePacket implements ClientPlayNetworking.PlayC
 		ServerPlayNetworking.send(player, ID, buf);
 	}
 
-	@Override
-	public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		int index = buf.readInt();
-		Identifier oldPower = buf.readIdentifier();
-		Identifier newPower = buf.readIdentifier();
-		client.execute(() -> {
-			RandomPowerGranterClientEvent.DISPLAY_INSTANCES[index] = new RandomPowerGranterClientEvent.DisplayInstance(oldPower, newPower, 120);
-		});
+	public static class Receiver implements ClientPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			int index = buf.readInt();
+			Identifier oldPower = buf.readIdentifier();
+			Identifier newPower = buf.readIdentifier();
+			client.execute(() -> {
+				RandomPowerGranterClientEvent.DISPLAY_INSTANCES[index] = new RandomPowerGranterClientEvent.DisplayInstance(oldPower, newPower, 120);
+			});
+		}
 	}
 }

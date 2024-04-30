@@ -30,9 +30,9 @@ public class ExtraOriginsClient implements ClientModInitializer {
 	}
 
 	private void initPackets() {
-		ClientPlayNetworking.registerGlobalReceiver(MountS2CPacket.ID, new MountS2CPacket());
-		ClientPlayNetworking.registerGlobalReceiver(MarkRadialDirectionChangedPacket.ID, new MarkRadialDirectionChangedPacket());
-		ClientPlayNetworking.registerGlobalReceiver(NotifyRandomPowerChangePacket.ID, new NotifyRandomPowerChangePacket());
+		ClientPlayNetworking.registerGlobalReceiver(MountS2CPacket.ID, new MountS2CPacket.Receiver());
+		ClientPlayNetworking.registerGlobalReceiver(MarkRadialDirectionChangedPacket.ID, new MarkRadialDirectionChangedPacket.Receiver());
+		ClientPlayNetworking.registerGlobalReceiver(NotifyRandomPowerChangePacket.ID, new NotifyRandomPowerChangePacket.Receiver());
 	}
 
 	private void initParticles() {

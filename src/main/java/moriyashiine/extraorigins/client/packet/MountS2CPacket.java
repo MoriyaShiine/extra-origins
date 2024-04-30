@@ -16,7 +16,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class MountS2CPacket implements ClientPlayNetworking.PlayChannelHandler {
+public class MountS2CPacket {
 	public static final Identifier ID = ExtraOrigins.id("mount_s2c");
 
 	public static void send(ServerPlayerEntity player, Entity entity) {
@@ -25,14 +25,16 @@ public class MountS2CPacket implements ClientPlayNetworking.PlayChannelHandler {
 		ServerPlayNetworking.send(player, ID, buf);
 	}
 
-	@Override
-	public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		int id = buf.readInt();
-		client.execute(() -> {
-			Entity entity = client.world.getEntityById(id);
-			if (entity != null) {
-				entity.startRiding(client.player, true);
-			}
-		});
+	public static class Receiver implements ClientPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			int id = buf.readInt();
+			client.execute(() -> {
+				Entity entity = client.world.getEntityById(id);
+				if (entity != null) {
+					entity.startRiding(client.player, true);
+				}
+			});
+		}
 	}
 }

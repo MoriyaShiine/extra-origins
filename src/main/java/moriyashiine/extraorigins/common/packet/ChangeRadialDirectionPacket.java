@@ -24,7 +24,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Locale;
 
-public class ChangeRadialDirectionPacket implements ServerPlayNetworking.PlayChannelHandler {
+public class ChangeRadialDirectionPacket {
 	public static final Identifier ID = ExtraOrigins.id("change_radial_direction");
 
 	public static void send(RadialMenuDirection direction, PowerType<?> powerType) {
@@ -34,16 +34,18 @@ public class ChangeRadialDirectionPacket implements ServerPlayNetworking.PlayCha
 		ClientPlayNetworking.send(ID, buf);
 	}
 
-	@Override
-	public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-		String direction = buf.readString();
-		PowerTypeReference<?> power = ApoliDataTypes.POWER_TYPE.receive(buf);
-		server.execute(() -> {
-			if (power.get(player) instanceof RadialMenuPower radialMenuPower) {
-				radialMenuPower.setDirection(RadialMenuDirection.valueOf(direction));
-				PowerHolderComponent.syncPower(player, radialMenuPower.getType());
-				MarkRadialDirectionChangedPacket.send(player);
-			}
-		});
+	public static class Receiver implements ServerPlayNetworking.PlayChannelHandler {
+		@Override
+		public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+			String direction = buf.readString();
+			PowerTypeReference<?> power = ApoliDataTypes.POWER_TYPE.receive(buf);
+			server.execute(() -> {
+				if (power.get(player) instanceof RadialMenuPower radialMenuPower) {
+					radialMenuPower.setDirection(RadialMenuDirection.valueOf(direction));
+					PowerHolderComponent.syncPower(player, radialMenuPower.getType());
+					MarkRadialDirectionChangedPacket.send(player);
+				}
+			});
+		}
 	}
 }
