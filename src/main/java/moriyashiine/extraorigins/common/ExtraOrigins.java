@@ -1,7 +1,6 @@
 /*
- * All Rights Reserved (c) MoriyaShiine
+ * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
-
 package moriyashiine.extraorigins.common;
 
 import moriyashiine.extraorigins.common.event.DismountEvent;

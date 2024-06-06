@@ -1,7 +1,6 @@
 /*
- * All Rights Reserved (c) MoriyaShiine
+ * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
-
 package moriyashiine.extraorigins.mixin.modifyairstrafingspeed;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;

@@ -1,7 +1,6 @@
 /*
- * All Rights Reserved (c) MoriyaShiine
+ * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
-
 package moriyashiine.extraorigins.mixin.randompowergranter.client;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
