@@ -6,7 +6,7 @@ body:
       label: Confirmations
       options:
         - label: I can verify that I am running the mod on the latest possible Minecraft version.
-          required: true
+          required: false
         - label: I can verify that the issue I am reporting exists on the latest possible Mod version.
           required: true
   - type: input
