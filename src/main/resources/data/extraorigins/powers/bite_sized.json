@@ -1,54 +1,58 @@
 {
   "type": "origins:multiple",
-  "modify_size": {
-	"type": "extraorigins:modify_size",
-	"scale_types": [
-	  "extraorigins:modify_size"
-	],
-	"scale": 0.25
-  },
-  "modify_hitbox_width": {
-	"type": "extraorigins:modify_size",
-	"scale_types": [
-	  "pehkui:hitbox_width"
-	],
-	"scale": 2
-  },
   "attribute_modifiers": {
 	"type": "origins:attribute",
 	"modifiers": [
 	  {
-		"name": "Origin modifier",
+		"id": "*:*",
 		"attribute": "minecraft:generic.max_health",
-		"operation": "multiply_total",
-		"value": -0.5
+		"operation": "add_multiplied_total",
+		"amount": -0.5
 	  },
 	  {
-		"name": "Origin modifier",
+		"id": "*:*",
 		"attribute": "minecraft:generic.movement_speed",
-		"operation": "addition",
-		"value": -0.015
+		"operation": "add_value",
+		"amount": -0.015
 	  },
 	  {
-		"name": "Origin modifier",
-		"attribute": "reach-entity-attributes:attack_range",
-		"operation": "addition",
-		"value": -0.25
+		"id": "*:*",
+		"attribute": "minecraft:player.entity_interaction_range",
+		"operation": "add_value",
+		"amount": -0.25
 	  },
 	  {
-		"name": "Origin modifier",
-		"attribute": "reach-entity-attributes:reach",
-		"operation": "addition",
-		"value": -1.5
+		"id": "*:*",
+		"attribute": "minecraft:player.block_interaction_range",
+		"operation": "add_value",
+		"amount": -1.5
+	  },
+	  {
+		"id": "*:*",
+		"attribute": "minecraft:generic.scale",
+		"operation": "add_multiplied_total",
+		"amount": -0.75
+	  },
+	  {
+		"id": "*:*",
+		"attribute": "additionalentityattributes:generic.hitbox_width",
+		"operation": "add_multiplied_total",
+		"amount": 1
 	  }
 	]
   },
   "jump_modifier": {
 	"type": "origins:modify_jump",
 	"modifier": {
-	  "name": "Origin modifier",
-	  "operation": "multiply_total",
-	  "value": -0.3333
+	  "operation": "multiply_total_multiplicative",
+	  "amount": -0.3333
+	}
+  },
+  "hostile_detection_range_modifier": {
+	"type": "extraorigins:modify_hostile_detection_range",
+	"modifier": {
+	  "operation": "multiply_total_multiplicative",
+	  "amount": -0.75
 	}
   },
   "delayed_hitbox": {

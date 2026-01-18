@@ -1,6 +1,13 @@
 {
-  "type": "extraorigins:start_riding",
+  "type": "origins:active_self",
   "key": {
 	"key": "key.origins.secondary_active"
+  },
+  "entity_action": {
+	"type": "origins:raycast",
+	"block": false,
+	"bientity_action": {
+	  "type": "origins:mount"
+	}
   }
 }

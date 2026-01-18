@@ -6,7 +6,7 @@
 	"compare_to": 0
   },
   "entity_action": {
-	"type": "extraorigins:block_action_looking_at",
+	"type": "extraorigins:block_raycast_action",
 	"block_condition": {
 	  "type": "origins:and",
 	  "conditions": [

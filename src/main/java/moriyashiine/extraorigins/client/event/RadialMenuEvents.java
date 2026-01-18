@@ -3,16 +3,16 @@
  */
 package moriyashiine.extraorigins.client.event;
 
-import io.github.apace100.apoli.ApoliClient;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.packet.ChangeRadialDirectionPacket;
-import moriyashiine.extraorigins.common.power.RadialMenuPower;
+import moriyashiine.extraorigins.common.payload.ChangeRadialDirectionPayload;
+import moriyashiine.extraorigins.common.powertype.RadialMenuPowerType;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.Window;
 import net.minecraft.util.math.Direction;
@@ -22,8 +22,8 @@ import java.util.List;
 public class RadialMenuEvents {
 	public static boolean directionChanged = false;
 
-	private static List<RadialMenuPower> activePowers;
-	private static RadialMenuPower lastUsedPower;
+	private static List<RadialMenuPowerType> activePowers;
+	private static RadialMenuPowerType lastUsedPower;
 	private static RadialMenuDirection targetDirection = null;
 	private static boolean renderModeSwitch = false;
 	private static int timer = 0;
@@ -43,7 +43,7 @@ public class RadialMenuEvents {
 				if (client.currentScreen != null) {
 					return;
 				}
-				activePowers = PowerHolderComponent.getPowers(client.player, RadialMenuPower.class).stream().filter(power -> ApoliClient.idToKeyBindingMap.containsKey(power.getKey().key) && ApoliClient.idToKeyBindingMap.get(power.getKey().key).isPressed()).toList();
+				activePowers = PowerHolderComponent.getPowerTypes(client.player, RadialMenuPowerType.class).stream().filter(powerType -> powerType.getKey().asKeyBinding().get().isPressed()).toList();
 				if (!activePowers.isEmpty()) {
 					client.mouse.unlockCursor();
 					changeTargetMode(client);
@@ -95,25 +95,25 @@ public class RadialMenuEvents {
 			}
 
 			private void handleModeChange() {
-				if (activePowers.get(0) != lastUsedPower) {
+				if (activePowers.getFirst() != lastUsedPower) {
 					timer = 0;
-					lastUsedPower = activePowers.get(0);
+					lastUsedPower = activePowers.getFirst();
 				}
-				if (targetDirection != null && lastUsedPower.getDirection() != targetDirection && lastUsedPower.getActionFromDirection(targetDirection) != null) {
+				if (targetDirection != null && lastUsedPower.getDirection() != targetDirection && lastUsedPower.getActionFromDirection(targetDirection).isPresent()) {
 					if (!directionChanged) {
 						timer++;
 					}
 					if (timer == lastUsedPower.swapTime) {
 						directionChanged = true;
 						timer = 0;
-						ChangeRadialDirectionPacket.send(targetDirection, lastUsedPower.getType());
+						ChangeRadialDirectionPayload.send(targetDirection, lastUsedPower.getPower().getId());
 					}
 				}
 			}
 		});
 		HudRenderCallback.EVENT.register(new HudRenderCallback() {
 			@Override
-			public void onHudRender(DrawContext drawContext, float tickDelta) {
+			public void onHudRender(DrawContext drawContext, RenderTickCounter tickCounter) {
 				if (!renderModeSwitch) {
 					return;
 				}
@@ -131,7 +131,7 @@ public class RadialMenuEvents {
 			}
 
 			private void renderSection(RadialMenuDirection targetMode, DrawContext drawContext, Window window, int posXOffset, int posYOffset, int v) {
-				if (lastUsedPower.getActionFromDirection(targetMode) == null) {
+				if (lastUsedPower.getActionFromDirection(targetMode).isEmpty()) {
 					return;
 				}
 				int u = 128;

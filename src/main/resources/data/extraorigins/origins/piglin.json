@@ -9,7 +9,9 @@
 	"extraorigins:flabby",
 	"extraorigins:soul_spooked"
   ],
-  "icon": "minecraft:golden_sword",
+  "icon": {
+	"id": "minecraft:golden_sword"
+  },
   "order": 1,
   "impact": 3
 }

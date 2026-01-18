@@ -7,18 +7,10 @@
 		"type": "origins:food"
 	  },
 	  {
-		"type": "origins:or",
-		"conditions": [
-		  {
-			"type": "origins:ingredient",
-			"ingredient": {
-			  "tag": "origins:meat"
-			}
-		  },
-		  {
-			"type": "origins:meat"
-		  }
-		],
+		"type": "origins:ingredient",
+		"ingredient": {
+		  "tag": "origins:meat"
+		},
 		"inverted": true
 	  },
 	  {

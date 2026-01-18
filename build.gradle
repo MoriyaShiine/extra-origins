@@ -1,6 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
-    id 'io.github.ladysnake.chenille' version '0.13.1'
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+    id 'io.github.ladysnake.chenille' version "${chenille_version}"
 }
 
 version = project.mod_version
@@ -13,7 +13,7 @@ base {
 chenille {
     customLicense = rootProject.file("LICENSE")
     github = new URL("https://github.com/MoriyaShiine/extra-origins")
-    javaVersion = 17
+    javaVersion = 21
     configurePublishing {
         withLadysnakeMaven()
         withGithubRelease()
@@ -22,21 +22,19 @@ chenille {
     }
 }
 
-modrinth {
-    dependencies {
-        required.project "fabric-api"
-        required.project "origins"
-        required.project "pehkui"
-    }
-    syncBodyFrom = rootProject.file("README.md").text
-}
-
 repositories {
-    chenille.repositories.allCommonRepositories()
+    maven {
+        name "ladysnake"
+        url "https://maven.ladysnake.org/releases"
+    }
+    chenille.repositories.shedaniel()
+    chenille.repositories.terraformers()
+    chenille.repositories.quiltMC()
     maven {
         name "carpet"
         url "https://masa.dy.fi/maven"
     }
+    chenille.repositories.modrinth()
 }
 
 dependencies {
@@ -45,10 +43,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    modImplementation "com.github.apace100:origins-fabric:${origins_version}"
-    modImplementation("com.github.virtuoel:pehkui:${pehkui_version}") {
-        exclude group: "net.fabricmc.fabric-api"
-    }
+    modImplementation "io.github.apace100:origins-fabric:${origins_version}"
 }
 
 processResources {
@@ -60,14 +55,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 17
+    it.options.release = 21
 }
 
 java {
     withSourcesJar()
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {

@@ -31,7 +31,7 @@
 	"interval": 20,
 	"entity_action": {
 	  "type": "origins:feed",
-	  "food": 1,
+	  "nutrition": 1,
 	  "saturation": 1
 	}
   },

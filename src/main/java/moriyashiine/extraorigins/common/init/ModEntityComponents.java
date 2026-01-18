@@ -3,13 +3,13 @@
  */
 package moriyashiine.extraorigins.common.init;
 
-import dev.onyxstudios.cca.api.v3.component.ComponentKey;
-import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
-import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;
 import net.minecraft.entity.LivingEntity;
+import org.ladysnake.cca.api.v3.component.ComponentKey;
+import org.ladysnake.cca.api.v3.component.ComponentRegistry;
+import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
+import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
+import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy;
 
 public class ModEntityComponents implements EntityComponentInitializer {
 	public static final ComponentKey<RandomPowerGranterComponent> RANDOM_POWER_GRANTER = ComponentRegistry.getOrCreate(RandomPowerGranterComponent.RANDOM_POWER_GRANTER, RandomPowerGranterComponent.class);

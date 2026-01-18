@@ -1,7 +1,7 @@
 {
   "type": "origins:multiple",
-  "change_group": {
-	"type": "origins:entity_group",
+  "undead": {
+	"type": "origins:modify_type_tag",
 	"condition": {
 	  "type": "origins:and",
 	  "conditions": [
@@ -17,7 +17,7 @@
 		}
 	  ]
 	},
-	"group": "undead"
+	"tag": "minecraft:undead"
   },
   "fire_immunity": {
 	"type": "origins:fire_immunity",
@@ -58,7 +58,7 @@
 	"max_stacks": 1,
 	"duration_per_stack": 30,
 	"effect": {
-	  "effect": "minecraft:weakness",
+	  "id": "minecraft:weakness",
 	  "is_ambient": true,
 	  "show_particles": false,
 	  "show_icon": true

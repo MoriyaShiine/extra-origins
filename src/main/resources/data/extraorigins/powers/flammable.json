@@ -4,8 +4,7 @@
 	"type": "origins:fire"
   },
   "modifier": {
-	"name": "Origin modifier",
-	"operation": "multiply_base",
-	"value": 1
+	"operation": "multiply_total_multiplicative",
+	"amount": 1
   }
 }

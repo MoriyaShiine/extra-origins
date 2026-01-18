@@ -6,7 +6,9 @@
 	"origins:climbing",
 	"extraorigins:jockey"
   ],
-  "icon": "minecraft:anvil",
+  "icon": {
+	"id": "minecraft:anvil"
+  },
   "order": 1,
   "impact": 3
 }

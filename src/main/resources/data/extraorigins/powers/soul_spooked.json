@@ -12,7 +12,7 @@
   "max_stacks": 1,
   "duration_per_stack": 30,
   "effect": {
-	"effect": "minecraft:weakness",
+	"id": "minecraft:weakness",
 	"is_ambient": true,
 	"show_particles": false,
 	"show_icon": true

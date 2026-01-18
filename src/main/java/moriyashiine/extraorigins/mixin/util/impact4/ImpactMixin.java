@@ -17,7 +17,7 @@ import java.util.List;
 @Mixin(Impact.class)
 public class ImpactMixin {
 	@Unique
-	private static final Impact VERY_HIGH = extraorigins$addImpact4(ExtraOrigins.id("choose_origin/impact/very_high"));
+	private static final Impact VERY_HIGH = addImpact4(ExtraOrigins.id("choose_origin/impact/very_high"));
 
 	@Shadow
 	@Final
@@ -30,9 +30,9 @@ public class ImpactMixin {
 	}
 
 	@Unique
-	private static Impact extraorigins$addImpact4(Identifier spriteId) {
+	private static Impact addImpact4(Identifier spriteId) {
 		List<Impact> originalList = new ArrayList<>(Arrays.asList(Impact.values()));
-		Impact impact4 = extraorigins$init("VERY_HIGH", originalList.get(originalList.size() - 1).ordinal() + 1, 4, "very_high", Formatting.LIGHT_PURPLE, spriteId);
+		Impact impact4 = extraorigins$init("VERY_HIGH", originalList.getLast().ordinal() + 1, 4, "very_high", Formatting.LIGHT_PURPLE, spriteId);
 		originalList.add(impact4);
 		$VALUES = originalList.toArray(new Impact[0]);
 		return impact4;

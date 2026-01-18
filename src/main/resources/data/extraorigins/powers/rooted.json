@@ -7,8 +7,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:radial_menu_direction",
-		  "direction": "up",
-		  "power": "extraorigins:magic_spores"
+		  "power": "extraorigins:magic_spores",
+		  "direction": "up"
 		},
 		{
 		  "type": "origins:sprinting"
@@ -23,9 +23,8 @@
 	  ]
 	},
 	"modifier": {
-	  "name": "Origins modifier",
-	  "operation": "addition",
-	  "value": 0.4
+	  "operation": "add_base_early",
+	  "amount": 0.4
 	}
   },
   "mobility_fall_immunity": {
@@ -35,8 +34,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:radial_menu_direction",
-		  "direction": "up",
-		  "power": "extraorigins:magic_spores"
+		  "power": "extraorigins:magic_spores",
+		  "direction": "up"
 		},
 		{
 		  "type": "origins:block_in_radius",
@@ -60,8 +59,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:radial_menu_direction",
-		  "direction": "left",
-		  "power": "extraorigins:magic_spores"
+		  "power": "extraorigins:magic_spores",
+		  "direction": "left"
 		},
 		{
 		  "type": "origins:on_block",
@@ -73,10 +72,10 @@
 	  ]
 	},
 	"modifier": {
-	  "name": "Origins modifier",
+	  "id": "*:*",
 	  "attribute": "minecraft:generic.attack_speed",
-	  "operation": "addition",
-	  "value": 0.4
+	  "operation": "add_value",
+	  "amount": 0.4
 	}
   },
   "defense": {
@@ -86,8 +85,8 @@
 	  "conditions": [
 		{
 		  "type": "extraorigins:radial_menu_direction",
-		  "direction": "right",
-		  "power": "extraorigins:magic_spores"
+		  "power": "extraorigins:magic_spores",
+		  "direction": "right"
 		},
 		{
 		  "type": "origins:on_block",
@@ -99,10 +98,10 @@
 	  ]
 	},
 	"modifier": {
-	  "name": "Origins modifier",
+	  "id": "*:*",
 	  "attribute": "minecraft:generic.knockback_resistance",
-	  "operation": "addition",
-	  "value": 10
+	  "operation": "add_value",
+	  "amount": 10
 	}
   }
 }

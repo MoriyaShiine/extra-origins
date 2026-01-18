@@ -2,7 +2,9 @@
   "powers": [
 	"extraorigins:radioactive"
   ],
-  "icon": "origins:orb_of_origin",
+  "icon": {
+	"id": "origins:orb_of_origin"
+  },
   "order": 1,
   "impact": 4
 }

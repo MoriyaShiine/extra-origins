@@ -1,11 +1,10 @@
 {
   "type": "origins:modify_projectile_damage",
   "damage_condition": {
-	"type": "extraorigins:shot_from_crossbow"
+	"type": "extraorigins:crossbow_projectile"
   },
   "modifier": {
-	"name": "Origin modifier",
-	"operation": "multiply_base",
-	"value": 0.75
+	"operation": "multiply_total_multiplicative",
+	"amount": 0.75
   }
 }

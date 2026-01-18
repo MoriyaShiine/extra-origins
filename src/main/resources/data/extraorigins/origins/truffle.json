@@ -5,7 +5,9 @@
 	"extraorigins:rooted",
 	"extraorigins:decomposition"
   ],
-  "icon": "minecraft:red_mushroom",
+  "icon": {
+	"id": "minecraft:red_mushroom"
+  },
   "order": 1,
   "impact": 2
 }

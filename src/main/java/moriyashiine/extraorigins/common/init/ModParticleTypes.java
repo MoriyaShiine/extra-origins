@@ -5,19 +5,19 @@ package moriyashiine.extraorigins.common.init;
 
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class ModParticleTypes {
-	public static final ParticleType<DefaultParticleType> OFFENSE_SPORE = FabricParticleTypes.simple();
-	public static final ParticleType<DefaultParticleType> DEFENSE_SPORE = FabricParticleTypes.simple();
-	public static final ParticleType<DefaultParticleType> MOBILITY_SPORE = FabricParticleTypes.simple();
+	public static final SimpleParticleType OFFENSE_SPORE = register("offense_spore");
+	public static final SimpleParticleType DEFENSE_SPORE = register("defense_spore");
+	public static final SimpleParticleType MOBILITY_SPORE = register("mobility_spore");
+
+	private static SimpleParticleType register(String name) {
+		return Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id(name), FabricParticleTypes.simple());
+	}
 
 	public static void init() {
-		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("offense_spore"), OFFENSE_SPORE);
-		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("defense_spore"), DEFENSE_SPORE);
-		Registry.register(Registries.PARTICLE_TYPE, ExtraOrigins.id("mobility_spore"), MOBILITY_SPORE);
 	}
 }

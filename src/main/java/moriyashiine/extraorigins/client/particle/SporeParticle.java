@@ -5,7 +5,7 @@ package moriyashiine.extraorigins.client.particle;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SporeParticle extends SpriteBillboardParticle {
 	protected SporeParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
@@ -44,7 +44,7 @@ public class SporeParticle extends SpriteBillboardParticle {
 		repositionFromBoundingBox();
 	}
 
-	public static class Factory implements ParticleFactory<DefaultParticleType> {
+	public static class Factory implements ParticleFactory<SimpleParticleType> {
 		private final SpriteProvider spriteProvider;
 
 		public Factory(SpriteProvider spriteProvider) {
@@ -52,7 +52,7 @@ public class SporeParticle extends SpriteBillboardParticle {
 		}
 
 		@Override
-		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
+		public Particle createParticle(SimpleParticleType defaultParticleType, ClientWorld clientWorld, double posX, double posY, double posZ, double velocityX, double velocityY, double velocityZ) {
 			SporeParticle particle = new SporeParticle(clientWorld, posX, posY, posZ, velocityX, velocityY, velocityZ);
 			particle.setSprite(spriteProvider);
 			return particle;
