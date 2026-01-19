@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.client;
 
 import moriyashiine.extraorigins.client.event.DelayedHitboxClientEvent;

@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.common.init;
 
 import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;

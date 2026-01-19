@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.common.payload;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;

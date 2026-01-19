@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.client.payload;
 
 import moriyashiine.extraorigins.client.event.RadialMenuEvents;

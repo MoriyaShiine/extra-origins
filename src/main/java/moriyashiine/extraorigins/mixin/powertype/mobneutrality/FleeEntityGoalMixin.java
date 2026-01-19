@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.mixin.powertype.mobneutrality;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;

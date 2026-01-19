@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.common.init;
 
 import io.github.apace100.apoli.power.PowerConfiguration;

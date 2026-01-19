@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.mixin.powertype.modifyitemattributes.client;
 
 import com.llamalad7.mixinextras.sugar.Local;

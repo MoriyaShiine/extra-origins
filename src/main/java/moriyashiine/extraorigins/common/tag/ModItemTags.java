@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.common.tag;
 
 import moriyashiine.extraorigins.common.ExtraOrigins;

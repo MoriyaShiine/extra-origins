@@ -1,6 +1,7 @@
 /*
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
+
 package moriyashiine.extraorigins.common;
 
 import moriyashiine.extraorigins.client.payload.MarkRadialDirectionChangedPayload;
