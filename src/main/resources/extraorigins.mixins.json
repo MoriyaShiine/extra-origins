@@ -18,7 +18,7 @@
 	"powertype.mobneutrality.ZoglinEntityMixin",
 	"powertype.modifyhostiledetectionrange.LivingEntityMixin",
 	"powertype.preventblockslowness.EntityMixin",
-	"util.impact4.ImpactMixin"
+	"util.ImpactMixin"
   ],
   "client": [
 	"powertype.delayedhitbox.client.MinecraftClientMixin",
