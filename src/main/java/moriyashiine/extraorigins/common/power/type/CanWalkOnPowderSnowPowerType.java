@@ -2,7 +2,7 @@
  * Copyright (c) MoriyaShiine. All Rights Reserved.
  */
 
-package moriyashiine.extraorigins.common.powertype;
+package moriyashiine.extraorigins.common.power.type;
 
 import io.github.apace100.apoli.condition.EntityCondition;
 import io.github.apace100.apoli.power.PowerConfiguration;
@@ -12,13 +12,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class PreventBlockSlownessPowerType extends PowerType {
-	public PreventBlockSlownessPowerType(Optional<EntityCondition> condition) {
+public class CanWalkOnPowderSnowPowerType extends PowerType {
+	public CanWalkOnPowderSnowPowerType(Optional<EntityCondition> condition) {
 		super(condition);
 	}
 
 	@Override
 	public @NotNull PowerConfiguration<?> getConfig() {
-		return ModPowerTypes.PREVENT_BLOCK_SLOWNESS;
+		return ModPowerTypes.CAN_WALK_ON_POWDER_SNOW;
 	}
 }

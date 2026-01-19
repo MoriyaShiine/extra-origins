@@ -5,7 +5,7 @@
 package moriyashiine.extraorigins.mixin.powertype.mobneutrality;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.MobNeutralityPowerType;
+import moriyashiine.extraorigins.common.power.type.MobNeutralityPowerType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.PathAwareEntity;

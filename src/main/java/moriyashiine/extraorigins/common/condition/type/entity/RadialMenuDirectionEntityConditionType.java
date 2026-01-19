@@ -13,7 +13,7 @@ import io.github.apace100.apoli.power.PowerReference;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import moriyashiine.extraorigins.common.init.ModConditionTypes;
-import moriyashiine.extraorigins.common.powertype.RadialMenuPowerType;
+import moriyashiine.extraorigins.common.power.type.RadialMenuPowerType;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import org.jetbrains.annotations.NotNull;
 

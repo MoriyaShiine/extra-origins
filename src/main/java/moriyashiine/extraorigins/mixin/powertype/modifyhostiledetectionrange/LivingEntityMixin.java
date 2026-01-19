@@ -6,7 +6,7 @@ package moriyashiine.extraorigins.mixin.powertype.modifyhostiledetectionrange;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.ModifyHostileDetectionRangePowerType;
+import moriyashiine.extraorigins.common.power.type.ModifyHostileDetectionRangePowerType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

@@ -7,7 +7,7 @@ package moriyashiine.extraorigins.mixin.powertype.canwalkonpowdersnow;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.power.type.PowerType;
-import moriyashiine.extraorigins.common.powertype.CanWalkOnPowderSnowPowerType;
+import moriyashiine.extraorigins.common.power.type.CanWalkOnPowderSnowPowerType;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;

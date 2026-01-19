@@ -5,7 +5,7 @@
 package moriyashiine.extraorigins.client.event;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.DelayedHitboxPowerType;
+import moriyashiine.extraorigins.common.power.type.DelayedHitboxPowerType;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.world.ClientWorld;

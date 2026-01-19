@@ -7,7 +7,7 @@ package moriyashiine.extraorigins.mixin.powertype.modifyitemattributes.client;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.util.AttributedEntityAttributeModifier;
-import moriyashiine.extraorigins.common.powertype.ModifyItemAttributesPowerType;
+import moriyashiine.extraorigins.common.power.type.ModifyItemAttributesPowerType;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

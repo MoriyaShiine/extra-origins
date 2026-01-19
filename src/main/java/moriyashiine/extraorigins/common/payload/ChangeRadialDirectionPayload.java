@@ -7,7 +7,7 @@ package moriyashiine.extraorigins.common.payload;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.client.payload.MarkRadialDirectionChangedPayload;
 import moriyashiine.extraorigins.common.ExtraOrigins;
-import moriyashiine.extraorigins.common.powertype.RadialMenuPowerType;
+import moriyashiine.extraorigins.common.power.type.RadialMenuPowerType;
 import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

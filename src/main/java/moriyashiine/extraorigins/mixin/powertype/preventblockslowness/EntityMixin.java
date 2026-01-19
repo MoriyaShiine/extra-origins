@@ -6,7 +6,7 @@ package moriyashiine.extraorigins.mixin.powertype.preventblockslowness;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.power.type.PowerType;
-import moriyashiine.extraorigins.common.powertype.PreventBlockSlownessPowerType;
+import moriyashiine.extraorigins.common.power.type.PreventBlockSlownessPowerType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;

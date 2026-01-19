@@ -6,7 +6,7 @@ package moriyashiine.extraorigins.mixin.powertype.mobneutrality;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.MobNeutralityPowerType;
+import moriyashiine.extraorigins.common.power.type.MobNeutralityPowerType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.EndermanEntity;

@@ -8,7 +8,7 @@ import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.origins.Origins;
 import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;
 import moriyashiine.extraorigins.common.init.ModEntityComponents;
-import moriyashiine.extraorigins.common.powertype.RandomPowerGranterPowerType;
+import moriyashiine.extraorigins.common.power.type.RandomPowerGranterPowerType;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;

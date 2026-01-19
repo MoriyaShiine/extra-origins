@@ -6,7 +6,7 @@ package moriyashiine.extraorigins.mixin.powertype.foodeffectimmunity;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.FoodEffectImmunityPowerType;
+import moriyashiine.extraorigins.common.power.type.FoodEffectImmunityPowerType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import org.spongepowered.asm.mixin.Mixin;

@@ -6,7 +6,7 @@ package moriyashiine.extraorigins.mixin.powertype.innateunbreaking;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import moriyashiine.extraorigins.common.powertype.InnateUnbreakingPowerType;
+import moriyashiine.extraorigins.common.power.type.InnateUnbreakingPowerType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;

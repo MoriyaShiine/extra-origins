@@ -4,7 +4,7 @@
 
 package moriyashiine.extraorigins.common.event;
 
-import moriyashiine.extraorigins.common.powertype.RandomPowerGranterPowerType;
+import moriyashiine.extraorigins.common.power.type.RandomPowerGranterPowerType;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 

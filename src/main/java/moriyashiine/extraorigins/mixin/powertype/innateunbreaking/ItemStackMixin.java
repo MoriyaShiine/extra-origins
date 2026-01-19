@@ -4,7 +4,7 @@
 
 package moriyashiine.extraorigins.mixin.powertype.innateunbreaking;
 
-import moriyashiine.extraorigins.common.powertype.InnateUnbreakingPowerType;
+import moriyashiine.extraorigins.common.power.type.InnateUnbreakingPowerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;

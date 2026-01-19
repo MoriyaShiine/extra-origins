@@ -9,7 +9,7 @@ import io.github.apace100.apoli.power.type.PowerTypes;
 import io.github.apace100.apoli.power.type.ValueModifyingPowerType;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;
-import moriyashiine.extraorigins.common.powertype.*;
+import moriyashiine.extraorigins.common.power.type.*;
 
 public class ModPowerTypes {
 	public static final PowerConfiguration<CanWalkOnPowderSnowPowerType> CAN_WALK_ON_POWDER_SNOW = PowerTypes.register(PowerConfiguration.conditionedSimple(ExtraOrigins.id("can_walk_on_powder_snow"), CanWalkOnPowderSnowPowerType::new));
