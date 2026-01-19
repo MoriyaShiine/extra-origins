@@ -7,6 +7,7 @@ import io.github.apace100.apoli.power.PowerManager;
 import io.github.apace100.origins.Origins;
 import moriyashiine.extraorigins.common.component.entity.RandomPowerGranterComponent;
 import moriyashiine.extraorigins.common.init.ModEntityComponents;
+import moriyashiine.extraorigins.common.powertype.RandomPowerGranterPowerType;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
@@ -53,7 +54,12 @@ public class RandomPowerGranterClientEvent {
 						drawContext.drawTexture(TEXTURE, 12, y + 2, 0, VS[i], (int) (71 * (randomPowerGranterComponent.getTemporaryPowers()[i].getProgress())), 5, 256, 256);
 						DisplayInstance displayInstance = DISPLAY_INSTANCES[i];
 						if (displayInstance != null) {
-							Text display = displayInstance.oldPower.append(" -> ").append(displayInstance.newPower);
+							Text display;
+							if (displayInstance.oldPower.getString().isEmpty()) {
+								display = displayInstance.newPower;
+							} else {
+								display = displayInstance.oldPower.append(" -> ").append(displayInstance.newPower);
+							}
 							drawContext.setShaderColor(1, 1, 1, displayInstance.getOpacity());
 							drawContext.drawText(client.textRenderer, display, 86, y, FORMATTING[i].getColorValue(), true);
 						}
@@ -70,7 +76,11 @@ public class RandomPowerGranterClientEvent {
 		private final float maxDuration;
 
 		public DisplayInstance(Identifier oldPower, Identifier newPower, int duration) {
-			this.oldPower = PowerManager.get(oldPower).getName();
+			if (oldPower.equals(RandomPowerGranterPowerType.INITIAL_ID)) {
+				this.oldPower = Text.empty();
+			} else {
+				this.oldPower = PowerManager.get(oldPower).getName();
+			}
 			this.newPower = PowerManager.get(newPower).getName();
 			this.duration = duration;
 			this.maxDuration = duration;
