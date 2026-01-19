@@ -50,7 +50,7 @@ public class RadialMenuEvents {
 					changeTargetMode(client);
 					handleModeChange();
 					renderModeSwitch = true;
-				} else {
+				} else if (renderModeSwitch) {
 					client.mouse.lockCursor();
 					lastUsedPower = null;
 					directionChanged = false;
