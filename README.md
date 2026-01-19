@@ -1,6 +1,12 @@
-# Extra Origins
+<div align="center">
+  <h1>Extra Origins</h1>
+  <a href="https://modrinth.com/mod/fabric-api"><img src="https://raw.githubusercontent.com/intergrav/devins-badges/c7fd18efdadd1c3f12ae56b49afd834640d2d797/assets/cozy/requires/fabric-api_vector.svg"></a>
+  <a href="https://discord.gg/Am6M8VQ"><img src="https://github.com/intergrav/devins-badges/raw/refs/heads/v3/assets/cozy/social/discord-singular_vector.svg"></a>
+  <a href="https://ko-fi.com/moriyashiine"><img src="https://github.com/intergrav/devins-badges/raw/refs/heads/v3/assets/cozy/donate/kofi-singular_vector.svg"></a>
+  <h3>Adds more origins to the Origins mod!</h3>
+</div>
 
-Adds more origins to the [Origins](https://modrinth.com/mod/origins) mod, requires [Pehkui](https://modrinth.com/mod/pehkui)
+Requires [Origins](https://modrinth.com/mod/origins)
 
 ```
 🌲 Floran 🌲
@@ -21,7 +27,7 @@ Adds more origins to the [Origins](https://modrinth.com/mod/origins) mod, requir
 + You are immune to thorns and velocity based damage. You are not slowed by blocks such as sweet berry bushes or cobwebs. You can walk on powder snow.
 + You exhaust much slower than others, requiring you to eat less.
 + You are able to climb up any kind of wall, not just ladders.
-+ You can ride other players.
++ You can ride other mobs and players.
 
 🪙 Piglin 🪙
 + Golden tools deal extra damage and golden armor has additional protection. Golden equipment lasts much longer.
@@ -36,12 +42,3 @@ Adds more origins to the [Origins](https://modrinth.com/mod/origins) mod, requir
 ⚛️ Nucleon ⚛️
 +- You have 3 random powers, each of which will decay into a new power after a certain amount of time.
 ```
-
-## External Links
-Support me on Ko-fi! I release new versions of my mods early here <3
-
-[![Ko-fi](https://i.imgur.com/6pkJV6h.png)](https://ko-fi.com/moriyashiine)
-
-Join my Discord!
-
-[![Discord](https://i.imgur.com/72QzxP1.png)](https://discord.gg/Am6M8VQ)
