@@ -4,7 +4,7 @@
 
 package moriyashiine.extraorigins.client.payload;
 
-import moriyashiine.extraorigins.client.event.RadialMenuEvents;
+import moriyashiine.extraorigins.client.event.RadialMenuClientEvent;
 import moriyashiine.extraorigins.common.ExtraOrigins;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -29,7 +29,7 @@ public record MarkRadialDirectionChangedPayload() implements CustomPayload {
 	public static class Receiver implements ClientPlayNetworking.PlayPayloadHandler<MarkRadialDirectionChangedPayload> {
 		@Override
 		public void receive(MarkRadialDirectionChangedPayload payload, ClientPlayNetworking.Context context) {
-			RadialMenuEvents.directionChanged = false;
+			RadialMenuClientEvent.directionChanged = false;
 		}
 	}
 }
