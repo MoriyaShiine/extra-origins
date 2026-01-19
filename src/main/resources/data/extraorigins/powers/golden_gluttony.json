@@ -16,7 +16,7 @@
 	  {
 		"type": "origins:ingredient",
 		"ingredient": {
-		  "tag": "extraorigins:golden_food"
+		  "tag": "c:foods/golden"
 		},
 		"inverted": true
 	  },

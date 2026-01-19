@@ -19,6 +19,9 @@
   "icon": "assets/extraorigins/icon.png",
   "environment": "*",
   "entrypoints": {
+	"fabric-datagen": [
+	  "moriyashiine.extraorigins.data.ModDataGenerator"
+	],
 	"main": [
 	  "moriyashiine.extraorigins.common.ExtraOrigins"
 	],

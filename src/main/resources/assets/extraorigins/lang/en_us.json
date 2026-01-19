@@ -53,5 +53,8 @@
   "power.extraorigins.soul_spooked.description": "You are afraid of soul fire, becoming weak when near it.",
   "power.extraorigins.radioactive.name": "Radioactive",
   "power.extraorigins.radioactive.description": "You have 3 random powers, each of which will decay into a new power after a certain amount of time.",
+  "tag.item.extraorigins.golden_equipment": "Golden Equipment",
+  "tag.item.extraorigins.golden_armor": "Golden Armor",
+  "tag.item.extraorigins.golden_tools": "Golden Tools",
   "origins.gui.impact.very_high": "Very High"
 }
