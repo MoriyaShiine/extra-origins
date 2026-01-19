@@ -7,7 +7,6 @@ package moriyashiine.extraorigins.client.event;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import moriyashiine.extraorigins.common.payload.ChangeRadialDirectionPayload;
 import moriyashiine.extraorigins.common.power.type.RadialMenuPowerType;
-import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -26,7 +25,7 @@ public class RadialMenuClientEvent {
 
 	private static List<RadialMenuPowerType> activePowers;
 	private static RadialMenuPowerType lastUsedPower;
-	private static RadialMenuDirection targetDirection = null;
+	private static RadialMenuPowerType.Direction targetDirection = null;
 	private static boolean renderModeSwitch = false;
 	private static int timer = 0;
 
@@ -65,19 +64,19 @@ public class RadialMenuClientEvent {
 		}
 
 		private void changeTargetMode(MinecraftClient client) {
-			RadialMenuDirection direction = null;
+			RadialMenuPowerType.Direction direction = null;
 			boolean arrowKey = false;
 			if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_UP)) {
-				direction = RadialMenuDirection.UP;
+				direction = RadialMenuPowerType.Direction.UP;
 				arrowKey = true;
 			} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_DOWN)) {
-				direction = RadialMenuDirection.DOWN;
+				direction = RadialMenuPowerType.Direction.DOWN;
 				arrowKey = true;
 			} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_LEFT)) {
-				direction = RadialMenuDirection.LEFT;
+				direction = RadialMenuPowerType.Direction.LEFT;
 				arrowKey = true;
 			} else if (InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.GLFW_KEY_RIGHT)) {
-				direction = RadialMenuDirection.RIGHT;
+				direction = RadialMenuPowerType.Direction.RIGHT;
 				arrowKey = true;
 			}
 			if (!arrowKey) {
@@ -85,10 +84,10 @@ public class RadialMenuClientEvent {
 				double y = (client.getWindow().getHeight() / 2F) - client.mouse.getY();
 				if (Math.abs(x) > 48 || Math.abs(y) > 48) {
 					direction = switch (Direction.getFacing(x, y, 0)) {
-						case UP -> RadialMenuDirection.UP;
-						case DOWN -> RadialMenuDirection.DOWN;
-						case WEST -> RadialMenuDirection.LEFT;
-						case EAST -> RadialMenuDirection.RIGHT;
+						case UP -> RadialMenuPowerType.Direction.UP;
+						case DOWN -> RadialMenuPowerType.Direction.DOWN;
+						case WEST -> RadialMenuPowerType.Direction.LEFT;
+						case EAST -> RadialMenuPowerType.Direction.RIGHT;
 						default -> null;
 					};
 				}
@@ -125,10 +124,10 @@ public class RadialMenuClientEvent {
 			}
 			Window window = MinecraftClient.getInstance().getWindow();
 			drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 64, (window.getScaledHeight() / 2) - 64, 0, 0, 128, 128, 320, 256);
-			renderSection(RadialMenuDirection.UP, drawContext, window, -32, -80, 0);
-			renderSection(RadialMenuDirection.DOWN, drawContext, window, -32, 16, 64);
-			renderSection(RadialMenuDirection.LEFT, drawContext, window, -80, -32, 128);
-			renderSection(RadialMenuDirection.RIGHT, drawContext, window, 16, -32, 192);
+			renderSection(RadialMenuPowerType.Direction.UP, drawContext, window, -32, -80, 0);
+			renderSection(RadialMenuPowerType.Direction.DOWN, drawContext, window, -32, 16, 64);
+			renderSection(RadialMenuPowerType.Direction.LEFT, drawContext, window, -80, -32, 128);
+			renderSection(RadialMenuPowerType.Direction.RIGHT, drawContext, window, 16, -32, 192);
 			if (timer > 0) {
 				drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 13, (window.getScaledHeight() / 2) - 13, 48, 128, 26, 26, 320, 256);
 				drawContext.drawTexture(lastUsedPower.spriteLocation, (window.getScaledWidth() / 2) - 12, (window.getScaledHeight() / 2) - 12, 24, 128, 24, 24, 320, 256);
@@ -136,7 +135,7 @@ public class RadialMenuClientEvent {
 			}
 		}
 
-		private void renderSection(RadialMenuDirection targetMode, DrawContext drawContext, Window window, int posXOffset, int posYOffset, int v) {
+		private void renderSection(RadialMenuPowerType.Direction targetMode, DrawContext drawContext, Window window, int posXOffset, int posYOffset, int v) {
 			if (lastUsedPower.getActionFromDirection(targetMode).isEmpty()) {
 				return;
 			}

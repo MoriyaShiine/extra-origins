@@ -15,14 +15,18 @@ import io.github.apace100.apoli.util.keybinding.KeyBindingReference;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
+import io.netty.buffer.ByteBuf;
 import moriyashiine.extraorigins.common.init.ModPowerTypes;
-import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.function.ValueLists;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
+import java.util.function.IntFunction;
 
 public class RadialMenuPowerType extends PowerType implements Active {
 	public static final TypedDataObjectFactory<RadialMenuPowerType> DATA_FACTORY = PowerType.createConditionedDataFactory(
@@ -35,7 +39,7 @@ public class RadialMenuPowerType extends PowerType implements Active {
 					.add("right_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
 					.add("lost_action", EntityAction.DATA_TYPE.optional(), Optional.empty())
 					.add("swap_time", SerializableDataTypes.POSITIVE_INT, 20)
-					.add("default_direction", SerializableDataType.enumValue(RadialMenuDirection.class), RadialMenuDirection.UP),
+					.add("default_direction", SerializableDataType.enumValue(Direction.class), Direction.UP),
 			(data, condition) -> new RadialMenuPowerType(
 					condition,
 					data.get("key"),
@@ -69,9 +73,9 @@ public class RadialMenuPowerType extends PowerType implements Active {
 	private final Optional<EntityAction> lostAction;
 	public final int swapTime;
 
-	private RadialMenuDirection direction;
+	private Direction direction;
 
-	public RadialMenuPowerType(Optional<EntityCondition> condition, KeyBindingReference key, Identifier spriteLocation, Optional<EntityAction> upAction, Optional<EntityAction> downAction, Optional<EntityAction> leftAction, Optional<EntityAction> rightAction, Optional<EntityAction> lostAction, int swapTime, RadialMenuDirection defaultDirection) {
+	public RadialMenuPowerType(Optional<EntityCondition> condition, KeyBindingReference key, Identifier spriteLocation, Optional<EntityAction> upAction, Optional<EntityAction> downAction, Optional<EntityAction> leftAction, Optional<EntityAction> rightAction, Optional<EntityAction> lostAction, int swapTime, Direction defaultDirection) {
 		super(condition);
 		this.key = key;
 		this.spriteLocation = spriteLocation;
@@ -108,11 +112,11 @@ public class RadialMenuPowerType extends PowerType implements Active {
 		lostAction.ifPresent(action -> action.execute(getHolder()));
 	}
 
-	public RadialMenuDirection getDirection() {
+	public Direction getDirection() {
 		return this.direction;
 	}
 
-	public void setDirection(RadialMenuDirection direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 		update();
 	}
@@ -120,7 +124,7 @@ public class RadialMenuPowerType extends PowerType implements Active {
 	@Override
 	public void fromTag(NbtElement tag) {
 		if (tag instanceof NbtCompound nbt) {
-			direction = RadialMenuDirection.valueOf(nbt.getString("Direction"));
+			direction = Direction.valueOf(nbt.getString("Direction"));
 		}
 	}
 
@@ -131,7 +135,7 @@ public class RadialMenuPowerType extends PowerType implements Active {
 		return nbt;
 	}
 
-	public Optional<EntityAction> getActionFromDirection(RadialMenuDirection direction) {
+	public Optional<EntityAction> getActionFromDirection(Direction direction) {
 		return switch (direction) {
 			case UP -> upAction;
 			case DOWN -> downAction;
@@ -142,5 +146,25 @@ public class RadialMenuPowerType extends PowerType implements Active {
 
 	private void update() {
 		getActionFromDirection(direction).ifPresent(action -> action.execute(getHolder()));
+	}
+
+	public enum Direction {
+		UP(0),
+		DOWN(1),
+		LEFT(2),
+		RIGHT(3);
+
+		private static final IntFunction<Direction> ID_TO_VALUE_FUNCTION = ValueLists.createIdToValueFunction(Direction::getId, values(), ValueLists.OutOfBoundsHandling.WRAP);
+		public static final PacketCodec<ByteBuf, Direction> PACKET_CODEC = PacketCodecs.indexed(ID_TO_VALUE_FUNCTION, Direction::getId);
+
+		private final int id;
+
+		Direction(int id) {
+			this.id = id;
+		}
+
+		public int getId() {
+			return id;
+		}
 	}
 }

@@ -14,14 +14,13 @@ import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import moriyashiine.extraorigins.common.init.ModConditionTypes;
 import moriyashiine.extraorigins.common.power.type.RadialMenuPowerType;
-import moriyashiine.extraorigins.common.util.RadialMenuDirection;
 import org.jetbrains.annotations.NotNull;
 
 public class RadialMenuDirectionEntityConditionType extends EntityConditionType {
 	public static final TypedDataObjectFactory<RadialMenuDirectionEntityConditionType> DATA_FACTORY = TypedDataObjectFactory.simple(
 			new SerializableData()
 					.add("power", ApoliDataTypes.POWER_REFERENCE)
-					.add("direction", SerializableDataType.enumValue(RadialMenuDirection.class)),
+					.add("direction", SerializableDataType.enumValue(RadialMenuPowerType.Direction.class)),
 			data -> new RadialMenuDirectionEntityConditionType(
 					data.get("power"),
 					data.get("direction")),
@@ -31,9 +30,9 @@ public class RadialMenuDirectionEntityConditionType extends EntityConditionType 
 	);
 
 	private final PowerReference power;
-	private final RadialMenuDirection direction;
+	private final RadialMenuPowerType.Direction direction;
 
-	public RadialMenuDirectionEntityConditionType(PowerReference power, RadialMenuDirection direction) {
+	public RadialMenuDirectionEntityConditionType(PowerReference power, RadialMenuPowerType.Direction direction) {
 		this.power = power;
 		this.direction = direction;
 	}
